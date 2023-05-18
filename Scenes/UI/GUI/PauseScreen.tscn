@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=3 uid="uid://ivn6mc7scy1"]
+
+[ext_resource type="Script" path="res://Scenes/UI/GUI/PauseScreen.cs" id="1_0j2yg"]
+[ext_resource type="FontFile" uid="uid://bpwasuqy7suyk" path="res://Assets/Fonts/MedievalSharp-Regular.ttf" id="1_58reg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_samfc"]
+bg_color = Color(0, 0, 0, 0.627451)
+
+[node name="PauseScreen" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_0j2yg")
+
+[node name="Overlay" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_samfc")
+
+[node name="PauseMenuContainer" type="CenterContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.5
+offset_top = -41.0
+offset_right = 28.5
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PauseMenuContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenuContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Rows" type="VBoxContainer" parent="PauseMenuContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PauseTitle" type="Label" parent="PauseMenuContainer/PanelContainer/MarginContainer/Rows"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_58reg")
+theme_override_font_sizes/font_size = 32
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PauseMenuContainer/PanelContainer/MarginContainer/Rows"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="PauseMenuContainer/PanelContainer/MarginContainer/Rows"]
+layout_mode = 2
+text = "RESUME"
+
+[node name="LoadGameButton" type="Button" parent="PauseMenuContainer/PanelContainer/MarginContainer/Rows"]
+layout_mode = 2
+text = "LOAD GAME"
+
+[node name="SettingsButton" type="Button" parent="PauseMenuContainer/PanelContainer/MarginContainer/Rows"]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="ExitToMainMenuButton" type="Button" parent="PauseMenuContainer/PanelContainer/MarginContainer/Rows"]
+layout_mode = 2
+text = "MAIN MENU"
+
+[connection signal="pressed" from="PauseMenuContainer/PanelContainer/MarginContainer/Rows/ResumeButton" to="." method="ResumeButtonPressed"]
+[connection signal="pressed" from="PauseMenuContainer/PanelContainer/MarginContainer/Rows/LoadGameButton" to="." method="LoadGameButtonPressed"]
+[connection signal="pressed" from="PauseMenuContainer/PanelContainer/MarginContainer/Rows/SettingsButton" to="." method="SettingsButtonPressed"]
+[connection signal="pressed" from="PauseMenuContainer/PanelContainer/MarginContainer/Rows/ExitToMainMenuButton" to="." method="ExitToMainMenuButtonPressed"]

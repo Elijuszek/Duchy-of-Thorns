@@ -1,0 +1,122 @@
+[gd_scene load_steps=34 format=3 uid="uid://bu15300xjj3x2"]
+
+[ext_resource type="PackedScene" uid="uid://b6uovxtqgv7wt" path="res://Scenes/Actors/Troops/Infantry.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://dgtvfgifyyroe" path="res://Scenes/Weapons/Swords/GoldenSword.tscn" id="2"]
+[ext_resource type="Script" path="res://Scenes/Actors/Troops/Melee/Footman.cs" id="3"]
+[ext_resource type="Texture2D" uid="uid://ck5o2c6koq1p2" path="res://Sprites/Allies/Footman/Walking/Walking-3.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://bjwvxaxm4j6bw" path="res://Sprites/Allies/Footman/SwordSwing/SwordSwing-11.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://cq3xgyptng41n" path="res://Sprites/Allies/Footman/SwordSwing/SwordSwing-15.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://bjo5o4m0gpbc5" path="res://Sprites/Allies/Footman/SwordSwing/SwordSwing-16.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://2ikx324chgps" path="res://Sprites/Allies/Footman/SwordSwing/SwordSwing-6.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://bna136uxcoafg" path="res://Sprites/Allies/Footman/SwordSwing/SwordSwing-9.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://cme6m1k1b28qo" path="res://Sprites/Allies/Footman/SwordSwing/SwordSwing-10.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://bpdp1twmae4n6" path="res://Sprites/Allies/Footman/SwordSwing/SwordSwing-5.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://b5idfam7mb5fy" path="res://Sprites/Allies/Footman/SwordSwing/SwordSwing-7.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://mqhupswjwb57" path="res://Sprites/Allies/Footman/SwordSwing/SwordSwing-2.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://gjipcurtjuy6" path="res://Sprites/Allies/Footman/SwordSwing/SwordSwing-8.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://bhia2k6jej5ml" path="res://Sprites/Allies/Footman/Idle/Idle1.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://bvmm0xew0rruy" path="res://Sprites/Allies/Footman/SwordSwing/SwordSwing-13.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://dliow5aeoih87" path="res://Sprites/Allies/Footman/SwordSwing/SwordSwing-12.png" id="17"]
+[ext_resource type="Texture2D" uid="uid://850exbb1qa4v" path="res://Sprites/Allies/Footman/SwordSwing/SwordSwing-14.png" id="18"]
+[ext_resource type="Texture2D" uid="uid://dmyx5ba0rhmfu" path="res://Sprites/Allies/Footman/Walking/Walking-5.png" id="19"]
+[ext_resource type="Texture2D" uid="uid://1cg3hdr2yh0i" path="res://Sprites/Allies/Footman/SwordSwing/SwordSwing-3.png" id="20"]
+[ext_resource type="Texture2D" uid="uid://bkbqstv2wx8r8" path="res://Sprites/Allies/Footman/Walking/Walking-6.png" id="21"]
+[ext_resource type="Texture2D" uid="uid://0my5mpo87ccf" path="res://Sprites/Allies/Footman/Walking/Walking-1.png" id="22"]
+[ext_resource type="Texture2D" uid="uid://50l7ngsb83ee" path="res://Sprites/Allies/Footman/Walking/Walking-2.png" id="23"]
+[ext_resource type="Texture2D" uid="uid://bof62muwtmhcd" path="res://Sprites/Allies/Footman/Walking/Walking-4.png" id="24"]
+[ext_resource type="Texture2D" uid="uid://ccgnwwenn7cw1" path="res://Sprites/Allies/Footman/Walking/Walking-7.png" id="25"]
+[ext_resource type="Texture2D" uid="uid://l3a7g4l57vms" path="res://Sprites/Allies/Footman/Walking/Walking-8.png" id="26"]
+[ext_resource type="Texture2D" uid="uid://clf52kyjw7d0o" path="res://Sprites/Allies/Footman/SwordSwing/SwordSwing-1.png" id="28"]
+[ext_resource type="Texture2D" uid="uid://cqpruijfu3nau" path="res://Sprites/Allies/Footman/SwordSwing/SwordSwing-4.png" id="29"]
+
+[sub_resource type="CapsuleShape2D" id="5"]
+radius = 5.0
+height = 22.0
+
+[sub_resource type="Animation" id="4"]
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.27, 0.3, 0.33, 0.36, 0.38, 0.4, 0.42, 0.44, 0.46, 0.48),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("28"), ExtResource("13"), ExtResource("20"), ExtResource("29"), ExtResource("11"), ExtResource("8"), ExtResource("12"), ExtResource("14"), ExtResource("9"), ExtResource("10"), ExtResource("5"), ExtResource("17"), ExtResource("16"), ExtResource("18"), ExtResource("6"), ExtResource("7"), ExtResource("28")]
+}
+
+[sub_resource type="Animation" id="2"]
+resource_name = "Idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("15")]
+}
+
+[sub_resource type="Animation" id="3"]
+resource_name = "Walking"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("22"), ExtResource("23"), ExtResource("4"), ExtResource("24"), ExtResource("19"), ExtResource("21"), ExtResource("25"), ExtResource("26")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lo4so"]
+_data = {
+"Attack": SubResource("4"),
+"Idle": SubResource("2"),
+"Walking": SubResource("3")
+}
+
+[node name="FootmanEnemy" instance=ExtResource("1")]
+collision_layer = 2
+script = ExtResource("3")
+
+[node name="GoldenSword" parent="." index="0" instance=ExtResource("2")]
+position = Vector2(3, 14)
+damage = 25.0
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("28")
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("5")
+
+[node name="Stats" parent="." index="3"]
+Speed = 10.0
+
+[node name="Team" parent="." index="4"]
+team = 1
+
+[node name="AttackTimer" parent="." index="5"]
+wait_time = 0.5
+one_shot = true
+
+[node name="MeleeAI" parent="." index="6"]
+visible = false
+debugging = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+libraries = {
+"": SubResource("AnimationLibrary_lo4so")
+}

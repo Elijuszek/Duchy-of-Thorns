@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://du8ew7ws0wnhd"]
+
+[node name="SaveGame" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -75.0
+offset_right = 125.0
+offset_bottom = 75.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="Rows" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SaveGameButton" type="Button" parent="PanelContainer/MarginContainer/Rows"]
+layout_mode = 2
+text = "SAVE GAME"
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Rows"]
+layout_mode = 2
+text = "Game Saved!"

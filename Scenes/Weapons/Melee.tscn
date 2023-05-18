@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnsuxmaxj4m7v"]
+
+[ext_resource type="Script" path="res://Scenes/Weapons/Melee.cs" id="1"]
+[ext_resource type="PackedScene" uid="uid://buxokbp1yi6dd" path="res://Scenes/Weapons/Weapon.tscn" id="2"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(3.32768, 19.8735)
+
+[node name="Melee" instance=ExtResource("2")]
+script = ExtResource("1")
+delivered = false
+
+[node name="Area2D" type="Area2D" parent="." index="0"]
+collision_layer = 0
+collision_mask = 7
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(27.6875, 0.25)
+shape = SubResource("1")
+disabled = true
+
+[connection signal="body_entered" from="Area2D" to="." method="Area2DBodyEntered"]

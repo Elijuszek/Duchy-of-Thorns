@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dntve5xu78enk"]
+
+[sub_resource type="RectangleShape2D" id="18"]
+size = Vector2(80, 60)
+
+[node name="CancelAttackButton" type="TouchScreenButton"]
+shape = SubResource("18")
+shape_centered = false
+passby_press = true

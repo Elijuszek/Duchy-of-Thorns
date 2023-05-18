@@ -1,0 +1,115 @@
+[gd_scene load_steps=32 format=3 uid="uid://d1icwp77t3ic"]
+
+[ext_resource type="PackedScene" uid="uid://b6uovxtqgv7wt" path="res://Scenes/Actors/Troops/Infantry.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://dgtvfgifyyroe" path="res://Scenes/Weapons/Swords/GoldenSword.tscn" id="2"]
+[ext_resource type="Script" path="res://Scenes/Actors/Troops/Melee/Footman.cs" id="3"]
+[ext_resource type="Texture2D" uid="uid://cfw0tkk1m555g" path="res://Sprites/Enemy/Footman/Walking/walking-1.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://qapky5m7wukl" path="res://Sprites/Enemy/Footman/SwordSwing/SwordSwing-14.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://b0qrwxn516t4w" path="res://Sprites/Enemy/Footman/SwordSwing/SwordSwing-9.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://crr3agxg1jq4j" path="res://Sprites/Enemy/Footman/SwordSwing/SwordSwing-10.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://bughcvvu6jga1" path="res://Sprites/Enemy/Footman/SwordSwing/SwordSwing-6.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://dqtrplyojyirq" path="res://Sprites/Enemy/Footman/SwordSwing/SwordSwing-8.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://c1ggyhqd7tmrp" path="res://Sprites/Enemy/Footman/SwordSwing/SwordSwing-1.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://chh80ode2ygmu" path="res://Sprites/Enemy/Footman/SwordSwing/SwordSwing-5.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://b40355cp56o7m" path="res://Sprites/Enemy/Footman/SwordSwing/SwordSwing-16.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://dawatmbums6cg" path="res://Sprites/Enemy/Footman/SwordSwing/SwordSwing-4.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://dsum8hmuusbkq" path="res://Sprites/Enemy/Footman/SwordSwing/SwordSwing-15.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://iomnddtp4gix" path="res://Sprites/Enemy/Footman/SwordSwing/SwordSwing-3.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://72yfbwxoofrb" path="res://Sprites/Enemy/Footman/SwordSwing/SwordSwing-11.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://vvbefytuylyk" path="res://Sprites/Enemy/Footman/SwordSwing/SwordSwing-12.png" id="17"]
+[ext_resource type="Texture2D" uid="uid://br38uurxmsc0m" path="res://Sprites/Enemy/Footman/SwordSwing/SwordSwing-13.png" id="18"]
+[ext_resource type="Texture2D" uid="uid://c21weo0r4ptbx" path="res://Sprites/Enemy/Footman/SwordSwing/SwordSwing-7.png" id="19"]
+[ext_resource type="Texture2D" uid="uid://c03iov737ua3q" path="res://Sprites/Enemy/Footman/SwordSwing/SwordSwing-2.png" id="20"]
+[ext_resource type="Texture2D" uid="uid://bgc10bq36b4v" path="res://Sprites/Enemy/Footman/Walking/walking-2.png" id="21"]
+[ext_resource type="Texture2D" uid="uid://18o42pnwg4mp" path="res://Sprites/Enemy/Footman/Walking/walking-3.png" id="22"]
+[ext_resource type="Texture2D" uid="uid://b8u1yffs3w0jo" path="res://Sprites/Enemy/Footman/Walking/walking-4.png" id="23"]
+[ext_resource type="Texture2D" uid="uid://du6m6knssdora" path="res://Sprites/Enemy/Footman/Walking/walking-5.png" id="24"]
+[ext_resource type="Texture2D" uid="uid://d235s6j350pvl" path="res://Sprites/Enemy/Footman/Walking/walking-6.png" id="25"]
+[ext_resource type="Texture2D" uid="uid://bv6pqq7q31cun" path="res://Sprites/Enemy/Footman/Walking/walking-7.png" id="26"]
+[ext_resource type="Texture2D" uid="uid://sejnuxfl7lv6" path="res://Sprites/Enemy/Footman/Walking/walking-8.png" id="27"]
+
+[sub_resource type="Animation" id="1"]
+resource_name = "Attack"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.27, 0.3, 0.33, 0.36, 0.38, 0.4, 0.42, 0.44, 0.46, 0.48),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("10"), ExtResource("20"), ExtResource("15"), ExtResource("13"), ExtResource("11"), ExtResource("8"), ExtResource("19"), ExtResource("9"), ExtResource("6"), ExtResource("7"), ExtResource("16"), ExtResource("17"), ExtResource("18"), ExtResource("5"), ExtResource("14"), ExtResource("12"), ExtResource("10")]
+}
+
+[sub_resource type="Animation" id="2"]
+resource_name = "Idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10")]
+}
+
+[sub_resource type="Animation" id="3"]
+resource_name = "Walking"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4"), ExtResource("21"), ExtResource("22"), ExtResource("23"), ExtResource("24"), ExtResource("25"), ExtResource("26"), ExtResource("27")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0i64o"]
+_data = {
+"Attack": SubResource("1"),
+"Idle": SubResource("2"),
+"Walking": SubResource("3")
+}
+
+[node name="FootmanEnemy" instance=ExtResource("1")]
+collision_layer = 4
+script = ExtResource("3")
+
+[node name="GoldenSword" parent="." index="0" instance=ExtResource("2")]
+position = Vector2(3, 14)
+damage = 50.0
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("10")
+
+[node name="Stats" parent="." index="3"]
+Speed = 30.0
+Gold = 50
+
+[node name="Team" parent="." index="4"]
+team = 2
+
+[node name="AttackTimer" parent="." index="5"]
+wait_time = 0.5
+one_shot = true
+
+[node name="MeleeAI" parent="." index="6"]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+libraries = {
+"": SubResource("AnimationLibrary_0i64o")
+}

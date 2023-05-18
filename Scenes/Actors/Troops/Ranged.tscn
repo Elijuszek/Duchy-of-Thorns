@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://6q7se4t41stl"]
+
+[ext_resource type="PackedScene" uid="uid://d0o4kcg7hf4j" path="res://Scenes/Actors/Characters/Actor.tscn" id="1"]
+[ext_resource type="Script" path="res://Scenes/Actors/Troops/Ranged.cs" id="2"]
+[ext_resource type="PackedScene" uid="uid://w6qcuqbvjbwm" path="res://Scenes/Actors/Troops/RangedAI.tscn" id="3"]
+
+[node name="Ranged" instance=ExtResource("1")]
+collision_mask = 95
+script = ExtResource("2")
+
+[node name="Stats" parent="." index="2"]
+Gold = 200
+
+[node name="AttackTimer" type="Timer" parent="." index="4"]
+one_shot = true
+
+[node name="RangedAI" parent="." index="5" instance=ExtResource("3")]
+
+[connection signal="timeout" from="AttackTimer" to="." method="AttackTimerTimeout"]

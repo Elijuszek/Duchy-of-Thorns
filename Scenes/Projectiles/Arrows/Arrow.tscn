@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://doygcoiioxhl1"]
+
+[ext_resource type="PackedScene" uid="uid://ba136stixmhry" path="res://Scenes/Projectiles/Projectile.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://bar1dpgbf0mk0" path="res://Sprites/Projectiles/Bow and Arrows.png" id="2"]
+[ext_resource type="AudioStream" uid="uid://by1wy3i7vrh8e" path="res://Sounds/Projectiles/Arrow/ArrowHowling.wav" id="2_p65rt"]
+[ext_resource type="Script" path="res://Scenes/Projectiles/Arrows/Arrow.cs" id="4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqeue"]
+size = Vector2(7.996, 2.493)
+
+[node name="Arrow" instance=ExtResource("1")]
+scale = Vector2(2, 1.2)
+script = ExtResource("4")
+
+[node name="FlyingSound" parent="." index="0"]
+stream = ExtResource("2_p65rt")
+volume_db = 15.0
+autoplay = true
+max_distance = 250.0
+attenuation = 10.0
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0.021, -0.013)
+shape = SubResource("RectangleShape2D_xqeue")
+
+[node name="Sprite2D" parent="." index="2"]
+position = Vector2(0.021, 0.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2")
+hframes = 3
+vframes = 3
+frame = 5
+
+[connection signal="body_entered" from="." to="." method="ArrowBodyEntered"]

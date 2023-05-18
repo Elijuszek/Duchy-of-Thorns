@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/Buildings/Tents/CirTent/PerfectCircTent2.png" type="Texture2D" id=1]
+[ext_resource path="res://Sprites/Buildings/Tents/CirTent/PerfectCircTent2_n.png" type="Texture2D" id=2]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PackedVector2Array( -29, -57, -20, -57, 0, -55, 20, -57, 27, -57, 30, -55, 40, -40, 56, -28, 56, -23, 52, 0, 57, 22, 57, 25, 55, 28, 42, 35, 40, 37, 34, 52, 27, 52, 0, 48, -28, 53, -34, 53, -39, 43, -40, 41, -55, 32, -56, 29, -56, 24, -53, 0, -57, -24, -57, -28, -56, -31, -37, -43 )
+
+[node name="Cir_Tent" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 63
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 2
+texture = ExtResource( 1 )
+normal_map = ExtResource( 2 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array( -29, -57, -20, -57, 0, -55, 20, -57, 27, -57, 30, -55, 39, -42, 42, -38, 53, -30, 56, -28, 56, -23, 52, 0, 57, 22, 57, 25, 55, 28, 44, 34, 39, 39, 34, 52, 27, 52, 6, 49, 0, 48, -7, 49, -28, 53, -34, 53, -39, 43, -40, 41, -55, 32, -56, 29, -56, 24, -53, 0, -57, -24, -57, -28, -56, -31, -40, -40, -37, -43 )

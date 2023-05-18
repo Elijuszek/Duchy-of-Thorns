@@ -1,0 +1,249 @@
+[gd_scene load_steps=99 format=3 uid="uid://b6qiuybjj7b2b"]
+
+[ext_resource type="Texture2D" uid="uid://qid2e2hm8wd8" path="res://Sprites/Character/BowReloadNew/BowReload-1.png" id="1"]
+[ext_resource type="PackedScene" uid="uid://d0o4kcg7hf4j" path="res://Scenes/Actors/Characters/Actor.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://k5m1vj5ijl3b" path="res://Sprites/Character/SpearAttack/Spear-1.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://d4l7c7fvuk6wl" path="res://Sprites/Character/BowReloadNew/BowReload-3.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://dpxsu2sqww7vj" path="res://Sprites/Character/BowReloadNew/BowReload-2.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://bb3fty8rp7oq5" path="res://Sprites/Character/BowReloadNew/BowReload-6.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://cn8jcj4tkmh7m" path="res://Sprites/Character/BowReloadNew/BowReload-4.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://cy6mtkb27lpvx" path="res://Sprites/Character/BowReloadNew/BowReload-5.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://dty1wseinclqp" path="res://Material/Particles/Lights/light.png" id="8_ou4f6"]
+[ext_resource type="Texture2D" uid="uid://d2kgyofdswis5" path="res://Sprites/Character/Idle1.png" id="9"]
+[ext_resource type="Script" path="res://Scenes/Actors/Characters/Player/Player.cs" id="10"]
+[ext_resource type="PackedScene" uid="uid://dlerkhyh28htg" path="res://Scenes/Weapons/WeaponsManager/WeaponsManager.tscn" id="11"]
+[ext_resource type="Texture2D" uid="uid://cq7pby1qfvavy" path="res://Sprites/Character/Walking/Walking-8.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://wcr83w0t8cfr" path="res://Sprites/Character/SwordSwing/Swing-1.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://bue6jxfy5k5mo" path="res://Sprites/Character/SwordSwing/Swing-7.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://dkhcnlvl85fgn" path="res://Sprites/Character/SwordSwing/Swing-6.png" id="17"]
+[ext_resource type="Texture2D" uid="uid://ugkvlqnwf84w" path="res://Sprites/Character/SwordSwing/Swing-12.png" id="18"]
+[ext_resource type="Texture2D" uid="uid://4b5g1tnfbr2h" path="res://Sprites/Character/SwordSwing/Swing-5.png" id="19"]
+[ext_resource type="Texture2D" uid="uid://cs2wikt377pej" path="res://Sprites/Character/SwordSwing/Swing-4.png" id="20"]
+[ext_resource type="Texture2D" uid="uid://d0sh25qxdrnq" path="res://Sprites/Character/SwordSwing/Swing-2.png" id="21"]
+[ext_resource type="Texture2D" uid="uid://cwl5qhu0lijoi" path="res://Sprites/Character/SwordSwing/Swing-3.png" id="22"]
+[ext_resource type="Texture2D" uid="uid://d3c8wnueubhfn" path="res://Sprites/Character/SwordSwing/Swing-8.png" id="23"]
+[ext_resource type="Texture2D" uid="uid://lybave0l4csp" path="res://Sprites/Character/SwordSwing/Swing-10.png" id="24"]
+[ext_resource type="Texture2D" uid="uid://d4hjx1wsvkyol" path="res://Sprites/Character/SwordSwing/Swing-9.png" id="25"]
+[ext_resource type="Texture2D" uid="uid://ba284mdi64ai" path="res://Sprites/Character/SwordSwing/Swing-11.png" id="26"]
+[ext_resource type="Texture2D" uid="uid://b247y8kvhel8p" path="res://Sprites/Character/Walking/Walking-4.png" id="27"]
+[ext_resource type="Texture2D" uid="uid://bdmqga5an7g1m" path="res://Sprites/Character/Walking/Walking-1.png" id="28"]
+[ext_resource type="Texture2D" uid="uid://cfrgsxmy8am44" path="res://Sprites/Character/Walking/Walking-2.png" id="29"]
+[ext_resource type="Texture2D" uid="uid://cnts68gokt3i7" path="res://Sprites/Character/Walking/Walking-7.png" id="30"]
+[ext_resource type="Texture2D" uid="uid://cfbbpa2jf61ab" path="res://Sprites/Character/Walking/Walking-5.png" id="31"]
+[ext_resource type="Texture2D" uid="uid://b7v06ryvj6cn" path="res://Sprites/Character/Walking/Walking-6.png" id="32"]
+[ext_resource type="Texture2D" uid="uid://dc2wv3dsr6c4f" path="res://Sprites/Character/Walking/Walking-3.png" id="33"]
+[ext_resource type="Texture2D" uid="uid://c2g74ffikg1n4" path="res://Sprites/Character/Fists/Fists-6.png" id="34"]
+[ext_resource type="Texture2D" uid="uid://5i0qd1onlo5i" path="res://Sprites/Character/SwordSwing/Swing-13.png" id="35"]
+[ext_resource type="Texture2D" uid="uid://dxkbfns75mu8p" path="res://Sprites/Character/SwordSwing/Swing-15.png" id="36"]
+[ext_resource type="Texture2D" uid="uid://de0lljdiglxh" path="res://Sprites/Character/SwordSwing/Swing-14.png" id="37"]
+[ext_resource type="Texture2D" uid="uid://ywmn8ostjoq4" path="res://Sprites/Character/SwordSwing/Swing-16.png" id="38"]
+[ext_resource type="AudioStream" uid="uid://cg0lgp31r0fmq" path="res://Sounds/Coins/coins.mp3" id="39"]
+[ext_resource type="Texture2D" uid="uid://bwffx6jkajwhr" path="res://Sprites/Character/Fists/Fists-7.png" id="40"]
+[ext_resource type="Texture2D" uid="uid://btwsmepfeovl" path="res://Sprites/Character/Fists/Fists-3.png" id="41"]
+[ext_resource type="Texture2D" uid="uid://cdoaeoqsb6ltx" path="res://Sprites/Character/Fists/Fists-4.png" id="42"]
+[ext_resource type="Texture2D" uid="uid://bqhf3klfd6riw" path="res://Sprites/Character/Fists/Fists-5.png" id="43"]
+[ext_resource type="Texture2D" uid="uid://dvngl3xl0pg5m" path="res://Sprites/Character/Fists/Fists-1.png" id="44"]
+[ext_resource type="Texture2D" uid="uid://dk1crqpif62bt" path="res://Sprites/Character/Fists/Fists-2.png" id="45"]
+[ext_resource type="Texture2D" uid="uid://dth6doso6tlto" path="res://Sprites/Character/Fists/Fists-10.png" id="46"]
+[ext_resource type="Texture2D" uid="uid://dn1ugyknbtq53" path="res://Sprites/Character/Fists/Fists-25.png" id="47"]
+[ext_resource type="Texture2D" uid="uid://cr3e7dxm6crq1" path="res://Sprites/Character/Fists/Fists-18.png" id="48"]
+[ext_resource type="Texture2D" uid="uid://c3sbk45tfh8ri" path="res://Sprites/Character/Fists/Fists-28.png" id="49"]
+[ext_resource type="Texture2D" uid="uid://dhc52didpvimu" path="res://Sprites/Character/Fists/Fists-27.png" id="50"]
+[ext_resource type="Texture2D" uid="uid://cnjk55pg48xdb" path="res://Sprites/Character/Fists/Fists-13.png" id="51"]
+[ext_resource type="Texture2D" uid="uid://f8gecolj4a16" path="res://Sprites/Character/Fists/Fists-20.png" id="52"]
+[ext_resource type="Texture2D" uid="uid://das4batehf5yn" path="res://Sprites/Character/Fists/Fists-14.png" id="53"]
+[ext_resource type="Texture2D" uid="uid://b0p1on26u3mnw" path="res://Sprites/Character/Fists/Fists-17.png" id="54"]
+[ext_resource type="Texture2D" uid="uid://dewggmxttjf7l" path="res://Sprites/Character/Fists/Fists-23.png" id="55"]
+[ext_resource type="Texture2D" uid="uid://clkem0ed41oo4" path="res://Sprites/Character/Fists/Fists-30.png" id="56"]
+[ext_resource type="Texture2D" uid="uid://v6wen1c2v2oy" path="res://Sprites/Character/Fists/Fists-21.png" id="57"]
+[ext_resource type="Texture2D" uid="uid://b5wjttyh3qbs6" path="res://Sprites/Character/Fists/Fists-24.png" id="58"]
+[ext_resource type="Texture2D" uid="uid://bc5sn8rx0sdhq" path="res://Sprites/Character/Fists/Fists-8.png" id="59"]
+[ext_resource type="Texture2D" uid="uid://bhk8q5avh5t2l" path="res://Sprites/Character/Fists/Fists-9.png" id="60"]
+[ext_resource type="Texture2D" uid="uid://bexhcs7fld3u8" path="res://Sprites/Character/Fists/Fists-11.png" id="61"]
+[ext_resource type="Texture2D" uid="uid://d4bk2uquf6rm3" path="res://Sprites/Character/Fists/Fists-12.png" id="62"]
+[ext_resource type="Texture2D" uid="uid://dbfxc8sqxygmj" path="res://Sprites/Character/Fists/Fists-19.png" id="63"]
+[ext_resource type="Texture2D" uid="uid://dfvtatjlvqstl" path="res://Sprites/Character/Fists/Fists-26.png" id="64"]
+[ext_resource type="Texture2D" uid="uid://cbtbi53ee5cbu" path="res://Sprites/Character/Fists/Fists-16.png" id="65"]
+[ext_resource type="Texture2D" uid="uid://c173gkeu0aqmh" path="res://Sprites/Character/Fists/Fists-15.png" id="66"]
+[ext_resource type="Texture2D" uid="uid://darrywqnoa2ib" path="res://Sprites/Character/Fists/Fists-29.png" id="67"]
+[ext_resource type="Texture2D" uid="uid://dnnmx7mnwgqbh" path="res://Sprites/Character/Fists/Fists-22.png" id="68"]
+[ext_resource type="PackedScene" uid="uid://bgxqyp0lf8c6a" path="res://Scenes/Weapons/Fists.tscn" id="69"]
+[ext_resource type="Texture2D" uid="uid://d3pgb31u5k4ja" path="res://Sprites/Character/SpearAttack/Spear-2.png" id="70"]
+[ext_resource type="Texture2D" uid="uid://b0cedw76olrcg" path="res://Sprites/Character/SpearAttack/Spear-3.png" id="71"]
+[ext_resource type="Texture2D" uid="uid://du2sdwvypvnrx" path="res://Sprites/Character/SpearAttack/Spear-4.png" id="72"]
+[ext_resource type="Texture2D" uid="uid://gypil84j4uyc" path="res://Sprites/Character/SpearAttack/Spear-5.png" id="73"]
+[ext_resource type="Texture2D" uid="uid://cc0ab2c2406qb" path="res://Sprites/Character/SpearAttack/Spear-6.png" id="74"]
+[ext_resource type="Texture2D" uid="uid://dypgl1ou8fsdf" path="res://Sprites/Character/SpearAttack/Spear-7.png" id="75"]
+[ext_resource type="Texture2D" uid="uid://cv6c066to3jts" path="res://Sprites/Character/SpearAttack/Spear-16.png" id="76"]
+[ext_resource type="Texture2D" uid="uid://db8xgr8qs6ikv" path="res://Sprites/Character/SpearAttack/Spear-18.png" id="77"]
+[ext_resource type="Texture2D" uid="uid://b18o88ojag1mp" path="res://Sprites/Character/SpearAttack/Spear-10.png" id="78"]
+[ext_resource type="Texture2D" uid="uid://bo4wsxuuhj4ht" path="res://Sprites/Character/SpearAttack/Spear-19.png" id="79"]
+[ext_resource type="Texture2D" uid="uid://5w3j68wuo2ph" path="res://Sprites/Character/SpearAttack/Spear-8.png" id="80"]
+[ext_resource type="Texture2D" uid="uid://cvwv3wgx1tcrd" path="res://Sprites/Character/SpearAttack/Spear-23.png" id="81"]
+[ext_resource type="Texture2D" uid="uid://b1ai8a4kfg5su" path="res://Sprites/Character/SpearAttack/Spear-22.png" id="82"]
+[ext_resource type="Texture2D" uid="uid://d20vejh8p67d8" path="res://Sprites/Character/SpearAttack/Spear-9.png" id="83"]
+[ext_resource type="Texture2D" uid="uid://dbatri3wsd84r" path="res://Sprites/Character/SpearAttack/Spear-11.png" id="84"]
+[ext_resource type="Texture2D" uid="uid://c2ux238qte002" path="res://Sprites/Character/SpearAttack/Spear-17.png" id="85"]
+[ext_resource type="Texture2D" uid="uid://baeolm4mttlc" path="res://Sprites/Character/SpearAttack/Spear-12.png" id="86"]
+[ext_resource type="Texture2D" uid="uid://bfmujmaclgflh" path="res://Sprites/Character/SpearAttack/Spear-14.png" id="87"]
+[ext_resource type="Texture2D" uid="uid://dajsoraf4ou7m" path="res://Sprites/Character/SpearAttack/Spear-20.png" id="88"]
+[ext_resource type="Texture2D" uid="uid://bx03bi02456r0" path="res://Sprites/Character/SpearAttack/Spear-21.png" id="89"]
+[ext_resource type="Texture2D" uid="uid://cfg60emjxes42" path="res://Sprites/Character/SpearAttack/Spear-13.png" id="90"]
+[ext_resource type="Texture2D" uid="uid://q8uamgtjv000" path="res://Sprites/Character/SpearAttack/Spear-15.png" id="91"]
+[ext_resource type="Texture2D" uid="uid://bb0hpqbmguxgd" path="res://Sprites/Character/SpearAttack/Spear-24.png" id="92"]
+
+[sub_resource type="Animation" id="8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9")]
+}
+
+[sub_resource type="Animation" id="6"]
+resource_name = "Punsh"
+length = 0.96
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.27, 0.3, 0.33, 0.36, 0.38, 0.4, 0.42, 0.44, 0.46, 0.48, 0.5, 0.54, 0.58, 0.62, 0.66, 0.7, 0.74, 0.77, 0.8, 0.83, 0.86, 0.88, 0.9, 0.92, 0.94),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("44"), ExtResource("45"), ExtResource("41"), ExtResource("42"), ExtResource("43"), ExtResource("34"), ExtResource("40"), ExtResource("59"), ExtResource("60"), ExtResource("46"), ExtResource("61"), ExtResource("62"), ExtResource("51"), ExtResource("53"), ExtResource("66"), ExtResource("65"), ExtResource("44"), ExtResource("54"), ExtResource("48"), ExtResource("63"), ExtResource("52"), ExtResource("57"), ExtResource("68"), ExtResource("55"), ExtResource("58"), ExtResource("47"), ExtResource("64"), ExtResource("50"), ExtResource("49"), ExtResource("67"), ExtResource("56"), ExtResource("44")]
+}
+
+[sub_resource type="Animation" id="9"]
+length = 0.55
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("1"), ExtResource("5"), ExtResource("4"), ExtResource("7"), ExtResource("8"), ExtResource("6")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"stop"
+}]
+}
+
+[sub_resource type="Animation" id="7"]
+resource_name = "SpearAttack"
+length = 1.3
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.36, 0.42, 0.48, 0.54, 0.58, 0.62, 0.66, 0.7, 0.74, 0.8, 0.86, 0.92, 0.98, 1.04, 1.1, 1.16, 1.22, 1.28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3"), ExtResource("70"), ExtResource("71"), ExtResource("72"), ExtResource("73"), ExtResource("74"), ExtResource("75"), ExtResource("80"), ExtResource("83"), ExtResource("78"), ExtResource("84"), ExtResource("86"), ExtResource("90"), ExtResource("87"), ExtResource("91"), ExtResource("76"), ExtResource("85"), ExtResource("77"), ExtResource("79"), ExtResource("88"), ExtResource("89"), ExtResource("82"), ExtResource("81"), ExtResource("92")]
+}
+
+[sub_resource type="Animation" id="10"]
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.27, 0.3, 0.33, 0.36, 0.38, 0.4, 0.42, 0.44, 0.46, 0.48),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("15"), ExtResource("21"), ExtResource("22"), ExtResource("20"), ExtResource("19"), ExtResource("17"), ExtResource("16"), ExtResource("23"), ExtResource("25"), ExtResource("24"), ExtResource("26"), ExtResource("18"), ExtResource("35"), ExtResource("37"), ExtResource("36"), ExtResource("38"), ExtResource("15")]
+}
+
+[sub_resource type="Animation" id="5"]
+resource_name = "Walking"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("28"), ExtResource("29"), ExtResource("33"), ExtResource("27"), ExtResource("31"), ExtResource("32"), ExtResource("30"), ExtResource("13")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f22p5"]
+_data = {
+"Idle": SubResource("8"),
+"Punsh": SubResource("6"),
+"ShootingBow": SubResource("9"),
+"SpearAttack": SubResource("7"),
+"SwordSwing": SubResource("10"),
+"Walking": SubResource("5")
+}
+
+[node name="Player" instance=ExtResource("2")]
+collision_layer = 1
+collision_mask = 31
+script = ExtResource("10")
+swingDuration = 0.5
+reloadDuration = 1.0
+
+[node name="WeaponsManager" parent="." index="0" instance=ExtResource("11")]
+
+[node name="Fists" parent="WeaponsManager" index="0" instance=ExtResource("69")]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("9")
+
+[node name="Stats" parent="." index="3"]
+Speed = 150.0
+
+[node name="Team" parent="." index="4"]
+team = 1
+
+[node name="CameraTransform" type="RemoteTransform2D" parent="." index="5"]
+
+[node name="PointLight2D" type="PointLight2D" parent="." index="6"]
+energy = 0.5
+texture = ExtResource("8_ou4f6")
+
+[node name="CoinsSound" type="AudioStreamPlayer" parent="." index="7"]
+stream = ExtResource("39")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+"": SubResource("AnimationLibrary_f22p5")
+}

@@ -1,0 +1,59 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Duchy of Thorns"
+run/main_scene="res://Scenes/UI/Screens/TitleScreen.tscn"
+config/features=PackedStringArray("4.0", "C#", "Mobile")
+
+[autoload]
+
+Globals="*res://Scenes/Globals/Globals.cs"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[dotnet]
+
+project/assembly_name="Duchy of Thorns"
+
+[editor]
+
+scene/scene_naming=1
+
+[filesystem]
+
+import/blender/enabled=false
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Ally"
+2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Obstacle"
+2d_physics/layer_5="Projectile"
+2d_physics/layer_6="Loot"
+2d_physics/layer_7="Wall"
+2d_physics/layer_8="Ground"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"
+2d/snap/snap_2d_vertices_to_pixel=true

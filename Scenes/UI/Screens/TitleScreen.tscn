@@ -1,0 +1,144 @@
+[gd_scene load_steps=20 format=3 uid="uid://d00f7s8w5in73"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Screens/TitleScreen.cs" id="1_4fv84"]
+[ext_resource type="Texture2D" uid="uid://cnp2cfviqj2vp" path="res://Sprites/MainMenu/Background/3Archers.png" id="2_tv3or"]
+[ext_resource type="Texture2D" uid="uid://dtmti1hkssmha" path="res://Sprites/MainMenu/Background/1024px-Edward_III_Crossing_the_Somme.png" id="3_rixxs"]
+[ext_resource type="Texture2D" uid="uid://b1br3cxnqpeqq" path="res://Sprites/MainMenu/Background/Bataille_de_Bouvines_gagnee_par_Philippe_Auguste.png" id="4_cx3gs"]
+[ext_resource type="Texture2D" uid="uid://xir4l3n244xd" path="res://Sprites/MainMenu/Background/Batalha_de_Aljubarrota_02.png" id="5_fw0mt"]
+[ext_resource type="Texture2D" uid="uid://cs3bn6pbymiyr" path="res://Sprites/MainMenu/Background/Battle_of_Grunwald_by_Rozwadowski_&_Popiel_1910.png" id="6_q83yi"]
+[ext_resource type="Texture2D" uid="uid://cwfmaaghygoja" path="res://Sprites/MainMenu/Background/La_battaglia_di_Legnano_di_Amos_Cassoli.png" id="7_1gfg4"]
+[ext_resource type="Texture2D" uid="uid://ok5k2us5eqpg" path="res://Sprites/MainMenu/Background/Liberación_de_los_cautivos_de_Málaga_por_los_Reyes_Católicos_(Museo_de_Málaga).png" id="8_5quft"]
+[ext_resource type="Texture2D" uid="uid://do6wx3ljx4guc" path="res://Sprites/MainMenu/Background/Maksymilian_Antoni_Piotrowski_-_Władysław_Jagiełło_przed_bitwą_pod_Grunwaldem.png" id="9_bv1bv"]
+[ext_resource type="Texture2D" uid="uid://xyo5dsggoksd" path="res://Sprites/MainMenu/Background/Pictures_of_English_History_Plate_XI_-_The_Battle_of_Hastings.png" id="10_4pi40"]
+[ext_resource type="Texture2D" uid="uid://dmgb6np8742kt" path="res://Sprites/MainMenu/Background/Saladin_and_Guy.png" id="11_x3ci6"]
+[ext_resource type="Texture2D" uid="uid://b6copm2h50mee" path="res://Sprites/MainMenu/Background/The_Battle_of_Grunwald_by_Jan_Matejko_(1878).png" id="12_4hvva"]
+[ext_resource type="FontFile" uid="uid://bpwasuqy7suyk" path="res://Assets/Fonts/MedievalSharp-Regular.ttf" id="12_b18pb"]
+[ext_resource type="AudioStream" uid="uid://cd5xmik2h76tb" path="res://Sounds/Music/Intro.ogg" id="14_cuf74"]
+[ext_resource type="AudioStream" uid="uid://xm41xo7l6600" path="res://Sounds/UI/dagger_drawn2-89025.mp3" id="14_v7nrf"]
+
+[sub_resource type="Animation" id="8"]
+resource_name = "Background"
+length = 5.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_tv3or"), ExtResource("3_rixxs"), ExtResource("4_cx3gs"), ExtResource("5_fw0mt"), ExtResource("6_q83yi"), ExtResource("7_1gfg4"), ExtResource("8_5quft"), ExtResource("9_bv1bv"), ExtResource("10_4pi40"), ExtResource("11_x3ci6"), ExtResource("12_4hvva")]
+}
+
+[sub_resource type="Animation" id="9"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("2_tv3or")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_004ef"]
+_data = {
+"Background": SubResource("8"),
+"RESET": SubResource("9")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_ywhrr"]
+font = ExtResource("12_b18pb")
+font_size = 56
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 16
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(5, 0)
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4fv84")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Background" type="TextureRect" parent="PanelContainer"]
+layout_mode = 2
+texture = ExtResource("2_tv3or")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../PanelContainer/Background")
+libraries = {
+"": SubResource("AnimationLibrary_004ef")
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 50.0
+offset_right = 1240.0
+offset_bottom = 670.0
+
+[node name="Title" type="Label" parent="Menu"]
+layout_mode = 2
+text = "Duchy of Thorns
+"
+label_settings = SubResource("LabelSettings_ywhrr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterRow" type="HBoxContainer" parent="Menu"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 5
+
+[node name="NewGameButton" type="Button" parent="Menu/CenterRow/Buttons"]
+layout_mode = 2
+text = "NEW GAME"
+
+[node name="SavedGamesButton" type="Button" parent="Menu/CenterRow/Buttons"]
+layout_mode = 2
+text = "SAVED GAMES"
+
+[node name="SettingsButton" type="Button" parent="Menu/CenterRow/Buttons"]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="QuitGameButton" type="Button" parent="Menu/CenterRow/Buttons"]
+layout_mode = 2
+text = "QUIT GAME"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_cuf74")
+volume_db = 10.0
+autoplay = true
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_v7nrf")
+
+[connection signal="pressed" from="Menu/CenterRow/Buttons/NewGameButton" to="." method="NewGameButtonPressed"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/SavedGamesButton" to="." method="SavedGamesButtonPressed"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/SettingsButton" to="." method="SettingsButtonPressed"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/QuitGameButton" to="." method="QuitGameButtonPressed"]

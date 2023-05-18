@@ -1,0 +1,17 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://lmbsfj0v0fx5"]
+
+[sub_resource type="Gradient" id="12"]
+offsets = PackedFloat32Array(0.265589, 0.450346, 0.674365, 0.849885, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.447754, 0.0877539, 0, 1, 0.98547, 0.705553, 0.149798, 1, 0.991932, 0.967009, 0.527914, 1, 0.984314, 1, 0, 0.172549)
+
+[sub_resource type="GradientTexture2D" id="10"]
+gradient = SubResource("12")
+
+[resource]
+lifetime_randomness = 0.2
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, 0, 10)
+color_ramp = SubResource("10")

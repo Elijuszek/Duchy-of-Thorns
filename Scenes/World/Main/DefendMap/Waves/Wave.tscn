@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnhhc7gs7gog6"]
+
+[ext_resource type="Script" path="res://Scenes/Actors/Troops/AI/Waves/Wave.cs" id="1_6hnw0"]
+
+[node name="Wave" type="Node"]
+script = ExtResource("1_6hnw0")

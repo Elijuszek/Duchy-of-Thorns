@@ -1,0 +1,18 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://cwjlmd5qjpbfl"]
+
+[resource]
+particle_flag_disable_z = true
+spread = 20.0
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_min = -100.0
+linear_accel_max = -100.0
+damping_min = 100.0
+damping_max = 100.0
+scale_min = 0.2
+scale_max = 0.2
+color = Color(0.560784, 0.101961, 0.101961, 1)

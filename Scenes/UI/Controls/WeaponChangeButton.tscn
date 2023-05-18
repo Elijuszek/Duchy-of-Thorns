@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dj2xp768vu3w"]
+
+[ext_resource type="Texture2D" uid="uid://dikte7srre1n5" path="res://Sprites/UI/Controls/ChangeWeaponButton/ChangeWeaponSword.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cd62gyjhif4v2" path="res://Sprites/UI/Controls/ChangeWeaponButton/ChangeWeaponBow.png" id="3"]
+
+[sub_resource type="CircleShape2D" id="18"]
+radius = 64.0
+
+[node name="TouchScreenButton" type="TouchScreenButton"]
+scale = Vector2(0.75, 0.75)
+shape = SubResource("18")
+
+[node name="Sword" type="Sprite2D" parent="."]
+position = Vector2(18.6667, 3.8147e-06)
+rotation = 3.14159
+z_index = -1
+texture = ExtResource("2")
+
+[node name="Bow" type="Sprite2D" parent="."]
+position = Vector2(-25.3333, 1.33333)
+scale = Vector2(2.5, 3)
+z_index = -1
+texture = ExtResource("3")

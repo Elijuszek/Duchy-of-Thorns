@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://vsgj47hh2k4g"]
+
+[sub_resource type="Shader" id="6"]
+code = "shader_type canvas_item;
+
+uniform float pixelFactor : hint_range(0, 10) = 5;
+uniform  sampler2D SCREEN_TEXTURE;
+void fragment(){
+	vec2 pixelNumber = vec2(textureSize(SCREEN_TEXTURE, 0)) * pixelFactor;
+	vec2 pixelatedUV = round(UV * pixelNumber) / pixelNumber;
+	COLOR = texture(SCREEN_TEXTURE, pixelatedUV);
+}"
+
+[resource]
+shader = SubResource("6")
+shader_parameter/pixelFactor = null

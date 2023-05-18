@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4ibn36pru6mu"]
+
+[ext_resource type="PackedScene" uid="uid://whodffneq261" path="res://Scenes/World/Main/Respawns/Respawn.tscn" id="1_ue4la"]
+[ext_resource type="Script" path="res://Scenes/World/Main/Respawns/CavalryRespawn.cs" id="2_02nbc"]
+
+[node name="CavalaryRespawn" instance=ExtResource("1_ue4la")]
+script = ExtResource("2_02nbc")

@@ -1,0 +1,58 @@
+[gd_scene load_steps=13 format=3 uid="uid://1sh2satpxuon"]
+
+[ext_resource type="PackedScene" uid="uid://doygcoiioxhl1" path="res://Scenes/Projectiles/Arrows/Arrow.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://d3qm2tk73pbis" path="res://Material/Particles/Lights/AnimatedFlame2/Flame1.png" id="2_31uiu"]
+[ext_resource type="Script" path="res://Scenes/Projectiles/Arrows/FireArrow.cs" id="2_fk0bc"]
+[ext_resource type="Texture2D" uid="uid://bbkjocp3cwp1p" path="res://Material/Particles/Lights/AnimatedFlame2/Flame2.png" id="3_4bbpr"]
+[ext_resource type="Texture2D" uid="uid://bns2rommbdps1" path="res://Material/Particles/Lights/AnimatedFlame2/Flame3.png" id="4_e2l4t"]
+[ext_resource type="Texture2D" uid="uid://c5xxhs2gwm6d8" path="res://Material/Particles/Lights/AnimatedFlame2/Flame4.png" id="5_0ggjh"]
+[ext_resource type="PackedScene" uid="uid://ckx8kb6fjb1p0" path="res://Material/Particles/Fire/Embers.tscn" id="6_1thnp"]
+[ext_resource type="PackedScene" uid="uid://bsrqpd05rfsgn" path="res://Material/Particles/Fire/Fire.tscn" id="6_gdsf8"]
+
+[sub_resource type="Gradient" id="Gradient_4e860"]
+offsets = PackedFloat32Array(0, 0.179558, 0.5, 0.679558, 0.734807, 0.851852)
+colors = PackedColorArray(1, 1, 1, 0, 1.46, 1.49, 0, 0.47, 1.76, 0.15, 0, 0.56, 0.38, 0.08, 0, 1, 0.25, 0.02, 0, 1, 0.25098, 0, 0, 0.360784)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v6s2a"]
+gradient = SubResource("Gradient_4e860")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bodrv"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 25.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 48.0
+initial_velocity_max = 78.0
+angular_velocity_max = 100.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_max = 720.0
+scale_min = 0.3
+scale_max = 0.3
+color_ramp = SubResource("GradientTexture1D_v6s2a")
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_jf67r"]
+frames = 4
+speed_scale = 12.0
+frame_0/texture = ExtResource("2_31uiu")
+frame_1/texture = ExtResource("3_4bbpr")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_e2l4t")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_0ggjh")
+frame_3/duration = 1.0
+
+[node name="FireArrow" instance=ExtResource("1")]
+script = ExtResource("2_fk0bc")
+
+[node name="Fire" parent="." index="3" instance=ExtResource("6_gdsf8")]
+process_material = SubResource("ParticleProcessMaterial_bodrv")
+local_coords = true
+
+[node name="PointLight2D" type="PointLight2D" parent="." index="4"]
+energy = 0.3
+range_item_cull_mask = 3
+texture = SubResource("AnimatedTexture_jf67r")
+texture_scale = 0.75
+
+[node name="Embers" parent="." index="5" instance=ExtResource("6_1thnp")]

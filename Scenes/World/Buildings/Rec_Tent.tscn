@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/Buildings/Tents/RecTent/RecTent..png" type="Texture2D" id=1]
+[ext_resource path="res://Sprites/Buildings/Tents/RecTent/RecTent_n.png" type="Texture2D" id=2]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PackedVector2Array( -48, -32, -48, -20, -38, -1, -48, 18, -48, 32, -35, 32, 0, 25, 42, 32, 48, 32, 48, -32, 35, -32, 0, -25, -42, -32 )
+
+[node name="Rec_Tent" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 63
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 2
+texture = ExtResource( 1 )
+normal_map = ExtResource( 2 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array( -48, -32, -48, -20, -38, 0, -48, 18, -48, 32, -35, 32, 0, 25, 42, 32, 48, 32, 48, -32, 35, -32, 0, -25, -42, -32 )

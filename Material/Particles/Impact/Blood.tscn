@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4s7dgxnt7sj5"]
+
+[ext_resource type="Material" uid="uid://cwjlmd5qjpbfl" path="res://Material/Particles/ParticalesMaterial/Blood.tres" id="1_i3mas"]
+[ext_resource type="Texture2D" uid="uid://bj1k4jbrdeac" path="res://Material/Particles/Impact/BloodTexture.png" id="2_pj7s4"]
+[ext_resource type="Script" path="res://Material/Particles/Impact/Blood.cs" id="3_4vw1m"]
+
+[node name="Blood" type="GPUParticles2D"]
+emitting = false
+amount = 16
+process_material = ExtResource("1_i3mas")
+texture = ExtResource("2_pj7s4")
+lifetime = 5.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+local_coords = true
+draw_order = 0
+script = ExtResource("3_4vw1m")

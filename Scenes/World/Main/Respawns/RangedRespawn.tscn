@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7cq21eaaq2n6"]
+
+[ext_resource type="PackedScene" uid="uid://whodffneq261" path="res://Scenes/World/Main/Respawns/Respawn.tscn" id="1_nwbvn"]
+[ext_resource type="Script" path="res://Scenes/World/Main/Respawns/RangedRespawn.cs" id="2_m57b8"]
+
+[node name="RangedRespawn" instance=ExtResource("1_nwbvn")]
+script = ExtResource("2_m57b8")

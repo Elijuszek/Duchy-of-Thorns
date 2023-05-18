@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccqdeqnq84f68"]
+
+[ext_resource type="Texture2D" uid="uid://dxp0hw8h3t5nu" path="res://Sprites/Enemy/BowEnemy/Idle/BlueEnemyIdle.png" id="1"]
+[ext_resource type="Script" path="res://Scenes/World/Buildings/SaveGameObject.cs" id="1_iar4c"]
+[ext_resource type="PackedScene" uid="uid://du8ew7ws0wnhd" path="res://Scenes/UI/Popups/SaveGame.tscn" id="3"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 25.0
+
+[sub_resource type="CircleShape2D" id="2"]
+radius = 12.0
+
+[node name="SaveGaneObject" type="StaticBody2D"]
+z_index = 2
+collision_layer = 0
+collision_mask = 63
+script = ExtResource("1_iar4c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("2")
+
+[node name="SaveGame" parent="." instance=ExtResource("3")]
+visible = false
+scale = Vector2(0.5, 0.5)
+
+[connection signal="body_entered" from="Area2D" to="." method="Area2DBodyEntered"]
+[connection signal="body_exited" from="Area2D" to="." method="Area2DBodyExited"]
+[connection signal="pressed" from="SaveGame/PanelContainer/MarginContainer/Rows/SaveGameButton" to="." method="SaveGameButtonPressed"]
+
+[editable path="SaveGame"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cng4l81k4ejlh"]
+
+[ext_resource type="Script" path="res://Material/MaterialCache.cs" id="1"]
+
+[node name="ParticalesCache" type="CanvasLayer"]
+script = ExtResource("1")

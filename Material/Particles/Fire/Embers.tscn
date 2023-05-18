@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckx8kb6fjb1p0"]
+
+[ext_resource type="Material" uid="uid://bmfpcasvqfv35" path="res://Material/Particles/ParticalesMaterial/Embers.tres" id="1_3dpn7"]
+
+[node name="Embers" type="GPUParticles2D"]
+amount = 4
+lifetime = 2.0
+speed_scale = 3.0
+explosiveness = 0.3
+fixed_fps = 60
+process_material = ExtResource("1_3dpn7")
