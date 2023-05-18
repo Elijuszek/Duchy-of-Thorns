@@ -1,3 +1,34 @@
 # Prevent LF to CRLF
-* text=auto
-*.import text eol=lf
+
+* text=auto eol=lf
+*.import     text eol=lf
+*.tscn       text eol=lf
+*.godot      text eol=lf
+
+# Visual studio stuff
+*.sln        text eol=crlf
+*.csproj     text eol=crlf
+*.vbproj     text eol=crlf
+*.vcxproj    text eol=crlf
+*.vcproj     text eol=crlf
+*.dbproj     text eol=crlf
+*.fsproj     text eol=crlf
+*.lsproj     text eol=crlf
+*.wixproj    text eol=crlf
+*.modelproj  text eol=crlf
+*.sqlproj    text eol=crlf
+*.wmaproj    text eol=crlf
+*.xproj      text eol=crlf
+*.props      text eol=crlf
+*.filters    text eol=crlf
+*.vcxitems   text eol=crlf
+
+# From official godot repo
+*.test.txt -text
+*.bat eol=crlf
+*.icns binary
+*.ico binary
+*.jar binary
+*.png binary
+*.ttf binary
+*.tza binary
