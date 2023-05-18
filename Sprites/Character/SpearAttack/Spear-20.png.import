@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/Spear-20.png-9ac9292b6ca0b1ddcaa7a52c934f9e4e
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

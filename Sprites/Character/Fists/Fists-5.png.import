@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/Fists-5.png-1f97ced4829e6fc785546041d68402a7.
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/Swing-11.png-a44e9ab14063b385eb85a3cbc9665fea
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

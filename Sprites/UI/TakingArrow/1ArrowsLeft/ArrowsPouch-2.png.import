@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/ArrowsPouch-2.png-e291582ff0db905f9b5e30cbfa3
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/BowReload-5.png-06c77ca44954399cf0d06c61cefc4
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

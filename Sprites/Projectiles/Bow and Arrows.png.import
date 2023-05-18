@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/Bow and Arrows.png-9998664c9f2a164c9ff723d235
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

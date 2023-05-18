@@ -1,0 +1,3 @@
+# Prevent LF to CRLF
+* test=auto
+*.import text eol=lf
