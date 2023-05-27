@@ -63,6 +63,7 @@ public partial class Westwend : Node2D
         SetCameraLimits();
         SpawnPlayer();
     }
+
     public void SpawnPlayer()
     {
         Player player = playerScene.Instantiate() as Player;
@@ -72,6 +73,7 @@ public partial class Westwend : Node2D
         player.Connect("Died", new Callable(this, "ShowDeathScreen"));
         gui.SetPlayer(player);
     }
+
     public void ShowDeathScreen()
     {
         gui.SetPlayer(null);
@@ -79,6 +81,7 @@ public partial class Westwend : Node2D
         deathScreen.Connect("RespawnPlayer", new Callable(this, "SpawnPlayer"));
         AddChild(deathScreen);
     }
+
     private void HandlePlayerVictory()
     {
         GameOverScreen gameOver = gameOverScene.Instantiate() as GameOverScreen;
@@ -86,6 +89,7 @@ public partial class Westwend : Node2D
         gameOver.SetTitle(true);
         GetTree().Paused = true;
     }
+
     private void HandlePlayerDefeat()
     {
         GameOverScreen gameOver = gameOverScene.Instantiate() as GameOverScreen;
@@ -93,11 +97,13 @@ public partial class Westwend : Node2D
         gameOver.SetTitle(false);
         GetTree().Paused = true;
     }
+
     public void Pause()
     {
         PauseScreen pauseScreen = pauseMenuScene.Instantiate() as PauseScreen;
         AddChild(pauseScreen);
     }
+
     private void SetCameraLimits()
     {
         Rect2 mapLimits = ground.GetUsedRect();

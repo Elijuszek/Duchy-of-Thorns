@@ -49,11 +49,8 @@ public partial class Joystick : TouchScreenButton
 		}
 
 	}
-	private Vector2 GetButtonPosition()
-	{
-		return Position + radius;
-	}
-	public Vector2 GetValue()
+	private Vector2 GetButtonPosition() => Position + radius;
+    public Vector2 GetValue()
 	{
 		if (GetButtonPosition().Length() > threshold)
 		{

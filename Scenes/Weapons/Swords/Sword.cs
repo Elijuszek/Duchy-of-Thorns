@@ -11,10 +11,7 @@ public partial class Sword : Melee
         base._Ready();
         animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
     }
-    public override void Idle()
-    {
-        animationPlayer.Play("Idle");
-    }
+    public override void Idle() => animationPlayer.Play("Idle");
     public override void Attack()
     {
         delivered = false;
@@ -26,8 +23,5 @@ public partial class Sword : Melee
         animationPlayer.Play("Idle");
         attackCooldown.Start();
     }
-    public override void Walking()
-    {
-        animationPlayer.Play("Walking");
-    }
+    public override void Walking() => animationPlayer.Play("Walking");
 }

@@ -6,10 +6,7 @@ namespace DuchyOfThorns;
 public partial class Aiming : Sprite2D
 {
     private Tween tween;
-    public override void _Ready()
-    {
-        Visible = false;
-    }
+    public override void _Ready() => Visible = false;
     public void StartAiming(float startScale, float endScale, float duration, float delay)
     {
         Scale = new Vector2(Scale.X, startScale);

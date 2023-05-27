@@ -77,14 +77,8 @@ public partial class GUI : CanvasLayer
         healthTween.TweenProperty(barStyle, "bg_color", originalColor, 0.2f).SetDelay(0.2f);
         currentHealth.Text = newHealth.ToString();
     }
-    private void SetMaxHealth(float newMaxHealth)
-    {
-        maxHealth.Text = newMaxHealth.ToString();
-    }
-    private void SetCurrentAmmo(int newAmmo)
-    {
-        currentAmmo.Text = newAmmo.ToString();
-    }
+    private void SetMaxHealth(float newMaxHealth) => maxHealth.Text = newMaxHealth.ToString();
+    private void SetCurrentAmmo(int newAmmo) => currentAmmo.Text = newAmmo.ToString();
     private void SetCurrentGold(int newGold, int oldGold)
     {
         Tween goldTween = CreateTween();

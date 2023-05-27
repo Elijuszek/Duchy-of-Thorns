@@ -14,10 +14,7 @@ public partial class SaveGameObject : StaticBody2D
         globals = GetNode<Globals>("/root/Globals");
         saveLabel = saveGame.GetNode<Label>("PanelContainer/MarginContainer/Rows/Label");
     }
-    private void Area2DBodyEntered(Player player)
-    {
-        saveGame.Show();
-    }
+    private void Area2DBodyEntered(Player player) => saveGame.Show();
     private void Area2DBodyExited(Player player)
     {
         saveLabel.Hide();

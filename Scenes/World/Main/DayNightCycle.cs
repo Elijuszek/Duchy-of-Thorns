@@ -10,6 +10,7 @@ public partial class DayNightCycle : CanvasModulate
     [Export] private int dayLenght = 180; // 30s = 1h
     [Export] private bool active = true;
     private AnimationPlayer animationPlayer;
+
     public override void _Ready()
     {
         if (!active)
@@ -21,6 +22,7 @@ public partial class DayNightCycle : CanvasModulate
         //Random rand = new Random();
         //Time = rand.Next(0, dayLenght);
     }
+
     public override void _Process(double delta)
     {
         base._Process(delta);
@@ -30,6 +32,7 @@ public partial class DayNightCycle : CanvasModulate
         animationPlayer.Play("DayNightCycle");
         animationPlayer.Seek(currentFrame);
     }
+
     public float Remap(float value, float istart, float istop, float ostart, float ostop)
     {
         return ostart + (ostop - ostart) * value / (istop - istart);

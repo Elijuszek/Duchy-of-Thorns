@@ -12,10 +12,7 @@ public partial class Spear : Melee
 		base._Ready();
 		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 	}
-	public override void Idle()
-	{
-		animationPlayer.Play("Idle");
-	}
+	public override void Idle() => animationPlayer.Play("Idle");
 	public override void Attack()
 	{
 		delivered = false;
@@ -26,10 +23,7 @@ public partial class Spear : Melee
 		animationPlayer.Play("Idle");
 		attackCooldown.Start();
 	}
-	public override void Walking()
-	{
-		animationPlayer.Play("Walking");
-	}
+	public override void Walking() => animationPlayer.Play("Walking");
 	public override void Area2DBodyEntered(Node body)
 	{
 		if (body is Actor actor && actor.GetTeam() != team && !delivered)

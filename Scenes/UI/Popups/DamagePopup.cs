@@ -50,8 +50,5 @@ public partial class DamagePopup : Marker2D
         Rotation = -parentRotation;
         Position -= velocity * Convert.ToSingle(delta);
     }
-    private void TweenAllCompleted()
-    {
-        QueueFree();
-    }
+    private void TweenAllCompleted() => QueueFree();
 }

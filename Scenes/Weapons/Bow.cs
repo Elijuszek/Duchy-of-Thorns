@@ -18,10 +18,7 @@ public partial class Bow : Weapon
     public Marker2D BowDirection { get; set; }
     protected Marker2D endOfBow;
     protected Globals globals;
-    public override void _PhysicsProcess(double delta)
-    {
-        base._Process(delta);
-    }
+    public override void _PhysicsProcess(double delta) => base._Process(delta);
     public override void _Ready()
     {
         base._Ready();

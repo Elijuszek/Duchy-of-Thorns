@@ -14,10 +14,7 @@ public partial class Pathfinding : Node2D
     TileMap tilemap;
     Vector2 halfCellSize;
     Rect2 usedRect;
-    public override void _Ready()
-    {
-        grid = GetNode<Node2D>("Grid");
-    }
+    public override void _Ready() => grid = GetNode<Node2D>("Grid");
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);

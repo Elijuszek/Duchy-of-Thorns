@@ -93,11 +93,8 @@ public partial class Globals : Node
 		GetNode("/root").AddChild(transition);
 		transition.PlayInOut(scene, speed);
 	}
-	public void StopChangingScenes()
-	{
-		transition.Stop();
-	}
-	public static float GetRandomFloat(float min, float max)
+	public void StopChangingScenes() => transition.Stop();
+    public static float GetRandomFloat(float min, float max)
 	{
 		Random rand = new Random();
 		float range = max - min;

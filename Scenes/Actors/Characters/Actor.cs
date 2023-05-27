@@ -25,27 +25,18 @@ public partial class Actor : CharacterBody2D
 		Velocity += knockback;
 		MoveAndSlide();
 	}
-	public virtual void HandleHit(float baseDamage, Vector2 impactPosition) { GD.PrintErr("Calling HandleHit from Actor class"); }
-	public virtual void Die() { GD.PrintErr("Calling Die from Actor class"); }
-	public void HandleKnockback(float amount, Vector2 impactPosition)
+	public virtual void HandleHit(float baseDamage, Vector2 impactPosition) => GD.PrintErr("Calling HandleHit from Actor class");
+    public virtual void Die() => GD.PrintErr("Calling Die from Actor class");
+    public void HandleKnockback(float amount, Vector2 impactPosition)
 	{
 		Vector2 direction = (impactPosition.DirectionTo(GlobalPosition));
 		float strenght = Mathf.Clamp(amount, 5f, 20000f);
 		knockback = direction * strenght;
 	}
-	public int GetTeam()
-	{
-		return (int)team.team;
-	}
-	public bool HasReachedPosition(Vector2 location)
-	{
-		return GlobalPosition.DistanceTo(location) < 50;
-	}
-	public Vector2 VelocityToward(Vector2 location)
-	{
-		return GlobalPosition.DirectionTo(location) * Stats.Speed;
-	}
-	public void RotateToward(Vector2 location)
+	public int GetTeam() => (int)team.team;
+    public bool HasReachedPosition(Vector2 location) => GlobalPosition.DistanceTo(location) < 50;
+    public Vector2 VelocityToward(Vector2 location) => GlobalPosition.DirectionTo(location) * Stats.Speed;
+    public void RotateToward(Vector2 location)
 	{
 		float r = Mathf.LerpAngle(Rotation, GlobalPosition.DirectionTo(location).Angle(), 0.1f);
 		if (r < -Math.PI)
@@ -58,8 +49,5 @@ public partial class Actor : CharacterBody2D
 		}
 		Rotation = r;
 	}
-	public void RotateTowardLerp(Vector2 location)
-	{
-		Rotation = Mathf.Lerp(Rotation, GlobalPosition.DirectionTo(location).Angle(), 0.1f);
-	}
+	public void RotateTowardLerp(Vector2 location) => Rotation = Mathf.LerpAngle(Rotation, GlobalPosition.DirectionTo(location).Angle(), 0.1f);
 }

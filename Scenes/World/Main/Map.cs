@@ -54,6 +54,7 @@ public partial class Map : Node2D
 		//backgroundMusic.Play();
 		GetTree().CurrentScene = this;
 	}
+
 	protected void SpawnPlayer()
 	{
 		player = playerScene.Instantiate() as Player;
@@ -64,6 +65,7 @@ public partial class Map : Node2D
 		gui.SetPlayer(player);
 		globals.Player = player.Save();
 	}
+
 	protected void LoadSavedPlayer(Godot.Collections.Dictionary<string, Variant> save)
 	{
 		player = playerScene.Instantiate() as Player;
@@ -75,6 +77,7 @@ public partial class Map : Node2D
 		gui.SetPlayer(player);
 		globals.Player = player.Save();
 	}
+
 	protected void LoadPlayer()
 	{
 		player = playerScene.Instantiate() as Player;
@@ -85,6 +88,7 @@ public partial class Map : Node2D
 		gui.SetPlayer(player);
 		player.Load(globals.Player);
 	}
+
 	public void ShowDeathScreen()
 	{
 		gui.SetPlayer(null);
@@ -92,11 +96,13 @@ public partial class Map : Node2D
 		deathScreen.Connect("RespawnPlayer", new Callable(this, "SpawnPlayer"));
 		AddChild(deathScreen);
 	}
+
 	public void Pause()
 	{
 		PauseScreen pauseScreen = pauseMenuScene.Instantiate() as PauseScreen;
 		AddChild(pauseScreen);
 	}
+
 	protected void SetCameraLimits()
 	{
 		Rect2 mapLimits = ground.GetUsedRect();
@@ -106,6 +112,7 @@ public partial class Map : Node2D
 		camera.LimitTop = (int)(mapLimits.Position.Y * mapCellSize.Y);
 		camera.LimitBottom = (int)(mapLimits.End.Y * mapCellSize.Y);
 	}
+
 	public virtual Godot.Collections.Dictionary<string, Variant> Save()
 	{
 		return new Godot.Collections.Dictionary<string, Variant>()
@@ -117,6 +124,7 @@ public partial class Map : Node2D
 			{ "Player", GetNode<Player>("Player").Save() }
 		};
 	}
+
 	public virtual void Load(Godot.Collections.Dictionary<string, Variant> save)
 	{
 		if (globals.loadingForm == Globals.LoadingForm.Save)

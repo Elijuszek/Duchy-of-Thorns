@@ -42,14 +42,8 @@ public partial class Respawn : Marker2D
         double scaled = (sample * range) + min;
         return (float)scaled;
     }
-    protected void HandleUnitDeath()
-    {
-        respawnTimer.Start();
-    }
-    protected void RespawnTimerTimeout()
-    {
-        SpawnUnit();
-    }
+    protected void HandleUnitDeath() => respawnTimer.Start();
+    protected void RespawnTimerTimeout() => SpawnUnit();
     public virtual void Clear()
     {
         Unit = null;
@@ -57,7 +51,7 @@ public partial class Respawn : Marker2D
         RespawnCooldown = -1;
     }
 
-    public virtual void SpawnUnit() { GD.PrintErr("Calling SpawnUnit from Respawn class"); }
+    public virtual void SpawnUnit() => GD.PrintErr("Calling SpawnUnit from Respawn class");
 
-    public virtual void SetCapturableBase(CapturableBase nextBase, Vector2 nextBaseCord) { GD.PrintErr("Calling SetCapturableBase from Respawn class"); }
+    public virtual void SetCapturableBase(CapturableBase nextBase, Vector2 nextBaseCord) => GD.PrintErr("Calling SetCapturableBase from Respawn class");
 }

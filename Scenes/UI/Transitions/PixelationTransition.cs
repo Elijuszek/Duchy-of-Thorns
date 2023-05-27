@@ -35,9 +35,6 @@ public partial class PixelationTransition : CanvasLayer
             transition.Play("PixelateOut");
         }
     }
-    private void TimerTimeout()
-    {
-        GetTree().ChangeSceneToFile(nextScenePath);
-    }
+    private void TimerTimeout() => GetTree().ChangeSceneToFile(nextScenePath);
 
 }

@@ -28,10 +28,7 @@ public partial class Coin : CharacterBody2D, IPoolable
         tween = CreateTween();
         tween.TweenProperty(this, "global_position", movementDirection, 0.2f);
     }
-    private void TimerTimeout()
-    {
-        RemoveFromScene();
-    }
+    private void TimerTimeout() => RemoveFromScene();
     private void Area2DBodyEntered(Node body)
     {
         if (body is Player player)

@@ -121,8 +121,5 @@ public partial class AssaultMapAI : MapAI
 			{ "CurrentWave", CurrentWave },
 		};
 	}
-	public void Load(Godot.Collections.Dictionary<string, Variant> data)
-	{
-		CurrentWave = (int)data["CurrentWave"];
-	}
+	public void Load(Godot.Collections.Dictionary<string, Variant> data) => CurrentWave = (int)data["CurrentWave"];
 }

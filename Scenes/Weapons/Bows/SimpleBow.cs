@@ -11,10 +11,7 @@ public partial class SimpleBow : Bow
         base._Ready();
         animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
     }
-    public override void Idle()
-    {
-        animationPlayer.Play("Idle");
-    }
+    public override void Idle() => animationPlayer.Play("Idle");
     public override void Attack()
     {
         animationPlayer.Play("Attack");
@@ -46,8 +43,5 @@ public partial class SimpleBow : Bow
             Idle();
         }
     }
-    public override void Walking()
-    {
-        animationPlayer.Play("Walking");
-    }
+    public override void Walking() => animationPlayer.Play("Walking");
 }

@@ -54,10 +54,7 @@ public partial class ProjectileManager : Node
         arrow.team = team;
         arrow.SetDirection(direction);
     }
-    private void ArrowRemoved(Arrow removed)
-    {
-        arrowPool.Release(removed);
-    }
+    private void ArrowRemoved(Arrow removed) => arrowPool.Release(removed);
     private void FireArrowRemoved(FireArrow removed)
     {
         fireArrowPool.Release(removed);

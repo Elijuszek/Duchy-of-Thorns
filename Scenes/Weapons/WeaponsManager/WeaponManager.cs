@@ -46,11 +46,8 @@ public partial class WeaponManager : Node2D
 		weapons[index] = weapon;
 		weapon.Hide();
 	}
-	public Weapon GetCurrentWeapon()
-	{
-		return currentWeapon;
-	}
-	public void ChangeWeapon() // Three main weapons Fists, melee, and bow / staff
+	public Weapon GetCurrentWeapon() => currentWeapon;
+    public void ChangeWeapon() // Three main weapons Fists, melee, and bow / staff
 	{
 		int index = Array.IndexOf(weapons, currentWeapon);
 		for (int i = index; i < weapons.Length - 1; i++)

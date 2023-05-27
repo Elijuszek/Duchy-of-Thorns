@@ -5,10 +5,7 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class CavalryRespawn : Respawn
 {
-    public override void _Ready()
-    {
-        base._Ready();
-    }
+    public override void _Ready() => base._Ready();
     public override void SpawnUnit()
     {
         if (Unit != null)

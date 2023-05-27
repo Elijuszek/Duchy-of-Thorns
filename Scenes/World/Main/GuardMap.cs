@@ -8,6 +8,7 @@ public partial class GuardMap : Map
     protected Pathfinding pathfinding;
     protected Respawn[] allyRespawnPoints;
     protected Respawn[] enemyRespawnPoints;
+
     public override void _Ready()
     {
         base._Ready();
@@ -21,6 +22,7 @@ public partial class GuardMap : Map
         Initialize();
 
     }
+
     private void Initialize()
     {
         foreach (Respawn respawn in allyRespawnPoints)

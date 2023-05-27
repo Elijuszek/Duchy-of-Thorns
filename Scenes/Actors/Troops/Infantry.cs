@@ -13,6 +13,6 @@ public partial class Infantry : Troop
 		Ai = GetNode<MeleeAI>("MeleeAI");
 		attackTimer = GetNode<Timer>("AttackTimer");
 	}
-	public virtual void Attack() { GD.PrintErr("Calling Attack from Infantry class"); }
-	protected virtual void AttackTimerTimeout() { GD.PrintErr("Calling AttackTimerTimeout from Infantry class"); }
+	public virtual void Attack() => GD.PrintErr("Calling Attack from Infantry class");
+	protected virtual void AttackTimerTimeout() => GD.PrintErr("Calling AttackTimerTimeout from Infantry class");
 }

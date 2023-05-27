@@ -5,10 +5,7 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class PauseScreen : CanvasLayer
 {
-    public override void _Ready()
-    {
-        GetTree().Paused = true;
-    }
+    public override void _Ready() => GetTree().Paused = true;
     private void ResumeButtonPressed()
     {
         GetTree().Paused = false;

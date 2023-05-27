@@ -13,6 +13,6 @@ public partial class Ranged : Troop
         Ai = GetNode<RangedAI>("RangedAI");
         attackTimer = GetNode<Timer>("AttackTimer");
     }
-    public virtual void Attack() { GD.PrintErr("Calling Attack from Ranged class"); }
-    protected virtual void AttackTimerTimeout() { GD.PrintErr("Calling AttackTimerTimeout from Ranged class"); }
+    public virtual void Attack() => GD.PrintErr("Calling Attack from Ranged class");
+    protected virtual void AttackTimerTimeout() => GD.PrintErr("Calling AttackTimerTimeout from Ranged class");
 }

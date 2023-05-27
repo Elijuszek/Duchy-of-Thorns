@@ -1,4 +1,8 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// Class for player functionality
+/// </summary>
 public partial class Player : Actor
 {
 	[Signal]
@@ -115,14 +119,8 @@ public partial class Player : Actor
 		Stats.Gold = gold;
 		EmitSignal(nameof(PLayerGoldChanged), gold, gold);
 	}
-	public void CancelAttack()
-	{
-		WeaponsManager.CancelAttack();
-	}
-	public void ChangeWeapon()
-	{
-		WeaponsManager.ChangeWeapon();
-	}
+	public void CancelAttack() => WeaponsManager.CancelAttack();
+    public void ChangeWeapon() => WeaponsManager.ChangeWeapon();
 	public void PlayIdle()
 	{
 		animationPlayer.Play("Idle");
@@ -155,11 +153,8 @@ public partial class Player : Actor
 				break;
 		}
 	}
-	public void SetCameraTransform(NodePath cameraPath)
-	{
-		cameraTransform.RemotePath = cameraPath;
-	}
-	public Godot.Collections.Dictionary<string, Variant> Save()
+	public void SetCameraTransform(NodePath cameraPath) => cameraTransform.RemotePath = cameraPath;
+    public Godot.Collections.Dictionary<string, Variant> Save()
 	{
 		return new Godot.Collections.Dictionary<string, Variant>()
 		{

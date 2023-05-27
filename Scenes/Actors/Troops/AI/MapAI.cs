@@ -21,11 +21,8 @@ public partial class MapAI : Node2D
 
 	protected Team team;
 
-	public override void _Ready()
-	{
-		team = GetNode<Team>("Team");
-	}
-	public virtual void Initialize(CapturableBase[] capturableBases, Respawn[] respawnPoints, Pathfinding pathfinding)
+	public override void _Ready() => team = GetNode<Team>("Team");
+    public virtual void Initialize(CapturableBase[] capturableBases, Respawn[] respawnPoints, Pathfinding pathfinding)
 	{
 		if (capturableBases.Length == 0 || respawnPoints.Length == 0)
 		{
@@ -50,11 +47,8 @@ public partial class MapAI : Node2D
 			respawn.SpawnUnit();
 		}
 	}
-	protected void HandleBaseCaptured(int newTeam)
-	{
-		CheckForNextCapturableBases();
-	}
-	protected void CheckForNextCapturableBases()
+	protected void HandleBaseCaptured(int newTeam) => CheckForNextCapturableBases();
+    protected void CheckForNextCapturableBases()
 	{
 		CapturableBase nextBase = GetNextCapturableBase();
 		if (nextBase != null)

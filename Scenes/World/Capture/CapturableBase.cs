@@ -158,8 +158,5 @@ public partial class CapturableBase : Area2D
             CanBeCaptured();
         }
     }
-    private void CaptureTimerTimeout()
-    {
-        SetTeam(teamToCapture);
-    }
+    private void CaptureTimerTimeout() => SetTeam(teamToCapture);
 }

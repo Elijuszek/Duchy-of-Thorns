@@ -22,12 +22,6 @@ public partial class Weapon : Node2D
         deliverSound = GetNode<AudioStreamPlayer2D>("DeliverSound");
         attackSound = GetNode<AudioStreamPlayer2D>("AttackSound");
     }
-    public void Initialize(int team)
-    {
-        this.team = team;
-    }
-    public void StartCooldown()
-    {
-        attackCooldown.Start();
-    }
+    public void Initialize(int team) => this.team = team;
+    public void StartCooldown() => attackCooldown.Start();
 }

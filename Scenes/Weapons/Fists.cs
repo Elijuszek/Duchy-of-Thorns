@@ -38,12 +38,6 @@ public partial class Fists : Melee
 		animationPlayer.Play("Idle");
 		deliverSound.Stream = punshSounds[rand.Next(0, 4)];
 	}
-	public override void Walking()
-	{
-		animationPlayer.Play("Idle");
-	}
-	public void ChangePitch()
-	{
-		attackSound.PitchScale = Globals.GetRandomFloat(0.8f, 1);
-	}
+	public override void Walking() => animationPlayer.Play("Idle");
+	public void ChangePitch() => attackSound.PitchScale = Globals.GetRandomFloat(0.8f, 1);
 }
