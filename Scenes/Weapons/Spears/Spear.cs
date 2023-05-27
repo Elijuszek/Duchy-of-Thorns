@@ -1,5 +1,4 @@
-using Godot;
-
+namespace DuchyOfThorns;
 public partial class Spear : Melee
 {
 	[Export] private float knockBack = 5;

@@ -1,5 +1,4 @@
-using Godot;
-
+namespace DuchyOfThorns;
 public partial class Team : Node2D
 {
     public enum TeamName

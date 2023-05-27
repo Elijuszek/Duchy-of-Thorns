@@ -1,5 +1,4 @@
-using Godot;
-
+namespace DuchyOfThorns;
 public partial class Infantry : Troop
 {
 	public MeleeAI Ai { get; set; }

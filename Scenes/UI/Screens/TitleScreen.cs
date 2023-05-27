@@ -1,5 +1,4 @@
-using Godot;
-using System;
+namespace DuchyOfThorns;
 
 public partial class TitleScreen : Control
 {

@@ -1,6 +1,4 @@
-using Godot;
-using System;
-
+namespace DuchyOfThorns;
 public partial class Aiming : Sprite2D
 {
     private Tween tween;

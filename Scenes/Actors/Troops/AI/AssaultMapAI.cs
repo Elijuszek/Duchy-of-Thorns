@@ -1,6 +1,4 @@
-using Godot;
-using System;
-using System.Linq;
+namespace DuchyOfThorns;
 
 /// <summary>
 /// MapAI which is dedicated for defend maps, acts as a wave manager

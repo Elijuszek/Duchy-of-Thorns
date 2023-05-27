@@ -1,6 +1,7 @@
-using Godot;
-using System;
 using System.Collections.Generic;
+
+namespace DuchyOfThorns;
+
 public partial class MeleeAI : Node2D
 {
 

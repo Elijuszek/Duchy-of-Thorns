@@ -1,6 +1,4 @@
-using Godot;
-using System;
-
+namespace DuchyOfThorns;
 public partial class Joystick : TouchScreenButton
 {
 	private Vector2 radius = new Vector2(64, 64);

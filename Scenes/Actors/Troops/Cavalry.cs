@@ -1,5 +1,4 @@
-using Godot;
-
+namespace DuchyOfThorns;
 public partial class Cavalry : Actor
 {
     PackedScene damagePopup;

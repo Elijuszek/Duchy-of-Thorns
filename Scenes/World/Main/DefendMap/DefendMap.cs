@@ -1,6 +1,7 @@
-using Godot;
 using Godot.Collections;
-using System.Linq;
+
+namespace DuchyOfThorns;
+
 public partial class DefendMap : Map
 {
     private Pathfinding pathfinding;

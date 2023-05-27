@@ -1,3 +1,4 @@
+namespace DuchyOfThorns;
 public partial class Rosethorn : GuardMap
 {
     public override void _Ready()

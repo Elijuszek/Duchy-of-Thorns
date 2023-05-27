@@ -1,5 +1,4 @@
-using Godot;
-
+namespace DuchyOfThorns;
 public partial class SimpleBow : Bow
 {
     private AnimationPlayer animationPlayer;

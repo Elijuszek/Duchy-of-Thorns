@@ -1,5 +1,4 @@
-using Godot;
-
+namespace DuchyOfThorns;
 public partial class MapAI : Node2D
 {
 	private enum BaseCaptureOrder

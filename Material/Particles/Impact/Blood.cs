@@ -1,5 +1,4 @@
-using Godot;
-
+namespace DuchyOfThorns;
 public partial class Blood : GpuParticles2D
 {
     private Tween tween;

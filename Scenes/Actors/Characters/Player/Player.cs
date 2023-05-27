@@ -1,6 +1,4 @@
-using Godot;
-using System;
-
+namespace DuchyOfThorns;
 public partial class Player : Actor
 {
 	[Signal]

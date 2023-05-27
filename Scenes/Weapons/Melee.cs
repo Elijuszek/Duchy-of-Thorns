@@ -1,4 +1,5 @@
-using Godot;
+namespace DuchyOfThorns;
+
 
 public partial class Melee : Weapon
 {

@@ -1,5 +1,4 @@
-using Godot;
-
+namespace DuchyOfThorns;
 public partial class InfantryRespawn : Respawn
 {
     Infantry aliveUnit;

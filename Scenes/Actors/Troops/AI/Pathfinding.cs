@@ -1,6 +1,5 @@
-using Godot;
-using System;
-using System.Linq;
+namespace DuchyOfThorns;
+
 public partial class Pathfinding : Node2D
 {
     [Export] private Color enabledColor;

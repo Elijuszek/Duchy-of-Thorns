@@ -1,6 +1,4 @@
-using Godot;
-using System;
-using System.Linq;
+namespace DuchyOfThorns;
 public partial class WeaponManager : Node2D
 {
 	[Signal]

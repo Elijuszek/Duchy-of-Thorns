@@ -1,5 +1,4 @@
-using Godot;
-
+namespace DuchyOfThorns;
 public partial class Stats : Node2D
 {
     [Export] public float Health { get; set; } = 100;

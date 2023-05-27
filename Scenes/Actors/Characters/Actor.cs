@@ -1,6 +1,4 @@
-using Godot;
-using System;
-
+namespace DuchyOfThorns;
 public partial class Actor : CharacterBody2D
 {
 	//public Vector2 Velocity { get; set; } = Vector2.Zero; GODOT4

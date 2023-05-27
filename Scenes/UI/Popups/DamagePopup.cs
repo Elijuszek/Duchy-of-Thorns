@@ -1,5 +1,4 @@
-using Godot;
-using System;
+namespace DuchyOfThorns;
 
 public partial class DamagePopup : Marker2D
 {

@@ -1,5 +1,7 @@
 using System.Collections.Concurrent;
 
+namespace DuchyOfThorns;
+
 /// <summary>
 /// Object pool increases performance by storing and reusing objects
 /// in this way cost to add new objects to the scene is dramatically reduced

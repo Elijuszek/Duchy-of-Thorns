@@ -1,5 +1,4 @@
-using Godot;
-using System.Linq;
+namespace DuchyOfThorns;
 public partial class Main : Node2D
 {
     private PackedScene gameOverScene;

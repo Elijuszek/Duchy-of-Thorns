@@ -1,6 +1,5 @@
-using Godot;
 using Godot.Collections;
-
+namespace DuchyOfThorns;
 public partial class Wave : Node
 {
     [Export] public int Reward { get; set; } // extra reward for surviving wave

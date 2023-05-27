@@ -1,5 +1,4 @@
-using Godot;
-using System.Linq;
+namespace DuchyOfThorns;
 public partial class GuardMap : Map
 {
     protected Pathfinding pathfinding;

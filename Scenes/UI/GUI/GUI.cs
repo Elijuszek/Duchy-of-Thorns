@@ -1,5 +1,4 @@
-using Godot;
-
+namespace DuchyOfThorns;
 public partial class GUI : CanvasLayer
 {
     [Signal] public delegate void NewWaveStartedEventHandler();

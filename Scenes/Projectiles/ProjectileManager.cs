@@ -1,4 +1,4 @@
-using Godot;
+namespace DuchyOfThorns;
 
 /// <summary>
 /// Projectile manager is dedicated to handle fired and removed projectiles in the scene

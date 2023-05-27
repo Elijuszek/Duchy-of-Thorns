@@ -1,4 +1,5 @@
-using Godot;
+namespace DuchyOfThorns;
+
 public partial class MaterialCache : CanvasLayer
 {
     ParticleProcessMaterial[] particales = {

@@ -1,6 +1,4 @@
-using Godot;
-using System;
-
+namespace DuchyOfThorns;
 public partial class Projectile : Area2D, IPoolable
 {
     [Signal] public delegate void ProjectileRemovedEventHandler(Projectile projectile);

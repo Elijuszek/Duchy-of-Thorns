@@ -1,5 +1,4 @@
-using Godot;
-using System.Linq;
+namespace DuchyOfThorns;
 public partial class CapturableBaseManager : Node
 {
     [Signal] public delegate void PlayerCapturedAllBasesEventHandler();

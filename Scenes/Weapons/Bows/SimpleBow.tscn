@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dlct6oaa3vws4" path="res://Sprites/Weapons/Bows/SimpleBow/BowReload-4.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://dwdjgu274c4jd" path="res://Sprites/Weapons/Bows/SimpleBow/BowReload-3.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://cca1l7eds6xs1" path="res://Sprites/Weapons/Bows/SimpleBow/BowReload-5.png" id="8"]
-[ext_resource type="PackedScene" uid="uid://bg1ay14hxwl83" path="res://Scenes/Projectiles/Arrows/Arrow.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://doygcoiioxhl1" path="res://Scenes/Projectiles/Arrows/Arrow.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://1sh2satpxuon" path="res://Scenes/Projectiles/Arrows/FireArrow.tscn" id="10"]
 [ext_resource type="AudioStream" uid="uid://da2lmma6d7erd" path="res://Sounds/Bow/BowArrowDrawn1.wav" id="11"]
 [ext_resource type="AudioStream" uid="uid://dm0asr2isrv1q" path="res://Sounds/Bow/BowArrowShot.wav" id="12"]

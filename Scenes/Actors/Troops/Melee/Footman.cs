@@ -1,5 +1,4 @@
-using Godot;
-
+namespace DuchyOfThorns;
 public partial class Footman : Infantry
 {
 	private AnimationPlayer animationPlayer;

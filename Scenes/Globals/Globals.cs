@@ -1,5 +1,8 @@
-using Godot;
-using System;
+global using Godot;
+global using System;
+global using System.Linq;
+
+namespace DuchyOfThorns;
 
 public partial class Globals : Node
 {

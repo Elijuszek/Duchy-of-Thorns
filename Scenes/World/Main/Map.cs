@@ -1,4 +1,4 @@
-using Godot;
+namespace DuchyOfThorns;
 
 public partial class Map : Node2D
 {

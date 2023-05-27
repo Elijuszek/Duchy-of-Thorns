@@ -1,6 +1,4 @@
-using Godot;
-using System;
-
+namespace DuchyOfThorns;
 public partial class Coin : CharacterBody2D, IPoolable
 {
     [Signal] public delegate void CoinRemovedEventHandler(Coin coin);

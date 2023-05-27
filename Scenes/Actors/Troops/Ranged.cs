@@ -1,4 +1,5 @@
-using Godot;
+namespace DuchyOfThorns;
+
 public partial class Ranged : Troop
 {
     public RangedAI Ai { get; set; }
