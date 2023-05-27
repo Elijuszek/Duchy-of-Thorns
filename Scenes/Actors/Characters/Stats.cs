@@ -1,4 +1,8 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// Class for basic storing stats of an actor
+/// </summary>
 public partial class Stats : Node2D
 {
     [Export] public float Health { get; set; } = 100;

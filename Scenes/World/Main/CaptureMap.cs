@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Class for the map which is used in the Capture the Base game mode
+/// </summary>
 public partial class CaptureMap : Map
 {
     private Pathfinding pathfinding;

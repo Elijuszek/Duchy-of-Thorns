@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Class for damage popup functionality
+/// </summary>
 public partial class DamagePopup : Marker2D
 {
     private Label label;

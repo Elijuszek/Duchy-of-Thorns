@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Base class for all weapons
+/// </summary>
 public partial class Weapon : Node2D
 {
     [Export] public float AttackDuartion { get; set; } = 0.7f;

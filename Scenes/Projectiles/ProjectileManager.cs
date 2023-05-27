@@ -12,7 +12,7 @@ public partial class ProjectileManager : Node
     [Export] private int arrowsCount = 20;
     private PackedScene arrowScene;
     private PackedScene fireArrowScene;
-    private ObjectPool<Arrow> arrowPool;
+    private ObjectPool<Arrow> arrowPool;         // TODO: arrowPool should increase dynamically
     private ObjectPool<FireArrow> fireArrowPool;
     public override void _Ready()
     {

@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Class for fireplace functionality
+/// </summary>
 public partial class Fireplace : StaticBody2D
 {
     protected Globals globals;

@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Class for death screen functionality
+/// </summary>
 public partial class DeathScreen : CanvasLayer
 {
     [Signal] public delegate void RespawnPlayerEventHandler();

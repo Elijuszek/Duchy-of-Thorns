@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Class for getting shortest path between two points using A* algorithm
+/// </summary>
 public partial class Pathfinding : Node2D
 {
     [Export] private Color enabledColor;

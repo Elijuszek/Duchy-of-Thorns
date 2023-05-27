@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Class for spawning cavalry units
+/// </summary>
 public partial class CavalryRespawn : Respawn
 {
     public override void _Ready()

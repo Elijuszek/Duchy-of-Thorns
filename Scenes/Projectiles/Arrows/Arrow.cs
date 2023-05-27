@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Basic arrow class. Intermediate for all other arrow types
+/// </summary>
 public partial class Arrow : Projectile
 {
     public override void _Ready()

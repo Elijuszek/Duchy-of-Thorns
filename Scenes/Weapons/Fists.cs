@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Class for fists functionality, default player weapon
+/// </summary>
 public partial class Fists : Melee
 {
 	private AnimationPlayer animationPlayer;

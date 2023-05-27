@@ -1,4 +1,9 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// TODO: should inherit from loot class
+/// Class for coin functionality
+/// </summary>
 public partial class Coin : CharacterBody2D, IPoolable
 {
     [Signal] public delegate void CoinRemovedEventHandler(Coin coin);

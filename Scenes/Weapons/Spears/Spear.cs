@@ -1,4 +1,8 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// Final melee weapon class
+/// </summary>
 public partial class Spear : Melee
 {
 	[Export] private float knockBack = 5;

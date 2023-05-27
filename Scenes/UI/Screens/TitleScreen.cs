@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Class for title screen functionality
+/// </summary>
 public partial class TitleScreen : Control
 {
     private AnimationPlayer animationPlayer;

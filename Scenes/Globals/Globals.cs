@@ -4,6 +4,9 @@ global using System.Linq;
 
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Class for defining global variables and functionality
+/// </summary>
 public partial class Globals : Node
 {
 	[Signal]

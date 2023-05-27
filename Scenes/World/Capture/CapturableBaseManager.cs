@@ -1,4 +1,8 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// Class for managing capturable bases
+/// </summary>
 public partial class CapturableBaseManager : Node
 {
     [Signal] public delegate void PlayerCapturedAllBasesEventHandler();

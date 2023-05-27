@@ -1,4 +1,8 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// Intermediate class for all infantry units
+/// </summary>
 public partial class Infantry : Troop
 {
 	public MeleeAI Ai { get; set; }

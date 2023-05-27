@@ -1,4 +1,8 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// MapAI class which handles the spawning of units and the capturing of bases
+/// </summary>
 public partial class MapAI : Node2D
 {
 	private enum BaseCaptureOrder

@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Intermediate class for all ranged units
+/// </summary>
 public partial class Ranged : Troop
 {
     public RangedAI Ai { get; set; }

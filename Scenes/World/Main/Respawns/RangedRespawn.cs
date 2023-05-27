@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Class for spawning ranged units
+/// </summary>
 public partial class RangedRespawn : Respawn
 {
     Ranged aliveUnit;

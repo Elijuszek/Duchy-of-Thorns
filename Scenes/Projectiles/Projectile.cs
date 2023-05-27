@@ -1,4 +1,8 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// Base class for all projectiles
+/// </summary>
 public partial class Projectile : Area2D, IPoolable
 {
     [Signal] public delegate void ProjectileRemovedEventHandler(Projectile projectile);

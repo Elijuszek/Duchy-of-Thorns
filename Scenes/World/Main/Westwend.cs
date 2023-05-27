@@ -1,5 +1,9 @@
 namespace DuchyOfThorns;
-public partial class Main : Node2D
+
+/// <summary>
+/// Final map class
+/// </summary>
+public partial class Westwend : Node2D
 {
     private PackedScene gameOverScene;
     private PackedScene playerScene;

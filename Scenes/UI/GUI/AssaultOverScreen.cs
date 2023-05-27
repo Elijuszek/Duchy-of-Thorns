@@ -1,4 +1,8 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// Class for assault over screen functionality
+/// </summary>
 public partial class AssaultOverScreen : CanvasLayer
 {
     [Signal] public delegate void ContinueEventHandler();

@@ -2,7 +2,6 @@ namespace DuchyOfThorns;
 
 /// <summary>
 /// MapAI which is dedicated for defend maps, acts as a wave manager
-/// 
 /// </summary>
 public partial class AssaultMapAI : MapAI
 {

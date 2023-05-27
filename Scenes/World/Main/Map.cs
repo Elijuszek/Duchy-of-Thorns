@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Base class for all maps
+/// </summary>
 public partial class Map : Node2D
 {
 	protected PackedScene gameOverScene;

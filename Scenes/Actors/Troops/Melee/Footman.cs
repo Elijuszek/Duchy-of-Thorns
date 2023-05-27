@@ -1,4 +1,8 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// Final melee unit class
+/// </summary>
 public partial class Footman : Infantry
 {
 	private AnimationPlayer animationPlayer;

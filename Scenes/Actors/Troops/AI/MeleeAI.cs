@@ -2,6 +2,9 @@ using System.Collections.Generic;
 
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Class which controls the behaviour of melee units
+/// </summary>
 public partial class MeleeAI : Node2D
 {
 

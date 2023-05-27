@@ -1,6 +1,8 @@
 namespace DuchyOfThorns;
 
-
+/// <summary>
+/// Intermediate class for all melee weapons
+/// </summary>
 public partial class Melee : Weapon
 {
 	protected CollisionShape2D collisionShape;

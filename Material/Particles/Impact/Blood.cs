@@ -1,4 +1,8 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// Class for blood particles functionality
+/// </summary>
 public partial class Blood : GpuParticles2D
 {
     private Tween tween;

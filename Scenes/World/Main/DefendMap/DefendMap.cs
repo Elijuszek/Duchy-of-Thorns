@@ -2,6 +2,9 @@ using Godot.Collections;
 
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Class of the map where player has to defend his bases from enemy attacks
+/// </summary>
 public partial class DefendMap : Map
 {
     private Pathfinding pathfinding;

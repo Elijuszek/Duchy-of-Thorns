@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Intermediate class for bows
+/// </summary>
 public partial class Bow : Weapon
 {
     [Signal]

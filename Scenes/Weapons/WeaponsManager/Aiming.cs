@@ -1,4 +1,8 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// Class for aiming functionality
+/// </summary>
 public partial class Aiming : Sprite2D
 {
     private Tween tween;
@@ -15,7 +19,6 @@ public partial class Aiming : Sprite2D
         tween.SetTrans(Tween.TransitionType.Linear);
         tween.SetEase(Tween.EaseType.In);
         tween.TweenProperty(this, "scale:y", endScale, duration);
-        //tween.TweenProperty(this, "scale:y", startScale, endScale, duartion, Tween.TransitionType.Linear, Tween.EaseType.In, delay);
     }
     public float GetDirection()
     {

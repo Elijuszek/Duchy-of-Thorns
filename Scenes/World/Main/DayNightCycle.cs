@@ -1,5 +1,9 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// TODO: Background sounds should change according to the time of day
+/// Class for day/night cycle functionality
+/// </summary>
 public partial class DayNightCycle : CanvasModulate
 {
     [Export] public float Time { get; set; } = 30;

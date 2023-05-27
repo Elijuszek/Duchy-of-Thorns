@@ -1,5 +1,10 @@
 using Godot.Collections;
 namespace DuchyOfThorns;
+
+/// <summary>
+/// TODO: should be replaced using resource material
+/// Class for storing wave data
+/// </summary>
 public partial class Wave : Node
 {
     [Export] public int Reward { get; set; } // extra reward for surviving wave

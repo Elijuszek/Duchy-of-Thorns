@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Base class for all respawn points
+/// </summary>
 public partial class Respawn : Marker2D
 {
     [Signal] public delegate void OutOfTroopsEventHandler();

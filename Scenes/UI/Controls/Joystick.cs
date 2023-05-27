@@ -1,4 +1,8 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// Class for receiving player movement or attack input
+/// </summary>
 public partial class Joystick : TouchScreenButton
 {
 	private Vector2 radius = new Vector2(64, 64);
@@ -53,7 +57,6 @@ public partial class Joystick : TouchScreenButton
 	{
 		if (GetButtonPosition().Length() > threshold)
 		{
-			//GD.Print(GetButtonPosition().Normalized());
 			return GetButtonPosition().Normalized();
 		}
 		return new Vector2(0, 0);

@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Class for game over screen functionality
+/// </summary>
 public partial class GameOverScreen : CanvasLayer
 {
     private Globals globals;

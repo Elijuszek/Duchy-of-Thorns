@@ -1,4 +1,8 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// Class for managing player weapons
+/// </summary>
 public partial class WeaponManager : Node2D
 {
 	[Signal]

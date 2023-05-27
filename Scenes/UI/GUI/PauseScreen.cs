@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Class for pause screen functionality
+/// </summary>
 public partial class PauseScreen : CanvasLayer
 {
     public override void _Ready()

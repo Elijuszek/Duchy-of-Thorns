@@ -1,4 +1,9 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// Class for waiting layer stats changes and updating GUI accordingly
+/// Showing stats and ammo, receiving movement and attack input
+/// </summary>
 public partial class GUI : CanvasLayer
 {
     [Signal] public delegate void NewWaveStartedEventHandler();

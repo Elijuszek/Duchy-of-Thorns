@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Final arrow class
+/// </summary>
 public partial class FireArrow : Arrow
 {
     GpuParticles2D fire;

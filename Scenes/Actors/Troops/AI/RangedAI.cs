@@ -2,6 +2,9 @@ using System.Collections.Generic;
 
 namespace DuchyOfThorns;
 
+/// <summary>
+///  Class which controls the behaviour of ranged units
+/// </summary>
 public partial class RangedAI : Node2D
 {
 

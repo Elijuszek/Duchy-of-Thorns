@@ -1,4 +1,8 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// Final ranged unit class
+/// </summary>
 public partial class Archer : Ranged
 {
     private AnimationPlayer animationPlayer;

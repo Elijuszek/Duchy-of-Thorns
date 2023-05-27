@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Class for the base which can be captured by the player, ally or enemy
+/// </summary>
 public partial class CapturableBase : Area2D
 {
     [Signal] public delegate void BaseCapturedEventHandler(int newTeam);

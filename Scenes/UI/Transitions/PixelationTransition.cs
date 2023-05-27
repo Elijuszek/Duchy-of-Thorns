@@ -1,4 +1,9 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// TODO: remove or find a better use for this class
+/// Class for pixelation transition functionality
+/// </summary>
 public partial class PixelationTransition : CanvasLayer
 {
     private AnimationPlayer transition;

@@ -1,4 +1,8 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// Class for managing loot spawning and pooling
+/// </summary>
 public partial class LootManager : Node2D
 {
     [Export] private int goldenCount = 20;
@@ -6,7 +10,7 @@ public partial class LootManager : Node2D
     private PackedScene goldenCoinScene;
     private PackedScene silverCoinScene;
     private PackedScene bronzeCoinScene;
-    private ObjectPool<Coin> goldenCoinsPool;
+    private ObjectPool<Coin> goldenCoinsPool; // TODO: pool should increase dynamically
     private ObjectPool<Coin> silverCoinsPool;
     private ObjectPool<Coin> bronzeCoinsPool;
     Random rand;

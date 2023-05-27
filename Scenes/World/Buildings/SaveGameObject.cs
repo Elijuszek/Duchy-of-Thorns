@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Class for showing save game label
+/// </summary>
 public partial class SaveGameObject : StaticBody2D
 {
     private Globals globals;

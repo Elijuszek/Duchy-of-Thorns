@@ -1,5 +1,8 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// Intermediate class for all troops
+/// </summary>
 public partial class Troop : Actor
 {
 	[Signal] public delegate void DiedEventHandler();

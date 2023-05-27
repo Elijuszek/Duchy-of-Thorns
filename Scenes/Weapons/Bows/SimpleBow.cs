@@ -1,4 +1,8 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// Final bow class
+/// </summary>
 public partial class SimpleBow : Bow
 {
     private AnimationPlayer animationPlayer;

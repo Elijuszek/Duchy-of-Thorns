@@ -1,4 +1,8 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// Intermediate class for all cavalry units
+/// </summary>
 public partial class Cavalry : Actor
 {
     PackedScene damagePopup;

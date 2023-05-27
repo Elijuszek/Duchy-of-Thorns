@@ -1,5 +1,9 @@
 namespace DuchyOfThorns;
 
+/// <summary>
+/// TODO: might not be needed
+/// class for caching materials and shaders
+/// </summary>
 public partial class MaterialCache : CanvasLayer
 {
     ParticleProcessMaterial[] particales = {

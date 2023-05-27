@@ -1,4 +1,8 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// Class for the guard map, without capturable bases
+/// </summary>
 public partial class GuardMap : Map
 {
     protected Pathfinding pathfinding;

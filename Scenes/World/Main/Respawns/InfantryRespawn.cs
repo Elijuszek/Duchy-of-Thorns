@@ -1,4 +1,8 @@
 namespace DuchyOfThorns;
+
+/// <summary>
+/// Class for spawning infantry units
+/// </summary>
 public partial class InfantryRespawn : Respawn
 {
     Infantry aliveUnit;
