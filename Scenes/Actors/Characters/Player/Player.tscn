@@ -237,6 +237,7 @@ team = 1
 [node name="CameraTransform" type="RemoteTransform2D" parent="." index="5"]
 
 [node name="PointLight2D" type="PointLight2D" parent="." index="6"]
+color = Color(0.956863, 0.933333, 0.752941, 1)
 energy = 0.5
 texture = ExtResource("8_ou4f6")
 
