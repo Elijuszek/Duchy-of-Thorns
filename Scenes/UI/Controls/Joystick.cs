@@ -5,8 +5,8 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class Joystick : TouchScreenButton
 {
-	private Vector2 radius = new Vector2(64, 64);
-	private int boundary = 64;
+	private Vector2 radius = new Vector2(270, 270);
+	private int boundary = 540;
 	private int return_accel = 20;
 	private int threshold = 10;
 	public int OngoingDrag { get; set; } = -1;
@@ -21,13 +21,13 @@ public partial class Joystick : TouchScreenButton
 	public override void _Input(InputEvent @event)
 	{
 		base._Input(@event);
-		if (@event is InputEventScreenDrag DragEvent)
+        if (@event is InputEventScreenTouch TouchEvent && @event.IsPressed())
+        {
+            HandleInput(TouchEvent.Position, TouchEvent.Index);
+        }
+        else if (@event is InputEventScreenDrag DragEvent)
 		{
 			HandleInput(DragEvent.Position, DragEvent.Index);
-		}
-		else if (@event is InputEventScreenTouch TouchEvent && @event.IsPressed())
-		{
-			HandleInput(TouchEvent.Position, TouchEvent.Index);
 		}
 		if (@event is InputEventScreenTouch Event && !@event.IsPressed() && Event.Index == OngoingDrag)
 		{
@@ -36,8 +36,8 @@ public partial class Joystick : TouchScreenButton
 	}
 	private void HandleInput(Vector2 EventPosition, int index)
 	{
-		var parent = GetParent() as Sprite2D;
-		var distance_from_center = (EventPosition - parent.GlobalPosition).Length();
+		Sprite2D parent = GetParent() as Sprite2D;
+		float distance_from_center = (EventPosition - parent.GlobalPosition).Length();
 		if (distance_from_center <= boundary * GlobalScale.X || index == OngoingDrag)
 		{
 			GlobalPosition = EventPosition - radius * GlobalScale;

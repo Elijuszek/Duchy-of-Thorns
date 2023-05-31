@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dusfwl1mha3ct"
-path="res://.godot/imported/Joystick_Button.png-1b500f284ec9d0db2b0ffae42c50d843.ctex"
+uid="uid://c337826ql8swl"
+path="res://.godot/imported/Joystick_Pad3.png-1ddd30d4b64680bed039c2e69a05e46c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/Controls/Joystick/Joystick_Button.png"
-dest_files=["res://.godot/imported/Joystick_Button.png-1b500f284ec9d0db2b0ffae42c50d843.ctex"]
+source_file="res://Sprites/UI/Controls/Joystick/Joystick_Pad3.png"
+dest_files=["res://.godot/imported/Joystick_Pad3.png-1ddd30d4b64680bed039c2e69a05e46c.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

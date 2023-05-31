@@ -1,21 +1,22 @@
 [gd_scene load_steps=6 format=3 uid="uid://5ts04auh1gfy"]
 
 [ext_resource type="Script" path="res://Scenes/UI/Controls/Joystick.cs" id="1"]
-[ext_resource type="Texture2D" uid="uid://igjt77l8k8kq" path="res://Sprites/UI/Controls/Joystick/Joystick_Pad.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://d04vurmd01yg3" path="res://Sprites/UI/Controls/Joystick/Joystick_Stick.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://dusfwl1mha3ct" path="res://Sprites/UI/Controls/Joystick/Joystick_Button.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://lwvdqink7blv" path="res://Sprites/UI/Controls/Joystick/Joystick_Pad1.png" id="1_hruh1"]
+[ext_resource type="Texture2D" uid="uid://b2aly0seysusj" path="res://Sprites/UI/Controls/Joystick/Joystick_Pad2.png" id="2_y804y"]
+[ext_resource type="Texture2D" uid="uid://c337826ql8swl" path="res://Sprites/UI/Controls/Joystick/Joystick_Pad3.png" id="3_muqip"]
 
 [sub_resource type="CircleShape2D" id="1"]
-radius = 32.0
+radius = 540.0
 
 [node name="Joystick" type="Sprite2D"]
 modulate = Color(1, 1, 1, 0.784314)
-texture = ExtResource("2")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_hruh1")
 
 [node name="Joystick_Button" type="TouchScreenButton" parent="."]
-position = Vector2(-64, -64)
-texture_normal = ExtResource("4")
-texture_pressed = ExtResource("3")
+position = Vector2(-270, -270)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("2_y804y")
+texture_pressed = ExtResource("3_muqip")
 shape = SubResource("1")
-shape_visible = false
 script = ExtResource("1")

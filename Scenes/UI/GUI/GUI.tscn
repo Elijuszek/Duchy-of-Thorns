@@ -510,7 +510,7 @@ size_flags_vertical = 0
 
 [node name="ArrowPouch" type="Sprite2D" parent="MarginContainer/Rows/TopRow/AmmoSection/MarginContainer/MarginContainer"]
 position = Vector2(40, 11)
-texture = ExtResource("4_01mqu")
+texture = ExtResource("51_f3p4b")
 
 [node name="CancelAttackButton" parent="MarginContainer/Rows/TopRow/AmmoSection/MarginContainer" instance=ExtResource("5_5ygom")]
 position = Vector2(67, 15)
@@ -533,7 +533,7 @@ size_flags_vertical = 0
 
 [node name="AttackJoystick" parent="MarginContainer/Rows/MiddleRow/MarginContainer" instance=ExtResource("240_ibp0w")]
 position = Vector2(-153, 86)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(0.15, 0.15)
 
 [node name="BottomRow" type="HBoxContainer" parent="MarginContainer/Rows"]
 layout_mode = 2
@@ -568,7 +568,7 @@ text = "PAUSE"
 
 [node name="MovementJoystick" parent="." instance=ExtResource("240_ibp0w")]
 position = Vector2(213, 509)
-scale = Vector2(2, 2)
+scale = Vector2(0.2, 0.2)
 
 [connection signal="pressed" from="MarginContainer/Rows/TopRow/AmmoSection/MarginContainer/CancelAttackButton" to="." method="CancelAttackButtonPressed"]
 [connection signal="pressed" from="MarginContainer/Rows/BottomRow/SwitchWeapon" to="." method="SwitchWeaponPressed"]
