@@ -3863,7 +3863,7 @@ silverCount = 1
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.0980392, 0.156863, 0.309804, 1)
+color = Color(0.186667, 0.145771, 0.318711, 1)
 script = ExtResource("6_eq7jb")
 Time = 90.0
 

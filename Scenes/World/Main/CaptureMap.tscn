@@ -31,6 +31,3 @@ position = Vector2(1325, 363)
 
 [node name="AllyRespawnPoints" type="Node2D" parent="." index="15"]
 position = Vector2(212, 302)
-
-[node name="CanvasModulate" parent="." index="16"]
-color = Color(0.956863, 0.933333, 0.592157, 1)
