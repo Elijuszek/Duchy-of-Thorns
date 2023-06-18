@@ -1,3 +1,5 @@
+using DuchyofThorns.Scenes.Globals;
+
 namespace DuchyOfThorns;
 
 /// <summary>
@@ -36,7 +38,7 @@ public partial class ProjectileManager : Node
             arrow.RemoveFromScene();
         }
     }
-    public void HandleArrowSpawned(Arrow arrow, int team, Vector2 position, Vector2 direction)
+    public void HandleArrowSpawned(Arrow arrow, Team team, Vector2 position, Vector2 direction)
     {
         float damage = arrow.Damage;
         if (arrow is FireArrow)

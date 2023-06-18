@@ -238,22 +238,19 @@ shape = SubResource("CapsuleShape2D_7lx2k")
 [node name="Stats" parent="." index="3"]
 Speed = 150.0
 
-[node name="Team" parent="." index="4"]
-team = 1
+[node name="CameraTransform" type="RemoteTransform2D" parent="." index="4"]
 
-[node name="CameraTransform" type="RemoteTransform2D" parent="." index="5"]
-
-[node name="PointLight2D" type="PointLight2D" parent="." index="6"]
+[node name="PointLight2D" type="PointLight2D" parent="." index="5"]
 color = Color(0.956863, 0.933333, 0.752941, 1)
 energy = 0.5
 texture = ExtResource("8_ou4f6")
 
-[node name="CoinsSound" type="AudioStreamPlayer" parent="." index="7"]
+[node name="CoinsSound" type="AudioStreamPlayer" parent="." index="6"]
 stream = ExtResource("39")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
 libraries = {
 "": SubResource("AnimationLibrary_f22p5")
 }
 
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." index="9"]
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." index="8"]

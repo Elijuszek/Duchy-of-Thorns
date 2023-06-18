@@ -1,3 +1,4 @@
+using DuchyofThorns.Scenes.Globals;
 using System.Collections.Generic;
 
 namespace DuchyOfThorns;
@@ -23,7 +24,7 @@ public partial class RangedAI : Node2D
     private Actor actor = null;
     private CharacterBody2D target = null;
     private Weapon weapon = null;
-    private int team = -1;
+    private Team team;
 
     // PATROL STATE
     public Vector2 Origin { get; set; } = Vector2.Zero;
@@ -120,7 +121,7 @@ public partial class RangedAI : Node2D
                 break;
         }
     }
-    public void Initialize(CharacterBody2D actor, Weapon weapon, Team.TeamName team)
+    public void Initialize(CharacterBody2D actor, Weapon weapon, Team team)
     {
         this.actor = actor as Actor;
         this.team = team;

@@ -1,3 +1,5 @@
+using DuchyofThorns.Scenes.Globals;
+
 namespace DuchyOfThorns;
 
 /// <summary>
@@ -26,7 +28,7 @@ public partial class WeaponManager : Node2D
 		currentWeapon.Show();
 		aiming = GetNode<Aiming>("Aiming");
 	}
-	public void Initialize(Team.TeamName team)
+	public void Initialize(Team team)
 	{
 		foreach (Weapon weapon in weapons)
 		{
@@ -217,6 +219,6 @@ public partial class WeaponManager : Node2D
 			bow.MaxAmmo = Convert.ToInt32(data["SecondaryMaxAmmo"]);
 			AddWeapon(bow, 2);
 		}
-		Initialize((int)Team.TeamName.PLAYER);
+		Initialize(Team.PLAYER);
 	}
 }

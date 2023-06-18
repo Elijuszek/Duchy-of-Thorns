@@ -8,8 +8,8 @@
 collision_mask = 95
 script = ExtResource("2")
 
-[node name="AttackTimer" type="Timer" parent="." index="4"]
+[node name="AttackTimer" type="Timer" parent="." index="3"]
 
-[node name="MeleeAI" parent="." index="5" instance=ExtResource("3")]
+[node name="MeleeAI" parent="." index="4" instance=ExtResource("3")]
 
 [connection signal="timeout" from="AttackTimer" to="." method="AttackTimerTimeout"]

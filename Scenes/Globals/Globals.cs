@@ -1,6 +1,7 @@
 global using Godot;
 global using System;
 global using System.Linq;
+using DuchyofThorns.Scenes.Globals;
 
 namespace DuchyOfThorns;
 
@@ -10,7 +11,7 @@ namespace DuchyOfThorns;
 public partial class Globals : Node
 {
 	[Signal]
-	public delegate void ArrowFiredEventHandler(Arrow arrow, int team, Marker2D position, Vector2 direction);
+	public delegate void ArrowFiredEventHandler(Arrow arrow, Team team, Marker2D position, Vector2 direction);
 	[Signal]
 	public delegate void CoinsDropedEventHandler(int coins, Marker2D position);
 	private const string SaveDir = "user://saves/";

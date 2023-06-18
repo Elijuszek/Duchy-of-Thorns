@@ -1,3 +1,4 @@
+using DuchyofThorns.Scenes.Globals;
 using Godot.Collections;
 
 namespace DuchyOfThorns;
@@ -29,7 +30,7 @@ public partial class DefendMap : Map
 
         enemyMapAI.Connect("PlayerVictory", new Callable(this, "HandlePlayerVictory"));
         capturableBaseManager.Connect("PlayerLostAllBases", new Callable(this, "HandlePlayerDefeat"));
-        capturableBaseManager.SetTeam(Team.TeamName.PLAYER);
+        capturableBaseManager.SetTeam(Team.PLAYER);
 
         allyMapAI.Initialize(bases, allyRespawnPoints);
         enemyMapAI.Initialize(bases, enemyRespawnPoints);
@@ -47,7 +48,7 @@ public partial class DefendMap : Map
             loot = player.Stats.Gold;
         }
         safeGold += loot + reward;
-        AssaultOverScreen assaultOver = assaultOverScreen.Instantiate() as AssaultOverScreen;
+        AssaultOverScreen assaultOver = assaultOverScreen.Instantiate<AssaultOverScreen>();
         assaultOver.Connect("Continue", new Callable(this, "UpgradePhase"));
         AddChild(assaultOver);
         assaultOver.Initialize(true, loot, reward, safeGold);
@@ -62,7 +63,7 @@ public partial class DefendMap : Map
             loot = player.Stats.Gold;
             safeGold += loot;
         }
-        AssaultOverScreen assaultOver = assaultOverScreen.Instantiate() as AssaultOverScreen;
+        AssaultOverScreen assaultOver = assaultOverScreen.Instantiate<AssaultOverScreen>();
         assaultOver.Connect("Continue", new Callable(this, "UpgradePhase"));
         AddChild(assaultOver);
         assaultOver.Initialize(false, loot, 0, safeGold);
@@ -80,7 +81,7 @@ public partial class DefendMap : Map
         Player player = GetNode<Player>("Player");
         player.Stats.Gold = 0;
         player.GetGold(safeGold);
-        capturableBaseManager.SetTeam(Team.TeamName.PLAYER);
+        capturableBaseManager.SetTeam(Team.PLAYER);
         globals.SaveGame();
         gui.ToggleNewWaveButton(true);
     }

@@ -1,3 +1,5 @@
+using DuchyofThorns.Scenes.Globals;
+
 namespace DuchyOfThorns;
 
 /// <summary>
@@ -16,11 +18,11 @@ public partial class Fireplace : StaticBody2D
         firePlayer = GetNode<AudioStreamPlayer2D>("FirePlayer");
         setOnFirePlayer = GetNode<AudioStreamPlayer2D>("SetOnFirePlayer");
     }
-    public void SetOnFire(int team, Vector2 position, Vector2 direction)
+    public void SetOnFire(Team team, Vector2 position, Vector2 direction)
     {
         setOnFirePlayer.Play();
         FireArrow arrow = fireArrow.Instantiate() as FireArrow;
         arrow.Damage = arrow.Damage * 2;
-        globals.EmitSignal(nameof(Globals.ArrowFired), arrow, team, position, direction);
+        globals.EmitSignal(nameof(Globals.ArrowFired), arrow, (int)team, position, direction);
     }
 }

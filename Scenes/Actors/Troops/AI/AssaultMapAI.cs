@@ -35,7 +35,6 @@ public partial class AssaultMapAI : MapAI
 			GD.PushError("MAP RangedAI IS NOT PROPERLY INITIALIZED!");
 			return;
 		}
-		team.team = teamName;
 		this.respawnPoints = respawnPoints;
 		this.capturableBases = capturableBases;
 		foreach (CapturableBase cBase in capturableBases)

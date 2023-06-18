@@ -1,3 +1,5 @@
+using DuchyofThorns.Scenes.Globals;
+
 namespace DuchyOfThorns;
 
 /// <summary>
@@ -20,11 +22,11 @@ public partial class CapturableBaseManager : Node2D
     {
         return capturableBases;
     }
-    public void SetTeam(Team.TeamName team)
+    public void SetTeam(Team team)
     {
         foreach (CapturableBase b in capturableBases)
         {
-            b.SetTeam((int)team);
+            b.SetTeam(team);
         }
     }
     private void HandleBaseCaptured(int team)  // TODO Team might be not needed singal from capturablebase connected with through mapAI
@@ -34,15 +36,15 @@ public partial class CapturableBaseManager : Node2D
         int totalBases = capturableBases.Length;
         foreach (CapturableBase cBase in capturableBases)
         {
-            switch (cBase.Team.team)
+            switch (cBase.Team)
             {
-                case Team.TeamName.PLAYER:
+                case Team.PLAYER:
                     playerBases++;
                     break;
-                case Team.TeamName.ENEMY:
+                case Team.ENEMY:
                     enemyBases++;
                     break;
-                case Team.TeamName.NEUTRAL:
+                case Team.NEUTRAL:
                     return;
             }
         }

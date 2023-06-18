@@ -1,3 +1,5 @@
+using DuchyofThorns.Scenes.Globals;
+
 namespace DuchyOfThorns;
 
 /// <summary>
@@ -13,7 +15,7 @@ public partial class Projectile : Area2D, IPoolable
     private float moveAmount = 0;
     protected Vector2 direction = Vector2.Zero;
     protected AudioStreamPlayer2D flyingSound;
-    public int team { get; set; } = -1;
+    public Team team { get; set; }
     public override void _Ready()
     {
         base._Ready();

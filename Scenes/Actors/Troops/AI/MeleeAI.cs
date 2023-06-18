@@ -1,3 +1,4 @@
+using DuchyofThorns.Scenes.Globals;
 using System.Collections.Generic;
 
 namespace DuchyOfThorns;
@@ -21,7 +22,7 @@ public partial class MeleeAI : NavigationAgent2D
     private CharacterBody2D enemy = null;
     private Infantry parent = null;
     private Weapon weapon = null;
-    private Team.TeamName team;
+    private Team team;
 
     //ADVANCE STATE
     public Vector2 NextBase { get; set; } = Vector2.Zero;
@@ -66,7 +67,7 @@ public partial class MeleeAI : NavigationAgent2D
         }
     }
 
-    public void Initialize(Weapon weapon, Team.TeamName team, TileMap map)
+    public void Initialize(Weapon weapon, Team team, TileMap map)
     {
         this.team = team;
         this.weapon = weapon;

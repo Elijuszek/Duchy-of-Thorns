@@ -105,14 +105,11 @@ shape = SubResource("1")
 [node name="Stats" parent="." index="3"]
 Gold = 50
 
-[node name="Team" parent="." index="4"]
-team = 2
-
-[node name="AttackTimer" parent="." index="5"]
+[node name="AttackTimer" parent="." index="4"]
 wait_time = 0.5
 one_shot = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 libraries = {
 "": SubResource("AnimationLibrary_0i64o")
 }

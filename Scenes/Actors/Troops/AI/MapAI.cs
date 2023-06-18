@@ -58,7 +58,7 @@ public partial class MapAI : Node2D
 			for (int i = listOfBases - 1; i > 0; i--)
 			{
 				CapturableBase cBase = capturableBases[i];
-				if ( != cBase.team)
+				if (team != cBase.Team)
 				{
 					return cBase;
 				}
@@ -69,7 +69,7 @@ public partial class MapAI : Node2D
 			for (int i = 0; i < listOfBases; i++)
 			{
 				CapturableBase cBase = capturableBases[i];
-				if (team.team != cBase.Team.team)
+				if (team != cBase.Team)
 				{
 					return cBase;
 				}

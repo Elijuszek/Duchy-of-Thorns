@@ -13,8 +13,8 @@ public partial class Footman : Infantry
 		base._Ready();
 		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		weapon = GetNode<Melee>("GoldenSword");
-		Ai.Initialize(weapon, team.team, GetNode<TileMap>("/root/World/TileMap"));
-		weapon.Initialize(team.team);
+		Ai.Initialize(weapon, team, GetNode<TileMap>("/root/World/TileMap"));
+		weapon.Initialize(team);
 	}
 	public override void _PhysicsProcess(double delta)
 	{

@@ -34,16 +34,17 @@ position = Vector2(1135, 1145)
 
 [node name="AllyMapAI" parent="." index="9" instance=ExtResource("4_7e281")]
 position = Vector2(315, -54)
-teamName = 1
+team = 0
 
 [node name="CapturableBasesManager" type="Node2D" parent="." index="10"]
 script = ExtResource("5_efwp3")
 
 [node name="CapturableBase" parent="CapturableBasesManager" index="0" instance=ExtResource("6_bdpx7")]
 position = Vector2(655, 384)
+Team = 0
 
 [node name="AssaultMapAI" parent="." index="11" instance=ExtResource("7_w7fo2")]
-teamName = 2
+team = 1
 
 [node name="AllyRespawnPoints" type="Node2D" parent="." index="12"]
 position = Vector2(1040, 473)

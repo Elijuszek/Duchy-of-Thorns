@@ -1,3 +1,5 @@
+using DuchyofThorns.Scenes.Globals;
+
 namespace DuchyOfThorns;
 
 /// <summary>
@@ -17,7 +19,6 @@ public partial class Actor : CharacterBody2D
 	{
 		base._Ready();
 		Stats = GetNode<Stats>("Stats");
-		team = GetNode<Team>("Team");
 		collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
 		bloodScene = ResourceLoader.Load<PackedScene>("res://Material/Particles/Impact/Blood.tscn");
 	}
@@ -29,7 +30,7 @@ public partial class Actor : CharacterBody2D
 		float strenght = Mathf.Clamp(amount, 5f, 20000f);
 		knockback = direction * strenght;
 	}
-	public Team.TeamName GetTeam() => team.team;
+	public Team GetTeam() => team;
     public bool HasReachedPosition(Vector2 location) => GlobalPosition.DistanceTo(location) < 50;
     public Vector2 VelocityToward(Vector2 location) => GlobalPosition.DirectionTo(location) * Stats.Speed;
     public void RotateToward(Vector2 location)

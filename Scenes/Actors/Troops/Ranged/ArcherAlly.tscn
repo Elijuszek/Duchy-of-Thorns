@@ -90,13 +90,10 @@ texture = ExtResource("5")
 [node name="Stats" parent="." index="3"]
 Gold = 0
 
-[node name="Team" parent="." index="4"]
-team = 1
-
-[node name="AttackTimer" parent="." index="5"]
+[node name="AttackTimer" parent="." index="4"]
 wait_time = 2.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 libraries = {
 "": SubResource("AnimationLibrary_pq0fu")
 }
