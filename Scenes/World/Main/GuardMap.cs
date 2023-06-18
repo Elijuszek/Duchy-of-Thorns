@@ -14,7 +14,7 @@ public partial class GuardMap : Map
         base._Ready();
 
         pathfinding = GetNode<Pathfinding>("PathFinding");
-        pathfinding.CreateNavigationMap(ground);
+        pathfinding.CreateNavigationMap(tileMap);
 
         allyRespawnPoints = GetNode<Node2D>("AllyRespawnPoints").GetChildren().OfType<Respawn>().ToArray();
         enemyRespawnPoints = GetNode<Node2D>("EnemyRespawnPoints").GetChildren().OfType<Respawn>().ToArray();
@@ -27,12 +27,10 @@ public partial class GuardMap : Map
     {
         foreach (Respawn respawn in allyRespawnPoints)
         {
-            respawn.Initialize(pathfinding);
             respawn.SpawnUnit();
         }
         foreach (Respawn respawn in enemyRespawnPoints)
         {
-            respawn.Initialize(pathfinding);
             respawn.SpawnUnit();
         }
     }

@@ -11,6 +11,5 @@ script = ExtResource("2")
 [node name="AttackTimer" type="Timer" parent="." index="4"]
 
 [node name="MeleeAI" parent="." index="5" instance=ExtResource("3")]
-debugging = true
 
 [connection signal="timeout" from="AttackTimer" to="." method="AttackTimerTimeout"]

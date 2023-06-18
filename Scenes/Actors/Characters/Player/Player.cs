@@ -20,9 +20,8 @@ public partial class Player : Actor
 	private AnimationPlayer animationPlayer;
 	private RemoteTransform2D cameraTransform;
 	private AudioStreamPlayer coinsSound;
-	private Vector2 movementDirection = Vector2.Zero;
 	private Vector2 attackDirection = Vector2.Zero;
-	private PackedScene damagePopup = (PackedScene)ResourceLoader.Load("res://Scenes/UI/Popups/DamagePopup.tscn");
+	private PackedScene damagePopup = ResourceLoader.Load<PackedScene>("res://Scenes/UI/Popups/DamagePopup.tscn");
 	private GUI gui;
 	private Globals globals;
 	public WeaponManager WeaponsManager { get; set; }
@@ -43,9 +42,11 @@ public partial class Player : Actor
 	public override void _PhysicsProcess(double delta)
 	{
 		base._PhysicsProcess(delta);
+		Velocity = Direction * Stats.Speed;
+		MoveAndSlide();
 		if (!WeaponsManager.IsAttacking)
 		{
-			if (movementDirection != Vector2.Zero)
+			if (Direction != Vector2.Zero)
 			{
 				PlayWalking();
 			}
@@ -55,9 +56,8 @@ public partial class Player : Actor
 			}
 		}
 		attackDirection = attackJoystick.GetValue();
-		movementDirection = movementJoystick.GetValue();
+		Direction = movementJoystick.GetValue();
 
-		Velocity = movementDirection * Stats.Speed;
 		if (attackJoystick.OngoingDrag != -1)
 		{
 			LookAt(GlobalPosition + attackDirection);
@@ -73,7 +73,7 @@ public partial class Player : Actor
 		}
 		else
 		{
-			LookAt(GlobalPosition + movementDirection);
+			LookAt(GlobalPosition + Direction);
 		}
 	}
 	public override void HandleHit(float baseDamage, Vector2 impactPosition)

@@ -26,7 +26,7 @@ public partial class CavalryRespawn : Respawn
         }
     }
 
-    public override void SetCapturableBase(CapturableBase nextBase, Vector2 nextBaseCord)
+    public override void SetCapturableBase(Vector2 nextBaseCord)
     {
         throw new NotImplementedException();
     }

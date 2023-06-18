@@ -1,3 +1,5 @@
+using DuchyofThorns.Scenes.Globals;
+
 namespace DuchyOfThorns;
 
 /// <summary>
@@ -18,17 +20,13 @@ public partial class CapturableBase : Area2D
     private Tween progressTween;
     private int playerCount = 0;
     private int enemyCount = 0;
-    private int teamToCapture = (int)Team.TeamName.NEUTRAL;
-    private const int teamNeutral = (int)Team.TeamName.NEUTRAL;
-    private const int teamPlayer = (int)Team.TeamName.PLAYER;
-    private const int teamEnemy = (int)Team.TeamName.ENEMY;
-    public Team Team { get; set; }
+    private Team teamToCapture = Team.NEUTRAL;
+    [Export] public Team Team { get; set; } = Team.NEUTRAL;
     public override void _Ready()
     {
         collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
         extents = (collisionShape.Shape as RectangleShape2D).Size; // was Extents
         sprite = GetNode<Sprite2D>("Sprite2D");
-        Team = GetNode<Team>("Team");
         captureTimer = GetNode<Timer>("CaptureTimer");
         captureProgressBar = GetNode<ProgressBar>("ProgressBar");
         progressNumbers = GetNode<ProgressBar>("ProgressNumbers");
@@ -42,7 +40,7 @@ public partial class CapturableBase : Area2D
     }
     public void CanBeCaptured()
     {
-        int majorityTeam = GetMajority();
+        Team majorityTeam = GetMajority();
         if (majorityTeam == teamNeutral)
         {
             teamToCapture = teamNeutral;
@@ -63,19 +61,19 @@ public partial class CapturableBase : Area2D
         }
 
     }
-    private int GetMajority()
+    private Team GetMajority()
     {
         if (enemyCount == playerCount)
         {
-            return (int)Team.TeamName.NEUTRAL;
+            return Team.NEUTRAL;
         }
         else if (enemyCount > playerCount)
         {
-            return (int)Team.TeamName.ENEMY;
+            return Team.ENEMY;
         }
         else
         {
-            return (int)Team.TeamName.PLAYER;
+            return Team.PLAYER;
         }
     }
     public void SetTeam(int newTeam)

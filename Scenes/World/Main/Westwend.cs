@@ -54,8 +54,8 @@ public partial class Westwend : Node2D
         Respawn[] allyRespawnPoints = GetNode<Node2D>("AllyRespawnPoints").GetChildren().OfType<Respawn>().ToArray();
         Respawn[] enemyRespawnPoints = GetNode<Node2D>("EnemyRespawnPoints").GetChildren().OfType<Respawn>().ToArray();
 
-        allyMapAI.Initialize(bases, allyRespawnPoints, pathfinding);
-        enemyMapAI.Initialize(bases, enemyRespawnPoints, pathfinding);
+        allyMapAI.Initialize(bases, allyRespawnPoints);
+        enemyMapAI.Initialize(bases, enemyRespawnPoints);
 
         capturableBaseManager.Connect("PlayerCapturedAllBases", new Callable(this, "HandlePlayerVictory"));
         capturableBaseManager.Connect("PlayerLostAllBases", new Callable(this, "HandlePlayerDefeat"));

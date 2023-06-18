@@ -28,7 +28,7 @@ public partial class AssaultMapAI : MapAI
 		warHorn = GetNode<AudioStreamPlayer>("WarHorn");
 		random = new Random();
 	}
-	public override void Initialize(CapturableBase[] capturableBases, Respawn[] respawnPoints, Pathfinding pathfinding)
+	public override void Initialize(CapturableBase[] capturableBases, Respawn[] respawnPoints)
 	{
 		if (capturableBases.Length == 0 || respawnPoints.Length == 0)
 		{
@@ -36,7 +36,6 @@ public partial class AssaultMapAI : MapAI
 			return;
 		}
 		team.team = teamName;
-		this.pathfinding = pathfinding;
 		this.respawnPoints = respawnPoints;
 		this.capturableBases = capturableBases;
 		foreach (CapturableBase cBase in capturableBases)
@@ -45,7 +44,6 @@ public partial class AssaultMapAI : MapAI
 		}
 		foreach (Respawn respawn in respawnPoints)
 		{
-			respawn.Initialize(pathfinding);
 			respawn.Connect("OutOfTroops", new Callable(this, "HandleOutOfTroops"));
 		}
 		infantryRespawns = respawnPoints.OfType<InfantryRespawn>().ToArray();

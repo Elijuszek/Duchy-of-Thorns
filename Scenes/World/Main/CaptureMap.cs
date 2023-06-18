@@ -13,7 +13,7 @@ public partial class CaptureMap : Map
     {
         base._Ready();
         pathfinding = GetNode<Pathfinding>("PathFinding");
-        pathfinding.CreateNavigationMap(ground);
+        pathfinding.CreateNavigationMap(tileMap);
         capturableBaseManager = GetNode<CapturableBaseManager>("CapturableBasesManager");
         enemyMapAI = GetNode<MapAI>("EnemyMapAI");
         allyMapAI = GetNode<MapAI>("AllyMapAI");
@@ -22,8 +22,8 @@ public partial class CaptureMap : Map
         Respawn[] allyRespawnPoints = GetNode<Node2D>("AllyRespawnPoints").GetChildren().OfType<Respawn>().ToArray();
         Respawn[] enemyRespawnPoints = GetNode<Node2D>("EnemyRespawnPoints").GetChildren().OfType<Respawn>().ToArray();
 
-        allyMapAI.Initialize(bases, allyRespawnPoints, pathfinding);
-        enemyMapAI.Initialize(bases, enemyRespawnPoints, pathfinding);
+        allyMapAI.Initialize(bases, allyRespawnPoints);
+        enemyMapAI.Initialize(bases, enemyRespawnPoints);
 
         capturableBaseManager.Connect("PlayerCapturedAllBases", new Callable(this, "HandlePlayerVictory"));
         capturableBaseManager.Connect("PlayerLostAllBases", new Callable(this, "HandlePlayerDefeat"));

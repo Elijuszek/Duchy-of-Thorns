@@ -14,7 +14,7 @@ public partial class Map : Node2D
 	protected Marker2D playerSpawn;
 	protected Camera2D camera;
 	protected GUI gui;
-	protected TileMap ground;
+	protected TileMap tileMap;
 	protected LootManager lootManager;
 	protected AudioStreamPlayer backgroundMusic;
 	protected Player player;
@@ -22,10 +22,10 @@ public partial class Map : Node2D
 	public override void _Ready()
 	{
 		base._Ready();
-		gameOverScene = (PackedScene)ResourceLoader.Load("res://Scenes/UI/GUI/GameOverScreen.tscn");
-		playerScene = (PackedScene)ResourceLoader.Load("res://Scenes/Actors/Characters/Player/Player.tscn");
-		pauseMenuScene = (PackedScene)ResourceLoader.Load("res://Scenes/UI/GUI/PauseScreen.tscn");
-		deathScreenScene = (PackedScene)ResourceLoader.Load("res://Scenes/UI/GUI/DeathScreen.tscn");
+		gameOverScene = ResourceLoader.Load<PackedScene>("res://Scenes/UI/GUI/GameOverScreen.tscn");
+		playerScene = ResourceLoader.Load<PackedScene>("res://Scenes/Actors/Characters/Player/Player.tscn");
+		pauseMenuScene = ResourceLoader.Load<PackedScene>("res://Scenes/UI/GUI/PauseScreen.tscn");
+		deathScreenScene = ResourceLoader.Load<PackedScene>("res://Scenes/UI/GUI/DeathScreen.tscn");
 
 		lootManager = GetNode<LootManager>("LootManager");
 		projectileManager = GetNode<ProjectileManager>("ProjectileManager");
@@ -33,7 +33,7 @@ public partial class Map : Node2D
 		playerSpawn = GetNode<Marker2D>("PlayerSpawn");
 		camera = GetNode<Camera2D>("Camera2D");
 		gui = GetNode<GUI>("GUI");
-		ground = GetNode<TileMap>("Ground");
+		tileMap = GetNode<TileMap>("TileMap");
 		backgroundMusic = GetNode<AudioStreamPlayer>("BackgroundMusic");
 
 		globals.Connect("ArrowFired", new Callable(projectileManager, "HandleArrowSpawned"));
@@ -105,8 +105,8 @@ public partial class Map : Node2D
 
 	protected void SetCameraLimits()
 	{
-		Rect2 mapLimits = ground.GetUsedRect();
-		Vector2 mapCellSize = ground.TileSet.TileSize;
+		Rect2 mapLimits = tileMap.GetUsedRect();
+		Vector2 mapCellSize = tileMap.TileSet.TileSize;
 		camera.LimitLeft = (int)(mapLimits.Position.X * mapCellSize.X);
 		camera.LimitRight = (int)(mapLimits.End.X * mapCellSize.X);
 		camera.LimitTop = (int)(mapLimits.Position.Y * mapCellSize.Y);

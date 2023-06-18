@@ -8,6 +8,8 @@ public partial class Actor : CharacterBody2D
 	//public Vector2 Velocity { get; set; } = Vector2.Zero; GODOT4
 	public Stats Stats { get; set; }
 	protected Team team;
+	public Vector2 Direction { get; set; }
+
 	protected CollisionShape2D collisionShape;
 	protected PackedScene bloodScene;
 	private Vector2 knockback = Vector2.Zero;
@@ -17,13 +19,7 @@ public partial class Actor : CharacterBody2D
 		Stats = GetNode<Stats>("Stats");
 		team = GetNode<Team>("Team");
 		collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
-		bloodScene = (PackedScene)ResourceLoader.Load<PackedScene>("res://Material/Particles/Impact/Blood.tscn");
-	}
-	public override void _PhysicsProcess(double delta)
-	{
-		knockback = knockback.MoveToward(Vector2.Zero, Convert.ToSingle(delta + 10));
-		Velocity += knockback;
-		MoveAndSlide();
+		bloodScene = ResourceLoader.Load<PackedScene>("res://Material/Particles/Impact/Blood.tscn");
 	}
 	public virtual void HandleHit(float baseDamage, Vector2 impactPosition) => GD.PrintErr("Calling HandleHit from Actor class");
     public virtual void Die() => GD.PrintErr("Calling Die from Actor class");
@@ -33,7 +29,7 @@ public partial class Actor : CharacterBody2D
 		float strenght = Mathf.Clamp(amount, 5f, 20000f);
 		knockback = direction * strenght;
 	}
-	public int GetTeam() => (int)team.team;
+	public Team.TeamName GetTeam() => team.team;
     public bool HasReachedPosition(Vector2 location) => GlobalPosition.DistanceTo(location) < 50;
     public Vector2 VelocityToward(Vector2 location) => GlobalPosition.DirectionTo(location) * Stats.Speed;
     public void RotateToward(Vector2 location)

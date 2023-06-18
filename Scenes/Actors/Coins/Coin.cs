@@ -9,7 +9,7 @@ public partial class Coin : CharacterBody2D, IPoolable
     [Signal] public delegate void CoinRemovedEventHandler(Coin coin);
     [Export] public int Gold { get; set; } = 0;
     private Vector2 movementDirection = Vector2.Zero;
-    //fprivate Player target;
+    //fprivate Player enemy;
     private Area2D takeArea;
     private Area2D slideArea;
     private Random rand;

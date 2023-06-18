@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://d1icwp77t3ic"]
+[gd_scene load_steps=33 format=3 uid="uid://d1icwp77t3ic"]
 
 [ext_resource type="PackedScene" uid="uid://b6uovxtqgv7wt" path="res://Scenes/Actors/Troops/Infantry.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://dgtvfgifyyroe" path="res://Scenes/Weapons/Swords/GoldenSword.tscn" id="2"]
@@ -28,7 +28,11 @@
 [ext_resource type="Texture2D" uid="uid://bv6pqq7q31cun" path="res://Sprites/Enemy/Footman/Walking/walking-7.png" id="26"]
 [ext_resource type="Texture2D" uid="uid://sejnuxfl7lv6" path="res://Sprites/Enemy/Footman/Walking/walking-8.png" id="27"]
 
-[sub_resource type="Animation" id="1"]
+[sub_resource type="CapsuleShape2D" id="1"]
+radius = 5.0
+height = 22.0
+
+[sub_resource type="Animation" id="Animation_gi45s"]
 resource_name = "Attack"
 length = 0.5
 step = 0.01
@@ -79,7 +83,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0i64o"]
 _data = {
-"Attack": SubResource("1"),
+"Attack": SubResource("Animation_gi45s"),
 "Idle": SubResource("2"),
 "Walking": SubResource("3")
 }
@@ -95,8 +99,10 @@ damage = 50.0
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("10")
 
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("1")
+
 [node name="Stats" parent="." index="3"]
-Speed = 30.0
 Gold = 50
 
 [node name="Team" parent="." index="4"]
@@ -105,9 +111,6 @@ team = 2
 [node name="AttackTimer" parent="." index="5"]
 wait_time = 0.5
 one_shot = true
-
-[node name="MeleeAI" parent="." index="6"]
-visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
 libraries = {

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ies6baf7cj1l"]
 
-[ext_resource type="Texture2D" uid="uid://d1oxbwdj11css" path="res://Sprites/World/default_base.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://d1oxbwdj11css" path="res://Sprites/World/Misc/default_base.png" id="1"]
 [ext_resource type="PackedScene" uid="uid://bgu7htgp0m160" path="res://Scenes/Actors/Characters/Team.tscn" id="2"]
 [ext_resource type="Script" path="res://Scenes/World/Capture/CapturableBase.cs" id="3"]
 

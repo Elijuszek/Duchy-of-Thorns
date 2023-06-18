@@ -26,7 +26,7 @@ public partial class WeaponManager : Node2D
 		currentWeapon.Show();
 		aiming = GetNode<Aiming>("Aiming");
 	}
-	public void Initialize(int team)
+	public void Initialize(Team.TeamName team)
 	{
 		foreach (Weapon weapon in weapons)
 		{

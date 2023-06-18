@@ -1,3 +1,5 @@
+using DuchyofThorns.Scenes.Globals;
+
 namespace DuchyOfThorns;
 
 /// <summary>
@@ -11,7 +13,7 @@ public partial class MapAI : Node2D
 		LAST
 	}
 	[Export] private BaseCaptureOrder baseCaptureOrder;
-	[Export] protected Team.TeamName teamName = Team.TeamName.NEUTRAL;
+	[Export] protected Team team = Team.NEUTRAL;
 
 	protected CapturableBase targetBase = null;
 	protected CapturableBase[] capturableBases;
@@ -19,27 +21,18 @@ public partial class MapAI : Node2D
 	protected int NextSpawn = 0;
 	protected Pathfinding pathfinding;
 
-	protected Team team;
-
-	public override void _Ready() => team = GetNode<Team>("Team");
-    public virtual void Initialize(CapturableBase[] capturableBases, Respawn[] respawnPoints, Pathfinding pathfinding)
+    public virtual void Initialize(CapturableBase[] capturableBases, Respawn[] respawnPoints)
 	{
 		if (capturableBases.Length == 0 || respawnPoints.Length == 0)
 		{
 			GD.PushError("MAP RangedAI IS NOT PROPERLY INITIALIZED!");
 			return;
 		}
-		team.team = teamName;
-		this.pathfinding = pathfinding;
 		this.respawnPoints = respawnPoints;
 		this.capturableBases = capturableBases;
 		foreach (CapturableBase cBase in capturableBases)
 		{
 			cBase.Connect("BaseCaptured", new Callable(this, "HandleBaseCaptured"));
-		}
-		foreach (Respawn respawn in respawnPoints)
-		{
-			respawn.Initialize(pathfinding);
 		}
 		CheckForNextCapturableBases();
 		foreach (Respawn respawn in respawnPoints)
@@ -65,7 +58,7 @@ public partial class MapAI : Node2D
 			for (int i = listOfBases - 1; i > 0; i--)
 			{
 				CapturableBase cBase = capturableBases[i];
-				if (team.team != cBase.Team.team)
+				if ( != cBase.team)
 				{
 					return cBase;
 				}
@@ -88,7 +81,7 @@ public partial class MapAI : Node2D
 	{
 		foreach (Respawn respawn in respawnPoints)
 		{
-			respawn.SetCapturableBase(cBase, cBase.GetRandomPositionWithinRadius());
+			respawn.SetCapturableBase(cBase.GetRandomPositionWithinRadius());
 		}
 	}
 }

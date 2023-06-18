@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://b6qiuybjj7b2b"]
+[gd_scene load_steps=100 format=3 uid="uid://b6qiuybjj7b2b"]
 
 [ext_resource type="Texture2D" uid="uid://qid2e2hm8wd8" path="res://Sprites/Character/BowReloadNew/BowReload-1.png" id="1"]
 [ext_resource type="PackedScene" uid="uid://d0o4kcg7hf4j" path="res://Scenes/Actors/Characters/Actor.tscn" id="2"]
@@ -91,6 +91,10 @@
 [ext_resource type="Texture2D" uid="uid://cfg60emjxes42" path="res://Sprites/Character/SpearAttack/Spear-13.png" id="90"]
 [ext_resource type="Texture2D" uid="uid://q8uamgtjv000" path="res://Sprites/Character/SpearAttack/Spear-15.png" id="91"]
 [ext_resource type="Texture2D" uid="uid://bb0hpqbmguxgd" path="res://Sprites/Character/SpearAttack/Spear-24.png" id="92"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7lx2k"]
+radius = 6.0
+height = 24.0
 
 [sub_resource type="Animation" id="8"]
 length = 0.001
@@ -228,6 +232,9 @@ reloadDuration = 1.0
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("9")
 
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CapsuleShape2D_7lx2k")
+
 [node name="Stats" parent="." index="3"]
 Speed = 150.0
 
@@ -248,3 +255,5 @@ stream = ExtResource("39")
 libraries = {
 "": SubResource("AnimationLibrary_f22p5")
 }
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." index="9"]

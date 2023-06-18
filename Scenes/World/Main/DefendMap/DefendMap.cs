@@ -7,7 +7,6 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class DefendMap : Map
 {
-    private Pathfinding pathfinding;
     private AssaultMapAI enemyMapAI;
     private MapAI allyMapAI;
     private CapturableBaseManager capturableBaseManager;
@@ -17,8 +16,6 @@ public partial class DefendMap : Map
     {
         base._Ready();
         assaultOverScreen = (PackedScene)ResourceLoader.Load("res://Scenes/UI/GUI/AssaultOverScreen.tscn");
-        pathfinding = GetNode<Pathfinding>("PathFinding");
-        pathfinding.CreateNavigationMap(ground);
         capturableBaseManager = GetNode<CapturableBaseManager>("CapturableBasesManager");
         allyMapAI = GetNode<MapAI>("AllyMapAI");
         enemyMapAI = GetNode<AssaultMapAI>("AssaultMapAI");
@@ -27,16 +24,15 @@ public partial class DefendMap : Map
         Respawn[] allyRespawnPoints = GetNode<Node2D>("AllyRespawnPoints").GetChildren().OfType<Respawn>().ToArray();
         Respawn[] enemyRespawnPoints = GetNode<Node2D>("EnemyRespawnPoints").GetChildren().OfType<Respawn>().ToArray();
 
-        allyMapAI.Initialize(bases, allyRespawnPoints, pathfinding);
-        enemyMapAI.Initialize(bases, enemyRespawnPoints, pathfinding);
-
-
         // TODO Signal is still emitted
         //capturableBaseManager.Connect("PlayerCapturedAllBases", new Callable(this, "HandlePlayerVictory"));
 
         enemyMapAI.Connect("PlayerVictory", new Callable(this, "HandlePlayerVictory"));
         capturableBaseManager.Connect("PlayerLostAllBases", new Callable(this, "HandlePlayerDefeat"));
         capturableBaseManager.SetTeam(Team.TeamName.PLAYER);
+
+        allyMapAI.Initialize(bases, allyRespawnPoints);
+        enemyMapAI.Initialize(bases, enemyRespawnPoints);
 
         gui.Connect("NewWaveStarted", new Callable(this, "NewWave"));
         gui.ToggleNewWaveButton(true);

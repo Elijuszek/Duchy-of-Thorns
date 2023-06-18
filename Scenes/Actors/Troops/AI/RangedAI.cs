@@ -19,7 +19,7 @@ public partial class RangedAI : Node2D
     protected Timer patrolTimer;
     protected Line2D pathLine;
     protected Area2D detectionZone;
-    public int CurentState { get; set; }
+    public State CurentState { get; set; }
     private Actor actor = null;
     private CharacterBody2D target = null;
     private Weapon weapon = null;
@@ -81,7 +81,7 @@ public partial class RangedAI : Node2D
                     }
                 }
                 break;
-            case (int)State.ENGAGE:
+            case State.ENGAGE:
                 if (target != null && weapon != null)
                 {
                     Velocity = Vector2.Zero;
@@ -93,7 +93,7 @@ public partial class RangedAI : Node2D
                     }
                 }
                 break;
-            case (int)State.ADVANCE:
+            case State.ADVANCE:
                 CheckDetectionZone();
                 Vector2[] path2 = pathfinding.GetNewPath(GlobalPosition, NextBase);
                 if (path2.Length > 1)
@@ -120,19 +120,19 @@ public partial class RangedAI : Node2D
                 break;
         }
     }
-    public void Initialize(CharacterBody2D actor, Weapon weapon, int team)
+    public void Initialize(CharacterBody2D actor, Weapon weapon, Team.TeamName team)
     {
         this.actor = actor as Actor;
         this.team = team;
         this.weapon = weapon;
     }
-    public void SetState(int newState)
+    public void SetState(State newState)
     {
         if (newState == CurentState)
         {
             return;
         }
-        if (newState == (int)State.PATROL)
+        if (newState == State.PATROL)
         {
             Origin = GlobalPosition;
             Velocity = Vector2.Zero; // not walking
@@ -140,11 +140,11 @@ public partial class RangedAI : Node2D
             patrolTimer.Start();
 
         }
-        else if (newState == (int)State.ADVANCE)
+        else if (newState == State.ADVANCE)
         {
             if (actor.HasReachedPosition(NextBase))
             {
-                SetState((int)State.PATROL);
+                SetState(State.PATROL);
                 return;
             }
         }
@@ -187,9 +187,9 @@ public partial class RangedAI : Node2D
     }
     private void DetectionZoneBodyEntered(Node body)
     {
-        if (body is Actor actorBody && actorBody.GetTeam() != team && CurentState != (int)State.ENGAGE)
+        if (body is Actor actorBody && actorBody.GetTeam() != team && CurentState != State.ENGAGE)
         {
-            SetState((int)State.ENGAGE);
+            SetState(State.ENGAGE);
             target = actorBody;
         }
     }
@@ -197,7 +197,7 @@ public partial class RangedAI : Node2D
     {
         if (body == target && target != null && !IsQueuedForDeletion())
         {
-            SetState((int)State.ADVANCE);
+            SetState(State.ADVANCE);
             target = null;
         }
     }

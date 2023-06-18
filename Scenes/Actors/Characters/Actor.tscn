@@ -1,15 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0o4kcg7hf4j"]
+[gd_scene load_steps=4 format=3 uid="uid://d0o4kcg7hf4j"]
 
 [ext_resource type="PackedScene" uid="uid://h3nc68d5o1ic" path="res://Scenes/Actors/Characters/Stats.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://bgu7htgp0m160" path="res://Scenes/Actors/Characters/Team.tscn" id="2"]
 [ext_resource type="Script" path="res://Scenes/Actors/Characters/Actor.cs" id="3"]
 
-[sub_resource type="CapsuleShape2D" id="1"]
-radius = 5.0
-height = 22.0
-
 [node name="Actor" type="CharacterBody2D" groups=["obstacles"]]
-z_index = 1
+z_index = 2
 collision_layer = 0
 collision_mask = 0
 platform_on_leave = 2
@@ -19,7 +15,6 @@ script = ExtResource("3")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("1")
 
 [node name="Stats" parent="." instance=ExtResource("1")]
 Speed = 100.0

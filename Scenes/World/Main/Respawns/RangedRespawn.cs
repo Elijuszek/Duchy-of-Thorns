@@ -6,12 +6,11 @@ namespace DuchyOfThorns;
 public partial class RangedRespawn : Respawn
 {
     Ranged aliveUnit;
-    CapturableBase nextBase;
     Vector2 nextBaseCord = Vector2.Zero;
     public override void _Ready()
     {
         base._Ready();
-        nextBaseCord = this.GlobalPosition;
+        nextBaseCord = GlobalPosition;
     }
     public override void SpawnUnit()
     {
@@ -19,12 +18,10 @@ public partial class RangedRespawn : Respawn
         {
             aliveUnit = (Ranged)Unit.Instantiate();
             AddChild(aliveUnit);
-            aliveUnit.Ai.pathfinding = this.pathfinding;
             aliveUnit.Connect("Died", new Callable(this, "HandleUnitDeath"));
-            aliveUnit.Ai.Origin = this.GlobalPosition;
-            aliveUnit.Ai.NextBaseObject = nextBase;
+            aliveUnit.Ai.Origin = GlobalPosition;
             aliveUnit.Ai.NextBase = nextBaseCord;
-            aliveUnit.Ai.SetState((int)(RangedAI.State.ADVANCE));
+            aliveUnit.Ai.SetState(RangedAI.State.ADVANCE);
 
             RespawnCount--;
         }
@@ -34,17 +31,15 @@ public partial class RangedRespawn : Respawn
             EmitSignal("OutOfTroops");
         }
     }
-    public override void SetCapturableBase(CapturableBase nextBase, Vector2 nextBaseCord)
+    public override void SetCapturableBase(Vector2 nextBaseCord)
     {
-        this.nextBase = nextBase;
         this.nextBaseCord = nextBaseCord;
         if (aliveUnit is null)
         {
             return;
         }
-        aliveUnit.Ai.NextBaseObject = nextBase;
         aliveUnit.Ai.NextBase = nextBaseCord;
-        aliveUnit.Ai.SetState((int)RangedAI.State.ADVANCE);
+        aliveUnit.Ai.SetState(RangedAI.State.ADVANCE);
     }
     public override void Clear()
     {

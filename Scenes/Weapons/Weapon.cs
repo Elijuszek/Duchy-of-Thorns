@@ -10,7 +10,7 @@ public partial class Weapon : Node2D
     protected Timer attackCooldown;
     protected AudioStreamPlayer2D deliverSound;
     protected AudioStreamPlayer2D attackSound;
-    protected int team = -1;
+    protected Team.TeamName team;
     public virtual bool CanAttack()
     {
         GD.PrintErr("Weapon CanAttack is not possible!");
@@ -22,6 +22,6 @@ public partial class Weapon : Node2D
         deliverSound = GetNode<AudioStreamPlayer2D>("DeliverSound");
         attackSound = GetNode<AudioStreamPlayer2D>("AttackSound");
     }
-    public void Initialize(int team) => this.team = team;
+    public void Initialize(Team.TeamName team) => this.team = team;
     public void StartCooldown() => attackCooldown.Start();
 }

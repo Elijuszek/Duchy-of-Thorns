@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://br3icgi2vr2p3"]
 
-[ext_resource type="Texture2D" uid="uid://do5smfsag671g" path="res://Sprites/Decorations/Targets.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://do5smfsag671g" path="res://Sprites/World/Decorations/Targets.png" id="1"]
 
 [sub_resource type="OccluderPolygon2D" id="1"]
 polygon = PackedVector2Array(-16.25, -47.875, -0.3125, -49.375, 16.0938, -48.25, 40.3125, -26.375, 40.3125, 1.75, 21.0376, 21.9569, 36.2631, 46.4846, 33.7603, 48.6537, 17.0748, 22.7912, 1.22355, 24.6266, 0.806417, 31.134, -1.0707, 30.6334, -1.27927, 24.4598, -17.1305, 21.9569, -32.9817, 48.1532, -36.9445, 46.4846, -20.259, 19.2873, -39.6559, 1.60064, -41.7416, -20.7579, -29.2275, -39.4457)
