@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://Scenes/Actors/Troops/Infantry.cs" id="2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_evh2b"]
-radius = 20.0
+radius = 278.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pre5p"]
-radius = 278.0
+radius = 20.0
 
 [node name="Infantry" instance=ExtResource("1")]
 collision_mask = 95
@@ -20,8 +20,10 @@ wait_time = 2.0
 one_shot = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="5"]
+path_desired_distance = 24.0
+target_desired_distance = 24.0
 avoidance_enabled = true
-radius = 24.0
+radius = 12.0
 debug_enabled = true
 
 [node name="DetectionZone" type="Area2D" parent="." index="6"]

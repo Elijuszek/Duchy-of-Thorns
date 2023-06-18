@@ -16,7 +16,7 @@ public partial class CavalryRespawn : Respawn
             //rangedUnit.Connect("Died",new Callable(this,"HandleUnitDeath"));
             //rangedUnit.GlobalPosition = this.GlobalPosition;
             //rangedUnit.Ai.Origin = this.GlobalPosition;
-            //rangedUnit.Ai.NextBase = this.GlobalPosition;
+            //rangedUnit.Ai.AdvancePosition = this.GlobalPosition;
             //rangedUnit.Ai.SetState((int)(RangedAI.State.PATROL));
         }
         else

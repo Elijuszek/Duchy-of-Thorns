@@ -7,9 +7,8 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class Actor : CharacterBody2D
 {
-	//public Vector2 Velocity { get; set; } = Vector2.Zero; GODOT4
-	public Stats Stats { get; set; }
-    public Team Team { get; set; }
+	[Export] public Team Team { get; set; } = Team.NEUTRAL;
+    public Stats Stats { get; set; }
     public Vector2 Direction { get; set; }
 
 	protected CollisionShape2D collisionShape;
@@ -46,5 +45,17 @@ public partial class Actor : CharacterBody2D
 		}
 		Rotation = r;
 	}
-	public void RotateTowardLerp(Vector2 location) => Rotation = Mathf.LerpAngle(Rotation, GlobalPosition.DirectionTo(location).Angle(), 0.1f);
+	public void RotateToward(float angle)
+	{
+        float r = Mathf.LerpAngle(Rotation, angle, 0.1f);
+        if (r < -Math.PI)
+		{
+            r += (float)Math.PI * 2;
+        }
+        else if (r > Math.PI)
+		{
+            r -= (float)Math.PI * 2;
+        }
+        Rotation = r;
+    }
 }

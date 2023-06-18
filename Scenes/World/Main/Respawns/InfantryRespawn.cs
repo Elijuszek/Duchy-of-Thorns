@@ -21,7 +21,7 @@ public partial class InfantryRespawn : Respawn
             aliveUnit = Unit.Instantiate<Infantry>();
             AddChild(aliveUnit);
             aliveUnit.Connect("Died", new Callable(this, "HandleUnitDeath"));
-            aliveUnit.NextBase = nextBaseCord;
+            aliveUnit.AdvancePosition = nextBaseCord;
             aliveUnit.SetState(TroopState.ADVANCE);
             RespawnCount--;
         }
@@ -38,7 +38,7 @@ public partial class InfantryRespawn : Respawn
         {
             return;
         }
-        aliveUnit.NextBase = nextBaseCord;
+        aliveUnit.AdvancePosition = nextBaseCord;
         aliveUnit.SetState(TroopState.ADVANCE);
     }
     public override void Clear()

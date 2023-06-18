@@ -74,6 +74,7 @@ public partial class MapAI : Node2D
 	}
 	protected void AssignNextCapturableBase(CapturableBase cBase)
 	{
+		GD.Print("veikia vikia");
 		foreach (Respawn respawn in respawnPoints)
 		{
 			respawn.SetCapturableBase(cBase.GetRandomPositionWithinRadius());

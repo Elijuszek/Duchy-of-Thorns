@@ -224,6 +224,7 @@ collision_mask = 31
 script = ExtResource("10")
 swingDuration = 0.5
 reloadDuration = 1.0
+Team = 0
 
 [node name="WeaponsManager" parent="." index="0" instance=ExtResource("11")]
 
@@ -252,3 +253,5 @@ stream = ExtResource("39")
 libraries = {
 "": SubResource("AnimationLibrary_f22p5")
 }
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." index="8"]

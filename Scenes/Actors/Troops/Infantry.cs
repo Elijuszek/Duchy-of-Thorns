@@ -8,6 +8,7 @@ namespace DuchyOfThorns;
 public partial class Infantry : Troop
 {
     public TroopState CurrentState { get; set; }
+    public Vector2 AdvancePosition{ get; set; }
 
     protected Timer patrolTimer;
     protected Area2D detectionZone;
@@ -15,10 +16,9 @@ public partial class Infantry : Troop
     protected Timer attackTimer;
     protected NavigationAgent2D navAgent;
 
-    private CharacterBody2D enemy = null;
-    private Weapon weapon = null;
+    private Actor enemy = null;
+    private Melee weapon = null;
 
-    public Vector2 NextBase { get; set; } = Vector2.Zero;
     public override void _Ready()
 	{
 		base._Ready();
@@ -38,6 +38,9 @@ public partial class Infantry : Troop
         base._PhysicsProcess(delta);
         switch (CurrentState)
         {
+            case TroopState.PATROL:
+                return;
+
             case TroopState.ADVANCE:
                 if (navAgent.IsTargetReached())
                 {
@@ -51,14 +54,18 @@ public partial class Infantry : Troop
 
             case TroopState.ENGAGE:
                 navAgent.TargetPosition = enemy.GlobalPosition;
+                Direction = GlobalPosition.DirectionTo(navAgent.GetNextPathPosition());
+                Velocity += Direction * Stats.Speed;
                 navAgent.SetVelocity(Velocity);
                 break;
 
             case TroopState.ATTACK:
-
+                RotateToward(enemy.GlobalPosition);
+                Attack();
                 break;
 
             default:
+                GD.PushError("Invalid TroopState");
                 break;
         }
     }
@@ -71,17 +78,23 @@ public partial class Infantry : Troop
         }
         switch (newState)
         {
-            case TroopState.ENGAGE:
-                patrolTimer.Stop();
-                break;
             case TroopState.ADVANCE:
                 patrolTimer.Stop();
-                navAgent.TargetPosition = NextBase;
+                navAgent.TargetPosition = AdvancePosition;
 
                 break;
             case TroopState.PATROL:
                 Velocity = Vector2.Zero;
                 patrolTimer.Start();
+                break;
+
+            case TroopState.ENGAGE:
+                patrolTimer.Stop();
+                break;
+
+            case TroopState.ATTACK:
+                patrolTimer.Stop();
+                Velocity = Vector2.Zero;
                 break;
         }
         CurrentState = newState;
@@ -90,11 +103,11 @@ public partial class Infantry : Troop
     private void Move(Vector2 velocity)
     {
         Velocity = velocity;
-        Rotation = Mathf.Lerp(Rotation, Velocity.Angle(), 0.1f);
+        RotateToward(velocity.Angle());
         MoveAndSlide();
     }
 
-    private void DetectionZoneBodyEntered(Node2D body)
+    private void DetectionZoneBodyEntered(PhysicsBody2D body)
     {
         if (body is Actor actorBody && actorBody.GetTeam() != Team &&
             CurrentState != TroopState.ENGAGE && CurrentState != TroopState.ATTACK)
@@ -104,7 +117,7 @@ public partial class Infantry : Troop
         }
     }
 
-    private void DetectionZoneBodyExited(Node2D body)
+    private void DetectionZoneBodyExited(PhysicsBody2D body)
     {
         if (body == enemy && enemy != null && !IsQueuedForDeletion())
         {
@@ -113,18 +126,18 @@ public partial class Infantry : Troop
         }
     }
 
-    private void AttackZoneBodyEntered(Node2D body)
+    private void AttackZoneBodyEntered(PhysicsBody2D body)
     {
-        if (body is Actor actorBody && actorBody.GetTeam() != Team) // body == enemy && enemy != null
+        if (body is Actor actorBody && actorBody.GetTeam() != Team)
         {
             enemy = actorBody;
             SetState(TroopState.ATTACK);
         }
     }
 
-    private void AttackZoneBodyExited(Node2D body)
+    private void AttackZoneBodyExited(PhysicsBody2D body)
     {
-        if (enemy != null)
+        if (enemy is not null)
         {
             SetState(TroopState.ENGAGE);
         }
@@ -132,10 +145,10 @@ public partial class Infantry : Troop
 
     private void PatrolTimerTimeout()
     {
-        float patrolRange = 150;
+        float patrolRange = 75f;
         float randomX = Globals.GetRandomFloat(-patrolRange, patrolRange);
         float randomY = Globals.GetRandomFloat(-patrolRange, patrolRange);
-        NextBase = new Vector2(randomX, randomY) + GlobalPosition;
+        AdvancePosition = new Vector2(randomX, randomY) + AdvancePosition;
         SetState(TroopState.ADVANCE);
     }
 

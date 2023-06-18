@@ -91,6 +91,7 @@ _data = {
 [node name="FootmanEnemy" instance=ExtResource("1")]
 collision_layer = 4
 script = ExtResource("3")
+Team = 1
 
 [node name="GoldenSword" parent="." index="0" instance=ExtResource("2")]
 position = Vector2(3, 14)
