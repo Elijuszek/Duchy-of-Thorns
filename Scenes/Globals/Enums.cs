@@ -6,10 +6,16 @@ public enum Team
     NEUTRAL
 }
 
-public enum AIState
+public enum TroopState
 {
     PATROL,
     ENGAGE,
     ADVANCE,
     ATTACK
+}
+
+public enum BaseCaptureOrder
+{
+    FIRST,
+    LAST
 }

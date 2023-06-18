@@ -1,3 +1,5 @@
+using DuchyofThorns.Scenes.Globals;
+
 namespace DuchyOfThorns;
 
 /// <summary>
@@ -20,7 +22,7 @@ public partial class InfantryRespawn : Respawn
             AddChild(aliveUnit);
             aliveUnit.Connect("Died", new Callable(this, "HandleUnitDeath"));
             aliveUnit.Ai.NextBase = nextBaseCord;
-            aliveUnit.Ai.SetState(MeleeAI.State.ADVANCE);
+            aliveUnit.Ai.SetState(TroopState.ADVANCE);
             RespawnCount--;
         }
         else
@@ -37,7 +39,7 @@ public partial class InfantryRespawn : Respawn
             return;
         }
         aliveUnit.Ai.NextBase = nextBaseCord;
-        aliveUnit.Ai.SetState(MeleeAI.State.ADVANCE);
+        aliveUnit.Ai.SetState(TroopState.ADVANCE);
     }
     public override void Clear()
     {

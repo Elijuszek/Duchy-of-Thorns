@@ -44,6 +44,7 @@ position = Vector2(655, 384)
 Team = 0
 
 [node name="AssaultMapAI" parent="." index="11" instance=ExtResource("7_w7fo2")]
+baseCaptureOrder = 1
 team = 1
 
 [node name="AllyRespawnPoints" type="Node2D" parent="." index="12"]

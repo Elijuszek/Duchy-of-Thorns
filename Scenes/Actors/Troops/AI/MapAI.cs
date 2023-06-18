@@ -7,12 +7,7 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class MapAI : Node2D
 {
-	private enum BaseCaptureOrder
-	{
-		FIRST,
-		LAST
-	}
-	[Export] private BaseCaptureOrder baseCaptureOrder;
+	[Export] private BaseCaptureOrder baseCaptureOrder = BaseCaptureOrder.FIRST;
 	[Export] protected Team team = Team.NEUTRAL;
 
 	protected CapturableBase targetBase = null;

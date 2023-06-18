@@ -8,17 +8,10 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class MeleeAI : NavigationAgent2D
 {
-    public enum State
-    {
-        PATROL,
-        ENGAGE,
-        ADVANCE,
-        ATTACK
-    }
     protected Timer patrolTimer;
     protected Area2D detectionZone;
     protected Area2D attackZone;
-    public State CurrentState { get; set; }
+    public TroopState CurrentState { get; set; }
     private CharacterBody2D enemy = null;
     private Infantry parent = null;
     private Weapon weapon = null;
@@ -42,10 +35,10 @@ public partial class MeleeAI : NavigationAgent2D
         base._PhysicsProcess(delta);
         switch (CurrentState)
         {
-            case State.ADVANCE:
+            case TroopState.ADVANCE:
                 if (IsTargetReached())
                 {
-                    SetState(State.PATROL);
+                    SetState(TroopState.PATROL);
                     return;
                 }
                 parent.Direction = parent.GlobalPosition.DirectionTo(GetNextPathPosition());
@@ -53,12 +46,12 @@ public partial class MeleeAI : NavigationAgent2D
                 SetVelocity(parent.Velocity);
                 break;
 
-            case State.ENGAGE:
+            case TroopState.ENGAGE:
                 TargetPosition = enemy.GlobalPosition;
                 SetVelocity(parent.Velocity);
                 break;
 
-            case State.ATTACK:
+            case TroopState.ATTACK:
 
                 break;
 
@@ -74,7 +67,7 @@ public partial class MeleeAI : NavigationAgent2D
         SetNavigationMap(map.GetNavigationMap(0));
     }
 
-    public void SetState(State newState)
+    public void SetState(TroopState newState)
     {
         if (newState == CurrentState)
         {
@@ -82,15 +75,15 @@ public partial class MeleeAI : NavigationAgent2D
         }
         switch (newState)
         {
-            case State.ENGAGE:
+            case TroopState.ENGAGE:
                 patrolTimer.Stop();
                 break;
-            case State.ADVANCE:
+            case TroopState.ADVANCE:
                 patrolTimer.Stop();
                 TargetPosition = NextBase;
 
                 break;
-            case State.PATROL:
+            case TroopState.PATROL:
                 parent.Velocity = Vector2.Zero;
                 patrolTimer.Start();
                 break;
@@ -111,16 +104,16 @@ public partial class MeleeAI : NavigationAgent2D
         float randomX = Globals.GetRandomFloat(-patrolRange, patrolRange);
         float randomY = Globals.GetRandomFloat(-patrolRange, patrolRange);
         NextBase = new Vector2(randomX, randomY) + parent.GlobalPosition;
-        SetState(State.ADVANCE);
+        SetState(TroopState.ADVANCE);
     }
 
     private void DetectionZoneBodyEntered(Node body)
     {
         if (body is Actor actorBody && actorBody.GetTeam() != team &&
-            CurrentState != State.ENGAGE && CurrentState != State.ATTACK)
+            CurrentState != TroopState.ENGAGE && CurrentState != TroopState.ATTACK)
         {
             enemy = actorBody;
-            SetState(State.ENGAGE);
+            SetState(TroopState.ENGAGE);
         }
     }
 
@@ -128,7 +121,7 @@ public partial class MeleeAI : NavigationAgent2D
     {
         if (body == enemy && enemy != null && !IsQueuedForDeletion())
         {
-            SetState(State.ADVANCE);
+            SetState(TroopState.ADVANCE);
             enemy = null;
         }
     }
@@ -138,7 +131,7 @@ public partial class MeleeAI : NavigationAgent2D
         if (body is Actor actorBody && actorBody.GetTeam() != team) // body == enemy && enemy != null
         {
             enemy = actorBody;
-            SetState(State.ATTACK);
+            SetState(TroopState.ATTACK);
         }
     }
 
@@ -146,7 +139,7 @@ public partial class MeleeAI : NavigationAgent2D
     {
         if (enemy != null)
         {
-            SetState(State.ENGAGE);
+            SetState(TroopState.ENGAGE);
         }
     }
 }
