@@ -1,4 +1,4 @@
-[gd_scene load_steps=160 format=3 uid="uid://db02x404q41e0"]
+[gd_scene load_steps=159 format=3 uid="uid://db02x404q41e0"]
 
 [ext_resource type="Script" path="res://Scenes/World/Main/Map.cs" id="1_avmp6"]
 [ext_resource type="Texture2D" uid="uid://c8b6bvbquiyf3" path="res://Sprites/World/Main/Upgrade/!$Big_Trees_green.png" id="2_asycr"]
@@ -20,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://dy7hnhaeyml1u" path="res://Sprites/World/Main/Exterior/characters/!$Big_Trees.png" id="14_1iurx"]
 [ext_resource type="Texture2D" uid="uid://bpakk81xcyifs" path="res://Sprites/World/Main/Exterior/characters/!$Gate_Cathedral1.png" id="15_jvfuq"]
 [ext_resource type="Texture2D" uid="uid://nanrt3fl6x84" path="res://Sprites/World/Main/Exterior/characters/!$Gate_Stone1.png" id="16_toch8"]
-[ext_resource type="PackedScene" uid="uid://dev2ibts6im21" path="res://Scenes/World/Decorations/Fireplace.tscn" id="16_vqcfy"]
 [ext_resource type="Texture2D" uid="uid://bis3lnb2xbtyi" path="res://Sprites/World/Main/Exterior/characters/!$Smith.png" id="17_575tj"]
 [ext_resource type="Texture2D" uid="uid://caqvee5pbm4c0" path="res://Sprites/World/Main/Exterior/characters/!$Waterwheel.png" id="18_id4ji"]
 [ext_resource type="Texture2D" uid="uid://bu613ofuxel6u" path="res://Sprites/World/Main/Exterior/characters/!Decoration.png" id="19_o8s1u"]
@@ -2913,7 +2912,3 @@ libraries = {
 }
 
 [node name="GUI" parent="." instance=ExtResource("8_k7brn")]
-
-[node name="Fireplace" parent="." instance=ExtResource("16_vqcfy")]
-visible = false
-position = Vector2(259, 200)

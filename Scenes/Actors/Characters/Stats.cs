@@ -3,7 +3,7 @@ namespace DuchyOfThorns;
 /// <summary>
 /// Class for basic storing stats of an actor
 /// </summary>
-public partial class Stats : Node2D
+public partial class Stats : Node
 {
     [Export] public float Health { get; set; } = 100;
     [Export] public float MaxHealth { get; set; } = 100;

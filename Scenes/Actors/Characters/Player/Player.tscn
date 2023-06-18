@@ -252,5 +252,3 @@ stream = ExtResource("39")
 libraries = {
 "": SubResource("AnimationLibrary_f22p5")
 }
-
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." index="8"]

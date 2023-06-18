@@ -1,5 +1,4 @@
 using DuchyofThorns.Scenes.Globals;
-using System.Collections.Generic;
 
 namespace DuchyOfThorns;
 
@@ -36,7 +35,7 @@ public partial class MeleeAI : NavigationAgent2D
         switch (CurrentState)
         {
             case TroopState.ADVANCE:
-                if (IsTargetReached())
+                if (IsTargetReached())  
                 {
                     SetState(TroopState.PATROL);
                     return;

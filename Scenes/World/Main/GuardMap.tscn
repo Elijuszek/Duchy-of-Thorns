@@ -17,15 +17,12 @@ layer_1/tile_data = PackedInt32Array(-196608, 327705, 10, -196607, 327705, 10, -
 goldenCount = 10
 silverCount = 10
 
-[node name="Fireplace" parent="." index="8"]
-position = Vector2(335, 244)
-
-[node name="PathFinding" parent="." index="9" instance=ExtResource("3_bnhk5")]
+[node name="PathFinding" parent="." index="8" instance=ExtResource("3_bnhk5")]
 displayDebuggingGrid = true
 
-[node name="AllyRespawnPoints" type="Node2D" parent="." index="10"]
+[node name="AllyRespawnPoints" type="Node2D" parent="." index="9"]
 
-[node name="EnemyRespawnPoints" type="Node2D" parent="." index="11"]
+[node name="EnemyRespawnPoints" type="Node2D" parent="." index="10"]
 
 [node name="InfantryRespawn" parent="EnemyRespawnPoints" index="0" instance=ExtResource("3_fsajd")]
 position = Vector2(510, 502)

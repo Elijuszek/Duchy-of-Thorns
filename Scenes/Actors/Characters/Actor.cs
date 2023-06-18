@@ -9,8 +9,8 @@ public partial class Actor : CharacterBody2D
 {
 	//public Vector2 Velocity { get; set; } = Vector2.Zero; GODOT4
 	public Stats Stats { get; set; }
-	protected Team team;
-	public Vector2 Direction { get; set; }
+    public Team Team { get; set; }
+    public Vector2 Direction { get; set; }
 
 	protected CollisionShape2D collisionShape;
 	protected PackedScene bloodScene;
@@ -30,7 +30,7 @@ public partial class Actor : CharacterBody2D
 		float strenght = Mathf.Clamp(amount, 5f, 20000f);
 		knockback = direction * strenght;
 	}
-	public Team GetTeam() => team;
+	public Team GetTeam() => Team;
     public bool HasReachedPosition(Vector2 location) => GlobalPosition.DistanceTo(location) < 50;
     public Vector2 VelocityToward(Vector2 location) => GlobalPosition.DirectionTo(location) * Stats.Speed;
     public void RotateToward(Vector2 location)

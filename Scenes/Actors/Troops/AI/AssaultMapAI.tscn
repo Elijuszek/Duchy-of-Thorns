@@ -9,9 +9,9 @@
 [node name="AssaultMapAI" instance=ExtResource("1_ax0ye")]
 script = ExtResource("2_fkv12")
 
-[node name="ElapsedWaveTime" type="Timer" parent="." index="1"]
+[node name="ElapsedWaveTime" type="Timer" parent="." index="0"]
 
-[node name="Waves" type="Node" parent="." index="2"]
+[node name="Waves" type="Node" parent="." index="1"]
 
 [node name="Wave1" parent="Waves" index="0" instance=ExtResource("3_fy323")]
 Reward = 500
@@ -37,7 +37,7 @@ rangedCooldown = [5.0, 0.0, 0.0, 0.0, 0.0]
 cavalryCount = [0, 0, 0, 0, 0]
 cavalryCooldown = [0.0, 0.0, 0.0, 0.0, 0.0]
 
-[node name="WarHorn" type="AudioStreamPlayer" parent="." index="3"]
+[node name="WarHorn" type="AudioStreamPlayer" parent="." index="2"]
 volume_db = 5.0
 
 [connection signal="timeout" from="ElapsedWaveTime" to="." method="ElapsedWaveTimeTimeout"]
