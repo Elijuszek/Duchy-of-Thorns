@@ -15,7 +15,7 @@ public partial class DeathScreen : CanvasLayer
     private void LoadGameButtonPressed()
     {
         globals = GetNode<Globals>("/root/Globals");
-        globals.loadingForm = Globals.LoadingForm.Save;
+        globals.loadingForm = LoadingForm.Save;
         globals.LoadGame();
         QueueFree();
     }

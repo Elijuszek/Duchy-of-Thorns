@@ -41,12 +41,12 @@ public partial class Map : Node2D
 
         switch (globals.loadingForm)
         {
-            case Globals.LoadingForm.Load:
+            case LoadingForm.Load:
                 LoadPlayer();
                 break;
-            case Globals.LoadingForm.Save:
+            case LoadingForm.Save:
                 break;
-            case Globals.LoadingForm.New:
+            case LoadingForm.New:
                 SpawnPlayer();
                 break;
         }
@@ -127,7 +127,7 @@ public partial class Map : Node2D
 
     public virtual void Load(Godot.Collections.Dictionary<string, Variant> save)
     {
-        if (globals.loadingForm == Globals.LoadingForm.Save)
+        if (globals.loadingForm == LoadingForm.Save)
         {
             LoadSavedPlayer(new Godot.Collections.Dictionary<string, Variant>((Godot.Collections.Dictionary)save["Player"]));
             player = GetNode<Player>("Player");

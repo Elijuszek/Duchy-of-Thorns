@@ -32,7 +32,7 @@ public partial class AssaultMapAI : MapAI
 	{
 		if (capturableBases.Length == 0 || respawnPoints.Length == 0)
 		{
-			GD.PushError("MAP RangedAI IS NOT PROPERLY INITIALIZED!");
+			GD.PushError("ASSAULT MAPAI IS NOT PROPERLY INITIALIZED!");
 			return;
 		}
 		this.respawnPoints = respawnPoints;

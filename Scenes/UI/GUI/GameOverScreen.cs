@@ -33,7 +33,7 @@ public partial class GameOverScreen : CanvasLayer
     }
     private void LoadGameButtonPressed()
     {
-        globals.loadingForm = Globals.LoadingForm.Save;
+        globals.loadingForm = LoadingForm.Save;
         globals.LoadGame();
         QueueFree();
     }

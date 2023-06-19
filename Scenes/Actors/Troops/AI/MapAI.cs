@@ -3,6 +3,7 @@ using DuchyofThorns.Scenes.Globals;
 namespace DuchyOfThorns;
 
 /// <summary>
+/// TODO: Rework capturableBaseSystem
 /// MapAI class which handles the spawning of units and the capturing of bases
 /// </summary>
 public partial class MapAI : Node2D
@@ -18,9 +19,9 @@ public partial class MapAI : Node2D
 
     public virtual void Initialize(CapturableBase[] capturableBases, Respawn[] respawnPoints)
 	{
-		if (capturableBases.Length == 0 || respawnPoints.Length == 0)
+		if (capturableBases.Length == 0)
 		{
-			GD.PushError("MAP RangedAI IS NOT PROPERLY INITIALIZED!");
+			GD.PushError("MAPAI IS NOT PROPERLY INITIALIZED!");
 			return;
 		}
 		this.respawnPoints = respawnPoints;
@@ -47,15 +48,15 @@ public partial class MapAI : Node2D
 	}
 	protected CapturableBase GetNextCapturableBase()
 	{
-		int listOfBases = capturableBases.Length;
-		if (baseCaptureOrder == BaseCaptureOrder.LAST)
+        int listOfBases = capturableBases.Length;
+        if (baseCaptureOrder == BaseCaptureOrder.LAST)
 		{
-			for (int i = listOfBases - 1; i > 0; i--)
+			for (int i = listOfBases - 1; i >= 0; i--)
 			{
-				CapturableBase cBase = capturableBases[i];
+                CapturableBase cBase = capturableBases[i];
 				if (team != cBase.Team)
 				{
-					return cBase;
+                    return cBase;
 				}
 			}
 		}
@@ -74,7 +75,6 @@ public partial class MapAI : Node2D
 	}
 	protected void AssignNextCapturableBase(CapturableBase cBase)
 	{
-		GD.Print("veikia vikia");
 		foreach (Respawn respawn in respawnPoints)
 		{
 			respawn.SetCapturableBase(cBase.GetRandomPositionWithinRadius());

@@ -19,9 +19,9 @@ Duration = 360.0
 infantryUnits = [ExtResource("4_cvk58"), ExtResource("4_cvk58"), null, null, null]
 infantryCount = [5, 5, 0, 0, 0]
 infantryCooldown = [5.0, 5.0, 0.0, 0.0, 0.0]
-rangedUnits = [null, null, null, null, null]
-rangedCount = [0, 0, 0, 0, 0]
-rangedCooldown = [0.0, 0.0, 0.0, 0.0, 0.0]
+rangedUnits = [ExtResource("5_5gbix"), null, null, null, null]
+rangedCount = [5, 0, 0, 0, 0]
+rangedCooldown = [5.0, 0.0, 0.0, 0.0, 0.0]
 cavalryCount = [0, 0, 0, 0, 0]
 cavalryCooldown = [0.0, 0.0, 0.0, 0.0, 0.0]
 

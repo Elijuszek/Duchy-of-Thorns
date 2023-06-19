@@ -13,7 +13,6 @@ public partial class Archer : Ranged
         base._Ready();
         animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         weapon = GetNode<Bow>("SimpleBow");
-        Ai.Initialize(this, weapon, Team);
         weapon.Initialize(Team);
     }
     public override void _PhysicsProcess(double delta)

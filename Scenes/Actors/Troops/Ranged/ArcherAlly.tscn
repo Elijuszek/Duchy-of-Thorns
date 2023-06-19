@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cc6727jnu0iy1"]
+[gd_scene load_steps=24 format=3 uid="uid://cc6727jnu0iy1"]
 
 [ext_resource type="PackedScene" uid="uid://6q7se4t41stl" path="res://Scenes/Actors/Troops/Ranged.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://bd2xvy6m3wuxh" path="res://Sprites/Allies/BowAlly/Reload/BowReload-1.png" id="2"]
@@ -18,6 +18,10 @@
 [ext_resource type="Script" path="res://Scenes/Actors/Troops/Ranged/Archer.cs" id="17"]
 [ext_resource type="PackedScene" uid="uid://2uke4a33syhq" path="res://Scenes/Weapons/Bows/SimpleBow.tscn" id="18"]
 [ext_resource type="Texture2D" uid="uid://c1m2fl32cc45r" path="res://Sprites/Allies/BowAlly/Reload/BowReload-5.png" id="19"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mpggu"]
+radius = 5.0
+height = 22.0
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Idle"
@@ -87,13 +91,16 @@ damage = 25.0
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("5")
 
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CapsuleShape2D_mpggu")
+
 [node name="Stats" parent="." index="3"]
 Gold = 0
 
 [node name="AttackTimer" parent="." index="4"]
 wait_time = 2.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 libraries = {
 "": SubResource("AnimationLibrary_pq0fu")
 }

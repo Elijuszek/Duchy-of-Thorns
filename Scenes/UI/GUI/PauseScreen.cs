@@ -14,7 +14,7 @@ public partial class PauseScreen : CanvasLayer
     private void LoadGameButtonPressed()
     {
         Globals globals = GetNode<Globals>("/root/Globals");
-        globals.loadingForm = Globals.LoadingForm.Save;
+        globals.loadingForm = LoadingForm.Save;
         globals.LoadGame();
         GetTree().Paused = false;
         QueueFree();

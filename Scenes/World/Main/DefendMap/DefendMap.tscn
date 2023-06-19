@@ -1,14 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmr2iieop7qy0"]
+[gd_scene load_steps=8 format=3 uid="uid://cmr2iieop7qy0"]
 
 [ext_resource type="PackedScene" uid="uid://db02x404q41e0" path="res://Scenes/World/Main/Map.tscn" id="1_cm27o"]
 [ext_resource type="Script" path="res://Scenes/World/Main/DefendMap/DefendMap.cs" id="2_ptjvr"]
 [ext_resource type="PackedScene" uid="uid://cvqmgg65cqpf4" path="res://Scenes/Actors/Troops/AI/MapAI.tscn" id="4_7e281"]
 [ext_resource type="Script" path="res://Scenes/World/Capture/CapturableBaseManager.cs" id="5_efwp3"]
 [ext_resource type="PackedScene" uid="uid://ies6baf7cj1l" path="res://Scenes/World/Capture/CapturableBase.tscn" id="6_bdpx7"]
+[ext_resource type="PackedScene" uid="uid://c7cq21eaaq2n6" path="res://Scenes/World/Main/Respawns/RangedRespawn.tscn" id="7_2dg2m"]
 [ext_resource type="PackedScene" uid="uid://xms6ovg406jw" path="res://Scenes/Actors/Troops/AI/AssaultMapAI.tscn" id="7_w7fo2"]
-[ext_resource type="PackedScene" uid="uid://1m48nyc1s20l" path="res://Scenes/World/Main/Respawns/InfantryRespawn.tscn" id="9_3wbjq"]
-[ext_resource type="PackedScene" uid="uid://d1icwp77t3ic" path="res://Scenes/Actors/Troops/Melee/FootmanEnemy.tscn" id="9_tvyn2"]
-[ext_resource type="PackedScene" uid="uid://bu15300xjj3x2" path="res://Scenes/Actors/Troops/Melee/FootmanAlly.tscn" id="11_lvenl"]
 
 [node name="World" groups=["Persist"] instance=ExtResource("1_cm27o")]
 script = ExtResource("2_ptjvr")
@@ -46,15 +44,9 @@ baseCaptureOrder = 1
 team = 1
 
 [node name="AllyRespawnPoints" type="Node2D" parent="." index="11"]
-position = Vector2(1174, 584)
-
-[node name="InfantryRespawn" parent="AllyRespawnPoints" index="0" instance=ExtResource("9_3wbjq")]
-position = Vector2(52, 48)
-Unit = ExtResource("11_lvenl")
+position = Vector2(1184, 605)
 
 [node name="EnemyRespawnPoints" type="Node2D" parent="." index="12"]
-position = Vector2(396, 128)
+position = Vector2(135, 65)
 
-[node name="InfantryRespawn" parent="EnemyRespawnPoints" index="0" instance=ExtResource("9_3wbjq")]
-position = Vector2(-29, 27)
-Unit = ExtResource("9_tvyn2")
+[node name="RangedRespawn" parent="EnemyRespawnPoints" index="0" instance=ExtResource("7_2dg2m")]

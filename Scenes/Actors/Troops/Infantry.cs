@@ -14,18 +14,20 @@ public partial class Infantry : Troop
     protected Area2D detectionZone;
     protected Area2D attackZone;
     protected Timer attackTimer;
-    protected NavigationAgent2D navAgent;
 
+    private NavigationAgent2D navAgent;
     private Actor enemy = null;
-    private Melee weapon = null;
+    //private Melee weapon = null; Might not be needed
 
     public override void _Ready()
 	{
 		base._Ready();
         patrolTimer = GetNode<Timer>("PatrolTimer");
+        attackTimer = GetNode<Timer>("AttackTimer");
+
         detectionZone = GetNode<Area2D>("DetectionZone");
         attackZone = GetNode<Area2D>("AttackZone");
-        attackTimer = GetNode<Timer>("AttackTimer");
+
         navAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
 
         navAgent.MaxSpeed = Stats.Speed;
@@ -73,19 +75,18 @@ public partial class Infantry : Troop
     public void SetState(TroopState newState)
     {
         if (newState == CurrentState)
-        {
             return;
-        }
+
         switch (newState)
         {
             case TroopState.ADVANCE:
                 patrolTimer.Stop();
                 navAgent.TargetPosition = AdvancePosition;
-
                 break;
+
             case TroopState.PATROL:
-                Velocity = Vector2.Zero;
                 patrolTimer.Start();
+                Velocity = Vector2.Zero;
                 break;
 
             case TroopState.ENGAGE:

@@ -33,7 +33,7 @@ public partial class TitleScreen : Control
     {
         // Click sound
         click.Play();
-        globals.loadingForm = Globals.LoadingForm.New;
+        globals.loadingForm = LoadingForm.New;
 
         // Changing scene
         GetTree().ChangeSceneToFile("res://Scenes/World/Main/DefendMap/DefendMap.tscn");
@@ -41,7 +41,7 @@ public partial class TitleScreen : Control
     public void SavedGamesButtonPressed()
     {
         click.Play();
-        globals.loadingForm = Globals.LoadingForm.Save;
+        globals.loadingForm = LoadingForm.Save;
 
         // Changing scene through globals
         globals.LoadGame();

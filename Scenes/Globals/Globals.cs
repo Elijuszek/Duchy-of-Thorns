@@ -1,7 +1,7 @@
 global using Godot;
 global using System;
 global using System.Linq;
-using DuchyofThorns.Scenes.Globals;
+global using DuchyofThorns.Scenes.Globals;
 
 namespace DuchyOfThorns;
 
@@ -18,12 +18,7 @@ public partial class Globals : Node
 	private string savePath = SaveDir + "save.dat";
 	private PackedScene transitionScene = ResourceLoader.Load<PackedScene>("res://Scenes/UI/Transitions/PixelationTransition.tscn");
 	private PixelationTransition transition;
-	public enum LoadingForm
-	{
-		New,
-		Save,
-		Load
-	}
+
 	public LoadingForm loadingForm { get; set; } = LoadingForm.New;
 	public Godot.Collections.Dictionary<string, Variant> Player { get; set; }
 	public bool SaveGame()

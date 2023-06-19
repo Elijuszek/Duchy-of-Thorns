@@ -19,3 +19,10 @@ public enum BaseCaptureOrder
     FIRST,
     LAST
 }
+
+public enum LoadingForm
+{
+    New,
+    Save,
+    Load
+}
