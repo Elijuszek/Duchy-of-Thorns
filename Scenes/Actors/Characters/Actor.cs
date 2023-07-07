@@ -1,5 +1,3 @@
-using DuchyofThorns.Scenes.Globals;
-
 namespace DuchyOfThorns;
 
 /// <summary>

@@ -1,4 +1,4 @@
-﻿namespace DuchyofThorns.Scenes.Globals;
+﻿namespace DuchyOfThorns;
 public enum Team
 {
     PLAYER,

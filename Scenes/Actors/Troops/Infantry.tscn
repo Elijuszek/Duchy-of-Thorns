@@ -13,10 +13,12 @@ radius = 20.0
 collision_mask = 95
 script = ExtResource("2")
 
-[node name="AttackTimer" type="Timer" parent="." index="3"]
-
-[node name="PatrolTimer" type="Timer" parent="." index="4"]
+[node name="PatrolTimer" type="Timer" parent="." index="3"]
 wait_time = 2.0
+one_shot = true
+
+[node name="AttackTimer" type="Timer" parent="." index="4"]
+wait_time = 0.5
 one_shot = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="5"]
@@ -40,8 +42,8 @@ collision_mask = 7
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" index="0"]
 shape = SubResource("CircleShape2D_pre5p")
 
-[connection signal="timeout" from="AttackTimer" to="." method="AttackTimerTimeout"]
 [connection signal="timeout" from="PatrolTimer" to="." method="PatrolTimerTimeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="AttackTimerTimeout"]
 [connection signal="body_entered" from="DetectionZone" to="." method="DetectionZoneBodyEntered"]
 [connection signal="body_exited" from="DetectionZone" to="." method="DetectionZoneBodyExited"]
 [connection signal="body_entered" from="AttackZone" to="." method="AttackZoneBodyEntered"]

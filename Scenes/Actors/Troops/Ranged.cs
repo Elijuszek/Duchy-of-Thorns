@@ -39,7 +39,6 @@ public partial class Ranged : Troop
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
-        GD.Print(CurrentState);
         switch (CurrentState)
         {
             case TroopState.PATROL:
@@ -52,8 +51,8 @@ public partial class Ranged : Troop
                     return;
                 }
                 Direction = GlobalPosition.DirectionTo(navAgent.GetNextPathPosition());
-                Velocity += Direction * Stats.Speed;
-                navAgent.SetVelocity(Velocity);
+                navAgent.Velocity = Velocity + Direction * Stats.Speed; // Emmits signal velocity_computed
+                RotateToward(Velocity.Angle());
                 break;
 
             case TroopState.ATTACK:
@@ -77,6 +76,7 @@ public partial class Ranged : Troop
         {
             return;
         }
+        GD.Print(newState);
         switch (newState)
         {
             case TroopState.ADVANCE:
@@ -86,7 +86,7 @@ public partial class Ranged : Troop
 
             case TroopState.PATROL:
                 patrolTimer.Start();
-                Velocity = Vector2.Zero;
+                navAgent.Velocity = Vector2.Zero;
                 break;
 
             case TroopState.ENGAGE:
@@ -95,7 +95,7 @@ public partial class Ranged : Troop
 
             case TroopState.ATTACK:
                 attackTimer.Start();
-                Velocity = Vector2.Zero;
+                navAgent.Velocity = Vector2.Zero;
                 break;
         }
         CurrentState = newState;
@@ -104,7 +104,6 @@ public partial class Ranged : Troop
     private void Move(Vector2 velocity)
     {
         Velocity = velocity;
-        RotateToward(velocity.Angle());
         MoveAndSlide();
     }
 

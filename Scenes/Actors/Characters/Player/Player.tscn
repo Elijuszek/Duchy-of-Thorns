@@ -255,3 +255,4 @@ libraries = {
 }
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." index="8"]
+radius = 12.0

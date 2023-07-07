@@ -1,7 +1,6 @@
 global using Godot;
 global using System;
 global using System.Linq;
-global using DuchyofThorns.Scenes.Globals;
 
 namespace DuchyOfThorns;
 

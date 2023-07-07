@@ -1,4 +1,3 @@
-using DuchyofThorns.Scenes.Globals;
 using Godot.Collections;
 
 namespace DuchyOfThorns;

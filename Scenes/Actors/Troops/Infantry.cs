@@ -1,5 +1,3 @@
-using DuchyofThorns.Scenes.Globals;
-
 namespace DuchyOfThorns;
 
 /// <summary>
@@ -8,7 +6,7 @@ namespace DuchyOfThorns;
 public partial class Infantry : Troop
 {
     public TroopState CurrentState { get; set; }
-    public Vector2 AdvancePosition{ get; set; }
+    public Vector2 AdvancePosition { get; set; }
 
     protected Timer patrolTimer;
     protected Area2D detectionZone;
@@ -17,11 +15,10 @@ public partial class Infantry : Troop
 
     private NavigationAgent2D navAgent;
     private Actor enemy = null;
-    //private Melee weapon = null; Might not be needed
 
     public override void _Ready()
-	{
-		base._Ready();
+    {
+        base._Ready();
         patrolTimer = GetNode<Timer>("PatrolTimer");
         attackTimer = GetNode<Timer>("AttackTimer");
 
@@ -33,6 +30,7 @@ public partial class Infantry : Troop
         navAgent.MaxSpeed = Stats.Speed;
         navAgent.SetNavigationMap(GetNode<TileMap>("/root/World/TileMap").GetNavigationMap(0));
         navAgent.TargetPosition = GlobalPosition;
+
         navAgent.Connect("velocity_computed", new Callable(this, "Move"));
     }
     public override void _PhysicsProcess(double delta)
@@ -50,15 +48,15 @@ public partial class Infantry : Troop
                     return;
                 }
                 Direction = GlobalPosition.DirectionTo(navAgent.GetNextPathPosition());
-                Velocity += Direction * Stats.Speed;
-                navAgent.SetVelocity(Velocity);
+                navAgent.Velocity = Velocity + Direction * Stats.Speed;
+                RotateToward(Velocity.Angle());
                 break;
 
             case TroopState.ENGAGE:
-                navAgent.TargetPosition = enemy.GlobalPosition;
+                navAgent.TargetPosition = enemy.GlobalPosition; // Enemy position is dynamic
                 Direction = GlobalPosition.DirectionTo(navAgent.GetNextPathPosition());
-                Velocity += Direction * Stats.Speed;
-                navAgent.SetVelocity(Velocity);
+                navAgent.Velocity = Velocity + Direction * Stats.Speed;
+                RotateToward(Velocity.Angle());
                 break;
 
             case TroopState.ATTACK:
@@ -76,17 +74,16 @@ public partial class Infantry : Troop
     {
         if (newState == CurrentState)
             return;
-
         switch (newState)
         {
             case TroopState.ADVANCE:
                 patrolTimer.Stop();
-                navAgent.TargetPosition = AdvancePosition;
+                navAgent.TargetPosition = AdvancePosition; // Advance position is static
                 break;
 
             case TroopState.PATROL:
                 patrolTimer.Start();
-                Velocity = Vector2.Zero;
+                navAgent.Velocity = Vector2.Zero;
                 break;
 
             case TroopState.ENGAGE:
@@ -95,7 +92,7 @@ public partial class Infantry : Troop
 
             case TroopState.ATTACK:
                 patrolTimer.Stop();
-                Velocity = Vector2.Zero;
+                navAgent.Velocity = Vector2.Zero;
                 break;
         }
         CurrentState = newState;
@@ -104,7 +101,6 @@ public partial class Infantry : Troop
     private void Move(Vector2 velocity)
     {
         Velocity = velocity;
-        RotateToward(velocity.Angle());
         MoveAndSlide();
     }
 
@@ -146,7 +142,7 @@ public partial class Infantry : Troop
 
     private void PatrolTimerTimeout()
     {
-        float patrolRange = 75f;
+        float patrolRange = 150f;
         float randomX = Globals.GetRandomFloat(-patrolRange, patrolRange);
         float randomY = Globals.GetRandomFloat(-patrolRange, patrolRange);
         AdvancePosition = new Vector2(randomX, randomY) + AdvancePosition;
