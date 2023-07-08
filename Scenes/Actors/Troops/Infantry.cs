@@ -79,11 +79,13 @@ public partial class Infantry : Troop
             case TroopState.ADVANCE:
                 patrolTimer.Stop();
                 navAgent.TargetPosition = AdvancePosition; // Advance position is static
+                navAgent.AvoidanceEnabled = true;
                 break;
 
             case TroopState.PATROL:
                 patrolTimer.Start();
                 navAgent.Velocity = Vector2.Zero;
+                navAgent.AvoidanceEnabled = false;
                 break;
 
             case TroopState.ENGAGE:
@@ -92,6 +94,7 @@ public partial class Infantry : Troop
 
             case TroopState.ATTACK:
                 patrolTimer.Stop();
+                navAgent.AvoidanceEnabled = true;
                 navAgent.Velocity = Vector2.Zero;
                 break;
         }

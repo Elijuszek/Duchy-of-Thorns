@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://h3nc68d5o1ic" path="res://Scenes/Actors/Characters/Stats.tscn" id="1"]
 [ext_resource type="Script" path="res://Scenes/Actors/Characters/Actor.cs" id="3"]
 
-[node name="Actor" type="CharacterBody2D" groups=["obstacles"]]
+[node name="Actor" type="CharacterBody2D"]
 z_index = 2
 collision_layer = 0
 collision_mask = 0

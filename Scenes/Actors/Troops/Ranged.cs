@@ -76,17 +76,18 @@ public partial class Ranged : Troop
         {
             return;
         }
-        GD.Print(newState);
         switch (newState)
         {
             case TroopState.ADVANCE:
                 patrolTimer.Stop();
                 navAgent.TargetPosition = AdvancePosition;
+                navAgent.AvoidanceEnabled = true;
                 break;
 
             case TroopState.PATROL:
                 patrolTimer.Start();
-                navAgent.Velocity = Vector2.Zero;
+                navAgent.AvoidanceEnabled = false;
+                Velocity = Vector2.Zero;
                 break;
 
             case TroopState.ENGAGE:
@@ -94,8 +95,10 @@ public partial class Ranged : Troop
                 return;
 
             case TroopState.ATTACK:
+                patrolTimer.Stop();
                 attackTimer.Start();
-                navAgent.Velocity = Vector2.Zero;
+                navAgent.AvoidanceEnabled = false;
+                Velocity = Vector2.Zero;
                 break;
         }
         CurrentState = newState;
@@ -128,7 +131,7 @@ public partial class Ranged : Troop
 
     private void PatrolTimerTimeout()
     {
-        float patrolRange = 75f;
+        float patrolRange = 400f;
         float randomX = Globals.GetRandomFloat(-patrolRange, patrolRange);
         float randomY = Globals.GetRandomFloat(-patrolRange, patrolRange);
         AdvancePosition = new Vector2(randomX, randomY) + AdvancePosition;
