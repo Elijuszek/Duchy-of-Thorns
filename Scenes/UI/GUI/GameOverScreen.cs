@@ -5,9 +5,9 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class GameOverScreen : CanvasLayer
 {
-    private Globals globals;
-    private Label title;
+    [Export] private Label title;
     public Player player { get; set; }
+    private Globals globals;
     public override void _Ready()
     {
         title = GetNode<Label>("PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/Title");

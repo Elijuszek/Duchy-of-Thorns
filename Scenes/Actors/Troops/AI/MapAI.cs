@@ -13,7 +13,6 @@ public partial class MapAI : Node2D
 	protected CapturableBase[] capturableBases;
 	protected Respawn[] respawnPoints;
 	protected int NextSpawn = 0;
-	protected Pathfinding pathfinding;
 
     public virtual void Initialize(CapturableBase[] capturableBases, Respawn[] respawnPoints)
 	{

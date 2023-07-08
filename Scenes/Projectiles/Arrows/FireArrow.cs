@@ -5,14 +5,9 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class FireArrow : Arrow
 {
-    GpuParticles2D fire;
-    GpuParticles2D embers;
-    public override void _Ready()
-    {
-        base._Ready();
-        fire = GetNode<GpuParticles2D>("Fire");
-        embers = GetNode<GpuParticles2D>("Embers");
-    }
+    [Export] private GpuParticles2D fire;
+    [Export] private GpuParticles2D embers;
+
     public void StartEmiting()
     {
         fire.Emitting = true;

@@ -82,11 +82,12 @@ _data = {
 "Walking": SubResource("3")
 }
 
-[node name="SimpleBow" instance=ExtResource("1")]
+[node name="SimpleBow" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("1")]
 script = ExtResource("2")
+animationPlayer = NodePath("AnimationPlayer")
+CanAim = true
 Arrow = ExtResource("9")
 FireArrow = ExtResource("10")
-CanAim = true
 
 [node name="DeliverSound" parent="." index="1"]
 stream = ExtResource("12")

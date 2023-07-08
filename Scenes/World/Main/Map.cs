@@ -5,19 +5,20 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class Map : Node2D
 {
+    [Export] protected TileMap tileMap;
+    [Export] protected Marker2D playerSpawn;
+    [Export] protected Camera2D camera;
+    [Export] protected ProjectileManager projectileManager;
+    [Export] protected LootManager lootManager;
+    [Export] protected AudioStreamPlayer backgroundMusic;
+    [Export] protected GUI gui;
+
+    protected Player player;
     protected PackedScene gameOverScene;
     protected PackedScene playerScene;
     protected PackedScene pauseMenuScene;
     protected PackedScene deathScreenScene;
     protected Globals globals;
-    protected ProjectileManager projectileManager;
-    protected Marker2D playerSpawn;
-    protected Camera2D camera;
-    protected GUI gui;
-    protected TileMap tileMap;
-    protected LootManager lootManager;
-    protected AudioStreamPlayer backgroundMusic;
-    protected Player player;
 
     public override void _Ready()
     {
@@ -27,14 +28,7 @@ public partial class Map : Node2D
         pauseMenuScene = ResourceLoader.Load<PackedScene>("res://Scenes/UI/GUI/PauseScreen.tscn");
         deathScreenScene = ResourceLoader.Load<PackedScene>("res://Scenes/UI/GUI/DeathScreen.tscn");
 
-        lootManager = GetNode<LootManager>("LootManager");
-        projectileManager = GetNode<ProjectileManager>("ProjectileManager");
         globals = GetNode<Globals>("/root/Globals");
-        playerSpawn = GetNode<Marker2D>("PlayerSpawn");
-        camera = GetNode<Camera2D>("Camera2D");
-        gui = GetNode<GUI>("GUI");
-        tileMap = GetNode<TileMap>("TileMap");
-        backgroundMusic = GetNode<AudioStreamPlayer>("BackgroundMusic");
 
         globals.Connect("ArrowFired", new Callable(projectileManager, "HandleArrowSpawned"));
         globals.Connect("CoinsDroped", new Callable(lootManager, "HandleCoinsSpawned"));

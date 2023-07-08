@@ -3,13 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://h3nc68d5o1ic" path="res://Scenes/Actors/Characters/Stats.tscn" id="1"]
 [ext_resource type="Script" path="res://Scenes/Actors/Characters/Actor.cs" id="3"]
 
-[node name="Actor" type="CharacterBody2D"]
+[node name="Actor" type="CharacterBody2D" node_paths=PackedStringArray("Stats", "collisionShape")]
 z_index = 2
 collision_layer = 0
 collision_mask = 0
 platform_on_leave = 2
 platform_floor_layers = 0
 script = ExtResource("3")
+Stats = NodePath("Stats")
+collisionShape = NodePath("CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 

@@ -6,29 +6,25 @@ namespace DuchyOfThorns;
 public partial class CapturableBase : Area2D
 {
     [Signal] public delegate void BaseCapturedEventHandler(Team newTeam);
+
     [Export] Color neutralColor = new Color(1, 1, 1);
     [Export] Color playerColor = new Color(0.431373f, 0.043137f, 0.043137f);
     [Export] Color enemyColor = new Color(0.133333f, 0.345098f, 0.796078f);
     [Export] public Team Team { get; set; } = Team.NEUTRAL;
+    [Export] private Sprite2D sprite;
+    [Export] private Timer captureTimer;
+    [Export] private ProgressBar captureProgressBar;
+    [Export] private ProgressBar progressNumbers;
+    [Export] private CollisionShape2D collisionShape;
 
-    private CollisionShape2D collisionShape;
     private Vector2 extents;
-    private Sprite2D sprite;
-    private Timer captureTimer;
-    private ProgressBar captureProgressBar;
-    private ProgressBar progressNumbers;
     private Tween progressTween;
     private int playerCount = 0;
     private int enemyCount = 0;
     private Team teamToCapture = Team.NEUTRAL;
     public override void _Ready()
     {
-        collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
         extents = (collisionShape.Shape as RectangleShape2D).Size; // was Extents
-        sprite = GetNode<Sprite2D>("Sprite2D");
-        captureTimer = GetNode<Timer>("CaptureTimer");
-        captureProgressBar = GetNode<ProgressBar>("ProgressBar");
-        progressNumbers = GetNode<ProgressBar>("ProgressNumbers");
     }
     public Vector2 GetRandomPositionWithinRadius()
     {

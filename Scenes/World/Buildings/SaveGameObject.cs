@@ -5,14 +5,13 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class SaveGameObject : StaticBody2D
 {
+    [Export] private Control saveGame;
+    [Export] private Label saveLabel;
+
     private Globals globals;
-    private Control saveGame;
-    private Label saveLabel;
     public override void _Ready()
     {
-        saveGame = GetNode<Control>("SaveGame");
         globals = GetNode<Globals>("/root/Globals");
-        saveLabel = saveGame.GetNode<Label>("PanelContainer/MarginContainer/Rows/Label");
     }
     private void Area2DBodyEntered(Player player) => saveGame.Show();
     private void Area2DBodyExited(Player player)

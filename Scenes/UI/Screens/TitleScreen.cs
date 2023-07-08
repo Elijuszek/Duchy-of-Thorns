@@ -5,15 +5,15 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class TitleScreen : Control
 {
-    private AnimationPlayer animationPlayer;
+    [Export] private AnimationPlayer animationPlayer;
+    [Export] private AudioStreamPlayer click;
+
     private Globals globals;
-    private AudioStreamPlayer click;
+
     public override void _Ready()
     {
         base._Ready();
         globals = GetNode<Globals>("/root/Globals");
-        animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-        click = GetNode<AudioStreamPlayer>("Click");
         animationPlayer.Play("Background");
         animationPlayer.Seek(GetRandomTime(), true);
         animationPlayer.Stop();

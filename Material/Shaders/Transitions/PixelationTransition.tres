@@ -13,4 +13,4 @@ void fragment(){
 
 [resource]
 shader = SubResource("6")
-shader_parameter/pixelFactor = null
+shader_parameter/pixelFactor = 5.0

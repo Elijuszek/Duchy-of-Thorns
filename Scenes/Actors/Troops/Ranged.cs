@@ -10,26 +10,18 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class Ranged : Troop
 {
+    [Export] protected Timer patrolTimer;
+    [Export] protected Area2D detectionZone;
+    [Export] private NavigationAgent2D navAgent;
+
     public TroopState CurrentState { get; set; }
     public Vector2 AdvancePosition { get; set; }
 
-    protected Timer patrolTimer;
-    protected Timer attackTimer;
-    protected Area2D detectionZone;
-
-    private NavigationAgent2D navAgent;
     private Actor enemy = null;
 
     public override void _Ready()
     {
         base._Ready();
-        patrolTimer = GetNode<Timer>("PatrolTimer");
-        attackTimer = GetNode<Timer>("AttackTimer");
-
-        detectionZone = GetNode<Area2D>("DetectionZone");
-
-        navAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
-
         navAgent.MaxSpeed = Stats.Speed;
         navAgent.SetNavigationMap(GetNode<TileMap>("/root/World/TileMap").GetNavigationMap(0));
         navAgent.TargetPosition = GlobalPosition;
@@ -96,7 +88,6 @@ public partial class Ranged : Troop
 
             case TroopState.ATTACK:
                 patrolTimer.Stop();
-                attackTimer.Start();
                 navAgent.AvoidanceEnabled = false;
                 Velocity = Vector2.Zero;
                 break;
@@ -138,5 +129,4 @@ public partial class Ranged : Troop
         SetState(TroopState.ADVANCE);
     }
     public virtual void Attack() => GD.PrintErr("Calling Attack from Ranged class");
-    protected virtual void AttackTimerTimeout() => GD.PrintErr("Calling AttackTimerTimeout from Ranged class");
 }

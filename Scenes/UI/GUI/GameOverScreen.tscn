@@ -3,9 +3,10 @@
 [ext_resource type="FontFile" uid="uid://bpwasuqy7suyk" path="res://Assets/Fonts/MedievalSharp-Regular.ttf" id="1_3fucb"]
 [ext_resource type="Script" path="res://Scenes/UI/GUI/GameOverScreen.cs" id="1_u2mw2"]
 
-[node name="GameOverScreen" type="CanvasLayer"]
+[node name="GameOverScreen" type="CanvasLayer" node_paths=PackedStringArray("title")]
 process_mode = 3
 script = ExtResource("1_u2mw2")
+title = NodePath("PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/Title")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15

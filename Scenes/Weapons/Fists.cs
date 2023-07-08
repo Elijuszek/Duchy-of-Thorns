@@ -5,7 +5,7 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class Fists : Melee
 {
-	private AnimationPlayer animationPlayer;
+	[Export] private AnimationPlayer animationPlayer;
 	private Random rand;
 	private AudioStreamWav[] punshSounds =
 		{
@@ -18,8 +18,6 @@ public partial class Fists : Melee
 	public override void _Ready()
 	{
 		base._Ready();
-
-		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		rand = new Random();
 	}
 	public override void Idle()

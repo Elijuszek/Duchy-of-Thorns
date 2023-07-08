@@ -6,20 +6,12 @@ namespace DuchyOfThorns;
 public partial class AssaultOverScreen : CanvasLayer
 {
     [Signal] public delegate void ContinueEventHandler();
-    private Label title;
-    private Label lootLabel;
-    private Label rewardLabel;
-    private Label earnedLabel;
-    private Label totalLabel;
+    [Export] private Label title;
+    [Export] private Label lootLabel;
+    [Export] private Label rewardLabel;
+    [Export] private Label earnedLabel;
+    [Export] private Label totalLabel;
 
-    public override void _Ready()
-    {
-        title = GetNode<Label>("PanelContainer/MarginContainer/Rows/Top/Title");
-        lootLabel = GetNode<Label>("PanelContainer/MarginContainer/Rows/HBoxContainer/Right/Loot");
-        rewardLabel = GetNode<Label>("PanelContainer/MarginContainer/Rows/HBoxContainer/Right/Reward");
-        earnedLabel = GetNode<Label>("PanelContainer/MarginContainer/Rows/HBoxContainer/Right/Earned");
-        totalLabel = GetNode<Label>("PanelContainer/MarginContainer/Rows/HBoxContainer/Right/Total");
-    }
     public void Initialize(bool victory, int lootGold, int rewardGold, int safeGold)
     {
         int earnedGold = lootGold + rewardGold;

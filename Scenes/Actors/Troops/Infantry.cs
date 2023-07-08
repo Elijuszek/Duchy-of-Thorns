@@ -1,7 +1,7 @@
 namespace DuchyOfThorns;
 
 /// <summary>
-/// Intermediate class for all infantry units
+/// Final class for all infantry units
 /// Main purpose of this class is to implement specific
 /// logic and functionality for every troop state
 /// </summary>
@@ -10,29 +10,22 @@ public partial class Infantry : Troop
     public TroopState CurrentState { get; set; }
     public Vector2 AdvancePosition { get; set; }
 
-    protected Timer patrolTimer;
-    protected Area2D detectionZone;
-    protected Area2D attackZone;
-    protected Timer attackTimer;
+    [Export] protected Melee weapon;
 
-    private NavigationAgent2D navAgent;
+    [Export] protected AnimationPlayer animationPlayer;
+    [Export] protected Timer patrolTimer;
+    [Export] protected Area2D detectionZone;
+    [Export] protected Area2D attackZone;
+
+    [Export] private NavigationAgent2D navAgent;
     private Actor enemy = null;
 
     public override void _Ready()
     {
         base._Ready();
-        patrolTimer = GetNode<Timer>("PatrolTimer");
-        attackTimer = GetNode<Timer>("AttackTimer");
-
-        detectionZone = GetNode<Area2D>("DetectionZone");
-        attackZone = GetNode<Area2D>("AttackZone");
-
-        navAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
-
         navAgent.MaxSpeed = Stats.Speed;
         navAgent.SetNavigationMap(GetNode<TileMap>("/root/World/TileMap").GetNavigationMap(0));
         navAgent.TargetPosition = GlobalPosition;
-
         navAgent.Connect("velocity_computed", new Callable(this, "Move"));
     }
     public override void _PhysicsProcess(double delta)
@@ -63,7 +56,7 @@ public partial class Infantry : Troop
 
             case TroopState.ATTACK:
                 RotateToward(enemy.GlobalPosition);
-                Attack();
+                //Attack();
                 break;
 
             default:
@@ -154,7 +147,4 @@ public partial class Infantry : Troop
         AdvancePosition = new Vector2(randomX, randomY) + AdvancePosition;
         SetState(TroopState.ADVANCE);
     }
-
-    protected virtual void AttackTimerTimeout() => GD.PrintErr("Calling AttackTimerTimeout from Infantry class");
-    public virtual void Attack() => GD.PrintErr("Calling Attack from Infantry class");
 }

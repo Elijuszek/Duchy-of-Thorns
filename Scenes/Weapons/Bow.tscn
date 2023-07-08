@@ -1,16 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://2y8sces1eiob"]
 
-[ext_resource type="PackedScene" path="res://Scenes/Weapons/Weapon.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://buxokbp1yi6dd" path="res://Scenes/Weapons/Weapon.tscn" id="1"]
 [ext_resource type="Script" path="res://Scenes/Weapons/Bow.cs" id="3"]
 
-[node name="Bow" instance=ExtResource("1")]
+[node name="Bow" node_paths=PackedStringArray("BowDirection", "endOfBow") instance=ExtResource("1")]
 script = ExtResource("3")
-Arrow = null
-FireArrow = null
-OnFire = false
 CanAim = false
 MaxAmmo = 0
 CurrentAmmo = 0
+BowDirection = NodePath("BowDirection")
+Arrow = null
+FireArrow = null
+endOfBow = NodePath("EndOfBow")
+OnFire = false
 
 [node name="BowDirection" type="Marker2D" parent="." index="3"]
 position = Vector2(461, 0)

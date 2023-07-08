@@ -2857,8 +2857,15 @@ _data = {
 "DayNightCycle": SubResource("Animation_q3uva")
 }
 
-[node name="Map" type="Node2D"]
+[node name="Map" type="Node2D" node_paths=PackedStringArray("tileMap", "playerSpawn", "camera", "projectileManager", "lootManager", "backgroundMusic", "gui")]
 script = ExtResource("1_avmp6")
+tileMap = NodePath("TileMap")
+playerSpawn = NodePath("PlayerSpawn")
+camera = NodePath("Camera2D")
+projectileManager = NodePath("ProjectileManager")
+lootManager = NodePath("LootManager")
+backgroundMusic = NodePath("BackgroundMusic")
+gui = NodePath("GUI")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(1, 0)
@@ -2901,10 +2908,11 @@ silverCount = 1
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.902902, 0.883451, 0.710274, 1)
+[node name="CanvasModulate" type="CanvasModulate" parent="." node_paths=PackedStringArray("animationPlayer")]
+color = Color(0.172549, 0.121569, 0.333333, 1)
 script = ExtResource("6_eq7jb")
 Time = 90.0
+animationPlayer = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasModulate"]
 libraries = {

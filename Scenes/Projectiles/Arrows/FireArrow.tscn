@@ -42,8 +42,10 @@ frame_2/duration = 1.0
 frame_3/texture = ExtResource("5_0ggjh")
 frame_3/duration = 1.0
 
-[node name="FireArrow" instance=ExtResource("1")]
+[node name="FireArrow" node_paths=PackedStringArray("fire", "embers") instance=ExtResource("1")]
 script = ExtResource("2_fk0bc")
+fire = NodePath("Fire")
+embers = NodePath("Embers")
 
 [node name="Fire" parent="." index="3" instance=ExtResource("6_gdsf8")]
 process_material = SubResource("ParticleProcessMaterial_bodrv")

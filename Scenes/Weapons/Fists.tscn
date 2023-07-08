@@ -87,8 +87,9 @@ _data = {
 "Idle": SubResource("1")
 }
 
-[node name="Fists" instance=ExtResource("1")]
+[node name="Fists" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("1")]
 script = ExtResource("2")
+animationPlayer = NodePath("AnimationPlayer")
 AttackDuartion = 0.96
 damage = 10.0
 

@@ -5,25 +5,24 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class Bow : Weapon
 {
-    [Signal]
-    public delegate void WeaponAmmoChangedEventHandler(int newAmmo);
-    [Signal]
-    public delegate void PlayerReloadedEventHandler(int currentAmmo);
-    [Export] protected PackedScene Arrow;
-    [Export] protected PackedScene FireArrow;
-    [Export] protected bool OnFire = false;
+    [Signal] public delegate void WeaponAmmoChangedEventHandler(int newAmmo);
+    [Signal] public delegate void PlayerReloadedEventHandler(int currentAmmo);
+
     [Export] public bool CanAim { get; set; } = false;
     [Export] public int MaxAmmo { get; set; }
     [Export] public int CurrentAmmo { get; set; }
-    public Marker2D BowDirection { get; set; }
-    protected Marker2D endOfBow;
+    [Export] public Marker2D BowDirection { get; set; }
+    [Export] protected PackedScene Arrow;
+    [Export] protected PackedScene FireArrow;
+    [Export] protected Marker2D endOfBow;
+    [Export] protected bool OnFire = false;
+
+
     protected Globals globals;
     public override void _PhysicsProcess(double delta) => base._Process(delta);
     public override void _Ready()
     {
         base._Ready();
-        BowDirection = GetNode<Marker2D>("BowDirection");
-        endOfBow = GetNode<Marker2D>("EndOfBow");
         globals = GetNode<Globals>("/root/Globals");
     }
     public virtual void Attack() { }

@@ -5,38 +5,29 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class Player : Actor
 {
-	[Signal]
-	public delegate void PlayerHealthChangedEventHandler(float newHealth);
-	[Signal]
-	public delegate void PLayerGoldChangedEventHandler(int newGold, int oldGold);
-	[Signal]
-	public delegate void DiedEventHandler();
+    [Signal] public delegate void PlayerHealthChangedEventHandler(float newHealth);
+    [Signal] public delegate void PLayerGoldChangedEventHandler(int newGold, int oldGold);
+    [Signal] public delegate void DiedEventHandler();
 
-	[Export] float swingDuration = 0.5f; // TODO swing stab pierce hit
-	[Export] float reloadDuration = 1f;
+    [Export] public WeaponManager WeaponsManager { get; set; }
+    [Export] private AnimationPlayer animationPlayer;
+    [Export] private RemoteTransform2D cameraTransform;
+    [Export] private AudioStreamPlayer coinsSound;
 
-	private Joystick movementJoystick;
+    private Joystick movementJoystick;
 	private Joystick attackJoystick;
-	private AnimationPlayer animationPlayer;
-	private RemoteTransform2D cameraTransform;
-	private AudioStreamPlayer coinsSound;
 	private Vector2 attackDirection = Vector2.Zero;
 	private PackedScene damagePopup = ResourceLoader.Load<PackedScene>("res://Scenes/UI/Popups/DamagePopup.tscn");
 	private GUI gui;
 	private Globals globals;
-	public WeaponManager WeaponsManager { get; set; }
+
 	public override void _Ready()
 	{
 		base._Ready();
-		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-		coinsSound = GetNode<AudioStreamPlayer>("CoinsSound");
-		WeaponsManager = GetNode<WeaponManager>("WeaponsManager");
 		WeaponsManager.Initialize(GetTeam());
 		gui = GetParent().GetNode<GUI>("GUI");
 		movementJoystick = gui.GetNode<Joystick>("MovementJoystick/Joystick_Button");
 		attackJoystick = gui.GetNode<Joystick>("MarginContainer/Rows/MiddleRow/MarginContainer/AttackJoystick/Joystick_Button");
-		cameraTransform = GetNode<RemoteTransform2D>("CameraTransform");
-		Stats = GetNode<Stats>("Stats");
 		globals = GetNode<Globals>("/root/Globals");
 	}
 	public override void _PhysicsProcess(double delta)

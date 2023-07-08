@@ -5,12 +5,7 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class Sword : Melee
 {
-    private AnimationPlayer animationPlayer;
-    public override void _Ready()
-    {
-        base._Ready();
-        animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-    }
+    [Export] private AnimationPlayer animationPlayer;
     public override void Idle() => animationPlayer.Play("Idle");
     public override void Attack()
     {

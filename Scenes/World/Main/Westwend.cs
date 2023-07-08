@@ -17,7 +17,6 @@ public partial class Westwend : Node2D
     private TileMap ground;
     private CapturableBaseManager capturableBaseManager;
     private LootManager lootManager;
-    private Pathfinding pathfinding;
     private MapAI enemyMapAI;
     private MapAI allyMapAI;
     public override void _Ready()
@@ -37,7 +36,6 @@ public partial class Westwend : Node2D
         playerSpawn = GetNode<Marker2D>("PlayerSpawn");
         gui = GetNode<GUI>("GUI");
 
-        pathfinding = GetNode<Pathfinding>("PathFinding");
         capturableBaseManager = GetNode<CapturableBaseManager>("CapturableBasesManager");
 
         enemyMapAI = GetNode<MapAI>("EnemyMapAI");
@@ -46,8 +44,6 @@ public partial class Westwend : Node2D
         globals.Connect("ArrowFired", new Callable(projectileManager, "HandleArrowSpawned"));
         globals.Connect("CoinsDroped", new Callable(lootManager, "HandleCoinsSpawned"));
 
-        // Pathfinding
-        pathfinding.CreateNavigationMap(ground);
 
         CapturableBase[] bases = capturableBaseManager.GetCapturableBases();
 

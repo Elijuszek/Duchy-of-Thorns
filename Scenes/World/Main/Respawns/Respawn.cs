@@ -9,12 +9,11 @@ public partial class Respawn : Marker2D
     [Export] public float RespawnCooldown { get; set; } = 5;
     [Export] public int RespawnCount { get; set; } = 5;
     [Export] public PackedScene Unit { get; set; } = null;
-    private Timer respawnTimer;
+    [Export] private Timer respawnTimer;
 
     public override void _Ready()
     {
         base._Ready();
-        respawnTimer = GetNode<Timer>("RespawnTimer");
         respawnTimer.WaitTime = RespawnCooldown;
     }
     public void SetUnit(PackedScene toSet, float cooldown = 5, int count = 5)

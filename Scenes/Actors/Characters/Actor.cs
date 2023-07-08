@@ -6,17 +6,14 @@ namespace DuchyOfThorns;
 public partial class Actor : CharacterBody2D
 {
 	[Export] public Team Team { get; set; } = Team.NEUTRAL;
-    public Stats Stats { get; set; }
+	[Export] public Stats Stats { get; set; }
+    [Export] protected CollisionShape2D collisionShape;
     public Vector2 Direction { get; set; }
-
-	protected CollisionShape2D collisionShape;
 	protected PackedScene bloodScene;
 	private Vector2 knockback = Vector2.Zero;
 	public override void _Ready()
 	{
 		base._Ready();
-		Stats = GetNode<Stats>("Stats");
-		collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
 		bloodScene = ResourceLoader.Load<PackedScene>("res://Material/Particles/Impact/Blood.tscn");
 	}
 	public virtual void HandleHit(float baseDamage, Vector2 impactPosition) => GD.PrintErr("Calling HandleHit from Actor class");

@@ -88,9 +88,11 @@ _data = {
 "Walking": SubResource("3")
 }
 
-[node name="FootmanEnemy" instance=ExtResource("1")]
+[node name="FootmanEnemy" node_paths=PackedStringArray("weapon", "animationPlayer") instance=ExtResource("1")]
 collision_layer = 4
 script = ExtResource("3")
+weapon = NodePath("GoldenSword")
+animationPlayer = NodePath("AnimationPlayer")
 Team = 1
 
 [node name="GoldenSword" parent="." index="0" instance=ExtResource("2")]

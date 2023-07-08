@@ -7,18 +7,16 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class DefendMap : Map
 {
-    private AssaultMapAI enemyMapAI;
-    private MapAI allyMapAI;
-    private CapturableBaseManager capturableBaseManager;
-    private int safeGold = 0;
+    [Export] private AssaultMapAI enemyMapAI;
+    [Export] private MapAI allyMapAI;
+    [Export] private CapturableBaseManager capturableBaseManager;
+
     private PackedScene assaultOverScreen;
+    private int safeGold = 0;
     public override void _Ready()
     {
         base._Ready();
         assaultOverScreen = (PackedScene)ResourceLoader.Load("res://Scenes/UI/GUI/AssaultOverScreen.tscn");
-        capturableBaseManager = GetNode<CapturableBaseManager>("CapturableBasesManager");
-        allyMapAI = GetNode<MapAI>("AllyMapAI");
-        enemyMapAI = GetNode<AssaultMapAI>("AssaultMapAI");
         CapturableBase[] bases = capturableBaseManager.GetCapturableBases();
 
         Respawn[] allyRespawnPoints = GetNode<Node2D>("AllyRespawnPoints").GetChildren().OfType<Respawn>().ToArray();

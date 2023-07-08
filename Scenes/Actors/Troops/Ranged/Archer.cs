@@ -31,18 +31,18 @@ public partial class Archer : Ranged
             animationPlayer.Play("Idle");
         }
     }
-    public override void Attack()
-    {
-        if (!isAttacking && weapon.CanAttack())
-        {
-            isAttacking = true;
-            weapon.Attack();
-            attackTimer.Start();
-        }
-    }
-    protected override void AttackTimerTimeout()
-    {
-        weapon.Deliver();
-        isAttacking = false;
-    }
+    //public override void Attack()
+    //{
+    //    if (!isAttacking && weapon.CanAttack())
+    //    {
+    //        isAttacking = true;
+    //        weapon.Attack();
+    //        attackTimer.Start();
+    //    }
+    //}
+    //protected override void AttackTimerTimeout()
+    //{
+    //    weapon.Deliver();
+    //    isAttacking = false;
+    //}
 }

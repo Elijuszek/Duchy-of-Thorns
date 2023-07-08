@@ -9,16 +9,13 @@ public partial class Projectile : Area2D, IPoolable
     [Export] public float Speed { get; set; } = 4;
     [Export] public float Damage { get; set; } = 35;
     [Export] public float Range { get; set; } = 10;
+    [Export] protected AudioStreamPlayer2D flyingSound;
+
     private float traveledDistance = 0;
     private float moveAmount = 0;
     protected Vector2 direction = Vector2.Zero;
-    protected AudioStreamPlayer2D flyingSound;
+    
     public Team team { get; set; }
-    public override void _Ready()
-    {
-        base._Ready();
-        flyingSound = GetNode<AudioStreamPlayer2D>("FlyingSound");
-    }
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);

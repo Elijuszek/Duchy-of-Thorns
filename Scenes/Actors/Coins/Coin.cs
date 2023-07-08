@@ -8,21 +8,13 @@ public partial class Coin : CharacterBody2D, IPoolable
 {
     [Signal] public delegate void CoinRemovedEventHandler(Coin coin);
     [Export] public int Gold { get; set; } = 0;
+    [Export] private Timer timer;
+    [Export] private Area2D takeArea;
+    [Export] private Area2D slideArea;
+
     private Vector2 movementDirection = Vector2.Zero;
-    //fprivate Player enemy;
-    private Area2D takeArea;
-    private Area2D slideArea;
-    private Random rand;
-    private Timer timer;
     private Tween tween;
     
-    public override void _Ready()
-    {
-        takeArea = GetNode<Area2D>("Area2DTake");
-        slideArea = GetNode<Area2D>("Area2DSlide");
-        timer = GetNode<Timer>("Timer");
-        rand = new Random();
-    }
     private void Move()
     {
         tween = CreateTween();

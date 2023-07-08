@@ -149,10 +149,11 @@ _data = {
 "Walking": SubResource("3")
 }
 
-[node name="GoldenSword" instance=ExtResource("2")]
+[node name="GoldenSword" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("2")]
 position = Vector2(2.5, 13.5)
 scale = Vector2(1.01145, 1.01948)
 script = ExtResource("3")
+animationPlayer = NodePath("AnimationPlayer")
 AttackDuartion = 0.5
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]

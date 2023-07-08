@@ -5,15 +5,12 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class CaptureMap : Map
 {
-    private Pathfinding pathfinding;
     private MapAI enemyMapAI;
     private MapAI allyMapAI;
     private CapturableBaseManager capturableBaseManager;
     public override void _Ready()
     {
         base._Ready();
-        pathfinding = GetNode<Pathfinding>("PathFinding");
-        pathfinding.CreateNavigationMap(tileMap);
         capturableBaseManager = GetNode<CapturableBaseManager>("CapturableBasesManager");
         enemyMapAI = GetNode<MapAI>("EnemyMapAI");
         allyMapAI = GetNode<MapAI>("AllyMapAI");

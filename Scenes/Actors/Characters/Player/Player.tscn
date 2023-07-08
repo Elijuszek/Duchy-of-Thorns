@@ -218,12 +218,14 @@ _data = {
 "Walking": SubResource("5")
 }
 
-[node name="Player" instance=ExtResource("2")]
+[node name="Player" node_paths=PackedStringArray("WeaponsManager", "animationPlayer", "cameraTransform", "coinsSound") instance=ExtResource("2")]
 collision_layer = 1
 collision_mask = 31
 script = ExtResource("10")
-swingDuration = 0.5
-reloadDuration = 1.0
+WeaponsManager = NodePath("WeaponsManager")
+animationPlayer = NodePath("AnimationPlayer")
+cameraTransform = NodePath("CameraTransform")
+coinsSound = NodePath("CoinsSound")
 Team = 0
 
 [node name="WeaponsManager" parent="." index="0" instance=ExtResource("11")]

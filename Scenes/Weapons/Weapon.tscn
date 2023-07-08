@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" path="res://Scenes/Weapons/Weapon.cs" id="1"]
 
-[node name="Weapon" type="Node2D"]
+[node name="Weapon" type="Node2D" node_paths=PackedStringArray("attackCooldown", "deliverSound", "attackSound")]
 script = ExtResource("1")
+attackCooldown = NodePath("AttackCooldown")
+deliverSound = NodePath("DeliverSound")
+attackSound = NodePath("AttackSound")
 
 [node name="AttackCooldown" type="Timer" parent="."]
 one_shot = true

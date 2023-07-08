@@ -6,11 +6,13 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class PixelationTransition : CanvasLayer
 {
-    private AnimationPlayer transition;
-    private ColorRect textureRect;
+    [Export] private AnimationPlayer transition;
+    [Export] private ColorRect textureRect;
+    [Export] private Timer timer;
+
     private string nextScenePath = "";
-    private Timer timer;
     private float currentTime;
+
     public override void _Ready()
     {
         base._Ready();

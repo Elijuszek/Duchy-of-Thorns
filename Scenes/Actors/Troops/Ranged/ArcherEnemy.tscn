@@ -95,9 +95,6 @@ texture = ExtResource("9")
 [node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource("CapsuleShape2D_kclue")
 
-[node name="AttackTimer" parent="." index="4"]
-wait_time = 2.0
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 libraries = {
 "": SubResource("AnimationLibrary_718p5")

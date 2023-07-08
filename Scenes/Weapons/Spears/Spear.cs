@@ -6,7 +6,7 @@ namespace DuchyOfThorns;
 public partial class Spear : Melee
 {
 	[Export] private float knockBack = 5;
-	private AnimationPlayer animationPlayer;
+	[Export] private AnimationPlayer animationPlayer;
 	public override void _Ready()
 	{
 		base._Ready();

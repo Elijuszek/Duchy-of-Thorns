@@ -5,10 +5,6 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class Arrow : Projectile
 {
-    public override void _Ready()
-    {
-        base._Ready();
-    }
     protected virtual void ArrowBodyEntered(Node body)
     {
         if (body is Actor actor)
