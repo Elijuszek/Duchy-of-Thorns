@@ -2,6 +2,8 @@ namespace DuchyOfThorns;
 
 /// <summary>
 /// Intermediate class for all infantry units
+/// Main purpose of this class is to implement specific
+/// logic and functionality for every troop state
 /// </summary>
 public partial class Infantry : Troop
 {
@@ -84,18 +86,19 @@ public partial class Infantry : Troop
 
             case TroopState.PATROL:
                 patrolTimer.Start();
-                navAgent.Velocity = Vector2.Zero;
+                Velocity = Vector2.Zero;
                 navAgent.AvoidanceEnabled = false;
                 break;
 
             case TroopState.ENGAGE:
                 patrolTimer.Stop();
+                navAgent.AvoidanceEnabled = true;
                 break;
 
             case TroopState.ATTACK:
                 patrolTimer.Stop();
-                navAgent.AvoidanceEnabled = true;
-                navAgent.Velocity = Vector2.Zero;
+                navAgent.AvoidanceEnabled = false;
+                Velocity = Vector2.Zero;
                 break;
         }
         CurrentState = newState;
