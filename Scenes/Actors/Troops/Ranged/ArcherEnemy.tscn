@@ -123,11 +123,8 @@ libraries = {
 "": SubResource("AnimationLibrary_4vgec")
 }
 
-[node name="TrainingBow" parent="." index="7" node_paths=PackedStringArray("attackCooldown", "deliverSound", "attackSound") instance=ExtResource("17_ps3ga")]
+[node name="TrainingBow" parent="." index="7" instance=ExtResource("17_ps3ga")]
 CanAim = false
 MaxAmmo = 0
 CurrentAmmo = 0
 projectileType = 0
-attackCooldown = NodePath("")
-deliverSound = NodePath("")
-attackSound = NodePath("")

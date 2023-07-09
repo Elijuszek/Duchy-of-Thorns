@@ -27,7 +27,7 @@ public partial class LootManager : Node2D
         };
 
         // For debugging purposes
-        //HandleCoinsSpawned(9999, new Vector2(400, 400), true);
+        HandleCoinsSpawned(9999, new Vector2(400, 400), true);
     }
     public void HandleCoinsSpawned(int coins, Vector2 position, bool explosive)
     {

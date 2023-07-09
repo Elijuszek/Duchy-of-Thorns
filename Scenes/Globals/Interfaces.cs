@@ -1,5 +1,6 @@
 namespace DuchyOfThorns;
 
+// delegates
 public delegate void RemovedFromSceneEventHandler(IPoolable source);
 
 /// <summary>

@@ -40,13 +40,13 @@ public partial class ObjectPool<T> where T : Node, IPoolable, new()
             item.AddToScene();
             return item;
         }
-        GD.PushError("Failed to take item from {0} pool", GetType());
+        GD.PushError("Failed to take object from ", GetType(), " pool");
         return null;
 
     }
     public void Expand(int count)
     {
-        for (int i = 0; i < count; i++) 
+        for (int i = 0; i < count; i++)
         {
             T item = nodeScene.Instantiate<T>();
             item.RemovedFromScene += ReleasedFromScene;
