@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/Actors/Troops/AI/AssaultMapAI.cs" id="2_fkv12"]
 [ext_resource type="PackedScene" uid="uid://dnhhc7gs7gog6" path="res://Scenes/World/Main/DefendMap/Waves/Wave.tscn" id="3_fy323"]
 [ext_resource type="PackedScene" uid="uid://d1icwp77t3ic" path="res://Scenes/Actors/Troops/Melee/FootmanEnemy.tscn" id="4_cvk58"]
-[ext_resource type="PackedScene" uid="uid://qnrc7rg5g0tg" path="res://Scenes/Actors/Troops/Ranged/ArcherEnemy.tscn" id="5_5gbix"]
+[ext_resource type="PackedScene" uid="uid://bxvexkn0l7vvk" path="res://Scenes/Actors/Troops/Ranged/ArcherEnemy.tscn" id="5_5gbix"]
 
 [node name="AssaultMapAI" instance=ExtResource("1_ax0ye")]
 script = ExtResource("2_fkv12")

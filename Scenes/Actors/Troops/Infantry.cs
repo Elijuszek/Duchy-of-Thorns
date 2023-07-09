@@ -11,8 +11,6 @@ public partial class Infantry : Troop
     public Vector2 AdvancePosition { get; set; }
 
     [Export] protected Melee weapon;
-
-    [Export] protected AnimationPlayer animationPlayer;
     [Export] protected Timer patrolTimer;
     [Export] protected Area2D detectionZone;
     [Export] protected Area2D attackZone;
@@ -26,7 +24,8 @@ public partial class Infantry : Troop
         navAgent.MaxSpeed = Stats.Speed;
         navAgent.SetNavigationMap(GetNode<TileMap>("/root/World/TileMap").GetNavigationMap(0));
         navAgent.TargetPosition = GlobalPosition;
-        navAgent.Connect("velocity_computed", new Callable(this, "Move"));
+        navAgent.Connect("velocity_computed", new Callable(this, "Walking"));
+        weapon.Initialize(Team);
     }
     public override void _PhysicsProcess(double delta)
     {
@@ -34,7 +33,8 @@ public partial class Infantry : Troop
         switch (CurrentState)
         {
             case TroopState.PATROL:
-                return;
+                Idle();
+                break;
 
             case TroopState.ADVANCE:
                 if (navAgent.IsTargetReached())
@@ -56,7 +56,7 @@ public partial class Infantry : Troop
 
             case TroopState.ATTACK:
                 RotateToward(enemy.GlobalPosition);
-                //Attack();
+                Attack();
                 break;
 
             default:
@@ -96,13 +96,27 @@ public partial class Infantry : Troop
         }
         CurrentState = newState;
     }
-
-    private void Move(Vector2 velocity)
+    private void Idle()
     {
+        weapon.Idle();
+        animationPlayer.Play("Idle");
+    }
+    private void Walking(Vector2 velocity)
+    {
+        weapon.Walking();
+        animationPlayer.Play("Walk");
         Velocity = velocity;
         MoveAndSlide();
     }
-
+    private void Attack() 
+    {
+        if (animationPlayer.CurrentAnimation != "Attack" && weapon.CanAttack())
+        {
+            weapon.Attack();
+            float customSpeed = animationPlayer.GetAnimation("Attack").Length / weapon.AttackDuartion;
+            animationPlayer.Play("Attack", -1, customSpeed);
+        }
+    }
     private void DetectionZoneBodyEntered(PhysicsBody2D body)
     {
         if (body is Actor actorBody && actorBody.GetTeam() != Team &&

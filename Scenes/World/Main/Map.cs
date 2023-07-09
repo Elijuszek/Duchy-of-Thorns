@@ -30,7 +30,7 @@ public partial class Map : Node2D
 
         globals = GetNode<Globals>("/root/Globals");
 
-        globals.Connect("ArrowFired", new Callable(projectileManager, "HandleArrowSpawned"));
+        globals.Connect("ProjectileFired", new Callable(projectileManager, "HandleProjectileFired"));
         globals.Connect("CoinsDroped", new Callable(lootManager, "HandleCoinsSpawned"));
 
         switch (globals.loadingForm)

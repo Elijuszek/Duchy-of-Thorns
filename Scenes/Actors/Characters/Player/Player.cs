@@ -93,7 +93,7 @@ public partial class Player : Actor
 	}
 	public override void Die()
 	{
-		//globals.EmitSignal("CoinsDroped", base.Stats.Gold / 3, GlobalPosition); // DefendMap
+		//globals.EmitSignal("CoinsDroped", base.Stats.Gold / 3, GlobalPosition, true); // DefendMap
 		EmitSignal(nameof(Died));
 		QueueFree();
 
@@ -130,7 +130,7 @@ public partial class Player : Actor
 				animationPlayer.Play("Punsh");
 				animationPlayer.SpeedScale = Convert.ToSingle(animationPlayer.CurrentAnimationLength / WeaponsManager.currentWeapon.AttackDuartion);
 				break;
-			case Bow bow:
+			case Projective:
 				animationPlayer.Play("ShootingBow");
 				animationPlayer.SpeedScale = 1;
 				break;
@@ -139,8 +139,7 @@ public partial class Player : Actor
 				animationPlayer.SpeedScale = Convert.ToSingle(animationPlayer.CurrentAnimationLength / WeaponsManager.currentWeapon.AttackDuartion);
 				break;
 			case Spear spear:
-				animationPlayer.Play("SpearAttack");
-				animationPlayer.SpeedScale = Convert.ToSingle(animationPlayer.CurrentAnimationLength / WeaponsManager.currentWeapon.AttackDuartion);
+				
 				break;
 		}
 	}

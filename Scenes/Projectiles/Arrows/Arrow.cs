@@ -17,7 +17,7 @@ public partial class Arrow : Projectile
         }
         else if (body is Fireplace fireplace)
         {
-            fireplace.SetOnFire(team, GlobalPosition, direction);
+            fireplace.SetOnFire(Damage * 2, team, GlobalPosition, direction);
             RemoveFromScene();
         }
         else

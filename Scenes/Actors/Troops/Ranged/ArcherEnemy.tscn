@@ -1,46 +1,29 @@
-[gd_scene load_steps=24 format=3 uid="uid://qnrc7rg5g0tg"]
+[gd_scene load_steps=24 format=3 uid="uid://bxvexkn0l7vvk"]
 
-[ext_resource type="Script" path="res://Scenes/Actors/Troops/Ranged/Archer.cs" id="1"]
-[ext_resource type="PackedScene" uid="uid://2uke4a33syhq" path="res://Scenes/Weapons/Bows/SimpleBow.tscn" id="2"]
-[ext_resource type="PackedScene" uid="uid://6q7se4t41stl" path="res://Scenes/Actors/Troops/Ranged.tscn" id="3"]
-[ext_resource type="Texture2D" uid="uid://c6ccj5t2eujay" path="res://Sprites/Enemy/BowEnemy/Walking/Walking-3.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://c0ulj4t5ss8nn" path="res://Sprites/Enemy/BowEnemy/Reload/BlueEnemyReload-3.png" id="5"]
-[ext_resource type="Texture2D" uid="uid://bcvn7exvrxic0" path="res://Sprites/Enemy/BowEnemy/Walking/Walking-7.png" id="6"]
-[ext_resource type="Texture2D" uid="uid://dotdk3r5w2vee" path="res://Sprites/Enemy/BowEnemy/Reload/BlueEnemyReload-5.png" id="7"]
-[ext_resource type="Texture2D" uid="uid://buhjbigjjb8jj" path="res://Sprites/Enemy/BowEnemy/Walking/Walking-4.png" id="8"]
-[ext_resource type="Texture2D" uid="uid://dxp0hw8h3t5nu" path="res://Sprites/Enemy/BowEnemy/Idle/BlueEnemyIdle.png" id="9"]
-[ext_resource type="Texture2D" uid="uid://b8u1gygsrxmqj" path="res://Sprites/Enemy/BowEnemy/Walking/Walking-8.png" id="10"]
-[ext_resource type="Texture2D" uid="uid://cdrm1jgov4rwf" path="res://Sprites/Enemy/BowEnemy/Reload/BlueEnemyReload-6.png" id="11"]
-[ext_resource type="Texture2D" uid="uid://db5ntwxdwxu5j" path="res://Sprites/Enemy/BowEnemy/Reload/BlueEnemyReload-2.png" id="12"]
-[ext_resource type="Texture2D" uid="uid://dii2hs14at2ee" path="res://Sprites/Enemy/BowEnemy/Reload/BlueEnemyReload-4.png" id="13"]
-[ext_resource type="Texture2D" uid="uid://cfuotjqdt824t" path="res://Sprites/Enemy/BowEnemy/Walking/Walking-1.png" id="14"]
-[ext_resource type="Texture2D" uid="uid://daqde6br453lv" path="res://Sprites/Enemy/BowEnemy/Reload/BlueEnemyReload-1.png" id="15"]
-[ext_resource type="Texture2D" uid="uid://y1lu3bh2eyy5" path="res://Sprites/Enemy/BowEnemy/Walking/Walking-5.png" id="16"]
-[ext_resource type="Texture2D" uid="uid://b0syphy74cgnj" path="res://Sprites/Enemy/BowEnemy/Walking/Walking-2.png" id="17"]
-[ext_resource type="Texture2D" uid="uid://dx2q2lnt02f6h" path="res://Sprites/Enemy/BowEnemy/Walking/Walking-6.png" id="18"]
+[ext_resource type="PackedScene" uid="uid://6q7se4t41stl" path="res://Scenes/Actors/Troops/Ranged.tscn" id="1_2wc8r"]
+[ext_resource type="Texture2D" uid="uid://dxp0hw8h3t5nu" path="res://Sprites/Enemy/BowEnemy/Idle/BlueEnemyIdle.png" id="2_8go3s"]
+[ext_resource type="Texture2D" uid="uid://daqde6br453lv" path="res://Sprites/Enemy/BowEnemy/Reload/BlueEnemyReload-1.png" id="3_qyy2u"]
+[ext_resource type="Texture2D" uid="uid://db5ntwxdwxu5j" path="res://Sprites/Enemy/BowEnemy/Reload/BlueEnemyReload-2.png" id="4_q1hif"]
+[ext_resource type="Texture2D" uid="uid://c0ulj4t5ss8nn" path="res://Sprites/Enemy/BowEnemy/Reload/BlueEnemyReload-3.png" id="5_yd8pf"]
+[ext_resource type="Texture2D" uid="uid://dii2hs14at2ee" path="res://Sprites/Enemy/BowEnemy/Reload/BlueEnemyReload-4.png" id="6_buoye"]
+[ext_resource type="Texture2D" uid="uid://dotdk3r5w2vee" path="res://Sprites/Enemy/BowEnemy/Reload/BlueEnemyReload-5.png" id="7_wc0j3"]
+[ext_resource type="Texture2D" uid="uid://cdrm1jgov4rwf" path="res://Sprites/Enemy/BowEnemy/Reload/BlueEnemyReload-6.png" id="8_xirov"]
+[ext_resource type="Texture2D" uid="uid://cfw0tkk1m555g" path="res://Sprites/Enemy/Footman/Walking/walking-1.png" id="9_nl8s7"]
+[ext_resource type="Texture2D" uid="uid://bgc10bq36b4v" path="res://Sprites/Enemy/Footman/Walking/walking-2.png" id="10_hp0ap"]
+[ext_resource type="Texture2D" uid="uid://18o42pnwg4mp" path="res://Sprites/Enemy/Footman/Walking/walking-3.png" id="11_382hr"]
+[ext_resource type="Texture2D" uid="uid://b8u1yffs3w0jo" path="res://Sprites/Enemy/Footman/Walking/walking-4.png" id="12_8ckv0"]
+[ext_resource type="Texture2D" uid="uid://du6m6knssdora" path="res://Sprites/Enemy/Footman/Walking/walking-5.png" id="13_143p7"]
+[ext_resource type="Texture2D" uid="uid://d235s6j350pvl" path="res://Sprites/Enemy/Footman/Walking/walking-6.png" id="14_r05mp"]
+[ext_resource type="Texture2D" uid="uid://bv6pqq7q31cun" path="res://Sprites/Enemy/Footman/Walking/walking-7.png" id="15_yba53"]
+[ext_resource type="Texture2D" uid="uid://sejnuxfl7lv6" path="res://Sprites/Enemy/Footman/Walking/walking-8.png" id="16_k5kxm"]
+[ext_resource type="PackedScene" uid="uid://cankvsstxf22r" path="res://Scenes/Weapons/Bows/TrainingBow.tscn" id="17_ps3ga"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kclue"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ag1he"]
 radius = 5.0
 height = 22.0
 
-[sub_resource type="Animation" id="1"]
-resource_name = "Idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("9")]
-}
-
-[sub_resource type="Animation" id="2"]
-resource_name = "ShootingBow"
-length = 2.0
+[sub_resource type="Animation" id="Animation_pfsem"]
+resource_name = "Attack"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -51,12 +34,59 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("15"), ExtResource("12"), ExtResource("5"), ExtResource("13"), ExtResource("7"), ExtResource("11")]
+"values": [ExtResource("3_qyy2u"), ExtResource("4_q1hif"), ExtResource("5_yd8pf"), ExtResource("6_buoye"), ExtResource("7_wc0j3"), ExtResource("8_xirov")]
 }
 
-[sub_resource type="Animation" id="3"]
-resource_name = "Walking"
+[sub_resource type="Animation" id="Animation_6y14q"]
+resource_name = "Death"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Die"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_t3c5v"]
+resource_name = "Idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_8go3s")]
+}
+
+[sub_resource type="Animation" id="Animation_1su57"]
+resource_name = "Walk"
 length = 0.8
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -67,35 +97,37 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("14"), ExtResource("17"), ExtResource("4"), ExtResource("8"), ExtResource("16"), ExtResource("18"), ExtResource("6"), ExtResource("10")]
+"values": [ExtResource("9_nl8s7"), ExtResource("10_hp0ap"), ExtResource("11_382hr"), ExtResource("12_8ckv0"), ExtResource("13_143p7"), ExtResource("14_r05mp"), ExtResource("15_yba53"), ExtResource("16_k5kxm")]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_718p5"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4vgec"]
 _data = {
-"Idle": SubResource("1"),
-"ShootingBow": SubResource("2"),
-"Walking": SubResource("3")
+"Attack": SubResource("Animation_pfsem"),
+"Death": SubResource("Animation_6y14q"),
+"Idle": SubResource("Animation_t3c5v"),
+"Walk": SubResource("Animation_1su57")
 }
 
-[node name="ArcherEnemy" instance=ExtResource("3")]
-collision_layer = 4
-platform_floor_layers = 4278190080
-script = ExtResource("1")
+[node name="Ranged" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("1_2wc8r")]
+animationPlayer = NodePath("AnimationPlayer")
 Team = 1
 
-[node name="SimpleBow" parent="." index="0" instance=ExtResource("2")]
-CanAim = false
-MaxAmmo = 50
-CurrentAmmo = 50
-damage = 25.0
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_qyy2u")
 
-[node name="Sprite2D" parent="." index="1"]
-texture = ExtResource("9")
-
-[node name="CollisionShape2D" parent="." index="2"]
-shape = SubResource("CapsuleShape2D_kclue")
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_ag1he")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 libraries = {
-"": SubResource("AnimationLibrary_718p5")
+"": SubResource("AnimationLibrary_4vgec")
 }
+
+[node name="TrainingBow" parent="." index="7" node_paths=PackedStringArray("attackCooldown", "deliverSound", "attackSound") instance=ExtResource("17_ps3ga")]
+CanAim = false
+MaxAmmo = 0
+CurrentAmmo = 0
+projectileType = 0
+attackCooldown = NodePath("")
+deliverSound = NodePath("")
+attackSound = NodePath("")

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c7cq21eaaq2n6" path="res://Scenes/World/Main/Respawns/RangedRespawn.tscn" id="7_2dg2m"]
 [ext_resource type="PackedScene" uid="uid://1m48nyc1s20l" path="res://Scenes/World/Main/Respawns/InfantryRespawn.tscn" id="7_tsxiy"]
 [ext_resource type="PackedScene" uid="uid://xms6ovg406jw" path="res://Scenes/Actors/Troops/AI/AssaultMapAI.tscn" id="7_w7fo2"]
-[ext_resource type="PackedScene" uid="uid://cc6727jnu0iy1" path="res://Scenes/Actors/Troops/Ranged/ArcherAlly.tscn" id="8_5n7kw"]
+[ext_resource type="PackedScene" uid="uid://2y2ms2a0r5qg" path="res://Scenes/Actors/Troops/Ranged/ArcherAlly.tscn" id="8_5n7kw"]
 [ext_resource type="PackedScene" uid="uid://d1icwp77t3ic" path="res://Scenes/Actors/Troops/Melee/FootmanEnemy.tscn" id="10_703pm"]
 
 [node name="World" node_paths=PackedStringArray("enemyMapAI", "allyMapAI", "capturableBaseManager") groups=["Persist"] instance=ExtResource("1_cm27o")]
@@ -24,15 +24,10 @@ layer_0/tile_data = PackedInt32Array(0, 65557, 1, 65536, 65557, 2, 131072, 21, 2
 position = Vector2(591, 298)
 
 [node name="ProjectileManager" parent="." index="3"]
-fireArrowsCount = 10
-arrowsCount = 10
+startingCount = 0
 
 [node name="LootManager" parent="." index="4"]
-goldenCount = 20
-silverCount = 20
-
-[node name="CanvasModulate" parent="." index="6"]
-color = Color(0.172549, 0.121569, 0.333333, 1)
+coinsCount = 1000
 
 [node name="AnimationPlayer" parent="CanvasModulate" index="0"]
 autoplay = "DayNightCycle"

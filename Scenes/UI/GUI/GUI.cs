@@ -43,9 +43,9 @@ public partial class GUI : CanvasLayer
     }
     public void SetWeapon(Weapon weapon)
     {
-        if (weapon is Bow bow)
+        if (weapon is Projective projective)
         {
-            SetCurrentAmmo(bow.CurrentAmmo);
+            SetCurrentAmmo(projective.CurrentAmmo);
             if (!weapon.IsConnected("WeaponAmmoChanged", new Callable(this, "SetCurrentAmmo")))
             {
                 weapon.Connect("WeaponAmmoChanged", new Callable(this, "SetCurrentAmmo"));

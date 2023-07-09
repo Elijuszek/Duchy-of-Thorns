@@ -26,3 +26,16 @@ public enum LoadingForm
     Save,
     Load
 }
+
+public enum ProjectileType
+{
+    ARROW,
+    FIRE_ARROW
+}
+
+public enum LootType
+{
+    GOLD,
+    SILVER,
+    BRONZE
+}

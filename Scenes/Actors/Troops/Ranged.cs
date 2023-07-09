@@ -128,5 +128,5 @@ public partial class Ranged : Troop
         AdvancePosition = new Vector2(randomX, randomY) + AdvancePosition;
         SetState(TroopState.ADVANCE);
     }
-    public virtual void Attack() => GD.PrintErr("Calling Attack from Ranged class");
+    public virtual void Attack() { }
 }

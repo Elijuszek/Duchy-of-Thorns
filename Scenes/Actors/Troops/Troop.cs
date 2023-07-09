@@ -6,8 +6,11 @@ namespace DuchyOfThorns;
 public partial class Troop : Actor
 {
 	[Signal] public delegate void DiedEventHandler();
-	PackedScene damagePopup;
-	Globals globals;
+
+    [Export] protected AnimationPlayer animationPlayer;
+
+    private PackedScene damagePopup;
+	private Globals globals;
 	public override void _Ready()
 	{
 		base._Ready();
@@ -20,7 +23,7 @@ public partial class Troop : Actor
 		Stats.Health -= damage;
 		if (Stats.Health <= 0)
 		{
-			Die();
+			animationPlayer.Play("Death");
 		}
 		else
 		{
@@ -42,7 +45,7 @@ public partial class Troop : Actor
 		if (Stats.Gold > 0)
 		{
 			Random rand = new Random();
-			globals.EmitSignal("CoinsDroped", rand.Next(1, Stats.Gold), GlobalPosition);
+			globals.EmitSignal("CoinsDroped", rand.Next(1, Stats.Gold), GlobalPosition, true);
 		}
 		EmitSignal(nameof(Died));
 		QueueFree();

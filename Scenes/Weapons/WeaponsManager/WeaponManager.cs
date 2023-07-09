@@ -75,9 +75,9 @@ public partial class WeaponManager : Node2D
 		{
 			melee.Idle();
 		}
-		else if (currentWeapon is Bow bow)
+		else if (currentWeapon is Projective projective)
 		{
-			bow.Idle();
+			projective.Idle();
 		}
 	}
 	public void Attack()
@@ -90,15 +90,15 @@ public partial class WeaponManager : Node2D
 				attackTimer.Start(melee.AttackDuartion);
 				melee.Attack();
 			}
-			else if (currentWeapon is Bow bow)
+			else if (currentWeapon is Projective projective)
 			{
 				IsAttacking = true;
-				attackTimer.Start(bow.AttackDuartion);
-				if (bow.CanAim)
+				attackTimer.Start(projective.AttackDuartion);
+				if (projective.CanAim)
 				{
-					aiming.StartAiming(2f, 0.1f, 2f, bow.AttackDuartion); // start, end, duration, delay
+					aiming.StartAiming(2f, 0.1f, 2f, projective.AttackDuartion); // start, end, duration, delay
 				}
-				bow.Attack();
+                projective.Attack();
 			}
 		}
 	}
@@ -119,10 +119,10 @@ public partial class WeaponManager : Node2D
 				IsAttacking = false;
 				melee.Deliver();
 			}
-			else if (currentWeapon is Bow bow && bow.CanAttack() && attackTimer.IsStopped())
+			else if (currentWeapon is Projective projective && projective.CanAttack() && attackTimer.IsStopped())
 			{
-				bow.BowDirection.Position = new Vector2(bow.BowDirection.Position.X, aiming.GetDirection());
-				bow.Deliver();
+				projective.WeaponDirection.Position = new Vector2(projective.WeaponDirection.Position.X, aiming.GetDirection());
+				projective.Deliver();
 				IsAttacking = false;
 				Idle();
 			}
@@ -134,9 +134,9 @@ public partial class WeaponManager : Node2D
 		{
 			melee.Walking();
 		}
-		else if (currentWeapon is Bow bow)
+		else if (currentWeapon is Projective projective)
 		{
-			bow.Walking();
+            projective.Walking();
 		}
 	}
 	private void AttackTimerTimeout()
@@ -156,12 +156,12 @@ public partial class WeaponManager : Node2D
 				data.Add("PrimaryType", "Melee");
 				data.Add("PrimaryFilename", weapons[1].Name);
 			}
-			else if (weapons[1] is Bow bow)
+			else if (weapons[1] is Projective projective)
 			{
 				data.Add("PrimaryType", "Bow");
 				data.Add("PrimaryFilename", weapons[1].Name);
-				data.Add("PrimaryAmmo", bow.CurrentAmmo);
-				data.Add("PrimaryMaxAmmo", bow.MaxAmmo);
+				data.Add("PrimaryAmmo", projective.CurrentAmmo);
+				data.Add("PrimaryMaxAmmo", projective.MaxAmmo);
 			}
 		}
 		else
@@ -175,12 +175,12 @@ public partial class WeaponManager : Node2D
 				data.Add("SecondaryType", "Melee");
 				data.Add("SecondaryFilename", weapons[2].Name);
 			}
-			else if (weapons[2] is Bow bow)
+			else if (weapons[2] is Projective projective)
 			{
 				data.Add("SecondaryType", "Bow");
 				data.Add("SecondaryFilename", weapons[2].Name);
-				data.Add("SecondaryAmmo", bow.CurrentAmmo);
-				data.Add("SecondaryMaxAmmo", bow.MaxAmmo);
+				data.Add("SecondaryAmmo", projective.CurrentAmmo);
+				data.Add("SecondaryMaxAmmo", projective.MaxAmmo);
 			}
 		}
 		else
@@ -199,10 +199,10 @@ public partial class WeaponManager : Node2D
 		else if ((string)data["PrimaryType"] == "Bow")
 		{
 			var newObjectScene = (PackedScene)ResourceLoader.Load(data["PrimaryFilename"].ToString());
-			Bow bow = newObjectScene.Instantiate() as Bow;
-			bow.CurrentAmmo = Convert.ToInt32(data["PrimaryAmmo"]);
-			bow.MaxAmmo = Convert.ToInt32(data["PrimaryMaxAmmo"]);
-			AddWeapon(bow, 1);
+			Projective projective = newObjectScene.Instantiate() as Projective;
+			projective.CurrentAmmo = Convert.ToInt32(data["PrimaryAmmo"]);
+			projective.MaxAmmo = Convert.ToInt32(data["PrimaryMaxAmmo"]);
+			AddWeapon(projective, 1);
 		}
 		if ((string)data["SecondaryType"] == "Melee")
 		{
@@ -212,10 +212,10 @@ public partial class WeaponManager : Node2D
 		else if ((string)data["SecondaryType"] == "Bow")
 		{
 			var newObjectScene = (PackedScene)ResourceLoader.Load(data["SecondaryFilename"].ToString());
-			Bow bow = newObjectScene.Instantiate() as Bow;
-			bow.CurrentAmmo = Convert.ToInt32(data["SecondaryAmmo"]);
-			bow.MaxAmmo = Convert.ToInt32(data["SecondaryMaxAmmo"]);
-			AddWeapon(bow, 2);
+			Projective projective = newObjectScene.Instantiate() as Projective;
+			projective.CurrentAmmo = Convert.ToInt32(data["SecondaryAmmo"]);
+			projective.MaxAmmo = Convert.ToInt32(data["SecondaryMaxAmmo"]);
+			AddWeapon(projective, 2);
 		}
 		Initialize(Team.PLAYER);
 	}

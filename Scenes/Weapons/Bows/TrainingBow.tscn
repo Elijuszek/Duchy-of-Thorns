@@ -1,0 +1,82 @@
+[gd_scene load_steps=14 format=3 uid="uid://cankvsstxf22r"]
+
+[ext_resource type="PackedScene" uid="uid://2y8sces1eiob" path="res://Scenes/Weapons/Projective.tscn" id="1_82880"]
+[ext_resource type="AudioStream" uid="uid://dm0asr2isrv1q" path="res://Sounds/Bow/BowArrowShot.wav" id="2_qbbj4"]
+[ext_resource type="AudioStream" uid="uid://da2lmma6d7erd" path="res://Sounds/Bow/BowArrowDrawn1.wav" id="3_rrwdu"]
+[ext_resource type="Texture2D" uid="uid://ce3ivfegdonkq" path="res://Sprites/Weapons/Bows/SimpleBow/BowReload-1.png" id="4_uytp3"]
+[ext_resource type="Texture2D" uid="uid://bo5sj12dqdrjd" path="res://Sprites/Weapons/Bows/SimpleBow/BowReload-2.png" id="5_qmfmb"]
+[ext_resource type="Texture2D" uid="uid://dwdjgu274c4jd" path="res://Sprites/Weapons/Bows/SimpleBow/BowReload-3.png" id="6_qj5vm"]
+[ext_resource type="Texture2D" uid="uid://dlct6oaa3vws4" path="res://Sprites/Weapons/Bows/SimpleBow/BowReload-4.png" id="7_mu5mg"]
+[ext_resource type="Texture2D" uid="uid://cca1l7eds6xs1" path="res://Sprites/Weapons/Bows/SimpleBow/BowReload-5.png" id="8_pcw1o"]
+[ext_resource type="Texture2D" uid="uid://shar16v0hnln" path="res://Sprites/Weapons/Bows/SimpleBow/BowReload-6.png" id="9_rti1n"]
+
+[sub_resource type="Animation" id="Animation_vl50b"]
+resource_name = "Attack"
+length = 0.55
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_uytp3"), ExtResource("5_qmfmb"), ExtResource("6_qj5vm"), ExtResource("7_mu5mg"), ExtResource("8_pcw1o"), ExtResource("9_rti1n")]
+}
+
+[sub_resource type="Animation" id="Animation_yhp3p"]
+resource_name = "Idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_1p0nq"]
+resource_name = "Walk"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1qy3m"]
+_data = {
+"Attack": SubResource("Animation_vl50b"),
+"Idle": SubResource("Animation_yhp3p"),
+"Walk": SubResource("Animation_1p0nq")
+}
+
+[node name="TrainingBow" instance=ExtResource("1_82880")]
+
+[node name="DeliverSound" parent="." index="1"]
+stream = ExtResource("2_qbbj4")
+
+[node name="AttackSound" parent="." index="2"]
+stream = ExtResource("3_rrwdu")
+
+[node name="Sprite2D" parent="." index="5"]
+texture = ExtResource("4_uytp3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+libraries = {
+"": SubResource("AnimationLibrary_1qy3m")
+}

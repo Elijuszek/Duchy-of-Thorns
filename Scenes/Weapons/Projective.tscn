@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://2y8sces1eiob"]
+
+[ext_resource type="PackedScene" uid="uid://buxokbp1yi6dd" path="res://Scenes/Weapons/Weapon.tscn" id="1"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Projective.cs" id="2_yk18k"]
+
+[node name="ProjectileWeapon" instance=ExtResource("1")]
+script = ExtResource("2_yk18k")
+attackCooldown = Object(Timer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","process_callback":1,"wait_time":1.0,"one_shot":true,"autostart":false,"script":null)
+
+deliverSound = Object(AudioStreamPlayer2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"stream":null,"volume_db":5.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"max_distance":1000.0,"attenuation":7.0,"max_polyphony":1,"panning_strength":1.0,"bus":&"Master","area_mask":1,"script":null)
+
+attackSound = Object(AudioStreamPlayer2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"stream":null,"volume_db":5.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"max_distance":1000.0,"attenuation":7.0,"max_polyphony":1,"panning_strength":1.0,"bus":&"Master","area_mask":1,"script":null)
+
+
+[node name="BowDirection" type="Marker2D" parent="." index="3"]
+position = Vector2(461, 0)
+
+[node name="EndOfBow" type="Marker2D" parent="." index="4"]
+position = Vector2(30, 0)

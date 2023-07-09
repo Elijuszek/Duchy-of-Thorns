@@ -1,7 +1,6 @@
 global using Godot;
 global using System;
 global using System.Linq;
-
 namespace DuchyOfThorns;
 
 /// <summary>
@@ -9,10 +8,8 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class Globals : Node
 {
-	[Signal]
-	public delegate void ArrowFiredEventHandler(Arrow arrow, Team team, Marker2D position, Vector2 direction);
-	[Signal]
-	public delegate void CoinsDropedEventHandler(int coins, Marker2D position);
+	[Signal] public delegate void ProjectileFiredEventHandler(ProjectileType type, Team team, Marker2D position, Vector2 direction);
+	[Signal] public delegate void CoinsDropedEventHandler(int coins, Marker2D position, bool explosive);
 	private const string SaveDir = "user://saves/";
 	private string savePath = SaveDir + "save.dat";
 	private PackedScene transitionScene = ResourceLoader.Load<PackedScene>("res://Scenes/UI/Transitions/PixelationTransition.tscn");

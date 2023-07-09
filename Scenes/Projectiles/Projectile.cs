@@ -5,7 +5,7 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class Projectile : Area2D, IPoolable
 {
-    [Signal] public delegate void ProjectileRemovedEventHandler(Projectile projectile);
+    public event RemovedFromSceneEventHandler RemovedFromScene;
     [Export] public float Speed { get; set; } = 4;
     [Export] public float Damage { get; set; } = 35;
     [Export] public float Range { get; set; } = 10;
@@ -51,6 +51,6 @@ public partial class Projectile : Area2D, IPoolable
         traveledDistance = 0;
         Rotation = 0;
         Hide();
-        EmitSignal(nameof(ProjectileRemoved), this);
+        EmitSignal("RemovedFromScene", this);
     }
 }

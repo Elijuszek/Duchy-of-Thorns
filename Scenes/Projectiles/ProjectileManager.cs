@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
 namespace DuchyOfThorns;
 
 /// <summary>
@@ -6,59 +9,30 @@ namespace DuchyOfThorns;
 /// Projectile manager mustn't be blocked by any other body in the scene, because collision 
 /// will trigger unwanted arrowRemoved event
 /// </summary>
-public partial class ProjectileManager : Node
+public partial class ProjectileManager : Node2D
 {
-    [Export] private int fireArrowsCount = 10;
-    [Export] private int arrowsCount = 20;
-    private PackedScene arrowScene;
-    private PackedScene fireArrowScene;
-    private ObjectPool<Arrow> arrowPool;         // TODO: arrowPool should increase dynamically
-    private ObjectPool<FireArrow> fireArrowPool;
+    [Export] private int startingCount = 10;
+
+    private Dictionary<ProjectileType, ObjectPool<Projectile>> projectilePool;
+
     public override void _Ready()
     {
         base._Ready();
-        arrowScene = (PackedScene)ResourceLoader.Load("res://Scenes/Projectiles/Arrows/Arrow.tscn");
-        fireArrowScene = (PackedScene)ResourceLoader.Load("res://Scenes/Projectiles/Arrows/FireArrow.tscn");
-        arrowPool = new ObjectPool<Arrow>();
-        fireArrowPool = new ObjectPool<FireArrow>();
-        for (int i = 0; i < arrowsCount; i++)
+        projectilePool = new Dictionary<ProjectileType, ObjectPool<Projectile>>()
         {
-            Arrow arrow = arrowScene.Instantiate() as Arrow;
-            arrow.Connect("ProjectileRemoved", new Callable(this, "ArrowRemoved"));
-            AddChild(arrow);
-            arrow.RemoveFromScene();
-        }
-        for (int i = 0; i < fireArrowsCount; i++)
-        {
-            FireArrow arrow = fireArrowScene.Instantiate() as FireArrow;
-            arrow.Connect("ProjectileRemoved", new Callable(this, "FireArrowRemoved"));
-            AddChild(arrow);
-            arrow.RemoveFromScene();
-        }
+            { ProjectileType.ARROW,  new ObjectPool<Projectile>(this, 
+            ResourceLoader.Load<PackedScene>("res://Scenes/Projectiles/Arrows/Arrow.tscn"), startingCount)},
+            { ProjectileType.FIRE_ARROW,  new ObjectPool<Projectile>(this, 
+            ResourceLoader.Load<PackedScene>("res://Scenes/Projectiles/Arrows/FireArrow.tscn"), startingCount) }
+        };
     }
-    public void HandleArrowSpawned(Arrow arrow, Team team, Vector2 position, Vector2 direction)
-    {
-        float damage = arrow.Damage;
-        if (arrow is FireArrow)
-        {
-            arrow = fireArrowPool.Get();
-            (arrow as FireArrow).StartEmiting();
-        }
-        else
-        {
-            arrow = arrowPool.Get();
-        }
-        arrow.Damage = damage;
-        arrow.AddToScene();
-        arrow.GlobalPosition = position;
-        arrow.team = team;
-        arrow.SetDirection(direction);
-    }
-    private void ArrowRemoved(Arrow removed) => arrowPool.Release(removed);
-    private void FireArrowRemoved(FireArrow removed)
-    {
-        fireArrowPool.Release(removed);
-        removed.StopEmiting();
 
+    public void HandleProjectileSpawned(ProjectileType type, float damage, Team team, Vector2 position, Vector2 direction)
+    {
+        Projectile projectile = projectilePool[type].Take();
+        projectile.Damage = damage;
+        projectile.team = team;
+        projectile.GlobalPosition = position;
+        projectile.SetDirection(direction);
     }
 }
