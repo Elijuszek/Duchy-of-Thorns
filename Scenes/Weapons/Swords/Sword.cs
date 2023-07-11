@@ -9,7 +9,6 @@ public partial class Sword : Melee
     public override void Idle() => animationPlayer.Play("Idle");
     public override void Attack()
     {
-        delivered = false;
         float speedScale = animationPlayer.GetAnimation("Attack").Length / AttackDuartion;
         animationPlayer.Play("Attack", -1, speedScale);
         attackSound.Play();

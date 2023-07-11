@@ -46,6 +46,7 @@ frame_3/duration = 1.0
 script = ExtResource("2_fk0bc")
 fire = NodePath("Fire")
 embers = NodePath("Embers")
+Type = 1
 
 [node name="Fire" parent="." index="3" instance=ExtResource("6_gdsf8")]
 process_material = SubResource("ParticleProcessMaterial_bodrv")

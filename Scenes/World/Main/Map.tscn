@@ -2899,12 +2899,8 @@ position_smoothing_enabled = true
 [node name="ProjectileManager" type="Node2D" parent="."]
 position = Vector2(0, -100)
 script = ExtResource("4")
-fireArrowsCount = 0
-arrowsCount = 2
 
 [node name="LootManager" parent="." instance=ExtResource("2_xngab")]
-goldenCount = 0
-silverCount = 1
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 

@@ -24,9 +24,7 @@ public partial class Projective : Weapon
         base._Ready();
         globals = GetNode<Globals>("/root/Globals");
     }
-    public virtual void Attack() 
-    { 
-    }
+    public virtual void Attack() { }
     public virtual void Deliver() { }
     public virtual void Idle() { }
     public virtual void Walking() { }

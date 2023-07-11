@@ -19,10 +19,10 @@ public partial class Bow : Projective
     {
             deliverSound.Play();
             Vector2 direction = (WeaponDirection.GlobalPosition - EndOfWeapon.GlobalPosition).Normalized();
-            globals.EmitSignal("ProjectileFired", damage, (int)projectileType, (int)team, EndOfWeapon.GlobalPosition, direction);
+            globals.EmitSignal("ProjectileFired", (int)projectileType, damage, (int)team, EndOfWeapon.GlobalPosition, direction);
             SetCurrentAmmo(CurrentAmmo - 1);
             attackCooldown.Start();
             Idle();
     }
-    public override void Walking() => animationPlayer.Play("Walking");
+    public override void Walking() => animationPlayer.Play("Walk");
 }

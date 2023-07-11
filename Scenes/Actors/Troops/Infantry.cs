@@ -1,5 +1,5 @@
 namespace DuchyOfThorns;
-
+using Godot.Collections;
 /// <summary>
 /// Final class for all infantry units
 /// Main purpose of this class is to implement specific
@@ -117,7 +117,13 @@ public partial class Infantry : Troop
             animationPlayer.Play("Attack", -1, customSpeed);
         }
     }
-    private void DetectionZoneBodyEntered(PhysicsBody2D body)
+
+    private void RefreshDetectionZone()
+    {
+        detectionZone.SetDeferred("monitoring", false);
+        detectionZone.SetDeferred("monitoring", true);
+    }
+    private void DetectionZoneBodyEntered(Node2D body)
     {
         if (body is Actor actorBody && actorBody.GetTeam() != Team &&
             CurrentState != TroopState.ENGAGE && CurrentState != TroopState.ATTACK)
@@ -127,12 +133,14 @@ public partial class Infantry : Troop
         }
     }
 
-    private void DetectionZoneBodyExited(PhysicsBody2D body)
+    private void DetectionZoneBodyExited(Node2D body)
     {
-        if (body == enemy && enemy != null && !IsQueuedForDeletion())
+        if (body == enemy && !IsQueuedForDeletion())
         {
             SetState(TroopState.ADVANCE);
             enemy = null;
+            RefreshDetectionZone();
+            return;
         }
     }
 
@@ -147,9 +155,10 @@ public partial class Infantry : Troop
 
     private void AttackZoneBodyExited(PhysicsBody2D body)
     {
-        if (enemy is not null)
+        if (body == enemy && !IsQueuedForDeletion())
         {
             SetState(TroopState.ENGAGE);
+            return;
         }
     }
 

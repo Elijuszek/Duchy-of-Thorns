@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://cankvsstxf22r"]
+[gd_scene load_steps=15 format=3 uid="uid://cankvsstxf22r"]
 
 [ext_resource type="PackedScene" uid="uid://2y8sces1eiob" path="res://Scenes/Weapons/Projective.tscn" id="1_82880"]
 [ext_resource type="AudioStream" uid="uid://dm0asr2isrv1q" path="res://Sounds/Bow/BowArrowShot.wav" id="2_qbbj4"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Bows/Bow.cs" id="2_rxvdi"]
 [ext_resource type="AudioStream" uid="uid://da2lmma6d7erd" path="res://Sounds/Bow/BowArrowDrawn1.wav" id="3_rrwdu"]
 [ext_resource type="Texture2D" uid="uid://ce3ivfegdonkq" path="res://Sprites/Weapons/Bows/SimpleBow/BowReload-1.png" id="4_uytp3"]
 [ext_resource type="Texture2D" uid="uid://bo5sj12dqdrjd" path="res://Sprites/Weapons/Bows/SimpleBow/BowReload-2.png" id="5_qmfmb"]
@@ -12,7 +13,7 @@
 
 [sub_resource type="Animation" id="Animation_vl50b"]
 resource_name = "Attack"
-length = 0.55
+length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -24,6 +25,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("4_uytp3"), ExtResource("5_qmfmb"), ExtResource("6_qj5vm"), ExtResource("7_mu5mg"), ExtResource("8_pcw1o"), ExtResource("9_rti1n")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Deliver"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_yhp3p"]
@@ -65,7 +80,19 @@ _data = {
 "Walk": SubResource("Animation_1p0nq")
 }
 
-[node name="TrainingBow" instance=ExtResource("1_82880")]
+[node name="TrainingBow" node_paths=PackedStringArray("animationPlayer", "WeaponDirection", "EndOfWeapon", "attackCooldown", "deliverSound", "attackSound") instance=ExtResource("1_82880")]
+script = ExtResource("2_rxvdi")
+animationPlayer = NodePath("AnimationPlayer")
+CanAim = false
+MaxAmmo = 100
+CurrentAmmo = 50
+WeaponDirection = NodePath("BowDirection")
+EndOfWeapon = NodePath("EndOfBow")
+projectileType = 0
+damage = 25.0
+attackCooldown = NodePath("AttackCooldown")
+deliverSound = NodePath("DeliverSound")
+attackSound = NodePath("AttackSound")
 
 [node name="DeliverSound" parent="." index="1"]
 stream = ExtResource("2_qbbj4")
@@ -74,9 +101,10 @@ stream = ExtResource("2_qbbj4")
 stream = ExtResource("3_rrwdu")
 
 [node name="Sprite2D" parent="." index="5"]
-texture = ExtResource("4_uytp3")
+texture = ExtResource("9_rti1n")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_1qy3m")
 }

@@ -36,6 +36,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("2_hk5b1"), ExtResource("3_gx1q4"), ExtResource("4_wxylq"), ExtResource("5_7kpqx"), ExtResource("6_yahne"), ExtResource("7_ea842")]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Idle"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_sumab"]
 resource_name = "Death"
@@ -108,23 +122,25 @@ _data = {
 "Walk": SubResource("Animation_ci1es")
 }
 
-[node name="ArcherAlly" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("1_l4cwt")]
+[node name="ArcherAlly" node_paths=PackedStringArray("weapon", "animationPlayer") instance=ExtResource("1_l4cwt")]
+collision_layer = 2
+weapon = NodePath("TrainingBow")
 animationPlayer = NodePath("AnimationPlayer")
 Team = 0
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("9_kf5yi")
+texture = ExtResource("7_ea842")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CapsuleShape2D_qkjbe")
 
+[node name="DetectionZone" parent="." index="5"]
+collision_mask = 4
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_rw011")
 }
 
 [node name="TrainingBow" parent="." index="7" instance=ExtResource("17_ji48n")]
-CanAim = false
-MaxAmmo = 0
-CurrentAmmo = 0
-projectileType = 0

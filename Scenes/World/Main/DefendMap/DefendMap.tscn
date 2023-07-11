@@ -23,9 +23,6 @@ layer_0/tile_data = PackedInt32Array(0, 65557, 1, 65536, 65557, 2, 131072, 21, 2
 [node name="PlayerSpawn" parent="." index="1"]
 position = Vector2(591, 298)
 
-[node name="ProjectileManager" parent="." index="3"]
-startingCount = 0
-
 [node name="LootManager" parent="." index="4"]
 coinsCount = 1000
 

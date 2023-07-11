@@ -11,6 +11,7 @@ size = Vector2(7.996, 2.493)
 [node name="Arrow" instance=ExtResource("1")]
 scale = Vector2(2, 1.2)
 script = ExtResource("4")
+Speed = 5.0
 
 [node name="FlyingSound" parent="." index="0"]
 stream = ExtResource("2_p65rt")

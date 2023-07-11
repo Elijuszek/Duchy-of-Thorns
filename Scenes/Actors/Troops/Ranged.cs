@@ -10,6 +10,7 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class Ranged : Troop
 {
+    [Export] protected Projective weapon;
     [Export] protected Timer patrolTimer;
     [Export] protected Area2D detectionZone;
     [Export] private NavigationAgent2D navAgent;
@@ -25,7 +26,7 @@ public partial class Ranged : Troop
         navAgent.MaxSpeed = Stats.Speed;
         navAgent.SetNavigationMap(GetNode<TileMap>("/root/World/TileMap").GetNavigationMap(0));
         navAgent.TargetPosition = GlobalPosition;
-        navAgent.Connect("velocity_computed", new Callable(this, "Move"));
+        navAgent.Connect("velocity_computed", new Callable(this, "Walking"));
 
     }
     public override void _PhysicsProcess(double delta)
@@ -34,6 +35,7 @@ public partial class Ranged : Troop
         switch (CurrentState)
         {
             case TroopState.PATROL:
+                Idle();
                 return;
 
             case TroopState.ADVANCE:
@@ -57,7 +59,7 @@ public partial class Ranged : Troop
                 break;
 
             default:
-                GD.PrintErr("Invalid TroopState");
+                GD.PrintErr("Invalid TroopState in Ranged");
                 break;
         }
     }
@@ -94,13 +96,27 @@ public partial class Ranged : Troop
         }
         CurrentState = newState;
     }
-
-    private void Move(Vector2 velocity)
+    private void Idle()
     {
+        weapon.Idle();
+        animationPlayer.Play("Idle");
+    }
+    private void Walking(Vector2 velocity)
+    {
+        weapon.Walking();
+        animationPlayer.Play("Walk");
         Velocity = velocity;
         MoveAndSlide();
     }
-
+    private void Attack() 
+    { 
+                if (animationPlayer.CurrentAnimation != "Attack" && weapon.CanAttack())
+        {
+            weapon.Attack();
+            float customSpeed = animationPlayer.GetAnimation("Attack").Length / weapon.AttackDuartion;
+            animationPlayer.Play("Attack", -1, customSpeed);
+        }
+    }
     private void DetectionZoneBodyEntered(PhysicsBody2D body)
     {
         if (body is Actor actorBody && actorBody.GetTeam() != Team &&
@@ -128,5 +144,4 @@ public partial class Ranged : Troop
         AdvancePosition = new Vector2(randomX, randomY) + AdvancePosition;
         SetState(TroopState.ADVANCE);
     }
-    public virtual void Attack() { }
 }

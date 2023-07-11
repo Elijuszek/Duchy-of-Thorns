@@ -252,6 +252,7 @@ texture = ExtResource("8_ou4f6")
 stream = ExtResource("39")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_f22p5")
 }

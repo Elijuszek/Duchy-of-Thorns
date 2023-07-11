@@ -15,7 +15,6 @@ public partial class Spear : Melee
 	public override void Idle() => animationPlayer.Play("Idle");
 	public override void Attack()
 	{
-		delivered = false;
 		animationPlayer.Play("Attack");
 	}
 	public override void Deliver()
@@ -26,11 +25,10 @@ public partial class Spear : Melee
 	public override void Walking() => animationPlayer.Play("Walking");
 	public override void Area2DBodyEntered(Node body)
 	{
-		if (body is Actor actor && actor.GetTeam() != team && !delivered)
+		if (body is Actor actor && actor.GetTeam() != team)
 		{
 			actor.HandleHit(damage, GlobalPosition);
 			deliverSound.Play();
-			delivered = true;
 			actor.HandleKnockback(knockBack, GlobalPosition);
 		}
 	}

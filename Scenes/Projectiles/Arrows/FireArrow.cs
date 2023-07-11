@@ -21,21 +21,18 @@ public partial class FireArrow : Arrow
     }
     protected override void ArrowBodyEntered(Node body)
     {
-        if (body is Actor actor)
+        switch (body)
         {
-            if (actor.GetTeam() != team)
-            {
-                actor.HandleHit(Damage, GlobalPosition);
+            case Actor actor:
+                if (actor.GetTeam() != team)
+                {
+                    actor.HandleHit(Damage, GlobalPosition);
+                    RemoveFromScene();
+                }
+                break;
+            default:
                 RemoveFromScene();
-            }
-        }
-        else if (body is Fireplace)
-        {
-            return;
-        }
-        else
-        {
-            RemoveFromScene();
+                break;
         }
     }
 }

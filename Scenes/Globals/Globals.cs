@@ -8,7 +8,7 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class Globals : Node
 {
-	[Signal] public delegate void ProjectileFiredEventHandler(ProjectileType type, Team team, Marker2D position, Vector2 direction);
+	[Signal] public delegate void ProjectileFiredEventHandler(ProjectileType type, float damage, Team team, Vector2 position, Vector2 direction);
 	[Signal] public delegate void CoinsDropedEventHandler(int coins, Marker2D position, bool explosive);
 	private const string SaveDir = "user://saves/";
 	private string savePath = SaveDir + "save.dat";

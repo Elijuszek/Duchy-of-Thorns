@@ -115,7 +115,7 @@ position = Vector2(3, 14)
 damage = 50.0
 
 [node name="Sprite2D" parent="." index="1"]
-texture = ExtResource("4")
+texture = ExtResource("10")
 
 [node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource("1")
@@ -124,6 +124,13 @@ shape = SubResource("1")
 Gold = 50
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_0i64o")
 }
+
+[node name="DetectionZone" parent="." index="7"]
+collision_mask = 3
+
+[node name="AttackZone" parent="." index="8"]
+collision_mask = 3

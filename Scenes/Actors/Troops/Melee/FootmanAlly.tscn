@@ -125,6 +125,13 @@ shape = SubResource("5")
 Speed = 30.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_lo4so")
 }
+
+[node name="DetectionZone" parent="." index="7"]
+collision_mask = 4
+
+[node name="AttackZone" parent="." index="8"]
+collision_mask = 4

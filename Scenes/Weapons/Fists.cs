@@ -23,7 +23,6 @@ public partial class Fists : Melee
 	public override void Idle()
 	{
 		animationPlayer.Play("Idle");
-		delivered = false;
 	}
 	public override void Attack()
 	{
