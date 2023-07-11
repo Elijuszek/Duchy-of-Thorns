@@ -164,8 +164,7 @@ _data = {
 }
 
 [node name="GoldenSword" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("2")]
-position = Vector2(7, 10)
-rotation = -0.523599
+position = Vector2(2.5, 13.5)
 scale = Vector2(1.01145, 1.01948)
 script = ExtResource("3")
 animationPlayer = NodePath("AnimationPlayer")

@@ -1,5 +1,3 @@
-using Godot.Collections;
-
 namespace DuchyOfThorns;
 
 /// <summary>
@@ -18,20 +16,39 @@ public partial class Projective : Weapon
     [Export] protected ProjectileType projectileType;
 
     protected Globals globals;
-    public override void _PhysicsProcess(double delta) => base._Process(delta);
+
     public override void _Ready()
     {
         base._Ready();
         globals = GetNode<Globals>("/root/Globals");
     }
-    public virtual void Attack() { }
-    public virtual void Deliver() { }
-    public virtual void Idle() { }
-    public virtual void Walking() { }
+
+    public virtual void Attack()
+    {
+        attackSound.Play();
+        IsAttacking = true;
+    }
+
+    public virtual void Deliver() 
+    {
+        attackSound.Stop();
+        deliverSound.Play();
+        Vector2 direction = (WeaponDirection.GlobalPosition - EndOfWeapon.GlobalPosition).Normalized();
+        globals.EmitSignal("ProjectileFired", (int)projectileType, damage, (int)team, EndOfWeapon.GlobalPosition, direction);
+        SetCurrentAmmo(CurrentAmmo - 1);
+        attackCooldown.Start();
+        Idle();
+        IsAttacking = false;
+    }
+
+    public virtual void Idle() => IsAttacking = false;
+    public virtual void Walking() => IsAttacking = false;
+
     public override bool CanAttack()
     {
-        return attackCooldown.IsStopped() && CurrentAmmo > 0;
+        return base.CanAttack() && CurrentAmmo > 0;
     }
+
     public void SetCurrentAmmo(int NewAmmo)
     {
         int actualAmmo = Mathf.Clamp(NewAmmo, 0, MaxAmmo);

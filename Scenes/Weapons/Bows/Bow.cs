@@ -6,23 +6,26 @@ namespace DuchyOfThorns;
 public partial class Bow : Projective
 {
     [Export] private AnimationPlayer animationPlayer;
-    public override void Idle() => animationPlayer.Play("Idle");
+
+    public override void Idle()
+    {
+        base.Idle();
+        animationPlayer.Play("Idle");
+    }
+
+    public override bool CanAttack() => base.CanAttack();
+
     public override void Attack()
     {
+        base.Attack();
         animationPlayer.Play("Attack");
-        if (CanAim)
-        {
-            attackSound.Play();
-        }
     }
-    public override void Deliver()
+
+    public override void Deliver() => base.Deliver();
+
+    public override void Walking()
     {
-            deliverSound.Play();
-            Vector2 direction = (WeaponDirection.GlobalPosition - EndOfWeapon.GlobalPosition).Normalized();
-            globals.EmitSignal("ProjectileFired", (int)projectileType, damage, (int)team, EndOfWeapon.GlobalPosition, direction);
-            SetCurrentAmmo(CurrentAmmo - 1);
-            attackCooldown.Start();
-            Idle();
+        base.Attack();
+        animationPlayer.Play("Walk");
     }
-    public override void Walking() => animationPlayer.Play("Walk");
 }

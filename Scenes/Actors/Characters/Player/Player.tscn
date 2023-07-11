@@ -1,10 +1,11 @@
-[gd_scene load_steps=100 format=3 uid="uid://b6qiuybjj7b2b"]
+[gd_scene load_steps=101 format=3 uid="uid://b6qiuybjj7b2b"]
 
 [ext_resource type="Texture2D" uid="uid://qid2e2hm8wd8" path="res://Sprites/Character/BowReloadNew/BowReload-1.png" id="1"]
 [ext_resource type="PackedScene" uid="uid://d0o4kcg7hf4j" path="res://Scenes/Actors/Characters/Actor.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://k5m1vj5ijl3b" path="res://Sprites/Character/SpearAttack/Spear-1.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://d4l7c7fvuk6wl" path="res://Sprites/Character/BowReloadNew/BowReload-3.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://dpxsu2sqww7vj" path="res://Sprites/Character/BowReloadNew/BowReload-2.png" id="5"]
+[ext_resource type="PackedScene" uid="uid://cankvsstxf22r" path="res://Scenes/Weapons/Bows/TrainingBow.tscn" id="5_u3sho"]
 [ext_resource type="Texture2D" uid="uid://bb3fty8rp7oq5" path="res://Sprites/Character/BowReloadNew/BowReload-6.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://cn8jcj4tkmh7m" path="res://Sprites/Character/BowReloadNew/BowReload-4.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://cy6mtkb27lpvx" path="res://Sprites/Character/BowReloadNew/BowReload-5.png" id="8"]
@@ -130,6 +131,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="9"]
 length = 0.55
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -141,20 +143,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [ExtResource("1"), ExtResource("5"), ExtResource("4"), ExtResource("7"), ExtResource("8"), ExtResource("6")]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [true],
-"method": &"stop"
-}]
 }
 
 [sub_resource type="Animation" id="7"]
@@ -228,9 +216,13 @@ cameraTransform = NodePath("CameraTransform")
 coinsSound = NodePath("CoinsSound")
 Team = 0
 
-[node name="WeaponsManager" parent="." index="0" instance=ExtResource("11")]
+[node name="WeaponsManager" parent="." index="0" node_paths=PackedStringArray("CurrentWeapon") instance=ExtResource("11")]
+CurrentWeapon = NodePath("Fists")
 
 [node name="Fists" parent="WeaponsManager" index="0" instance=ExtResource("69")]
+
+[node name="TrainingBow" parent="WeaponsManager" index="2" instance=ExtResource("5_u3sho")]
+CanAim = true
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("9")

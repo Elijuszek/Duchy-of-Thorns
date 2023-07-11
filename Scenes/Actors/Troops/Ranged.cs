@@ -110,12 +110,17 @@ public partial class Ranged : Troop
     }
     private void Attack() 
     { 
-                if (animationPlayer.CurrentAnimation != "Attack" && weapon.CanAttack())
+        if (animationPlayer.CurrentAnimation != "Attack" && weapon.CanAttack())
         {
             weapon.Attack();
             float customSpeed = animationPlayer.GetAnimation("Attack").Length / weapon.AttackDuartion;
             animationPlayer.Play("Attack", -1, customSpeed);
         }
+    }
+    private void Deliver()
+    {
+        weapon.Deliver();
+        animationPlayer.Play("Idle");
     }
     private void DetectionZoneBodyEntered(PhysicsBody2D body)
     {

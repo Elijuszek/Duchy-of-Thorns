@@ -1,5 +1,5 @@
 namespace DuchyOfThorns;
-using Godot.Collections;
+
 /// <summary>
 /// Final class for all infantry units
 /// Main purpose of this class is to implement specific
