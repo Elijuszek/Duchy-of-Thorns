@@ -77,7 +77,6 @@ public partial class WeaponManager : Node2D
 
     public bool Attack()
     {
-        GD.Print("WeaponManager Attack");
         if (!CurrentWeapon.CanAttack())
             return false;
 
@@ -96,7 +95,7 @@ public partial class WeaponManager : Node2D
                 break;
             default:
                 GD.PrintErr("Invalid weapon type in weapon manager Attack method: ", CurrentWeapon.GetType());
-                break;
+                return false;
         }
         return true;
     }

@@ -11,7 +11,7 @@ public partial class Melee : Weapon
 	{
 		IsAttacking = false;
 	}
-	public virtual void Attack() => IsAttacking = false;
+	public virtual void Attack() => IsAttacking = true;
 
 	public virtual void Deliver() 
 	{

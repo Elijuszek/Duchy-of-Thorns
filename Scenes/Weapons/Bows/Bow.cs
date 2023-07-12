@@ -25,7 +25,7 @@ public partial class Bow : Projective
 
     public override void Walking()
     {
-        base.Attack();
+        base.Walking();
         animationPlayer.Play("Walk");
     }
 }

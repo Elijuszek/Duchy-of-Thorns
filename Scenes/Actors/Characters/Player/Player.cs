@@ -54,7 +54,6 @@ public partial class Player : Actor
             {
                 WeaponsManager.Deliver();
                 PlayIdle();
-                return;
             }
             return;
         }

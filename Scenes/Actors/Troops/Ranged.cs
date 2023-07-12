@@ -110,7 +110,7 @@ public partial class Ranged : Troop
     }
     private void Attack() 
     { 
-        if (animationPlayer.CurrentAnimation != "Attack" && weapon.CanAttack())
+        if (weapon.CanAttack())
         {
             weapon.Attack();
             float customSpeed = animationPlayer.GetAnimation("Attack").Length / weapon.AttackDuartion;

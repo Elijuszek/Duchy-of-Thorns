@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgxqyp0lf8c6a"]
+[gd_scene load_steps=10 format=3 uid="uid://bgxqyp0lf8c6a"]
 
 [ext_resource type="PackedScene" uid="uid://bnsuxmaxj4m7v" path="res://Scenes/Weapons/Melee.tscn" id="1"]
 [ext_resource type="Script" path="res://Scenes/Weapons/Fists.cs" id="2"]
@@ -72,10 +72,14 @@ tracks/0/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_wfhm4"]
+resource_name = "Walk"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3wfk5"]
 _data = {
 "Attack": SubResource("2"),
-"Idle": SubResource("1")
+"Idle": SubResource("1"),
+"Walk": SubResource("Animation_wfhm4")
 }
 
 [node name="Fists" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("1")]
