@@ -9,12 +9,13 @@ public partial class Troop : Actor
 
     [Export] protected AnimationPlayer animationPlayer;
 
+    public Vector2 Destination { get; set; }
     private PackedScene damagePopup;
 	private Globals globals;
 	public override void _Ready()
 	{
 		base._Ready();
-		damagePopup = (PackedScene)ResourceLoader.Load("res://Scenes/UI/Popups/DamagePopup.tscn");
+		damagePopup = ResourceLoader.Load<PackedScene>("res://Scenes/UI/Popups/DamagePopup.tscn");
 		globals = GetNode<Globals>("/root/Globals");
 	}
 	public override void HandleHit(float baseDamage, Vector2 impactPosition)

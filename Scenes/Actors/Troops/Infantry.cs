@@ -8,7 +8,6 @@ namespace DuchyOfThorns;
 public partial class Infantry : Troop
 {
     public TroopState CurrentState { get; set; }
-    public Vector2 AdvancePosition { get; set; }
 
     [Export] protected Melee weapon;
     [Export] protected Timer patrolTimer;
@@ -73,7 +72,7 @@ public partial class Infantry : Troop
         {
             case TroopState.ADVANCE:
                 patrolTimer.Stop();
-                navAgent.TargetPosition = AdvancePosition; // Advance position is static
+                navAgent.TargetPosition = Destination; // Advance position is static
                 navAgent.AvoidanceEnabled = true;
                 break;
 
@@ -167,7 +166,7 @@ public partial class Infantry : Troop
         float patrolRange = 150f;
         float randomX = Globals.GetRandomFloat(-patrolRange, patrolRange);
         float randomY = Globals.GetRandomFloat(-patrolRange, patrolRange);
-        AdvancePosition = new Vector2(randomX, randomY) + AdvancePosition;
+        Destination = new Vector2(randomX, randomY) + Destination;
         SetState(TroopState.ADVANCE);
     }
 }

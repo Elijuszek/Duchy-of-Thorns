@@ -1,18 +1,22 @@
 namespace DuchyOfThorns;
 
 /// <summary>
+/// 
+/// TODO: Rework entire capturableBase, introduce new textures and animations
+/// 
+/// 
 /// Class for the base which can be captured by the player, ally or enemy
 /// </summary>
 public partial class CapturableBase : Area2D
 {
     [Signal] public delegate void BaseCapturedEventHandler(Team newTeam);
 
-    [Export] Color neutralColor = new Color(1, 1, 1);
+    [Export] public Timer captureTimer { get; set; }
+    [Export] Color neutralColor =  new Color(1, 1, 1);
     [Export] Color playerColor = new Color(0.431373f, 0.043137f, 0.043137f);
-    [Export] Color enemyColor = new Color(0.133333f, 0.345098f, 0.796078f);
+    [Export] Color enemyColor = new Color (0.133333f, 0.345098f, 0.796078f);
     [Export] public Team Team { get; set; } = Team.NEUTRAL;
     [Export] private Sprite2D sprite;
-    [Export] private Timer captureTimer;
     [Export] private ProgressBar captureProgressBar;
     [Export] private ProgressBar progressNumbers;
     [Export] private CollisionShape2D collisionShape;
@@ -24,7 +28,7 @@ public partial class CapturableBase : Area2D
     private Team teamToCapture = Team.NEUTRAL;
     public override void _Ready()
     {
-        extents = (collisionShape.Shape as RectangleShape2D).Size; // was Extents
+        extents = (collisionShape.Shape as RectangleShape2D).Size;
     }
     public Vector2 GetRandomPositionWithinRadius()
     {

@@ -16,7 +16,6 @@ public partial class Ranged : Troop
     [Export] private NavigationAgent2D navAgent;
 
     public TroopState CurrentState { get; set; }
-    public Vector2 AdvancePosition { get; set; }
 
     private Actor enemy = null;
 
@@ -74,7 +73,7 @@ public partial class Ranged : Troop
         {
             case TroopState.ADVANCE:
                 patrolTimer.Stop();
-                navAgent.TargetPosition = AdvancePosition;
+                navAgent.TargetPosition = Destination;
                 navAgent.AvoidanceEnabled = true;
                 break;
 
@@ -146,7 +145,7 @@ public partial class Ranged : Troop
         float patrolRange = 400f;
         float randomX = Globals.GetRandomFloat(-patrolRange, patrolRange);
         float randomY = Globals.GetRandomFloat(-patrolRange, patrolRange);
-        AdvancePosition = new Vector2(randomX, randomY) + AdvancePosition;
+        Destination = new Vector2(randomX, randomY) + Destination;
         SetState(TroopState.ADVANCE);
     }
 }

@@ -19,7 +19,7 @@ public partial class RangedRespawn : Respawn
             aliveUnit = Unit.Instantiate<Ranged>();
             AddChild(aliveUnit);
             aliveUnit.Connect("Died", new Callable(this, "HandleUnitDeath"));
-            aliveUnit.AdvancePosition = nextBaseCord;
+            aliveUnit.Destination = nextBaseCord;
             aliveUnit.SetState(TroopState.ADVANCE);
 
             RespawnCount--;
@@ -37,7 +37,7 @@ public partial class RangedRespawn : Respawn
         {
             return;
         }
-        aliveUnit.AdvancePosition = nextBaseCord;
+        aliveUnit.Destination = nextBaseCord;
         aliveUnit.SetState(TroopState.ADVANCE);
     }
     public override void Clear()
