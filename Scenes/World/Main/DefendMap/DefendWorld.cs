@@ -5,10 +5,10 @@ namespace DuchyOfThorns;
 /// <summary>
 /// Class of the map where player has to defend his bases from enemy attacks
 /// </summary>
-public partial class DefendMap : Map
+public partial class DefendMap : World
 {
-    [Export] private AssaultMapAI enemyMapAI;
-    [Export] private MapAI allyMapAI;
+    [Export] private AssaultWorldAI enemyMapAI;
+    [Export] private WorldAI allyMapAI;
     [Export] private CapturableBaseManager capturableBaseManager;
 
     private PackedScene assaultOverScreen;
@@ -17,7 +17,7 @@ public partial class DefendMap : Map
     {
         base._Ready();
         assaultOverScreen = (PackedScene)ResourceLoader.Load("res://Scenes/UI/GUI/AssaultOverScreen.tscn");
-        CapturableBase[] bases = capturableBaseManager.GetCapturableBases();
+        //CapturableBase[] bases = capturableBaseManager.GetCapturableBases();
 
         Respawn[] allyRespawnPoints = GetNode<Node2D>("AllyRespawnPoints").GetChildren().OfType<Respawn>().ToArray();
         Respawn[] enemyRespawnPoints = GetNode<Node2D>("EnemyRespawnPoints").GetChildren().OfType<Respawn>().ToArray();
@@ -28,9 +28,6 @@ public partial class DefendMap : Map
         enemyMapAI.Connect("PlayerVictory", new Callable(this, "HandlePlayerVictory"));
         capturableBaseManager.Connect("PlayerLostAllBases", new Callable(this, "HandlePlayerDefeat"));
         capturableBaseManager.SetTeam(Team.PLAYER);
-
-        allyMapAI.Initialize(bases, allyRespawnPoints);
-        enemyMapAI.Initialize(bases, enemyRespawnPoints);
 
         gui.Connect("NewWaveStarted", new Callable(this, "NewWave"));
         gui.ToggleNewWaveButton(true);

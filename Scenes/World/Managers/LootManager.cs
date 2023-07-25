@@ -42,7 +42,7 @@ public partial class LootManager : Node2D
             {
                 for (int j = 0; j < count[i]; j++)
                 {
-                    Vector2 direction = new Vector2(Globals.GetRandomFloat(-15, 15), Globals.GetRandomFloat(-15, 15));
+                    Vector2 direction = new Vector2(Utilities.GetRandomFloat(-15, 15), Utilities.GetRandomFloat(-15, 15));
                     Coin coin = lootPool[(LootType)i].Take();
                     coin.GlobalPosition = position;
                     coin.Move(position + direction);

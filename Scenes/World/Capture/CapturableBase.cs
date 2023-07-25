@@ -30,13 +30,6 @@ public partial class CapturableBase : Area2D
     {
         extents = (collisionShape.Shape as RectangleShape2D).Size;
     }
-    public Vector2 GetRandomPositionWithinRadius()
-    {
-        Vector2 topLeft = collisionShape.GlobalPosition - (extents / 2);
-        float x = Globals.GetRandomFloat(topLeft.X, topLeft.X + extents.X);
-        float y = Globals.GetRandomFloat(topLeft.Y, topLeft.Y + extents.Y);
-        return new Vector2(x, y);
-    }
     public void CanBeCaptured()
     {
         Team majorityTeam = GetMajority();

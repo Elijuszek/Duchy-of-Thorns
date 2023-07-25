@@ -1,10 +1,9 @@
 [gd_scene load_steps=159 format=3 uid="uid://db02x404q41e0"]
 
-[ext_resource type="Script" path="res://Scenes/World/Main/Map.cs" id="1_avmp6"]
+[ext_resource type="Script" path="res://Scenes/World/Main/World.cs" id="1_avmp6"]
 [ext_resource type="Texture2D" uid="uid://c8b6bvbquiyf3" path="res://Sprites/World/Main/Upgrade/!$Big_Trees_green.png" id="2_asycr"]
-[ext_resource type="PackedScene" uid="uid://o0j65prh02n1" path="res://Scenes/World/Loot/LootManager.tscn" id="2_xngab"]
+[ext_resource type="PackedScene" uid="uid://o0j65prh02n1" path="res://Scenes/World/Managers/LootManager.tscn" id="2_xngab"]
 [ext_resource type="Texture2D" uid="uid://dect6ox0n8s0t" path="res://Sprites/World/Main/Upgrade/Fantasy_Outside_A1_green.png" id="3_qowij"]
-[ext_resource type="Script" path="res://Scenes/Projectiles/ProjectileManager.cs" id="4"]
 [ext_resource type="Texture2D" uid="uid://bjcytky2qvmv1" path="res://Sprites/World/Main/Upgrade/Fantasy_Outside_A2_green.png" id="4_sntgx"]
 [ext_resource type="Texture2D" uid="uid://dryeo2mf4corx" path="res://Sprites/World/Main/Upgrade/Fantasy_Outside_A4_green.png" id="5_epfdl"]
 [ext_resource type="Texture2D" uid="uid://bmhoeooofpu4u" path="res://Sprites/World/Main/Upgrade/Fantasy_Outside_A5_green.png" id="6_e8hx8"]
@@ -32,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://c6a2vt1kqmxbh" path="res://Sprites/World/Main/Exterior/characters/!Signs.png" id="26_mvb28"]
 [ext_resource type="Texture2D" uid="uid://doce3qw4st585" path="res://Sprites/World/Main/Exterior/characters/!Statue.png" id="27_pe0p0"]
 [ext_resource type="Texture2D" uid="uid://1yq4an2y3aub" path="res://Sprites/World/Main/Exterior/characters/!waterfall_animation.png" id="28_w5u4q"]
+[ext_resource type="PackedScene" uid="uid://buhofwgb2d8i4" path="res://Scenes/World/Managers/ProjectileManager.tscn" id="29_5qyy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_288ru"]
 texture = ExtResource("2_asycr")
@@ -2857,12 +2857,11 @@ _data = {
 "DayNightCycle": SubResource("Animation_q3uva")
 }
 
-[node name="Map" type="Node2D" node_paths=PackedStringArray("tileMap", "playerSpawn", "camera", "projectileManager", "lootManager", "backgroundMusic", "gui")]
+[node name="Map" type="Node2D" node_paths=PackedStringArray("tileMap", "playerSpawn", "camera", "lootManager", "backgroundMusic", "gui")]
 script = ExtResource("1_avmp6")
 tileMap = NodePath("TileMap")
 playerSpawn = NodePath("PlayerSpawn")
 camera = NodePath("Camera2D")
-projectileManager = NodePath("ProjectileManager")
 lootManager = NodePath("LootManager")
 backgroundMusic = NodePath("BackgroundMusic")
 gui = NodePath("GUI")
@@ -2896,9 +2895,7 @@ position = Vector2(2, -242)
 process_callback = 0
 position_smoothing_enabled = true
 
-[node name="ProjectileManager" type="Node2D" parent="."]
-position = Vector2(0, -100)
-script = ExtResource("4")
+[node name="ProjectileManager" parent="." instance=ExtResource("29_5qyy4")]
 
 [node name="LootManager" parent="." instance=ExtResource("2_xngab")]
 

@@ -28,6 +28,7 @@ public partial class ObjectPool<T> where T : Node, IPoolable, new()
     {
         pool.Add((T)source);
     }
+
     public T Take()
     {
         if (pool.IsEmpty)
@@ -44,6 +45,7 @@ public partial class ObjectPool<T> where T : Node, IPoolable, new()
         return null;
 
     }
+
     public void Expand(int count)
     {
         for (int i = 0; i < count; i++)

@@ -51,5 +51,5 @@ public partial class Fists : Melee
         }
     }
     public override void Walking() => animationPlayer.Play("Idle");
-    public void ChangePitch() => attackSound.PitchScale = Globals.GetRandomFloat(0.8f, 1);
+    public void ChangePitch() => attackSound.PitchScale = Utilities.GetRandomFloat(0.8f, 1);
 }

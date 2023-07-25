@@ -8,10 +8,8 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class Globals : Node
 {
-	[Signal] public delegate void ProjectileFiredEventHandler(ProjectileType type, float damage, Team team, Vector2 position, Vector2 direction);
-	[Signal] public delegate void CoinsDropedEventHandler(int coins, Marker2D position, bool explosive);
 	private const string SaveDir = "user://saves/";
-	private string savePath = SaveDir + "save.dat";
+	private const string savePath = SaveDir + "save.dat";
 	private PackedScene transitionScene = ResourceLoader.Load<PackedScene>("res://Scenes/UI/Transitions/PixelationTransition.tscn");
 	private PixelationTransition transition;
 
@@ -69,8 +67,8 @@ public partial class Globals : Node
 		while (saveFile.GetPosition() < saveFile.GetLength())
 		{
 			var data = (Godot.Collections.Dictionary<string, Variant>)Json.ParseString(saveFile.GetLine());
-			var newObjectScene = (PackedScene)ResourceLoader.Load(data["Filename"].ToString());
-			var newObject = (Node)newObjectScene.Instantiate();
+			var newObjectScene = ResourceLoader.Load<PackedScene>(data["Filename"].ToString());
+			var newObject = newObjectScene.Instantiate<Node>();
 			newObject.Set("position", new Vector2((float)data["PosX"], (float)data["PosY"]));
 			GetNode(data["Parent"].ToString()).AddChild(newObject);
 			newObject.Call("Load", data);
@@ -86,12 +84,4 @@ public partial class Globals : Node
 		transition.PlayInOut(scene, speed);
 	}
 	public void StopChangingScenes() => transition.Stop();
-    public static float GetRandomFloat(float min, float max)
-	{
-		Random rand = new Random();
-		float range = max - min;
-		double sample = rand.NextDouble();
-		double scaled = (sample * range) + min;
-		return (float)scaled;
-	}
 }

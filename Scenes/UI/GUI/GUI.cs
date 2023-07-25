@@ -130,7 +130,7 @@ public partial class GUI : CanvasLayer
     private void PauseButtonPressed()
     {
         var parent = GetParent();
-        if (parent is Map map)
+        if (parent is World map)
         {
             map.Pause();
         }

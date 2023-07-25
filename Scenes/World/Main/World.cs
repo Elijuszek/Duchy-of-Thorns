@@ -3,7 +3,7 @@ namespace DuchyOfThorns;
 /// <summary>
 /// Base class for all maps
 /// </summary>
-public partial class Map : Node2D
+public partial class World : Node2D
 {
     [Export] protected TileMap tileMap;
     [Export] protected Marker2D playerSpawn;

@@ -1,67 +1,38 @@
-using DuchyofThorns;
 using Godot.Collections;
+
 namespace DuchyOfThorns;
 
 /// <summary>
 /// MapAI which is dedicated for defend maps, acts as a wave manager
 /// </summary>
-public partial class AssaultMapAI : MapAI
+public partial class AssaultWorldAI : WorldAI
 {
 	[Signal] public delegate void PlayerVictoryEventHandler(int reward);
 
 	[Export] private Array<WaveInfo> waves;
+    [Export] private Timer waveTimer;
+	[Export] private AudioStreamPlayer warHorn;
+    [Export] protected CapturableBaseManager capturableBaseManager;
 
-	[Export] private CapturableBaseManager capturableBaseManager;
+    protected CapturableBase targetBase = null;
+    public int CurrentWave { get; set; } = 0;
 
-	private Marker2D[] respawnPoints;
-	public int CurrentWave { get; set; } = 0;
-	private Timer waveTimer;
 	private int aliveRespawns;
-
-	private AudioStreamPlayer warHorn;
 	private AudioStreamOggVorbis[] hornSounds =
 	{
 			ResourceLoader.Load<AudioStreamOggVorbis>("res://Sounds/Horns/DistantWarhorn1.ogg"),
 			ResourceLoader.Load<AudioStreamOggVorbis>("res://Sounds/Horns/DistantWarhorn2.ogg"),
 	};
-	private Random random;
 
 	public override void _Ready()
 	{
 		base._Ready();
-
-		waveTimer = GetNode<Timer>("ElapsedWaveTime");
-		waves = GetNode<Node>("Waves").GetChildren().OfType<Wave>().ToArray();
-		warHorn = GetNode<AudioStreamPlayer>("WarHorn");
 		random = new Random();
 	}
 
-	//public override void Initialize(CapturableBase[] capturableBases, Respawn[] respawnPoints)
-	//{
-	//	if (capturableBases.Length == 0 || respawnPoints.Length == 0)
-	//	{
-	//		GD.PushError("ASSAULT MAPAI IS NOT PROPERLY INITIALIZED!");
-	//		return;
-	//	}
-	//	this.respawnPoints = respawnPoints;
-	//	this.capturableBases = capturableBases;
-	//	foreach (CapturableBase cBase in capturableBases)
-	//	{
-	//		cBase.Connect("BaseCaptured", new Callable(this, "HandleBaseCaptured"));
-	//	}
-	//	foreach (Respawn respawn in respawnPoints)
-	//	{
-	//		respawn.Connect("OutOfTroops", new Callable(this, "HandleOutOfTroops"));
-	//	}
-
-
-
-	//	CheckForNextCapturableBases();
-	//}
-
 	public void SpawnNextWave()
 	{
-		Wave current = waves[CurrentWave];
+		WaveInfo current = waves[CurrentWave];
 		waveTimer.Start();
 		warHorn.Stream = hornSounds[random.Next(0, 1)];
 		warHorn.Play();
@@ -77,10 +48,10 @@ public partial class AssaultMapAI : MapAI
 	public void ClearMap()
 	{
 		waveTimer.Stop();
-		foreach (Respawn respawn in respawnPoints)
-		{
-			respawn.Clear();
-		}
+		//foreach (Respawn respawn in respawnPoints)
+		//{
+		//	respawn.Clear();
+		//}
 	}
 
 	private void HandleOutOfTroops()
@@ -110,5 +81,24 @@ public partial class AssaultMapAI : MapAI
 		};
 	}
 
-	public void Load(Dictionary<string, Variant> data) => CurrentWave = (int)data["CurrentWave"];
+    protected void HandleBaseCaptured(int newTeam) => CheckForNextCapturableBases();
+
+    protected void CheckForNextCapturableBases()
+    {
+        //CapturableBase nextBase = GetNextCapturableBase();
+        //if (nextBase != null)
+        //{
+        //	targetBase = nextBase;
+        //	AssignNextCapturableBase(nextBase);
+        //}
+    }
+
+    protected void AssignNextCapturableBase(CapturableBase cBase)
+    {
+        //foreach (Troop troop in aliveTroops)
+        //{
+        //    troop.Destination = cBase.GetRandomPositionWithinRadius();
+        //}
+    }
+    public void Load(Dictionary<string, Variant> data) => CurrentWave = (int)data["CurrentWave"];
 }

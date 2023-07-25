@@ -97,7 +97,7 @@ public partial class Player : Actor
     }
     public override void Die()
     {
-        //globals.EmitSignal("CoinsDroped", base.Stats.Gold / 3, GlobalPosition, true); // DefendMap
+        //globals.Signals.EmitSignal("CoinsDroped", base.Stats.Gold / 3, GlobalPosition, true); // DefendMap
         EmitSignal(nameof(Died));
         QueueFree();
 

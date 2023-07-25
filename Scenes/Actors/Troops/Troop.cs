@@ -7,8 +7,10 @@ public partial class Troop : Actor
 {
 	[Signal] public delegate void DiedEventHandler();
 
-    [Export] protected AnimationPlayer animationPlayer;
+	[Export] protected AnimationPlayer animationPlayer;
 
+    public TroopState CurrentState { get; set; } = TroopState.ADVANCE;
+    public Vector2 Origin { get; set; }
     public Vector2 Destination { get; set; }
     private PackedScene damagePopup;
 	private Globals globals;
@@ -51,4 +53,11 @@ public partial class Troop : Actor
 		EmitSignal(nameof(Died));
 		QueueFree();
 	}
+    public virtual void SetState(TroopState newState)
+	{
+        if (newState == CurrentState)
+        {
+            return;
+        }
+    }
 }

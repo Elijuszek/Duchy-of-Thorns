@@ -7,8 +7,6 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class Infantry : Troop
 {
-    public TroopState CurrentState { get; set; }
-
     [Export] protected Melee weapon;
     [Export] protected Timer patrolTimer;
     [Export] protected Area2D detectionZone;
@@ -64,10 +62,9 @@ public partial class Infantry : Troop
         }
     }
 
-    public void SetState(TroopState newState)
+    public override void SetState(TroopState newState)
     {
-        if (newState == CurrentState)
-            return;
+        base .SetState(newState);
         switch (newState)
         {
             case TroopState.ADVANCE:
@@ -163,10 +160,10 @@ public partial class Infantry : Troop
 
     private void PatrolTimerTimeout()
     {
-        float patrolRange = 150f;
-        float randomX = Globals.GetRandomFloat(-patrolRange, patrolRange);
-        float randomY = Globals.GetRandomFloat(-patrolRange, patrolRange);
-        Destination = new Vector2(randomX, randomY) + Destination;
+        float patrolRange = 50f;
+        float randomX = Utilities.GetRandomFloat(-patrolRange, patrolRange);
+        float randomY = Utilities.GetRandomFloat(-patrolRange, patrolRange);
+        Destination = new Vector2(randomX, randomY) + Origin;
         SetState(TroopState.ADVANCE);
     }
 }

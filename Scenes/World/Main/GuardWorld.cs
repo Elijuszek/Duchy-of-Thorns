@@ -3,7 +3,7 @@ namespace DuchyOfThorns;
 /// <summary>
 /// Class for the guard map, without capturable bases
 /// </summary>
-public partial class GuardMap : Map
+public partial class GuardMap : World
 {
     protected Respawn[] allyRespawnPoints;
     protected Respawn[] enemyRespawnPoints;
