@@ -11,7 +11,7 @@ public enum TroopState
     PATROL,
     ENGAGE,
     ADVANCE,
-    ATTACK
+    ATTACK,
 }
 
 public enum BaseCaptureOrder
@@ -38,4 +38,13 @@ public enum LootType
     GOLD,
     SILVER,
     BRONZE
+}
+
+public enum TroopType
+{
+    ALLY_ARCHER,
+    ALLY_FOOTMAN,
+
+    ENEMY_ARCHER,
+    ENEMY_FOOTMAN
 }

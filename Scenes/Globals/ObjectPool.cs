@@ -33,7 +33,7 @@ public partial class ObjectPool<T> where T : Node, IPoolable, new()
     {
         if (pool.IsEmpty)
         {
-            Expand(size * 2);
+            Expand(size);
         }
         T item;
         if (pool.TryTake(out item))

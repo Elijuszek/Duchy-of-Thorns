@@ -1,20 +1,24 @@
+using Godot;
+
 namespace DuchyOfThorns;
 
 /// <summary>
 /// Intermediate class for all troops
 /// </summary>
-public partial class Troop : Actor
+public partial class Troop : Actor, IPoolable
 {
-	[Signal] public delegate void DiedEventHandler();
+    public event RemovedFromSceneEventHandler RemovedFromScene;
+    [Signal] public delegate void DiedEventHandler();
 
-	[Export] protected AnimationPlayer animationPlayer;
+    [Export] protected AnimationPlayer animationPlayer;
 
     public TroopState CurrentState { get; set; } = TroopState.ADVANCE;
     public Vector2 Origin { get; set; }
     public Vector2 Destination { get; set; }
     private PackedScene damagePopup;
 	private Globals globals;
-	public override void _Ready()
+
+    public override void _Ready()
 	{
 		base._Ready();
 		damagePopup = ResourceLoader.Load<PackedScene>("res://Scenes/UI/Popups/DamagePopup.tscn");
@@ -58,6 +62,24 @@ public partial class Troop : Actor
         if (newState == CurrentState)
         {
             return;
+        }
+    }
+
+    public virtual void AddToScene()
+    {
+        collisionShape.Disabled = false;
+        SetPhysicsProcess(true);
+		Show();
+    }
+
+    public virtual void RemoveFromScene()
+    {
+		collisionShape.Disabled = true;
+		SetPhysicsProcess(false);
+		Hide();
+        if (RemovedFromScene != null)
+        {
+            RemovedFromScene(this);
         }
     }
 }

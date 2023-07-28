@@ -13,10 +13,6 @@ public partial class WorldAI : Node2D
 	[Export] protected Array<UnitInfo> unitsToSpawn;
 
 	protected Random random;
-    public override void _Ready()
-    {
-        base._Ready();
-    }
 
 	public virtual void SpawnUnit(PackedScene unit, Vector2 origin, Vector2 spawnCords)
 	{
