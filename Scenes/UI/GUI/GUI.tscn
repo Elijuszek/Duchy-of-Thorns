@@ -379,8 +379,15 @@ _data = {
 "Idle": SubResource("4")
 }
 
-[node name="GUI" type="CanvasLayer"]
+[node name="GUI" type="CanvasLayer" node_paths=PackedStringArray("animationPlayer", "healthBar", "currentAmmo", "currentHealth", "maxHealth", "newWaveButton", "currentGold")]
 script = ExtResource("1_ape8f")
+animationPlayer = NodePath("MarginContainer/Rows/TopRow/AmmoSection/AnimationPlayer")
+healthBar = NodePath("MarginContainer/Rows/TopRow/HealthContainer/HealthBar")
+currentAmmo = NodePath("MarginContainer/Rows/TopRow/AmmoSection/MarginContainer/CurrentAmmo")
+currentHealth = NodePath("MarginContainer/Rows/TopRow/HealthContainer/HealthBar/CurrentHealth")
+maxHealth = NodePath("MarginContainer/Rows/TopRow/HealthContainer/HealthBar/MaxHealth")
+newWaveButton = NodePath("MarginContainer/Rows/BottomRow/VBoxContainer/MarginContainer2/StartNewWaveButton")
+currentGold = NodePath("MarginContainer/Rows/TopRow/GoldSection/CountBox/GoldCount")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15

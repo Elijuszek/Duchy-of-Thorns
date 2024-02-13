@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://buhofwgb2d8i4"]
+
+[ext_resource type="Script" path="res://Scenes/World/Managers/ProjectileManager.cs" id="1_grkui"]
+
+[node name="ProjectileManager" type="Node2D"]
+position = Vector2(0, -100)
+script = ExtResource("1_grkui")

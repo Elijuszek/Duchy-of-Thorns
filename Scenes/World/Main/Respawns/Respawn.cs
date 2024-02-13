@@ -9,18 +9,12 @@ public partial class Respawn : Marker2D
     [Export] public float RespawnCooldown { get; set; } = 5;
     [Export] public int RespawnCount { get; set; } = 5;
     [Export] public PackedScene Unit { get; set; } = null;
-    protected Pathfinding pathfinding;
-    private Timer respawnTimer;
+    [Export] private Timer respawnTimer;
 
     public override void _Ready()
     {
         base._Ready();
-        respawnTimer = GetNode<Timer>("RespawnTimer");
         respawnTimer.WaitTime = RespawnCooldown;
-    }
-    public void Initialize(Pathfinding pathfinding)
-    {
-        this.pathfinding = pathfinding;
     }
     public void SetUnit(PackedScene toSet, float cooldown = 5, int count = 5)
     {
@@ -53,5 +47,5 @@ public partial class Respawn : Marker2D
 
     public virtual void SpawnUnit() => GD.PrintErr("Calling SpawnUnit from Respawn class");
 
-    public virtual void SetCapturableBase(CapturableBase nextBase, Vector2 nextBaseCord) => GD.PrintErr("Calling SetCapturableBase from Respawn class");
+    public virtual void SetCapturableBase(Vector2 nextBaseCord) => GD.PrintErr("Calling SetCapturableBase from Respawn class");
 }

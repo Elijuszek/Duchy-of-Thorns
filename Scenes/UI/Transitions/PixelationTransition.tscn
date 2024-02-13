@@ -109,10 +109,13 @@ _data = {
 "PixelateOut": SubResource("5")
 }
 
-[node name="Pixelation" type="CanvasLayer"]
+[node name="Pixelation" type="CanvasLayer" node_paths=PackedStringArray("transition", "textureRect", "timer")]
 process_mode = 2
 layer = 5
 script = ExtResource("1_l3dvb")
+transition = NodePath("AnimationPlayer")
+textureRect = NodePath("TextureRect")
+timer = NodePath("Timer")
 
 [node name="TextureRect" type="ColorRect" parent="."]
 material = ExtResource("2_nfa0c")

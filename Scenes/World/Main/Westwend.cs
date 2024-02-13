@@ -17,9 +17,8 @@ public partial class Westwend : Node2D
     private TileMap ground;
     private CapturableBaseManager capturableBaseManager;
     private LootManager lootManager;
-    private Pathfinding pathfinding;
-    private MapAI enemyMapAI;
-    private MapAI allyMapAI;
+    private WorldAI enemyMapAI;
+    private WorldAI allyMapAI;
     public override void _Ready()
     {
         ground = GetNode<TileMap>("Ground");
@@ -37,25 +36,20 @@ public partial class Westwend : Node2D
         playerSpawn = GetNode<Marker2D>("PlayerSpawn");
         gui = GetNode<GUI>("GUI");
 
-        pathfinding = GetNode<Pathfinding>("PathFinding");
         capturableBaseManager = GetNode<CapturableBaseManager>("CapturableBasesManager");
 
-        enemyMapAI = GetNode<MapAI>("EnemyMapAI");
-        allyMapAI = GetNode<MapAI>("AllyMapAI");
+        enemyMapAI = GetNode<WorldAI>("EnemyMapAI");
+        allyMapAI = GetNode<WorldAI>("AllyMapAI");
 
         globals.Connect("ArrowFired", new Callable(projectileManager, "HandleArrowSpawned"));
         globals.Connect("CoinsDroped", new Callable(lootManager, "HandleCoinsSpawned"));
 
-        // Pathfinding
-        pathfinding.CreateNavigationMap(ground);
 
-        CapturableBase[] bases = capturableBaseManager.GetCapturableBases();
+        //CapturableBase[] bases = capturableBaseManager.GetCapturableBases();
 
         Respawn[] allyRespawnPoints = GetNode<Node2D>("AllyRespawnPoints").GetChildren().OfType<Respawn>().ToArray();
         Respawn[] enemyRespawnPoints = GetNode<Node2D>("EnemyRespawnPoints").GetChildren().OfType<Respawn>().ToArray();
 
-        allyMapAI.Initialize(bases, allyRespawnPoints, pathfinding);
-        enemyMapAI.Initialize(bases, enemyRespawnPoints, pathfinding);
 
         capturableBaseManager.Connect("PlayerCapturedAllBases", new Callable(this, "HandlePlayerVictory"));
         capturableBaseManager.Connect("PlayerLostAllBases", new Callable(this, "HandlePlayerDefeat"));

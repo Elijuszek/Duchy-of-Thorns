@@ -5,7 +5,7 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class DamagePopup : Marker2D
 {
-    private Label label;
+    [Export] private Label label;
     private Tween tween;
     public int Amount { get; set; } = 0;
     public string Type { get; set; } = "";
@@ -17,7 +17,6 @@ public partial class DamagePopup : Marker2D
     private CharacterBody2D parent;
     public override void _Ready()
     {
-        label = GetNode<Label>("Label");
         label.Text = Amount.ToString();
         parent = GetParent() as CharacterBody2D;
         switch (Type)

@@ -7,33 +7,24 @@ namespace DuchyOfThorns;
 public partial class GUI : CanvasLayer
 {
     [Signal] public delegate void NewWaveStartedEventHandler();
-    [Export] NodePath sceneRoot;
-    private AnimationPlayer animationPlayer;
-    private ProgressBar healthBar;
-    private Label currentAmmo;
-    private Label currentHealth;
-    private Label maxHealth;
-    private Button newWaveButton;
+
+    [Export] private AnimationPlayer animationPlayer;
+    [Export] private ProgressBar healthBar;
+    [Export] private Label currentAmmo;
+    [Export] private Label currentHealth;
+    [Export] private Label maxHealth;
+    [Export] private Button newWaveButton;
+    [Export] private Label currentGold;
+
     private Tween healthTween;
-    private Label currentGold;
     private Tween goldTween;
     private Player player;
-
-    Color originalColor = new Color("#7c1616");
-    Color hightlightColor = new Color("#b44343");
-    StyleBoxFlat barStyle;
+    private Color originalColor = new Color("#7c1616");
+    private Color hightlightColor = new Color("#b44343");
+    private StyleBox barStyle;
     public override void _Ready()
     {
-        animationPlayer = GetNode<AnimationPlayer>("MarginContainer/Rows/TopRow/AmmoSection/AnimationPlayer");
-        healthBar = GetNode<ProgressBar>("MarginContainer/Rows/TopRow/HealthContainer/HealthBar");
-        currentAmmo = GetNode<Label>("MarginContainer/Rows/TopRow/AmmoSection/MarginContainer/CurrentAmmo");
-        currentHealth = GetNode<Label>("MarginContainer/Rows/TopRow/HealthContainer/HealthBar/CurrentHealth");
-        maxHealth = GetNode<Label>("MarginContainer/Rows/TopRow/HealthContainer/HealthBar/MaxHealth");
-        currentGold = GetNode<Label>("MarginContainer/Rows/TopRow/GoldSection/CountBox/GoldCount");
-
         barStyle = (StyleBoxFlat)healthBar.Get("theme_override_styles/fill");
-
-        newWaveButton = GetNode<Button>("MarginContainer/Rows/BottomRow/VBoxContainer/MarginContainer2/StartNewWaveButton");
     }
     public void SetPlayer(Player player)
     {
@@ -52,9 +43,9 @@ public partial class GUI : CanvasLayer
     }
     public void SetWeapon(Weapon weapon)
     {
-        if (weapon is Bow bow)
+        if (weapon is Projective projective)
         {
-            SetCurrentAmmo(bow.CurrentAmmo);
+            SetCurrentAmmo(projective.CurrentAmmo);
             if (!weapon.IsConnected("WeaponAmmoChanged", new Callable(this, "SetCurrentAmmo")))
             {
                 weapon.Connect("WeaponAmmoChanged", new Callable(this, "SetCurrentAmmo"));
@@ -139,7 +130,7 @@ public partial class GUI : CanvasLayer
     private void PauseButtonPressed()
     {
         var parent = GetParent();
-        if (parent is Map map)
+        if (parent is World map)
         {
             map.Pause();
         }

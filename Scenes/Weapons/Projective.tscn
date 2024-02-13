@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://2y8sces1eiob"]
+
+[ext_resource type="PackedScene" uid="uid://buxokbp1yi6dd" path="res://Scenes/Weapons/Weapon.tscn" id="1"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Projective.cs" id="2_yk18k"]
+
+[node name="ProjectileWeapon" node_paths=PackedStringArray("WeaponDirection", "EndOfWeapon") instance=ExtResource("1")]
+script = ExtResource("2_yk18k")
+CanAim = false
+MaxAmmo = 0
+CurrentAmmo = 0
+WeaponDirection = NodePath("BowDirection")
+EndOfWeapon = NodePath("EndOfBow")
+projectileType = 0
+
+[node name="BowDirection" type="Marker2D" parent="." index="3"]
+position = Vector2(461, 0)
+
+[node name="EndOfBow" type="Marker2D" parent="." index="4"]
+position = Vector2(30, 0)

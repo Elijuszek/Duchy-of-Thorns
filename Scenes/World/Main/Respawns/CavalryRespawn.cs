@@ -16,7 +16,7 @@ public partial class CavalryRespawn : Respawn
             //rangedUnit.Connect("Died",new Callable(this,"HandleUnitDeath"));
             //rangedUnit.GlobalPosition = this.GlobalPosition;
             //rangedUnit.Ai.Origin = this.GlobalPosition;
-            //rangedUnit.Ai.NextBase = this.GlobalPosition;
+            //rangedUnit.Ai.AdvancePosition = this.GlobalPosition;
             //rangedUnit.Ai.SetState((int)(RangedAI.State.PATROL));
         }
         else
@@ -26,7 +26,7 @@ public partial class CavalryRespawn : Respawn
         }
     }
 
-    public override void SetCapturableBase(CapturableBase nextBase, Vector2 nextBaseCord)
+    public override void SetCapturableBase(Vector2 nextBaseCord)
     {
         throw new NotImplementedException();
     }

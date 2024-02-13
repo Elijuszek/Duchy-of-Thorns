@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Duchy of Thorns"
 run/main_scene="res://Scenes/UI/Screens/TitleScreen.tscn"
-config/features=PackedStringArray("4.0", "C#", "Mobile")
+config/features=PackedStringArray("4.2", "C#", "Mobile")
 
 [autoload]
 
@@ -44,6 +44,7 @@ pointing/emulate_touch_from_mouse=true
 [layer_names]
 
 2d_physics/layer_1="Player"
+2d_navigation/layer_1="Ground"
 2d_physics/layer_2="Ally"
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Obstacle"
@@ -57,3 +58,4 @@ pointing/emulate_touch_from_mouse=true
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 2d/snap/snap_2d_vertices_to_pixel=true
+shader_compiler/layer_1="G"

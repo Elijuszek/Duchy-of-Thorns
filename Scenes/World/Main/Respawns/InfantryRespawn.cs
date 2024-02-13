@@ -6,25 +6,21 @@ namespace DuchyOfThorns;
 public partial class InfantryRespawn : Respawn
 {
     Infantry aliveUnit;
-    CapturableBase nextBase;
     Vector2 nextBaseCord = Vector2.Zero;
     public override void _Ready()
     {
         base._Ready();
-        nextBaseCord = this.GlobalPosition;
+        nextBaseCord = GlobalPosition;
     }
     public override void SpawnUnit()
     {
         if (RespawnCount > 0 && Unit != null)
         {
-            aliveUnit = (Infantry)Unit.Instantiate();
+            aliveUnit = Unit.Instantiate<Infantry>();
             AddChild(aliveUnit);
-            aliveUnit.Ai.pathfinding = this.pathfinding;
             aliveUnit.Connect("Died", new Callable(this, "HandleUnitDeath"));
-            aliveUnit.Ai.Origin = this.GlobalPosition;
-            aliveUnit.Ai.NextBaseObject = nextBase;
-            aliveUnit.Ai.NextBase = nextBaseCord;
-            aliveUnit.Ai.SetState((int)(MeleeAI.State.ADVANCE));
+            aliveUnit.Destination = nextBaseCord;
+            aliveUnit.SetState(TroopState.ADVANCE);
             RespawnCount--;
         }
         else
@@ -33,17 +29,15 @@ public partial class InfantryRespawn : Respawn
             EmitSignal("OutOfTroops");
         }
     }
-    public override void SetCapturableBase(CapturableBase nextBase, Vector2 nextBaseCord)
+    public override void SetCapturableBase(Vector2 nextBaseCord)
     {
-        this.nextBase = nextBase;
         this.nextBaseCord = nextBaseCord;
         if (aliveUnit is null)
         {
             return;
         }
-        aliveUnit.Ai.NextBaseObject = nextBase;
-        aliveUnit.Ai.NextBase = nextBaseCord;
-        aliveUnit.Ai.SetState((int)MeleeAI.State.ADVANCE);
+        aliveUnit.Destination = nextBaseCord;
+        aliveUnit.SetState(TroopState.ADVANCE);
     }
     public override void Clear()
     {

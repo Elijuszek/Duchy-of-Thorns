@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu6s37trpw0yc"]
+
+[ext_resource type="PackedScene" uid="uid://cvqmgg65cqpf4" path="res://Scenes/World/WorldAI/WorldAI.tscn" id="1_ax0ye"]
+[ext_resource type="Script" path="res://Scenes/World/WorldAI/AssaultWorldAI.cs" id="2_fkv12"]
+
+[node name="AssaultWorldAI" node_paths=PackedStringArray("waveTimer", "warHorn") instance=ExtResource("1_ax0ye")]
+script = ExtResource("2_fkv12")
+waves = Array[Object]([null])
+waveTimer = NodePath("ElapsedWaveTime")
+warHorn = NodePath("WarHorn")
+
+[node name="ElapsedWaveTime" type="Timer" parent="." index="0"]
+
+[node name="WarHorn" type="AudioStreamPlayer" parent="." index="1"]
+volume_db = 5.0

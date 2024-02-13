@@ -5,15 +5,15 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class TitleScreen : Control
 {
-    private AnimationPlayer animationPlayer;
+    [Export] private AnimationPlayer animationPlayer;
+    [Export] private AudioStreamPlayer click;
+
     private Globals globals;
-    private AudioStreamPlayer click;
+
     public override void _Ready()
     {
         base._Ready();
         globals = GetNode<Globals>("/root/Globals");
-        animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-        click = GetNode<AudioStreamPlayer>("Click");
         animationPlayer.Play("Background");
         animationPlayer.Seek(GetRandomTime(), true);
         animationPlayer.Stop();
@@ -33,15 +33,15 @@ public partial class TitleScreen : Control
     {
         // Click sound
         click.Play();
-        globals.loadingForm = Globals.LoadingForm.New;
+        globals.loadingForm = LoadingForm.New;
 
         // Changing scene
-        GetTree().ChangeSceneToFile("res://Scenes/World/Main/DefendMap/DefendMap.tscn");
+        GetTree().ChangeSceneToFile("res://Scenes/World/Main/DefendWorld/DefendWorld.tscn");
     }
     public void SavedGamesButtonPressed()
     {
         click.Play();
-        globals.loadingForm = Globals.LoadingForm.Save;
+        globals.loadingForm = LoadingForm.Save;
 
         // Changing scene through globals
         globals.LoadGame();

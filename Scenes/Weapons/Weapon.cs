@@ -7,21 +7,15 @@ public partial class Weapon : Node2D
 {
     [Export] public float AttackDuartion { get; set; } = 0.7f;
     [Export] protected float damage;
-    protected Timer attackCooldown;
-    protected AudioStreamPlayer2D deliverSound;
-    protected AudioStreamPlayer2D attackSound;
-    protected int team = -1;
+    [Export] protected Timer attackCooldown;
+    [Export] protected AudioStreamPlayer2D deliverSound;
+    [Export] protected AudioStreamPlayer2D attackSound;
+    public bool IsAttacking { get; set; } = false;
+    protected Team team;
     public virtual bool CanAttack()
     {
-        GD.PrintErr("Weapon CanAttack is not possible!");
-        return false;
+        return !IsAttacking && attackCooldown.IsStopped();
     }
-    public override void _Ready()
-    {
-        attackCooldown = GetNode<Timer>("AttackCooldown");
-        deliverSound = GetNode<AudioStreamPlayer2D>("DeliverSound");
-        attackSound = GetNode<AudioStreamPlayer2D>("AttackSound");
-    }
-    public void Initialize(int team) => this.team = team;
+    public void Initialize(Team team) => this.team = team;
     public void StartCooldown() => attackCooldown.Start();
 }

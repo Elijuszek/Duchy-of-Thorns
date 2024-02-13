@@ -1,42 +1,29 @@
-[gd_scene load_steps=23 format=3 uid="uid://cc6727jnu0iy1"]
+[gd_scene load_steps=24 format=3 uid="uid://2y2ms2a0r5qg"]
 
-[ext_resource type="PackedScene" uid="uid://6q7se4t41stl" path="res://Scenes/Actors/Troops/Ranged.tscn" id="1"]
-[ext_resource type="Texture2D" uid="uid://bd2xvy6m3wuxh" path="res://Sprites/Allies/BowAlly/Reload/BowReload-1.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://cj33adphty1g8" path="res://Sprites/Allies/BowAlly/Reload/BowReload-6.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://chg7y5s73k88o" path="res://Sprites/Allies/BowAlly/Walking/Walking-3.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://b07vmadpoutq6" path="res://Sprites/Allies/BowAlly/Idle/Idle1.png" id="5"]
-[ext_resource type="Texture2D" uid="uid://bmmus41wygeux" path="res://Sprites/Allies/BowAlly/Reload/BowReload-2.png" id="6"]
-[ext_resource type="Texture2D" uid="uid://ef1u3vuxvdp4" path="res://Sprites/Allies/BowAlly/Reload/BowReload-3.png" id="7"]
-[ext_resource type="Texture2D" uid="uid://wika5mwnoobe" path="res://Sprites/Allies/BowAlly/Reload/BowReload-4.png" id="8"]
-[ext_resource type="Texture2D" uid="uid://c2bjb65gxa2l8" path="res://Sprites/Allies/BowAlly/Walking/Walking-1.png" id="9"]
-[ext_resource type="Texture2D" uid="uid://dv8k1mi6nc73f" path="res://Sprites/Allies/BowAlly/Walking/Walking-2.png" id="11"]
-[ext_resource type="Texture2D" uid="uid://bw74ovankp4u1" path="res://Sprites/Allies/BowAlly/Walking/Walking-4.png" id="12"]
-[ext_resource type="Texture2D" uid="uid://gnsrd7sr1php" path="res://Sprites/Allies/BowAlly/Walking/Walking-5.png" id="13"]
-[ext_resource type="Texture2D" uid="uid://dgl8chxfdagjf" path="res://Sprites/Allies/BowAlly/Walking/Walking-6.png" id="14"]
-[ext_resource type="Texture2D" uid="uid://c5kbbyyiuexpm" path="res://Sprites/Allies/BowAlly/Walking/Walking-8.png" id="15"]
-[ext_resource type="Texture2D" uid="uid://v64nn373df00" path="res://Sprites/Allies/BowAlly/Walking/Walking-7.png" id="16"]
-[ext_resource type="Script" path="res://Scenes/Actors/Troops/Ranged/Archer.cs" id="17"]
-[ext_resource type="PackedScene" uid="uid://2uke4a33syhq" path="res://Scenes/Weapons/Bows/SimpleBow.tscn" id="18"]
-[ext_resource type="Texture2D" uid="uid://c1m2fl32cc45r" path="res://Sprites/Allies/BowAlly/Reload/BowReload-5.png" id="19"]
+[ext_resource type="PackedScene" uid="uid://6q7se4t41stl" path="res://Scenes/Actors/Troops/Ranged.tscn" id="1_l4cwt"]
+[ext_resource type="Texture2D" uid="uid://bd2xvy6m3wuxh" path="res://Sprites/Allies/BowAlly/Reload/BowReload-1.png" id="2_hk5b1"]
+[ext_resource type="Texture2D" uid="uid://bmmus41wygeux" path="res://Sprites/Allies/BowAlly/Reload/BowReload-2.png" id="3_gx1q4"]
+[ext_resource type="Texture2D" uid="uid://ef1u3vuxvdp4" path="res://Sprites/Allies/BowAlly/Reload/BowReload-3.png" id="4_wxylq"]
+[ext_resource type="Texture2D" uid="uid://wika5mwnoobe" path="res://Sprites/Allies/BowAlly/Reload/BowReload-4.png" id="5_7kpqx"]
+[ext_resource type="Texture2D" uid="uid://c1m2fl32cc45r" path="res://Sprites/Allies/BowAlly/Reload/BowReload-5.png" id="6_yahne"]
+[ext_resource type="Texture2D" uid="uid://cj33adphty1g8" path="res://Sprites/Allies/BowAlly/Reload/BowReload-6.png" id="7_ea842"]
+[ext_resource type="Texture2D" uid="uid://b07vmadpoutq6" path="res://Sprites/Allies/BowAlly/Idle/Idle1.png" id="8_wwnf3"]
+[ext_resource type="Texture2D" uid="uid://c2bjb65gxa2l8" path="res://Sprites/Allies/BowAlly/Walking/Walking-1.png" id="9_kf5yi"]
+[ext_resource type="Texture2D" uid="uid://dv8k1mi6nc73f" path="res://Sprites/Allies/BowAlly/Walking/Walking-2.png" id="10_km1l8"]
+[ext_resource type="Texture2D" uid="uid://chg7y5s73k88o" path="res://Sprites/Allies/BowAlly/Walking/Walking-3.png" id="11_ly3sn"]
+[ext_resource type="Texture2D" uid="uid://bw74ovankp4u1" path="res://Sprites/Allies/BowAlly/Walking/Walking-4.png" id="12_u6u0d"]
+[ext_resource type="Texture2D" uid="uid://gnsrd7sr1php" path="res://Sprites/Allies/BowAlly/Walking/Walking-5.png" id="13_cj6ej"]
+[ext_resource type="Texture2D" uid="uid://dgl8chxfdagjf" path="res://Sprites/Allies/BowAlly/Walking/Walking-6.png" id="14_pvs6o"]
+[ext_resource type="Texture2D" uid="uid://v64nn373df00" path="res://Sprites/Allies/BowAlly/Walking/Walking-7.png" id="15_ohmsf"]
+[ext_resource type="Texture2D" uid="uid://c5kbbyyiuexpm" path="res://Sprites/Allies/BowAlly/Walking/Walking-8.png" id="16_8keuc"]
+[ext_resource type="PackedScene" uid="uid://cankvsstxf22r" path="res://Scenes/Weapons/Bows/TrainingBow.tscn" id="17_ji48n"]
 
-[sub_resource type="Animation" id="1"]
-resource_name = "Idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("5")]
-}
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qkjbe"]
+radius = 5.0
+height = 22.0
 
-[sub_resource type="Animation" id="2"]
-resource_name = "ShootingBow"
-length = 2.0
+[sub_resource type="Animation" id="Animation_t2lty"]
+resource_name = "Attack"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -47,12 +34,73 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("2"), ExtResource("6"), ExtResource("7"), ExtResource("8"), ExtResource("19"), ExtResource("3")]
+"values": [ExtResource("2_hk5b1"), ExtResource("3_gx1q4"), ExtResource("4_wxylq"), ExtResource("5_7kpqx"), ExtResource("6_yahne"), ExtResource("7_ea842")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Deliver"
+}]
 }
 
-[sub_resource type="Animation" id="3"]
-resource_name = "Walking"
+[sub_resource type="Animation" id="Animation_sumab"]
+resource_name = "Death"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Die"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_qc46p"]
+resource_name = "Idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_wwnf3")]
+}
+
+[sub_resource type="Animation" id="Animation_ci1es"]
+resource_name = "Walk"
 length = 0.8
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -63,40 +111,36 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("9"), ExtResource("11"), ExtResource("4"), ExtResource("12"), ExtResource("13"), ExtResource("14"), ExtResource("16"), ExtResource("15")]
+"values": [ExtResource("9_kf5yi"), ExtResource("10_km1l8"), ExtResource("11_ly3sn"), ExtResource("12_u6u0d"), ExtResource("13_cj6ej"), ExtResource("14_pvs6o"), ExtResource("15_ohmsf"), ExtResource("16_8keuc")]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pq0fu"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rw011"]
 _data = {
-"Idle": SubResource("1"),
-"ShootingBow": SubResource("2"),
-"Walking": SubResource("3")
+"Attack": SubResource("Animation_t2lty"),
+"Death": SubResource("Animation_sumab"),
+"Idle": SubResource("Animation_qc46p"),
+"Walk": SubResource("Animation_ci1es")
 }
 
-[node name="ArcherEnemyTEST" instance=ExtResource("1")]
+[node name="ArcherAlly" node_paths=PackedStringArray("weapon", "animationPlayer") instance=ExtResource("1_l4cwt")]
 collision_layer = 2
-platform_floor_layers = 4278190080
-script = ExtResource("17")
+weapon = NodePath("TrainingBow")
+animationPlayer = NodePath("AnimationPlayer")
+Team = 0
 
-[node name="SimpleBow" parent="." index="0" instance=ExtResource("18")]
-CanAim = false
-MaxAmmo = 50
-CurrentAmmo = 50
-damage = 25.0
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_hk5b1")
 
-[node name="Sprite2D" parent="." index="1"]
-texture = ExtResource("5")
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_qkjbe")
 
-[node name="Stats" parent="." index="3"]
-Gold = 0
+[node name="DetectionZone" parent="." index="5"]
+collision_mask = 4
 
-[node name="Team" parent="." index="4"]
-team = 1
-
-[node name="AttackTimer" parent="." index="5"]
-wait_time = 2.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+autoplay = "Idle"
 libraries = {
-"": SubResource("AnimationLibrary_pq0fu")
+"": SubResource("AnimationLibrary_rw011")
 }
+
+[node name="TrainingBow" parent="." index="7" instance=ExtResource("17_ji48n")]

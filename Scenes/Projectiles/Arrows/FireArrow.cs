@@ -5,14 +5,9 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class FireArrow : Arrow
 {
-    GpuParticles2D fire;
-    GpuParticles2D embers;
-    public override void _Ready()
-    {
-        base._Ready();
-        fire = GetNode<GpuParticles2D>("Fire");
-        embers = GetNode<GpuParticles2D>("Embers");
-    }
+    [Export] private GpuParticles2D fire;
+    [Export] private GpuParticles2D embers;
+
     public void StartEmiting()
     {
         fire.Emitting = true;
@@ -26,21 +21,18 @@ public partial class FireArrow : Arrow
     }
     protected override void ArrowBodyEntered(Node body)
     {
-        if (body is Actor actor)
+        switch (body)
         {
-            if (actor.GetTeam() != team)
-            {
-                actor.HandleHit(Damage, GlobalPosition);
+            case Actor actor:
+                if (actor.GetTeam() != team)
+                {
+                    actor.HandleHit(Damage, GlobalPosition);
+                    RemoveFromScene();
+                }
+                break;
+            default:
                 RemoveFromScene();
-            }
-        }
-        else if (body is Fireplace)
-        {
-            return;
-        }
-        else
-        {
-            RemoveFromScene();
+                break;
         }
     }
 }

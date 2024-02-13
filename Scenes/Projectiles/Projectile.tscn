@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" path="res://Scenes/Projectiles/Projectile.cs" id="1"]
 
-[node name="Projectile" type="Area2D"]
+[node name="Projectile" type="Area2D" node_paths=PackedStringArray("flyingSound")]
 collision_layer = 16
 collision_mask = 15
 script = ExtResource("1")
+flyingSound = NodePath("FlyingSound")
 
 [node name="FlyingSound" type="AudioStreamPlayer2D" parent="."]
 

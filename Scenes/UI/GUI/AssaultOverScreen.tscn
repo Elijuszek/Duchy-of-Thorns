@@ -8,8 +8,13 @@ color = Color(1, 1, 1, 1)
 grow_end = 50.0
 thickness = 3
 
-[node name="AssaultOverScreen" type="CanvasLayer"]
+[node name="AssaultOverScreen" type="CanvasLayer" node_paths=PackedStringArray("title", "lootLabel", "rewardLabel", "earnedLabel", "totalLabel")]
 script = ExtResource("1_vjc5i")
+title = NodePath("PanelContainer/MarginContainer/Rows/Top/Title")
+lootLabel = NodePath("PanelContainer/MarginContainer/Rows/HBoxContainer/Right/Loot")
+rewardLabel = NodePath("PanelContainer/MarginContainer/Rows/HBoxContainer/Right/Reward")
+earnedLabel = NodePath("PanelContainer/MarginContainer/Rows/HBoxContainer/Right/Earned")
+totalLabel = NodePath("PanelContainer/MarginContainer/Rows/HBoxContainer/Right/Total")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15

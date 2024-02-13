@@ -5,20 +5,18 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class Projectile : Area2D, IPoolable
 {
-    [Signal] public delegate void ProjectileRemovedEventHandler(Projectile projectile);
+    public event RemovedFromSceneEventHandler RemovedFromScene;
+    [Export] public ProjectileType Type { get; set; }
     [Export] public float Speed { get; set; } = 4;
     [Export] public float Damage { get; set; } = 35;
     [Export] public float Range { get; set; } = 10;
+    [Export] protected AudioStreamPlayer2D flyingSound;
+
     private float traveledDistance = 0;
     private float moveAmount = 0;
     protected Vector2 direction = Vector2.Zero;
-    protected AudioStreamPlayer2D flyingSound;
-    public int team { get; set; } = -1;
-    public override void _Ready()
-    {
-        base._Ready();
-        flyingSound = GetNode<AudioStreamPlayer2D>("FlyingSound");
-    }
+    
+    public Team team { get; set; }
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
@@ -54,6 +52,9 @@ public partial class Projectile : Area2D, IPoolable
         traveledDistance = 0;
         Rotation = 0;
         Hide();
-        EmitSignal(nameof(ProjectileRemoved), this);
+        if (RemovedFromScene != null)
+        {
+            RemovedFromScene(this);
+        }
     }
 }

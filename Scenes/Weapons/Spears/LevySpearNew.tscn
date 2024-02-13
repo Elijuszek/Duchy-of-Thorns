@@ -153,11 +153,12 @@ _data = {
 "Walking": SubResource("Animation_6rcsd")
 }
 
-[node name="LevySpear" instance=ExtResource("1_3pmqo")]
-position = Vector2(1.575, 13.504)
-rotation = 0.872665
+[node name="LevySpear" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("1_3pmqo")]
+position = Vector2(4.649, 12.486)
+rotation = 1.13446
 script = ExtResource("2_26rtu")
 knockBack = 250.0
+animationPlayer = NodePath("AnimationPlayer")
 AttackDuartion = 1.3
 damage = 45.0
 

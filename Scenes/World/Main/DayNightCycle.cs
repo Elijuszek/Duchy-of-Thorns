@@ -9,7 +9,7 @@ public partial class DayNightCycle : CanvasModulate
     [Export] public float Time { get; set; } = 30;
     [Export] private int dayLenght = 180; // 30s = 1h
     [Export] private bool active = true;
-    private AnimationPlayer animationPlayer;
+    [Export] private AnimationPlayer animationPlayer;
 
     public override void _Ready()
     {
@@ -18,7 +18,6 @@ public partial class DayNightCycle : CanvasModulate
             SetProcess(false);
             return;
         }
-        animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         //Random rand = new Random();
         //Time = rand.Next(0, dayLenght);
     }

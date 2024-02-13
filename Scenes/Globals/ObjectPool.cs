@@ -3,45 +3,58 @@ using System.Collections.Concurrent;
 namespace DuchyOfThorns;
 
 /// <summary>
-/// Object pool increases performance by storing and reusing objects
-/// in this way cost to add new objects to the scene is dramatically reduced
+/// Dynamic object pool increases performance by storing and reusing objects
+/// in this way cost to add new objects to the scene is dramatically reduced.
+/// Only use Node objects which can be instantiated independently and are 
+/// not dependent on other objects. Objects must have "RemovedFromScene" signal
 /// </summary>
-/// <typeparam name="T">Any object with IPoolable interface</typeparam>
-public partial class ObjectPool<T> where T : IPoolable, new()
+/// <typeparam name="T">Any Node with IPoolable interface</typeparam>
+public partial class ObjectPool<T> where T : Node, IPoolable, new()
 {
-    private readonly ConcurrentBag<T> items;
-    private int counter = 0;
-    private int max;
-
-    public ObjectPool(int max = 100)
+    private readonly ConcurrentBag<T> pool;
+    private Node root;
+    private PackedScene nodeScene;
+    private int size;
+    public ObjectPool(Node parent, PackedScene packedScene, int startingsize)
     {
-        this.items = new ConcurrentBag<T>();
-        this.max = max;
+        pool = new ConcurrentBag<T>();
+        root = parent;
+        nodeScene = packedScene;
+        size = startingsize;
+        Expand(size);
     }
 
-    public void Release(T item)
+    public void ReleasedFromScene(IPoolable source)
     {
-        if (counter < max)
+        pool.Add((T)source);
+    }
+
+    public T Take()
+    {
+        if (pool.IsEmpty)
         {
-            items.Add(item);
-            counter++;
+            Expand(size);
         }
-    }
-    public T Get()
-    {
         T item;
-        if (items.TryTake(out item))
+        if (pool.TryTake(out item))
         {
-            counter--;
+            item.AddToScene();
             return item;
         }
-        else
-        {
-            T obj = new T();
-            items.Add(obj);
-            counter++;
-            return obj;
-        }
+        GD.PushError("Failed to take object from ", GetType(), " pool");
+        return null;
 
+    }
+
+    public void Expand(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            T item = nodeScene.Instantiate<T>();
+            item.RemovedFromScene += ReleasedFromScene;
+            root.AddChild(item);
+            item.RemoveFromScene();
+        }
+        size += count;
     }
 }

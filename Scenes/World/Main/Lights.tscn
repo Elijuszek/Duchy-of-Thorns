@@ -45,9 +45,10 @@ glow_enabled = true
 
 [node name="Lights" type="Node"]
 
-[node name="DayNightCycle" type="CanvasModulate" parent="."]
+[node name="DayNightCycle" type="CanvasModulate" parent="." node_paths=PackedStringArray("animationPlayer")]
 color = Color(0.0745098, 0.121569, 0.235294, 1)
 script = ExtResource("1")
+animationPlayer = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DayNightCycle"]
 libraries = {

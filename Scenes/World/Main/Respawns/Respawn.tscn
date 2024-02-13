@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" path="res://Scenes/World/Main/Respawns/Respawn.cs" id="1"]
 
-[node name="Marker2D" type="Marker2D"]
+[node name="Marker2D" type="Marker2D" node_paths=PackedStringArray("respawnTimer")]
 script = ExtResource("1")
+respawnTimer = NodePath("RespawnTimer")
 
 [node name="RespawnTimer" type="Timer" parent="."]
 one_shot = true

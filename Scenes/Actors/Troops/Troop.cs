@@ -1,17 +1,27 @@
+using Godot;
+
 namespace DuchyOfThorns;
 
 /// <summary>
 /// Intermediate class for all troops
 /// </summary>
-public partial class Troop : Actor
+public partial class Troop : Actor, IPoolable
 {
-	[Signal] public delegate void DiedEventHandler();
-	PackedScene damagePopup;
-	Globals globals;
-	public override void _Ready()
+    public event RemovedFromSceneEventHandler RemovedFromScene;
+    [Signal] public delegate void DiedEventHandler();
+
+    [Export] protected AnimationPlayer animationPlayer;
+
+    public TroopState CurrentState { get; set; } = TroopState.ADVANCE;
+    public Vector2 Origin { get; set; }
+    public Vector2 Destination { get; set; }
+    private PackedScene damagePopup;
+	private Globals globals;
+
+    public override void _Ready()
 	{
 		base._Ready();
-		damagePopup = (PackedScene)ResourceLoader.Load("res://Scenes/UI/Popups/DamagePopup.tscn");
+		damagePopup = ResourceLoader.Load<PackedScene>("res://Scenes/UI/Popups/DamagePopup.tscn");
 		globals = GetNode<Globals>("/root/Globals");
 	}
 	public override void HandleHit(float baseDamage, Vector2 impactPosition)
@@ -20,7 +30,7 @@ public partial class Troop : Actor
 		Stats.Health -= damage;
 		if (Stats.Health <= 0)
 		{
-			Die();
+			animationPlayer.Play("Death");
 		}
 		else
 		{
@@ -42,9 +52,34 @@ public partial class Troop : Actor
 		if (Stats.Gold > 0)
 		{
 			Random rand = new Random();
-			globals.EmitSignal("CoinsDroped", rand.Next(1, Stats.Gold), GlobalPosition);
+			globals.EmitSignal("CoinsDroped", rand.Next(1, Stats.Gold), GlobalPosition, true);
 		}
 		EmitSignal(nameof(Died));
 		QueueFree();
 	}
+    public virtual void SetState(TroopState newState)
+	{
+        if (newState == CurrentState)
+        {
+            return;
+        }
+    }
+
+    public virtual void AddToScene()
+    {
+        collisionShape.Disabled = false;
+        SetPhysicsProcess(true);
+		Show();
+    }
+
+    public virtual void RemoveFromScene()
+    {
+		collisionShape.Disabled = true;
+		SetPhysicsProcess(false);
+		Hide();
+        if (RemovedFromScene != null)
+        {
+            RemovedFromScene(this);
+        }
+    }
 }

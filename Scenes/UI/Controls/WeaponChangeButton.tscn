@@ -11,13 +11,13 @@ scale = Vector2(0.75, 0.75)
 shape = SubResource("18")
 
 [node name="Sword" type="Sprite2D" parent="."]
+z_index = -1
 position = Vector2(18.6667, 3.8147e-06)
 rotation = 3.14159
-z_index = -1
 texture = ExtResource("2")
 
 [node name="Bow" type="Sprite2D" parent="."]
+z_index = -1
 position = Vector2(-25.3333, 1.33333)
 scale = Vector2(2.5, 3)
-z_index = -1
 texture = ExtResource("3")

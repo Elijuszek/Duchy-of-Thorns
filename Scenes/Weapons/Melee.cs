@@ -5,26 +5,28 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class Melee : Weapon
 {
-	protected CollisionShape2D collisionShape;
-	[Export] protected bool delivered = false;
-	public override void _Ready()
+	[Export] protected CollisionShape2D collisionShape;
+
+	public virtual void Idle()
 	{
-		base._Ready();
-		collisionShape = GetNode<CollisionShape2D>("Area2D/CollisionShape2D");
+		IsAttacking = false;
 	}
-	public override bool CanAttack() => attackCooldown.IsStopped();
-    public virtual void Idle() { GD.PrintErr("Calling Idle from Melee class"); }
-	public virtual void Attack() { GD.PrintErr("Calling Attack from Melee class"); }
-	public virtual void Deliver() { GD.PrintErr("Calling Deliver from Melee class"); }
-	public virtual void Walking() { GD.PrintErr("Calling Walking from Melee class"); }
+	public virtual void Attack() => IsAttacking = true;
+
+	public virtual void Deliver() 
+	{
+		IsAttacking = false;
+		attackCooldown.Start();
+	}
+
+	public virtual void Walking() => IsAttacking = false;
+
 	public virtual void Area2DBodyEntered(Node body)
 	{
-		if (body is Actor actor && actor.GetTeam() != team && !delivered)
+		if (body is Actor actor && actor.GetTeam() != team)
 		{
 			actor.HandleHit(damage, GlobalPosition);
 			deliverSound.Play();
-			delivered = true;
 		}
 	}
-
 }

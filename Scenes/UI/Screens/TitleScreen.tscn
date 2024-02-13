@@ -64,7 +64,7 @@ shadow_size = 16
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(5, 0)
 
-[node name="TitleScreen" type="Control"]
+[node name="TitleScreen" type="Control" node_paths=PackedStringArray("animationPlayer", "click")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -72,6 +72,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4fv84")
+animationPlayer = NodePath("AnimationPlayer")
+click = NodePath("Click")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1

@@ -6,8 +6,9 @@
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(3.32768, 19.8735)
 
-[node name="Melee" instance=ExtResource("2")]
+[node name="Melee" node_paths=PackedStringArray("collisionShape") instance=ExtResource("2")]
 script = ExtResource("1")
+collisionShape = NodePath("Area2D/CollisionShape2D")
 delivered = false
 
 [node name="Area2D" type="Area2D" parent="." index="0"]
