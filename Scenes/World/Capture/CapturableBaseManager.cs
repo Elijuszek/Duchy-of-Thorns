@@ -9,7 +9,7 @@ public partial class CapturableBaseManager : Node2D
 {
     [Signal] public delegate void PlayerCapturedAllBasesEventHandler();
     [Signal] public delegate void PlayerLostAllBasesEventHandler();
-    public Array<CapturableBase> capturableBases { get; private set; }
+    [Export] public Array<CapturableBase> capturableBases { get; private set; }
     public override void _Ready()
     {
         if (capturableBases.Count <= 0)

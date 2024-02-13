@@ -5,10 +5,10 @@ namespace DuchyOfThorns;
 /// <summary>
 /// Class of the map where player has to defend his bases from enemy attacks
 /// </summary>
-public partial class DefendMap : World
+public partial class DefendWorld : World
 {
-    [Export] private AssaultWorldAI enemyMapAI;
-    [Export] private WorldAI allyMapAI;
+    [Export] private AssaultWorldAI enemyWorldAI;
+    [Export] private WorldAI allyWorldAI;
     [Export] private CapturableBaseManager capturableBaseManager;
 
     private PackedScene assaultOverScreen;
@@ -16,7 +16,7 @@ public partial class DefendMap : World
     public override void _Ready()
     {
         base._Ready();
-        assaultOverScreen = (PackedScene)ResourceLoader.Load("res://Scenes/UI/GUI/AssaultOverScreen.tscn");
+        assaultOverScreen = ResourceLoader.Load<PackedScene>("res://Scenes/UI/GUI/AssaultOverScreen.tscn");
         //CapturableBase[] bases = capturableBaseManager.GetCapturableBases();
 
         Respawn[] allyRespawnPoints = GetNode<Node2D>("AllyRespawnPoints").GetChildren().OfType<Respawn>().ToArray();
@@ -25,7 +25,7 @@ public partial class DefendMap : World
         // TODO Signal is still emitted
         //capturableBaseManager.Connect("PlayerCapturedAllBases", new Callable(this, "HandlePlayerVictory"));
 
-        enemyMapAI.Connect("PlayerVictory", new Callable(this, "HandlePlayerVictory"));
+        enemyWorldAI.Connect("PlayerVictory", new Callable(this, "HandlePlayerVictory"));
         capturableBaseManager.Connect("PlayerLostAllBases", new Callable(this, "HandlePlayerDefeat"));
         capturableBaseManager.SetTeam(Team.PLAYER);
 
@@ -49,7 +49,7 @@ public partial class DefendMap : World
     }
     private void HandlePlayerDefeat()
     {
-        enemyMapAI.ClearMap();
+        enemyWorldAI.ClearWorld();
         int loot = 0;
         Player player = GetNodeOrNull<Player>("Player");
         if (player != null)
@@ -84,18 +84,18 @@ public partial class DefendMap : World
         safeGold = player.Stats.Gold;
         player.Stats.Gold = 0;
         player.SetGold(0);
-        enemyMapAI.SpawnNextWave();
+        enemyWorldAI.SpawnNextWave();
     }
     public override Dictionary<string, Variant> Save()
     {
         Dictionary<string, Variant> save = base.Save();
-        save.Add("AssaultMapAI", enemyMapAI.Save());
+        save.Add("AssaultMapAI", enemyWorldAI.Save());
         return save;
     }
     public override void Load(Dictionary<string, Variant> save)
     {
         base.Load(save);
-        enemyMapAI.Load(new Godot.Collections.Dictionary<string, Variant>((Godot.Collections.Dictionary)save["AssaultMapAI"]));
+        enemyWorldAI.Load(new Godot.Collections.Dictionary<string, Variant>((Godot.Collections.Dictionary)save["AssaultMapAI"]));
     }
 
 }

@@ -40,12 +40,12 @@ public partial class AssaultWorldAI : WorldAI
 
 	private void HandleVicotry()
 	{
-		ClearMap();
+		ClearWorld();
 		EmitSignal(nameof(PlayerVictory), waves[CurrentWave].Reward);
 		CurrentWave++;
 	}
 
-	public void ClearMap()
+	public void ClearWorld()
 	{
 		waveTimer.Stop();
 		//foreach (Respawn respawn in respawnPoints)
@@ -66,7 +66,7 @@ public partial class AssaultWorldAI : WorldAI
 
 	private void ElapsedWaveTimeTimeout()
 	{
-		ClearMap();
+		ClearWorld();
 	}
 
 	public Dictionary<string, Variant> Save()

@@ -36,7 +36,7 @@ public partial class TitleScreen : Control
         globals.loadingForm = LoadingForm.New;
 
         // Changing scene
-        GetTree().ChangeSceneToFile("res://Scenes/World/Main/DefendMap/DefendMap.tscn");
+        GetTree().ChangeSceneToFile("res://Scenes/World/Main/DefendWorld/DefendWorld.tscn");
     }
     public void SavedGamesButtonPressed()
     {

@@ -1,21 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0o4kcg7hf4j"]
+[gd_scene load_steps=4 format=3 uid="uid://d0o4kcg7hf4j"]
 
-[ext_resource type="PackedScene" uid="uid://h3nc68d5o1ic" path="res://Scenes/Actors/Characters/Stats.tscn" id="1"]
+[ext_resource type="Script" path="res://Scenes/Actors/Characters/Stats.cs" id="2_2g43s"]
 [ext_resource type="Script" path="res://Scenes/Actors/Characters/Actor.cs" id="3"]
 
-[node name="Actor" type="CharacterBody2D" node_paths=PackedStringArray("Stats", "collisionShape")]
+[sub_resource type="Resource" id="Resource_rvbjv"]
+script = ExtResource("2_2g43s")
+Health = 100.0
+MaxHealth = 100.0
+DamageMultiplier = 1.0
+Armour = 5.0
+Speed = 100.0
+Gold = 10
+
+[node name="Actor" type="CharacterBody2D" node_paths=PackedStringArray("collisionShape")]
 z_index = 2
 collision_layer = 0
 collision_mask = 0
 platform_on_leave = 2
 platform_floor_layers = 0
 script = ExtResource("3")
-Stats = NodePath("Stats")
+Stats = SubResource("Resource_rvbjv")
 collisionShape = NodePath("CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-
-[node name="Stats" parent="." instance=ExtResource("1")]
-Speed = 100.0

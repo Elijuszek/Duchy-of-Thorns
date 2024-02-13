@@ -1,8 +1,9 @@
-[gd_scene load_steps=101 format=3 uid="uid://b6qiuybjj7b2b"]
+[gd_scene load_steps=103 format=3 uid="uid://b6qiuybjj7b2b"]
 
 [ext_resource type="Texture2D" uid="uid://qid2e2hm8wd8" path="res://Sprites/Character/BowReloadNew/BowReload-1.png" id="1"]
 [ext_resource type="PackedScene" uid="uid://d0o4kcg7hf4j" path="res://Scenes/Actors/Characters/Actor.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://k5m1vj5ijl3b" path="res://Sprites/Character/SpearAttack/Spear-1.png" id="3"]
+[ext_resource type="Script" path="res://Scenes/Actors/Characters/Stats.cs" id="3_56t8i"]
 [ext_resource type="Texture2D" uid="uid://d4l7c7fvuk6wl" path="res://Sprites/Character/BowReloadNew/BowReload-3.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://dpxsu2sqww7vj" path="res://Sprites/Character/BowReloadNew/BowReload-2.png" id="5"]
 [ext_resource type="PackedScene" uid="uid://cankvsstxf22r" path="res://Scenes/Weapons/Bows/TrainingBow.tscn" id="5_u3sho"]
@@ -92,6 +93,15 @@
 [ext_resource type="Texture2D" uid="uid://cfg60emjxes42" path="res://Sprites/Character/SpearAttack/Spear-13.png" id="90"]
 [ext_resource type="Texture2D" uid="uid://q8uamgtjv000" path="res://Sprites/Character/SpearAttack/Spear-15.png" id="91"]
 [ext_resource type="Texture2D" uid="uid://bb0hpqbmguxgd" path="res://Sprites/Character/SpearAttack/Spear-24.png" id="92"]
+
+[sub_resource type="Resource" id="Resource_a4ile"]
+script = ExtResource("3_56t8i")
+Health = 100.0
+MaxHealth = 100.0
+DamageMultiplier = 1.0
+Armour = 5.0
+Speed = 100.0
+Gold = 100
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7lx2k"]
 radius = 6.0
@@ -215,6 +225,7 @@ animationPlayer = NodePath("AnimationPlayer")
 cameraTransform = NodePath("CameraTransform")
 coinsSound = NodePath("CoinsSound")
 Team = 0
+Stats = SubResource("Resource_a4ile")
 
 [node name="WeaponsManager" parent="." index="0" node_paths=PackedStringArray("CurrentWeapon") instance=ExtResource("11")]
 CurrentWeapon = NodePath("Fists")
@@ -230,24 +241,21 @@ texture = ExtResource("9")
 [node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource("CapsuleShape2D_7lx2k")
 
-[node name="Stats" parent="." index="3"]
-Speed = 150.0
+[node name="CameraTransform" type="RemoteTransform2D" parent="." index="3"]
 
-[node name="CameraTransform" type="RemoteTransform2D" parent="." index="4"]
-
-[node name="PointLight2D" type="PointLight2D" parent="." index="5"]
+[node name="PointLight2D" type="PointLight2D" parent="." index="4"]
 color = Color(0.956863, 0.933333, 0.752941, 1)
 energy = 0.5
 texture = ExtResource("8_ou4f6")
 
-[node name="CoinsSound" type="AudioStreamPlayer" parent="." index="6"]
+[node name="CoinsSound" type="AudioStreamPlayer" parent="." index="5"]
 stream = ExtResource("39")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
-autoplay = "Idle"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 libraries = {
 "": SubResource("AnimationLibrary_f22p5")
 }
+autoplay = "Idle"
 
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." index="8"]
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." index="7"]
 radius = 12.0
