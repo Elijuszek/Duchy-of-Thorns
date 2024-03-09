@@ -22,7 +22,7 @@ public partial class Ranged : Troop
     {
         base._Ready();
         navAgent.MaxSpeed = Stats.Speed;
-        navAgent.SetNavigationMap(GetNode<TileMap>("/root/World/TileMap").GetNavigationMap(0));
+        navAgent.SetNavigationMap(GetNode<TileMap>("/root/World/TileMap").GetLayerNavigationMap(0));
         navAgent.TargetPosition = GlobalPosition;
         navAgent.Connect("velocity_computed", new Callable(this, "Walking"));
 

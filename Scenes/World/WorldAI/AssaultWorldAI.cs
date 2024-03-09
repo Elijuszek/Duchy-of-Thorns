@@ -32,10 +32,13 @@ public partial class AssaultWorldAI : WorldAI
 
 	public void SpawnNextWave()
 	{
+		// TODO: currently fixed waves count
 		WaveInfo current = waves[CurrentWave];
 		waveTimer.Start();
 		warHorn.Stream = hornSounds[random.Next(0, 1)];
 		warHorn.Play();
+
+		GD.Print("HERE");
 	}
 
 	private void HandleVicotry()

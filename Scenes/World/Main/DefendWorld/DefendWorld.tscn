@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://cmr2iieop7qy0"]
+[gd_scene load_steps=16 format=3 uid="uid://cmr2iieop7qy0"]
 
 [ext_resource type="PackedScene" uid="uid://db02x404q41e0" path="res://Scenes/World/Main/World.tscn" id="1_cm27o"]
 [ext_resource type="Script" path="res://Scenes/World/Main/DefendWorld/DefendWorld.cs" id="2_ptjvr"]
+[ext_resource type="PackedScene" uid="uid://b61nd8tgse4cm" path="res://Scenes/World/Managers/TroopsManager.tscn" id="3_im7qm"]
 [ext_resource type="PackedScene" uid="uid://cvqmgg65cqpf4" path="res://Scenes/World/WorldAI/WorldAI.tscn" id="4_7e281"]
 [ext_resource type="Script" path="res://Scenes/World/Capture/CapturableBaseManager.cs" id="5_efwp3"]
 [ext_resource type="PackedScene" uid="uid://ies6baf7cj1l" path="res://Scenes/World/Capture/CapturableBase.tscn" id="6_bdpx7"]
@@ -15,6 +16,7 @@
 
 [sub_resource type="Resource" id="Resource_gigqu"]
 script = ExtResource("7_4pelb")
+Type = 0
 Count = 3
 
 [sub_resource type="Resource" id="Resource_lv4sc"]
@@ -25,9 +27,9 @@ MaxDuration = 0.0
 Reward = 0.0
 AttackDirections = 0
 
-[node name="World" node_paths=PackedStringArray("enemyWorldAI", "allyWorldAI", "capturableBaseManager") groups=["Persist"] instance=ExtResource("1_cm27o")]
+[node name="World" node_paths=PackedStringArray("assaultworldAI", "allyWorldAI", "capturableBaseManager") groups=["Persist"] instance=ExtResource("1_cm27o")]
 script = ExtResource("2_ptjvr")
-enemyWorldAI = NodePath("AssaultWorldAI")
+assaultworldAI = NodePath("AssaultWorldAI")
 allyWorldAI = NodePath("AllyWorldAI")
 capturableBaseManager = NodePath("CapturableBasesManager")
 
@@ -41,17 +43,20 @@ position = Vector2(1168, 537)
 [node name="LootManager" parent="." index="4"]
 coinsCount = 1000
 
-[node name="CanvasModulate" parent="." index="6"]
+[node name="TroopsManager" parent="." index="5" instance=ExtResource("3_im7qm")]
+startingCount = 5
+
+[node name="CanvasModulate" parent="." index="7"]
 color = Color(0.956863, 0.933333, 0.752941, 1)
 
 [node name="AnimationPlayer" parent="CanvasModulate" index="0"]
 autoplay = "DayNightCycle"
 
-[node name="AllyWorldAI" parent="." index="8" instance=ExtResource("4_7e281")]
+[node name="AllyWorldAI" parent="." index="9" instance=ExtResource("4_7e281")]
 position = Vector2(315, -54)
 team = 0
 
-[node name="CapturableBasesManager" type="Node2D" parent="." index="9" node_paths=PackedStringArray("capturableBases")]
+[node name="CapturableBasesManager" type="Node2D" parent="." index="10" node_paths=PackedStringArray("capturableBases")]
 script = ExtResource("5_efwp3")
 capturableBases = [NodePath("CapturableBase")]
 
@@ -59,19 +64,19 @@ capturableBases = [NodePath("CapturableBase")]
 position = Vector2(682, 366)
 Team = 0
 
-[node name="AssaultWorldAI" parent="." index="10" instance=ExtResource("7_w7fo2")]
+[node name="AssaultWorldAI" parent="." index="11" instance=ExtResource("7_w7fo2")]
 waves = Array[Object]([SubResource("Resource_lv4sc")])
 baseCaptureOrder = 1
 team = 1
 
-[node name="AllyRespawnPoints" type="Node2D" parent="." index="11"]
+[node name="AllyRespawnPoints" type="Node2D" parent="." index="12"]
 position = Vector2(1184, 605)
 
 [node name="RangedRespawn" parent="AllyRespawnPoints" index="0" instance=ExtResource("7_2dg2m")]
 position = Vector2(-539, -335)
 Unit = ExtResource("8_5n7kw")
 
-[node name="EnemyRespawnPoints" type="Node2D" parent="." index="12"]
+[node name="EnemyRespawnPoints" type="Node2D" parent="." index="13"]
 position = Vector2(135, 65)
 
 [node name="InfantryRespawn" parent="EnemyRespawnPoints" index="0" instance=ExtResource("7_tsxiy")]
