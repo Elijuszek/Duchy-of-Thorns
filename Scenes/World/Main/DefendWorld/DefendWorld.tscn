@@ -1,33 +1,42 @@
-[gd_scene load_steps=15 format=3 uid="uid://cmr2iieop7qy0"]
+[gd_scene load_steps=14 format=3 uid="uid://cmr2iieop7qy0"]
 
 [ext_resource type="PackedScene" uid="uid://db02x404q41e0" path="res://Scenes/World/Main/World.tscn" id="1_cm27o"]
 [ext_resource type="Script" path="res://Scenes/World/Main/DefendWorld/DefendWorld.cs" id="2_ptjvr"]
-[ext_resource type="PackedScene" uid="uid://cvqmgg65cqpf4" path="res://Scenes/World/WorldAI/WorldAI.tscn" id="4_7e281"]
+[ext_resource type="PackedScene" uid="uid://b61nd8tgse4cm" path="res://Scenes/World/Managers/TroopsManager.tscn" id="3_im7qm"]
+[ext_resource type="PackedScene" uid="uid://cvqmgg65cqpf4" path="res://Scenes/World/WorldAI/DefendWorldAI.tscn" id="4_7e281"]
 [ext_resource type="Script" path="res://Scenes/World/Capture/CapturableBaseManager.cs" id="5_efwp3"]
 [ext_resource type="PackedScene" uid="uid://ies6baf7cj1l" path="res://Scenes/World/Capture/CapturableBase.tscn" id="6_bdpx7"]
-[ext_resource type="PackedScene" uid="uid://c7cq21eaaq2n6" path="res://Scenes/World/Main/Respawns/RangedRespawn.tscn" id="7_2dg2m"]
 [ext_resource type="Script" path="res://Scenes/World/WorldAI/UnitInfo.cs" id="7_4pelb"]
 [ext_resource type="Script" path="res://Scenes/World/WorldAI/Waves/WaveInfo.cs" id="7_dkmdf"]
-[ext_resource type="PackedScene" uid="uid://1m48nyc1s20l" path="res://Scenes/World/Main/Respawns/InfantryRespawn.tscn" id="7_tsxiy"]
 [ext_resource type="PackedScene" uid="uid://bu6s37trpw0yc" path="res://Scenes/World/WorldAI/AssaultWorldAI.tscn" id="7_w7fo2"]
-[ext_resource type="PackedScene" uid="uid://2y2ms2a0r5qg" path="res://Scenes/Actors/Troops/Ranged/ArcherAlly.tscn" id="8_5n7kw"]
-[ext_resource type="PackedScene" uid="uid://d1icwp77t3ic" path="res://Scenes/Actors/Troops/Melee/FootmanEnemy.tscn" id="10_703pm"]
+[ext_resource type="Script" path="res://Scenes/Actors/Characters/Stats.cs" id="8_t318e"]
+
+[sub_resource type="Resource" id="Resource_7m180"]
+script = ExtResource("8_t318e")
+Health = 100.0
+MaxHealth = 100.0
+DamageMultiplier = 1.0
+Armour = 5.0
+Speed = 100.0
+Gold = 100
 
 [sub_resource type="Resource" id="Resource_gigqu"]
 script = ExtResource("7_4pelb")
-Count = 3
+Type = 4
+TroopsLeft = 2
+Stats = SubResource("Resource_7m180")
 
 [sub_resource type="Resource" id="Resource_lv4sc"]
 script = ExtResource("7_dkmdf")
 MaxUnits = 2
-UnitQueue = Array[Object]([SubResource("Resource_gigqu"), null, null])
-MaxDuration = 0.0
-Reward = 0.0
+UnitQueue = Array[Object]([SubResource("Resource_gigqu")])
+MaxDuration = 3000.0
+Reward = 100.0
 AttackDirections = 0
 
-[node name="World" node_paths=PackedStringArray("enemyWorldAI", "allyWorldAI", "capturableBaseManager") groups=["Persist"] instance=ExtResource("1_cm27o")]
+[node name="World" node_paths=PackedStringArray("assaultWorldAI", "allyWorldAI", "capturableBaseManager") groups=["Persist"] instance=ExtResource("1_cm27o")]
 script = ExtResource("2_ptjvr")
-enemyWorldAI = NodePath("AssaultWorldAI")
+assaultWorldAI = NodePath("AssaultWorldAI")
 allyWorldAI = NodePath("AllyWorldAI")
 capturableBaseManager = NodePath("CapturableBasesManager")
 
@@ -38,20 +47,26 @@ layer_2/tile_data = PackedInt32Array(65549, 655381, 1, 131085, 655381, 2, 65550,
 [node name="PlayerSpawn" parent="." index="1"]
 position = Vector2(1168, 537)
 
+[node name="Camera2D" parent="." index="2"]
+position = Vector2(690, 389)
+
 [node name="LootManager" parent="." index="4"]
 coinsCount = 1000
 
-[node name="CanvasModulate" parent="." index="6"]
+[node name="TroopsManager" parent="." index="5" instance=ExtResource("3_im7qm")]
+startingCount = 5
+
+[node name="CanvasModulate" parent="." index="7"]
 color = Color(0.956863, 0.933333, 0.752941, 1)
 
 [node name="AnimationPlayer" parent="CanvasModulate" index="0"]
 autoplay = "DayNightCycle"
 
-[node name="AllyWorldAI" parent="." index="8" instance=ExtResource("4_7e281")]
+[node name="AllyWorldAI" parent="." index="9" instance=ExtResource("4_7e281")]
 position = Vector2(315, -54)
 team = 0
 
-[node name="CapturableBasesManager" type="Node2D" parent="." index="9" node_paths=PackedStringArray("capturableBases")]
+[node name="CapturableBasesManager" type="Node2D" parent="." index="10" node_paths=PackedStringArray("capturableBases")]
 script = ExtResource("5_efwp3")
 capturableBases = [NodePath("CapturableBase")]
 
@@ -59,21 +74,13 @@ capturableBases = [NodePath("CapturableBase")]
 position = Vector2(682, 366)
 Team = 0
 
-[node name="AssaultWorldAI" parent="." index="10" instance=ExtResource("7_w7fo2")]
+[node name="AssaultWorldAI" parent="." index="11" node_paths=PackedStringArray("capturableBaseManager", "troopsManager") instance=ExtResource("7_w7fo2")]
+capturableBaseManager = NodePath("../CapturableBasesManager")
 waves = Array[Object]([SubResource("Resource_lv4sc")])
-baseCaptureOrder = 1
-team = 1
+troopsManager = NodePath("../TroopsManager")
 
-[node name="AllyRespawnPoints" type="Node2D" parent="." index="11"]
+[node name="AllyRespawnPoints" type="Node2D" parent="." index="12"]
 position = Vector2(1184, 605)
 
-[node name="RangedRespawn" parent="AllyRespawnPoints" index="0" instance=ExtResource("7_2dg2m")]
-position = Vector2(-539, -335)
-Unit = ExtResource("8_5n7kw")
-
-[node name="EnemyRespawnPoints" type="Node2D" parent="." index="12"]
+[node name="EnemyRespawnPoints" type="Node2D" parent="." index="13"]
 position = Vector2(135, 65)
-
-[node name="InfantryRespawn" parent="EnemyRespawnPoints" index="0" instance=ExtResource("7_tsxiy")]
-position = Vector2(423, 268)
-Unit = ExtResource("10_703pm")

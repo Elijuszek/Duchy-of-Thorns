@@ -17,8 +17,8 @@ public partial class Westwend : Node2D
     private TileMap ground;
     private CapturableBaseManager capturableBaseManager;
     private LootManager lootManager;
-    private WorldAI enemyMapAI;
-    private WorldAI allyMapAI;
+    private DefendWorldAI enemyMapAI;
+    private DefendWorldAI allyMapAI;
     public override void _Ready()
     {
         ground = GetNode<TileMap>("Ground");
@@ -38,8 +38,8 @@ public partial class Westwend : Node2D
 
         capturableBaseManager = GetNode<CapturableBaseManager>("CapturableBasesManager");
 
-        enemyMapAI = GetNode<WorldAI>("EnemyMapAI");
-        allyMapAI = GetNode<WorldAI>("AllyMapAI");
+        enemyMapAI = GetNode<DefendWorldAI>("EnemyMapAI");
+        allyMapAI = GetNode<DefendWorldAI>("AllyMapAI");
 
         globals.Connect("ArrowFired", new Callable(projectileManager, "HandleArrowSpawned"));
         globals.Connect("CoinsDroped", new Callable(lootManager, "HandleCoinsSpawned"));

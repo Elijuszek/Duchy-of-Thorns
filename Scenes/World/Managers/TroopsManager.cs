@@ -23,12 +23,17 @@ public partial class TroopsManager : Node2D
                            ResourceLoader.Load<PackedScene>("res://Scenes/Actors/Troops/Ranged/ArcherEnemy.tscn"), startingCount)},
         };
     }
-    public void HandleTroopSpawned(TroopType type, Stats stats, Vector2 spawnPosition, Vector2 origin)
+    public Troop HandleTroopSpawned(TroopType type, Stats stats, Vector2 spawnPosition, Vector2 origin)
     {
         Troop troop = troopPool[type].Take();
         troop.Stats = stats;
         troop.GlobalPosition = spawnPosition;
         troop.Origin = origin;
+        float randomX = Utilities.GetRandomFloat(-10f, 10f);
+        float randomY = Utilities.GetRandomFloat(-10f, 10f);
+        troop.Destination = new Vector2(randomX, randomY) + origin;
         troop.SetState(TroopState.ADVANCE);
+
+        return troop;
     }
 }

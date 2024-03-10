@@ -3,15 +3,16 @@ namespace DuchyOfThorns;
 [GlobalClass]
 public partial class UnitInfo : Resource
 {
-    [Export] public PackedScene Units { get; set; } = null;
-    [Export] public int Count { get; set; } = 0;
-    
+    [Export] public TroopType Type { get; set; }
+    [Export] public int TroopsLeft { get; set; } = 0;
+    [Export] public Stats Stats { get; set; }
+
     public UnitInfo Duplicate()
     {
         return new UnitInfo()
         {
-            Units = Units,
-            Count = Count,
+            Type = Type,
+            TroopsLeft = TroopsLeft,
         };
     }
 }
