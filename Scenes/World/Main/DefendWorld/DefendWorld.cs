@@ -7,8 +7,8 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class DefendWorld : World
 {
-    [Export] private AssaultWorldAI assaultworldAI;
-    [Export] private WorldAI allyWorldAI;
+    [Export] private AssaultWorldAI assaultWorldAI;
+    [Export] private DefendWorldAI allyWorldAI;
     [Export] private CapturableBaseManager capturableBaseManager;
 
     private PackedScene assaultOverScreen;
@@ -25,10 +25,9 @@ public partial class DefendWorld : World
         // TODO Signal is still emitted
         //capturableBaseManager.Connect("PlayerCapturedAllBases", new Callable(this, "HandlePlayerVictory"));
 
-        assaultworldAI.Connect("PlayerVictory", new Callable(this, "HandlePlayerVictory"));
+        assaultWorldAI.Connect("PlayerVictory", new Callable(this, "HandlePlayerVictory"));
         capturableBaseManager.Connect("PlayerLostAllBases", new Callable(this, "HandlePlayerDefeat"));
         capturableBaseManager.SetTeam(Team.PLAYER);
-
         gui.Connect("NewWaveStarted", new Callable(this, "NewWave"));
         gui.ToggleNewWaveButton(true);
 
@@ -49,7 +48,7 @@ public partial class DefendWorld : World
     }
     private void HandlePlayerDefeat()
     {
-        assaultworldAI.ClearWorld();
+        assaultWorldAI.ClearWorld();
         int loot = 0;
         Player player = GetNodeOrNull<Player>("Player");
         if (player != null)
@@ -85,19 +84,21 @@ public partial class DefendWorld : World
         player.Stats.Gold = 0;
         player.SetGold(0);
 
+        assaultWorldAI.TargetBase = capturableBaseManager.GetNextCapturableBase(Team.ENEMY, BaseCaptureOrder.FIRST);
+
         // TODO: New wave should load after the last wave is finished
-        assaultworldAI.SpawnNextWave();
+        assaultWorldAI.SpawnNextWave();
     }
     public override Dictionary<string, Variant> Save()
     {
         Dictionary<string, Variant> save = base.Save();
-        save.Add("AssaultMapAI", assaultworldAI.Save());
+        save.Add("AssaultMapAI", assaultWorldAI.Save());
         return save;
     }
     public override void Load(Dictionary<string, Variant> save)
     {
         base.Load(save);
-        assaultworldAI.Load(new Godot.Collections.Dictionary<string, Variant>((Godot.Collections.Dictionary)save["AssaultMapAI"]));
+        assaultWorldAI.Load(new Godot.Collections.Dictionary<string, Variant>((Godot.Collections.Dictionary)save["AssaultMapAI"]));
     }
 
 }

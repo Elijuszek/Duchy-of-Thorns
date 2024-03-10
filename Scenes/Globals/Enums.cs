@@ -42,6 +42,8 @@ public enum LootType
 
 public enum TroopType
 {
+    NONE,
+
     ALLY_ARCHER,
     ALLY_FOOTMAN,
 

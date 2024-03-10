@@ -1,15 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bu6s37trpw0yc"]
+[gd_scene load_steps=4 format=3 uid="uid://bu6s37trpw0yc"]
 
-[ext_resource type="PackedScene" uid="uid://cvqmgg65cqpf4" path="res://Scenes/World/WorldAI/WorldAI.tscn" id="1_ax0ye"]
 [ext_resource type="Script" path="res://Scenes/World/WorldAI/AssaultWorldAI.cs" id="2_fkv12"]
+[ext_resource type="AudioStream" uid="uid://doiu636l28mas" path="res://Sounds/Horns/DistantWarhorn1.ogg" id="3_fvcef"]
+[ext_resource type="AudioStream" uid="uid://vg51g0qem781" path="res://Sounds/Horns/DistantWarhorn2.ogg" id="4_6blm5"]
 
-[node name="AssaultWorldAI" node_paths=PackedStringArray("waveTimer", "warHorn") instance=ExtResource("1_ax0ye")]
+[node name="AssaultWorldAI" type="Node2D" node_paths=PackedStringArray("waveTimer", "warHorn")]
 script = ExtResource("2_fkv12")
 waves = Array[Object]([null])
 waveTimer = NodePath("ElapsedWaveTime")
 warHorn = NodePath("WarHorn")
+hornSounds = Array[AudioStreamOggVorbis]([ExtResource("3_fvcef"), ExtResource("4_6blm5")])
 
-[node name="ElapsedWaveTime" type="Timer" parent="." index="0"]
+[node name="ElapsedWaveTime" type="Timer" parent="."]
 
-[node name="WarHorn" type="AudioStreamPlayer" parent="." index="1"]
+[node name="WarHorn" type="AudioStreamPlayer" parent="."]
 volume_db = 5.0

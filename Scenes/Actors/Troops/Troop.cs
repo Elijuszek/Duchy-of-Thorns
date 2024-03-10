@@ -8,7 +8,6 @@ namespace DuchyOfThorns;
 public partial class Troop : Actor, IPoolable
 {
     public event RemovedFromSceneEventHandler RemovedFromScene;
-    [Signal] public delegate void DiedEventHandler();
 
     [Export] protected AnimationPlayer animationPlayer;
 
@@ -26,15 +25,17 @@ public partial class Troop : Actor, IPoolable
 	}
 	public override void HandleHit(float baseDamage, Vector2 impactPosition)
 	{
-		float damage = Mathf.Clamp(baseDamage - Stats.Armour, 0, Stats.MaxHealth);
+        float damage = Mathf.Clamp(baseDamage - Stats.Armour, 0, Stats.MaxHealth);
 		Stats.Health -= damage;
 		if (Stats.Health <= 0)
 		{
-			animationPlayer.Play("Death");
+			// TODO: animation doesn't play (FootmanEnemy)
+			// animationPlayer.Play("Death");
+			Die();
 		}
 		else
 		{
-			if (damage > 9)
+            if (damage > 9)
 			{
 				Blood blood = bloodScene.Instantiate() as Blood;
 				GetParent().AddChild(blood);
@@ -54,8 +55,7 @@ public partial class Troop : Actor, IPoolable
 			Random rand = new Random();
 			globals.EmitSignal("CoinsDroped", rand.Next(1, Stats.Gold), GlobalPosition, true);
 		}
-		EmitSignal(nameof(Died));
-		QueueFree();
+        RemoveFromScene();
 	}
     public virtual void SetState(TroopState newState)
 	{
@@ -74,7 +74,8 @@ public partial class Troop : Actor, IPoolable
 
     public virtual void RemoveFromScene()
     {
-		collisionShape.Disabled = true;
+		// TODO: navigation2D is still active (Debug from FootmanEnemy)
+        collisionShape.SetDeferred("disabled", true);
 		SetPhysicsProcess(false);
 		Hide();
         if (RemovedFromScene != null)

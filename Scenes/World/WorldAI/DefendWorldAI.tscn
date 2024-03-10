@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cvqmgg65cqpf4"]
 
-[ext_resource type="Script" path="res://Scenes/World/WorldAI/WorldAI.cs" id="2"]
+[ext_resource type="Script" path="res://Scenes/World/WorldAI/DefendWorldAI.cs" id="2"]
 
 [node name="WorldAI" type="Node2D"]
 script = ExtResource("2")

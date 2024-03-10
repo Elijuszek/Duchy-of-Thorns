@@ -5,15 +5,15 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class CaptureMap : World
 {
-    private WorldAI enemyMapAI;
-    private WorldAI allyMapAI;
+    private DefendWorldAI enemyMapAI;
+    private DefendWorldAI allyMapAI;
     private CapturableBaseManager capturableBaseManager;
     public override void _Ready()
     {
         base._Ready();
         capturableBaseManager = GetNode<CapturableBaseManager>("CapturableBasesManager");
-        enemyMapAI = GetNode<WorldAI>("EnemyMapAI");
-        allyMapAI = GetNode<WorldAI>("AllyMapAI");
+        enemyMapAI = GetNode<DefendWorldAI>("EnemyMapAI");
+        allyMapAI = GetNode<DefendWorldAI>("AllyMapAI");
         //CapturableBase[] bases = capturableBaseManager.GetCapturableBases();
 
         Respawn[] allyRespawnPoints = GetNode<Node2D>("AllyRespawnPoints").GetChildren().OfType<Respawn>().ToArray();

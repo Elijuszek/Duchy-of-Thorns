@@ -1,4 +1,6 @@
 ﻿using Godot.Collections;
+using System.Data;
+
 namespace DuchyOfThorns;
 
 [GlobalClass]
@@ -28,6 +30,17 @@ public partial class WaveInfo : Resource
             MaxDuration = MaxDuration,
             Reward = Reward
         };
+    }
+
+    public TroopType DequeuUnit()
+    {
+        if ((UnitQueue.Count <= 0) || (UnitQueue.Count == 1 && UnitQueue[0].TroopsLeft == 0))
+        {
+            return TroopType.NONE;
+        }
+        TroopType type = UnitQueue[0].Type;
+        UnitQueue[0].TroopsLeft--;
+        return type;
     }
 }
 

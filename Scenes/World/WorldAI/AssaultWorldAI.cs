@@ -1,28 +1,29 @@
 using Godot.Collections;
+using System.Reflection.Metadata;
 
 namespace DuchyOfThorns;
 
 /// <summary>
-/// MapAI which is dedicated for defend maps, acts as a wave manager
+/// WorldAI which is dedicated for defend maps, acts as a wave manager
 /// </summary>
-public partial class AssaultWorldAI : WorldAI
+public partial class AssaultWorldAI : Node2D
 {
 	[Signal] public delegate void PlayerVictoryEventHandler(int reward);
 
-	[Export] private Array<WaveInfo> waves;
-    [Export] private Timer waveTimer;
-	[Export] private AudioStreamPlayer warHorn;
+    // Export is used only for testing purposes
+    [Export] public int CurrentWaveIndex { get; set; } = 0;
     [Export] protected CapturableBaseManager capturableBaseManager;
+    [Export] private Array<WaveInfo> waves;
+    [Export] private Timer waveTimer;
+    [Export] private AudioStreamPlayer warHorn;
+	[Export] private TroopsManager troopsManager;
+    [Export] private AudioStreamOggVorbis[] hornSounds;
+    public CapturableBase TargetBase { get; set; }
 
-    protected CapturableBase targetBase = null;
-    public int CurrentWave { get; set; } = 0;
+	private WaveInfo currentWave;
+	private Random random;
 
-	private int aliveRespawns;
-	private AudioStreamOggVorbis[] hornSounds =
-	{
-			ResourceLoader.Load<AudioStreamOggVorbis>("res://Sounds/Horns/DistantWarhorn1.ogg"),
-			ResourceLoader.Load<AudioStreamOggVorbis>("res://Sounds/Horns/DistantWarhorn2.ogg"),
-	};
+	private int troopsInScene = 0;
 
 	public override void _Ready()
 	{
@@ -32,39 +33,52 @@ public partial class AssaultWorldAI : WorldAI
 
 	public void SpawnNextWave()
 	{
-		// TODO: currently fixed waves count
-		WaveInfo current = waves[CurrentWave];
+        // TODO: currently fixed waves count
+        currentWave = waves[CurrentWaveIndex].Duplicate();
 		waveTimer.Start();
 		warHorn.Stream = hornSounds[random.Next(0, 1)];
 		warHorn.Play();
 
-		GD.Print("HERE");
+		for(int i = 0; i < currentWave.MaxUnits; i++)
+		{
+			SpawnUnit();
+		}
+    }
+	
+	private void SpawnUnit()
+	{
+		TroopType type = currentWave.DequeuUnit();
+		if (type == TroopType.NONE)
+		{
+			if (troopsInScene == 0)
+			{
+                HandleVicotry();
+            }
+            return;
+        }
+
+		// TODO: select spawn points
+		Troop spawnedTroop = troopsManager.HandleTroopSpawned(type, currentWave.UnitQueue[0].Stats, new Vector2(400f, 400f), TargetBase.GlobalPosition);
+		spawnedTroop.RemovedFromScene += HandleTroopRemoved;
+		troopsInScene++;
+	}
+
+	private void HandleTroopRemoved(IPoolable source)
+	{
+		troopsInScene--;
+        SpawnUnit();
 	}
 
 	private void HandleVicotry()
 	{
 		ClearWorld();
-		EmitSignal(nameof(PlayerVictory), waves[CurrentWave].Reward);
-		CurrentWave++;
+		EmitSignal(nameof(PlayerVictory), currentWave.Reward);
+		CurrentWaveIndex++;
 	}
 
 	public void ClearWorld()
 	{
 		waveTimer.Stop();
-		//foreach (Respawn respawn in respawnPoints)
-		//{
-		//	respawn.Clear();
-		//}
-	}
-
-	private void HandleOutOfTroops()
-	{
-		aliveRespawns--;
-		if (aliveRespawns > 0 || waveTimer.IsStopped())
-		{
-			return;
-		}
-		HandleVicotry();
 	}
 
 	private void ElapsedWaveTimeTimeout()
@@ -80,7 +94,7 @@ public partial class AssaultWorldAI : WorldAI
 			{ "Parent", GetParent().GetPath() },
 			{ "PosX", Position.X }, // Vector2 is not supported by JSON
 			{ "PosY", Position.Y },
-			{ "CurrentWave", CurrentWave },
+			{ "CurrentWave", CurrentWaveIndex },
 		};
 	}
 
@@ -103,5 +117,5 @@ public partial class AssaultWorldAI : WorldAI
         //    troop.Destination = cBase.GetRandomPositionWithinRadius();
         //}
     }
-    public void Load(Dictionary<string, Variant> data) => CurrentWave = (int)data["CurrentWave"];
+    public void Load(Dictionary<string, Variant> data) => CurrentWaveIndex = (int)data["CurrentWave"];
 }
