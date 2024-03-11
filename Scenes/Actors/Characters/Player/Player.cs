@@ -77,9 +77,10 @@ public partial class Player : Actor
         Stats.Health -= damage;
         //Stats.SetHealth(Stats.Health - damage); // UI won't go below 0hp
         EmitSignal(nameof(PlayerHealthChanged), Stats.Health);
-        if (Stats.Health <= 0)
+        if (Stats.Health <= 0 && animationPlayer.CurrentAnimation != "Death")
         {
-            Die();
+            SetPhysicsProcess(false);
+            animationPlayer.Play("Death");
         }
         else
         {
