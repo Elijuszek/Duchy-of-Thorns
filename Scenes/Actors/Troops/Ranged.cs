@@ -21,6 +21,7 @@ public partial class Ranged : Troop
     public override void _Ready()
     {
         base._Ready();
+        weapon.Initialize(Team);
         navAgent.MaxSpeed = Stats.Speed;
         navAgent.SetNavigationMap(GetNode<TileMap>("/root/World/TileMap").GetLayerNavigationMap(0));
         navAgent.TargetPosition = GlobalPosition;

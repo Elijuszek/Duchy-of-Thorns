@@ -30,6 +30,9 @@ public partial class FireArrow : Arrow
                     RemoveFromScene();
                 }
                 break;
+
+            case Fireplace fireplace:
+                break;
             default:
                 RemoveFromScene();
                 break;
