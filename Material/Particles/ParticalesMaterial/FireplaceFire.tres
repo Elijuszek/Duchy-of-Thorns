@@ -8,17 +8,15 @@ colors = PackedColorArray(2, 2, 0, 1, 1.6, 0.58, 0, 1, 2, 0.5, 0, 1, 0.81, 0, 0,
 gradient = SubResource("Gradient_pyuvo")
 
 [resource]
+particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 93.04
-particle_flag_disable_z = true
+angle_max = 90.0
 direction = Vector3(1, 0, 20)
 spread = 64.0
-gravity = Vector3(0, 0, 0)
 initial_velocity_min = -15.0
 initial_velocity_max = 15.0
 angular_velocity_min = -360.0
 angular_velocity_max = 360.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-angle_max = 90.0
+gravity = Vector3(0, 0, 0)
 color_ramp = SubResource("GradientTexture1D_fo1ii")

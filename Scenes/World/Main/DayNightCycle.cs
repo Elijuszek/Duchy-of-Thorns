@@ -7,7 +7,7 @@ namespace DuchyOfThorns;
 public partial class DayNightCycle : CanvasModulate
 {
     [Export] public float Time { get; set; } = 30;
-    [Export] private int dayLenght = 180; // 30s = 1h
+    [Export] private int dayLenght = 720; // 30s = 1h
     [Export] private bool active = true;
     [Export] private AnimationPlayer animationPlayer;
 

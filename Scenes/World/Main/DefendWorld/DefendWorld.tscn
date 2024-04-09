@@ -1,15 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://cmr2iieop7qy0"]
+[gd_scene load_steps=17 format=3 uid="uid://cmr2iieop7qy0"]
 
 [ext_resource type="PackedScene" uid="uid://db02x404q41e0" path="res://Scenes/World/Main/World.tscn" id="1_cm27o"]
 [ext_resource type="Script" path="res://Scenes/World/Main/DefendWorld/DefendWorld.cs" id="2_ptjvr"]
 [ext_resource type="PackedScene" uid="uid://b61nd8tgse4cm" path="res://Scenes/World/Managers/TroopsManager.tscn" id="3_im7qm"]
-[ext_resource type="PackedScene" path="res://Scenes/World/WorldAI/DefendWorldAI.tscn" id="4_7e281"]
+[ext_resource type="PackedScene" uid="uid://cvqmgg65cqpf4" path="res://Scenes/World/WorldAI/DefendWorldAI.tscn" id="4_7e281"]
 [ext_resource type="Script" path="res://Scenes/World/Capture/CapturableBaseManager.cs" id="5_efwp3"]
 [ext_resource type="PackedScene" uid="uid://ies6baf7cj1l" path="res://Scenes/World/Capture/CapturableBase.tscn" id="6_bdpx7"]
 [ext_resource type="Script" path="res://Scenes/World/WorldAI/UnitInfo.cs" id="7_4pelb"]
 [ext_resource type="Script" path="res://Scenes/World/WorldAI/Waves/WaveInfo.cs" id="7_dkmdf"]
 [ext_resource type="PackedScene" uid="uid://bu6s37trpw0yc" path="res://Scenes/World/WorldAI/AssaultWorldAI.tscn" id="7_w7fo2"]
 [ext_resource type="Script" path="res://Scenes/Actors/Characters/Stats.cs" id="8_t318e"]
+[ext_resource type="PackedScene" uid="uid://dev2ibts6im21" path="res://Scenes/World/Decorations/Fireplace.tscn" id="11_11c6u"]
 
 [sub_resource type="Resource" id="Resource_7m180"]
 script = ExtResource("8_t318e")
@@ -22,14 +23,29 @@ Gold = 100
 
 [sub_resource type="Resource" id="Resource_gigqu"]
 script = ExtResource("7_4pelb")
-Type = 4
-TroopsLeft = 2
+Type = 3
+TroopsLeft = 1
 Stats = SubResource("Resource_7m180")
+
+[sub_resource type="Resource" id="Resource_mr2ch"]
+script = ExtResource("8_t318e")
+Health = 100.0
+MaxHealth = 100.0
+DamageMultiplier = 1.0
+Armour = 5.0
+Speed = 100.0
+Gold = 5
+
+[sub_resource type="Resource" id="Resource_xt1r3"]
+script = ExtResource("7_4pelb")
+Type = 4
+TroopsLeft = 1
+Stats = SubResource("Resource_mr2ch")
 
 [sub_resource type="Resource" id="Resource_lv4sc"]
 script = ExtResource("7_dkmdf")
 MaxUnits = 2
-UnitQueue = Array[Object]([SubResource("Resource_gigqu")])
+UnitQueue = Array[Object]([SubResource("Resource_gigqu"), SubResource("Resource_xt1r3")])
 MaxDuration = 3000.0
 Reward = 100.0
 AttackDirections = 0
@@ -56,9 +72,6 @@ coinsCount = 1000
 [node name="TroopsManager" parent="." index="5" instance=ExtResource("3_im7qm")]
 startingCount = 5
 
-[node name="CanvasModulate" parent="." index="7"]
-color = Color(0.956863, 0.933333, 0.752941, 1)
-
 [node name="AnimationPlayer" parent="CanvasModulate" index="0"]
 autoplay = "DayNightCycle"
 
@@ -84,3 +97,6 @@ position = Vector2(1184, 605)
 
 [node name="EnemyRespawnPoints" type="Node2D" parent="." index="13"]
 position = Vector2(135, 65)
+
+[node name="Fireplace" parent="." index="14" instance=ExtResource("11_11c6u")]
+position = Vector2(407, 616)
