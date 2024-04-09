@@ -10,6 +10,7 @@ public partial class DayNightCycle : CanvasModulate
     [Export] private int dayLenght = 720; // 30s = 1h
     [Export] private bool active = true;
     [Export] private AnimationPlayer animationPlayer;
+    [Export] private AudioStreamPlayer nightSounds;
 
     public override void _Ready()
     {
@@ -30,6 +31,17 @@ public partial class DayNightCycle : CanvasModulate
         float currentFrame = Remap(Time, 0, dayLenght, 0, 24);
         animationPlayer.Play("DayNightCycle");
         animationPlayer.Seek(currentFrame);
+
+        if (currentFrame >= 20 || currentFrame <= 6)
+        {
+            if (nightSounds.Playing == false)
+                nightSounds.Play();
+        }
+        else
+        {
+            nightSounds.Stop();
+        }
+
     }
 
     public float Remap(float value, float istart, float istop, float ostart, float ostop)

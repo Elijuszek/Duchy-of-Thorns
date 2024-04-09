@@ -10,7 +10,9 @@
 [ext_resource type="Script" path="res://Scenes/World/WorldAI/Waves/WaveInfo.cs" id="7_dkmdf"]
 [ext_resource type="PackedScene" uid="uid://bu6s37trpw0yc" path="res://Scenes/World/WorldAI/AssaultWorldAI.tscn" id="7_w7fo2"]
 [ext_resource type="Script" path="res://Scenes/Actors/Characters/Stats.cs" id="8_t318e"]
+[ext_resource type="AudioStream" uid="uid://b6sabkubv0wcp" path="res://Sounds/Music/night.mp3" id="11_a57fy"]
 [ext_resource type="PackedScene" uid="uid://dev2ibts6im21" path="res://Scenes/World/Decorations/Fireplace.tscn" id="11_11c6u"]
+
 
 [sub_resource type="Resource" id="Resource_7m180"]
 script = ExtResource("8_t318e")
@@ -72,6 +74,10 @@ coinsCount = 1000
 [node name="TroopsManager" parent="." index="5" instance=ExtResource("3_im7qm")]
 startingCount = 5
 
+[node name="CanvasModulate" parent="." index="7" node_paths=PackedStringArray("nightSounds")]
+color = Color(0.937255, 0.92549, 0.894118, 1)
+nightSounds = NodePath("../BackgroundNight")
+
 [node name="AnimationPlayer" parent="CanvasModulate" index="0"]
 autoplay = "DayNightCycle"
 
@@ -98,5 +104,9 @@ position = Vector2(1184, 605)
 [node name="EnemyRespawnPoints" type="Node2D" parent="." index="13"]
 position = Vector2(135, 65)
 
+
+[node name="BackgroundNight" type="AudioStreamPlayer" parent="." index="14"]
+stream = ExtResource("11_a57fy")
 [node name="Fireplace" parent="." index="14" instance=ExtResource("11_11c6u")]
 position = Vector2(407, 616)
+
