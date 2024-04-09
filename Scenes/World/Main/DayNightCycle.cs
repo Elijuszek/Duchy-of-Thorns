@@ -41,8 +41,7 @@ public partial class DayNightCycle : CanvasModulate
         {
             nightSounds.Stop();
         }
-            
-        GD.Print(currentFrame);
+
     }
 
     public float Remap(float value, float istart, float istop, float ostart, float ostop)
