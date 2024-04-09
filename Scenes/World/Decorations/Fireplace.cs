@@ -19,6 +19,6 @@ public partial class Fireplace : StaticBody2D
     public void SetOnFire(float damage, Team team, Vector2 position, Vector2 direction)
     {
         setOnFirePlayer.Play();
-        globals.EmitSignal("ProjectileFired", damage, (int)ProjectileType.FIRE_ARROW, (int)team, position, direction);
+        globals.EmitSignal("ProjectileFired", (int)ProjectileType.FIRE_ARROW, damage, (int)team, position, direction);
     }
 }

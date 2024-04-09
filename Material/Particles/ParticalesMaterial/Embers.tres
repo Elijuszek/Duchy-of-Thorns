@@ -8,13 +8,11 @@ colors = PackedColorArray(1, 0, 0, 1, 0.680346, 0.0796973, 0.139617, 1, 0.984314
 gradient = SubResource("Gradient_upwxf")
 
 [resource]
+particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 1.0
-particle_flag_disable_z = true
 spread = 180.0
-gravity = Vector3(-25, 0, 0)
 initial_velocity_min = 4.0
 initial_velocity_max = 20.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(-25, 0, 0)
 color_ramp = SubResource("GradientTexture1D_i7hka")
