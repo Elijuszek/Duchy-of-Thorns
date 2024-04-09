@@ -34,7 +34,11 @@ public partial class WaveInfo : Resource
 
     public TroopType DequeuUnit()
     {
-        if ((UnitQueue.Count <= 0) || (UnitQueue.Count == 1 && UnitQueue[0].TroopsLeft == 0))
+        if (UnitQueue[0].TroopsLeft <= 0)
+        {
+            UnitQueue.RemoveAt(0);
+        }
+        if ((UnitQueue.Count <= 0) || (UnitQueue.Count == 1 && UnitQueue[0].TroopsLeft <= 0))
         {
             return TroopType.NONE;
         }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cmr2iieop7qy0"]
+[gd_scene load_steps=17 format=3 uid="uid://cmr2iieop7qy0"]
 
 [ext_resource type="PackedScene" uid="uid://db02x404q41e0" path="res://Scenes/World/Main/World.tscn" id="1_cm27o"]
 [ext_resource type="Script" path="res://Scenes/World/Main/DefendWorld/DefendWorld.cs" id="2_ptjvr"]
@@ -23,14 +23,29 @@ Gold = 100
 
 [sub_resource type="Resource" id="Resource_gigqu"]
 script = ExtResource("7_4pelb")
-Type = 4
-TroopsLeft = 2
+Type = 3
+TroopsLeft = 1
 Stats = SubResource("Resource_7m180")
+
+[sub_resource type="Resource" id="Resource_mr2ch"]
+script = ExtResource("8_t318e")
+Health = 100.0
+MaxHealth = 100.0
+DamageMultiplier = 1.0
+Armour = 5.0
+Speed = 100.0
+Gold = 5
+
+[sub_resource type="Resource" id="Resource_xt1r3"]
+script = ExtResource("7_4pelb")
+Type = 4
+TroopsLeft = 1
+Stats = SubResource("Resource_mr2ch")
 
 [sub_resource type="Resource" id="Resource_lv4sc"]
 script = ExtResource("7_dkmdf")
 MaxUnits = 2
-UnitQueue = Array[Object]([SubResource("Resource_gigqu")])
+UnitQueue = Array[Object]([SubResource("Resource_gigqu"), SubResource("Resource_xt1r3")])
 MaxDuration = 3000.0
 Reward = 100.0
 AttackDirections = 0
