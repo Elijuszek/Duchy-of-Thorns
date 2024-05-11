@@ -138,7 +138,8 @@ public partial class Player : Actor
                 animationPlayer.SpeedScale = Convert.ToSingle(animationPlayer.CurrentAnimationLength / WeaponsManager.CurrentWeapon.AttackDuartion);
                 break;
             case Spear spear:
-
+                animationPlayer.Play("SpearAttack");
+                animationPlayer.SpeedScale = Convert.ToSingle(animationPlayer.CurrentAnimationLength / WeaponsManager.CurrentWeapon.AttackDuartion);
                 break;
         }
     }

@@ -26,7 +26,6 @@ path_desired_distance = 24.0
 target_desired_distance = 24.0
 avoidance_enabled = true
 radius = 12.0
-debug_enabled = true
 
 [node name="DetectionZone" type="Area2D" parent="." index="4"]
 collision_layer = 0

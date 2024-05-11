@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://b6qiuybjj7b2b"]
+[gd_scene load_steps=106 format=3 uid="uid://b6qiuybjj7b2b"]
 
 [ext_resource type="Texture2D" uid="uid://qid2e2hm8wd8" path="res://Sprites/Character/BowReloadNew/BowReload-1.png" id="1"]
 [ext_resource type="PackedScene" uid="uid://d0o4kcg7hf4j" path="res://Scenes/Actors/Characters/Actor.tscn" id="2"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cankvsstxf22r" path="res://Scenes/Weapons/Bows/TrainingBow.tscn" id="5_u3sho"]
 [ext_resource type="Texture2D" uid="uid://bb3fty8rp7oq5" path="res://Sprites/Character/BowReloadNew/BowReload-6.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://cn8jcj4tkmh7m" path="res://Sprites/Character/BowReloadNew/BowReload-4.png" id="7"]
+[ext_resource type="PackedScene" uid="uid://dswn0t22hwh8f" path="res://Scenes/Weapons/Spears/LevySpearNew.tscn" id="7_pxttq"]
 [ext_resource type="Texture2D" uid="uid://cy6mtkb27lpvx" path="res://Sprites/Character/BowReloadNew/BowReload-5.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://dty1wseinclqp" path="res://Material/Particles/Lights/light.png" id="8_ou4f6"]
 [ext_resource type="Texture2D" uid="uid://d2kgyofdswis5" path="res://Sprites/Character/Idle1.png" id="9"]
@@ -281,6 +282,9 @@ damage = 105.0
 [node name="TrainingBow" parent="WeaponsManager" index="2" instance=ExtResource("5_u3sho")]
 CanAim = true
 damage = 105.0
+
+[node name="LevySpear" parent="WeaponsManager" index="3" instance=ExtResource("7_pxttq")]
+knockBack = 130.0
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("9")

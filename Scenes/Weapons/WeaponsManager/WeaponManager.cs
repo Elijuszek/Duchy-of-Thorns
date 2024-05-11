@@ -77,8 +77,11 @@ public partial class WeaponManager : Node2D
 
     public bool Attack()
     {
+
         if (!CurrentWeapon.CanAttack())
+        {
             return false;
+        }
 
         switch (CurrentWeapon)
         {

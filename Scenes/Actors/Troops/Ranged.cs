@@ -61,6 +61,7 @@ public partial class Ranged : Troop
                 GD.PrintErr("Invalid TroopState in Ranged");
                 break;
         }
+        MoveAndSlide();
     }
 
     public override void SetState(TroopState newState)
@@ -77,7 +78,7 @@ public partial class Ranged : Troop
             case TroopState.PATROL:
                 patrolTimer.Start();
                 navAgent.AvoidanceEnabled = false;
-                Velocity = Vector2.Zero;
+                Velocity = Vector2.Zero + knockback;
                 break;
 
             case TroopState.ENGAGE:
@@ -87,7 +88,7 @@ public partial class Ranged : Troop
             case TroopState.ATTACK:
                 patrolTimer.Stop();
                 navAgent.AvoidanceEnabled = false;
-                Velocity = Vector2.Zero;
+                Velocity = Vector2.Zero + knockback;
                 break;
         }
         CurrentState = newState;
@@ -101,8 +102,7 @@ public partial class Ranged : Troop
     {
         weapon.Walking();
         animationPlayer.Play("Walk");
-        Velocity = velocity;
-        MoveAndSlide();
+        Velocity = velocity + knockback;
     }
     private void Attack() 
     { 

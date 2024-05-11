@@ -41,14 +41,14 @@ public partial class Infantry : Troop
                 }
                 Direction = GlobalPosition.DirectionTo(navAgent.GetNextPathPosition());
                 navAgent.Velocity = Velocity + Direction * Stats.Speed;
-                RotateToward(Velocity.Angle());
+                RotateToward(navAgent.GetNextPathPosition());
                 break;
 
             case TroopState.ENGAGE:
                 navAgent.TargetPosition = enemy.GlobalPosition; // Enemy position is dynamic
                 Direction = GlobalPosition.DirectionTo(navAgent.GetNextPathPosition());
                 navAgent.Velocity = Velocity + Direction * Stats.Speed;
-                RotateToward(Velocity.Angle());
+                RotateToward(navAgent.GetNextPathPosition());
                 break;
 
             case TroopState.ATTACK:
@@ -60,6 +60,7 @@ public partial class Infantry : Troop
                 GD.PushError("Invalid TroopState");
                 break;
         }
+        MoveAndSlide();
     }
 
     public override void SetState(TroopState newState)
@@ -75,7 +76,7 @@ public partial class Infantry : Troop
 
             case TroopState.PATROL:
                 patrolTimer.Start();
-                Velocity = Vector2.Zero;
+                Velocity = Vector2.Zero + knockback;
                 navAgent.AvoidanceEnabled = false;
                 break;
 
@@ -87,7 +88,7 @@ public partial class Infantry : Troop
             case TroopState.ATTACK:
                 patrolTimer.Stop();
                 navAgent.AvoidanceEnabled = false;
-                Velocity = Vector2.Zero;
+                Velocity = Vector2.Zero + knockback;
                 break;
         }
         CurrentState = newState;
@@ -99,10 +100,9 @@ public partial class Infantry : Troop
     }
     private void Walking(Vector2 velocity)
     {
+        Velocity = velocity + knockback;
         weapon.Walking();
         animationPlayer.Play("Walk");
-        Velocity = velocity;
-        MoveAndSlide();
     }
     private void Attack() 
     {

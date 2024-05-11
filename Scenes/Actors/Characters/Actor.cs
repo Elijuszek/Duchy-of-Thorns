@@ -10,7 +10,7 @@ public partial class Actor : CharacterBody2D
     [Export] protected CollisionShape2D collisionShape;
     public Vector2 Direction { get; set; }
 	protected PackedScene bloodScene;
-	private Vector2 knockback = Vector2.Zero;
+	protected Vector2 knockback = Vector2.Zero;
 	public override void _Ready()
 	{
 		base._Ready();
@@ -23,7 +23,10 @@ public partial class Actor : CharacterBody2D
 		Vector2 direction = (impactPosition.DirectionTo(GlobalPosition));
 		float strenght = Mathf.Clamp(amount, 5f, 20000f);
 		knockback = direction * strenght;
-	}
+		Tween tween = CreateTween();
+        tween.TweenProperty(this, "knockback", Vector2.Zero, 1f);
+        Velocity += knockback;
+    }
 	public Team GetTeam() => Team;
     public bool HasReachedPosition(Vector2 location) => GlobalPosition.DistanceTo(location) < 50;
     public Vector2 VelocityToward(Vector2 location) => GlobalPosition.DirectionTo(location) * Stats.Speed;
