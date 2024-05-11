@@ -25,7 +25,7 @@ public partial class Sword : Melee
     public override void Deliver()
     {
         base.Deliver();
-        attackCooldown.Start();
+        animationPlayer.Play("Idle");
     }
     public override void Walking()
     {
