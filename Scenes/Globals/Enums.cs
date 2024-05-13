@@ -30,7 +30,8 @@ public enum LoadingForm
 public enum ProjectileType
 {
     ARROW,
-    FIRE_ARROW
+    FIRE_ARROW,
+    FIRE_SPELL
 }
 
 public enum LootType
@@ -48,5 +49,6 @@ public enum TroopType
     ALLY_FOOTMAN,
 
     ENEMY_ARCHER,
-    ENEMY_FOOTMAN
+    ENEMY_FOOTMAN,
+    ENEMY_MAGE
 }
