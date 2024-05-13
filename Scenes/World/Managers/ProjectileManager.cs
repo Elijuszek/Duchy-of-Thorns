@@ -22,7 +22,9 @@ public partial class ProjectileManager : Node2D
             { ProjectileType.ARROW,  new ObjectPool<Projectile>(this, 
             ResourceLoader.Load<PackedScene>("res://Scenes/Projectiles/Arrows/Arrow.tscn"), startingCount)},
             { ProjectileType.FIRE_ARROW,  new ObjectPool<Projectile>(this, 
-            ResourceLoader.Load<PackedScene>("res://Scenes/Projectiles/Arrows/FireArrow.tscn"), startingCount) }
+            ResourceLoader.Load<PackedScene>("res://Scenes/Projectiles/Arrows/FireArrow.tscn"), startingCount)},
+            { ProjectileType.FIRE_SPELL,  new ObjectPool<Projectile>(this,
+            ResourceLoader.Load<PackedScene>("res://Scenes/Projectiles/Spells/FireSpell.tscn"), startingCount)}
         };
     }
 

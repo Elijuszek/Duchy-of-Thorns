@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b42clxxqwblqy"]
+
+[ext_resource type="PackedScene" uid="uid://2y8sces1eiob" path="res://Scenes/Weapons/Projective.tscn" id="1_bibv2"]
+
+[node name="Magic" instance=ExtResource("1_bibv2")]
+MaxAmmo = 1000
+CurrentAmmo = 1000
+projectileType = 2

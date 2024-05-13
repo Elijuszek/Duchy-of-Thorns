@@ -58,8 +58,11 @@ public partial class AssaultWorldAI : Node2D
         }
 
 		// TODO: select spawn points
-		Troop spawnedTroop = troopsManager.HandleTroopSpawned(type, currentWave.UnitQueue[0].Stats, new Vector2(400f, 400f), TargetBase.GlobalPosition);
-		spawnedTroop.RemovedFromScene += HandleTroopRemoved;
+		Troop spawnedTroop = troopsManager.HandleTroopSpawned(type, currentWave.UnitQueue[0].Stats, 
+			new Vector2(Utilities.GetRandomFloat(200f, 400f), Utilities.GetRandomFloat(200f, 400f)),
+            TargetBase.GlobalPosition);
+
+        spawnedTroop.RemovedFromScene += HandleTroopRemoved;
 		troopsInScene++;
 	}
 
