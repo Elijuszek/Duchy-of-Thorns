@@ -14,15 +14,13 @@ gradient = SubResource("Gradient_4e860")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jy2ha"]
 particle_flag_disable_z = true
+angle_max = 720.0
 direction = Vector3(-1, 0, 0)
 spread = 25.0
-gravity = Vector3(0, 0, 0)
 initial_velocity_min = 48.0
 initial_velocity_max = 78.0
 angular_velocity_max = 100.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-angle_max = 720.0
+gravity = Vector3(0, 0, 0)
 scale_min = 0.3
 scale_max = 0.3
 color_ramp = SubResource("GradientTexture1D_v6s2a")
@@ -31,7 +29,7 @@ color_ramp = SubResource("GradientTexture1D_v6s2a")
 material = SubResource("11")
 position = Vector2(4.5, -7.17465e-43)
 scale = Vector2(0.1, 0.17)
-speed_scale = 0.5
-explosiveness = 0.05
 process_material = SubResource("ParticleProcessMaterial_jy2ha")
 texture = ExtResource("1_01q7m")
+speed_scale = 0.5
+explosiveness = 0.05

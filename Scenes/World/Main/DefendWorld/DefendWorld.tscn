@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cmr2iieop7qy0"]
+[gd_scene load_steps=20 format=3 uid="uid://cmr2iieop7qy0"]
 
 [ext_resource type="PackedScene" uid="uid://db02x404q41e0" path="res://Scenes/World/Main/World.tscn" id="1_cm27o"]
 [ext_resource type="Script" path="res://Scenes/World/Main/DefendWorld/DefendWorld.cs" id="2_ptjvr"]
@@ -10,9 +10,8 @@
 [ext_resource type="Script" path="res://Scenes/World/WorldAI/Waves/WaveInfo.cs" id="7_dkmdf"]
 [ext_resource type="PackedScene" uid="uid://bu6s37trpw0yc" path="res://Scenes/World/WorldAI/AssaultWorldAI.tscn" id="7_w7fo2"]
 [ext_resource type="Script" path="res://Scenes/Actors/Characters/Stats.cs" id="8_t318e"]
-[ext_resource type="AudioStream" uid="uid://b6sabkubv0wcp" path="res://Sounds/Music/night.mp3" id="11_a57fy"]
 [ext_resource type="PackedScene" uid="uid://dev2ibts6im21" path="res://Scenes/World/Decorations/Fireplace.tscn" id="11_11c6u"]
-
+[ext_resource type="AudioStream" uid="uid://b6sabkubv0wcp" path="res://Sounds/Music/night.mp3" id="11_a57fy"]
 
 [sub_resource type="Resource" id="Resource_7m180"]
 script = ExtResource("8_t318e")
@@ -44,10 +43,25 @@ Type = 4
 TroopsLeft = 1
 Stats = SubResource("Resource_mr2ch")
 
+[sub_resource type="Resource" id="Resource_xfcnp"]
+script = ExtResource("8_t318e")
+Health = 100.0
+MaxHealth = 100.0
+DamageMultiplier = 1.0
+Armour = 5.0
+Speed = 100.0
+Gold = 0
+
+[sub_resource type="Resource" id="Resource_yi2pi"]
+script = ExtResource("7_4pelb")
+Type = 5
+TroopsLeft = 1
+Stats = SubResource("Resource_xfcnp")
+
 [sub_resource type="Resource" id="Resource_lv4sc"]
 script = ExtResource("7_dkmdf")
-MaxUnits = 2
-UnitQueue = Array[Object]([SubResource("Resource_gigqu"), SubResource("Resource_xt1r3")])
+MaxUnits = 3
+UnitQueue = Array[Object]([SubResource("Resource_gigqu"), SubResource("Resource_xt1r3"), SubResource("Resource_yi2pi")])
 MaxDuration = 3000.0
 Reward = 100.0
 AttackDirections = 0
@@ -75,7 +89,7 @@ coinsCount = 1000
 startingCount = 5
 
 [node name="CanvasModulate" parent="." index="7" node_paths=PackedStringArray("nightSounds")]
-color = Color(0.937255, 0.92549, 0.894118, 1)
+Time = 360.0
 nightSounds = NodePath("../BackgroundNight")
 
 [node name="AnimationPlayer" parent="CanvasModulate" index="0"]
@@ -104,9 +118,8 @@ position = Vector2(1184, 605)
 [node name="EnemyRespawnPoints" type="Node2D" parent="." index="13"]
 position = Vector2(135, 65)
 
-
-[node name="BackgroundNight" type="AudioStreamPlayer" parent="." index="14"]
-stream = ExtResource("11_a57fy")
 [node name="Fireplace" parent="." index="14" instance=ExtResource("11_11c6u")]
 position = Vector2(407, 616)
 
+[node name="BackgroundNight" type="AudioStreamPlayer" parent="." index="15"]
+stream = ExtResource("11_a57fy")

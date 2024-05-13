@@ -21,6 +21,8 @@ public partial class TroopsManager : Node2D
                            ResourceLoader.Load<PackedScene>("res://Scenes/Actors/Troops/Melee/FootmanEnemy.tscn"), startingCount)},
             { TroopType.ENEMY_ARCHER,  new ObjectPool<Troop>(this,
                            ResourceLoader.Load<PackedScene>("res://Scenes/Actors/Troops/Ranged/ArcherEnemy.tscn"), startingCount)},
+                        { TroopType.ENEMY_MAGE,  new ObjectPool<Troop>(this,
+                           ResourceLoader.Load<PackedScene>("res://Scenes/Actors/Troops/Ranged/MageEnemy.tscn"), startingCount)}
         };
     }
     public Troop HandleTroopSpawned(TroopType type, Stats stats, Vector2 spawnPosition, Vector2 origin)
