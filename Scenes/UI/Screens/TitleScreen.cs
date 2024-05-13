@@ -14,12 +14,11 @@ public partial class TitleScreen : Control
     {
         base._Ready();
         globals = GetNode<Globals>("/root/Globals");
-        animationPlayer.Play("Background");
-        animationPlayer.Seek(GetRandomTime(), true);
-        animationPlayer.Stop();
+        animationPlayer.Play("Background", customSpeed: 0.0f);
+        animationPlayer.Seek(GetRandomTime(), false);
     }
     // For getting random background
-    private float GetRandomTime()
+    private double GetRandomTime()
     {
         Random rand = new Random();
         double min = 0;
@@ -27,7 +26,7 @@ public partial class TitleScreen : Control
         double range = max - min;
         double sample = rand.NextDouble();
         double scaled = (sample * range) + min;
-        return (float)scaled;
+        return scaled;
     }
     public void NewGameButtonPressed()
     {
