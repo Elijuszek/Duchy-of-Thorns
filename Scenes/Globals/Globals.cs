@@ -45,7 +45,7 @@ public partial class Globals : Node
 	{
 		if (!Godot.FileAccess.FileExists(savePath))
 		{
-			GetTree().ChangeSceneToFile("res://Scenes/UI/TitleScreen.tscn");
+			GetTree().ChangeSceneToFile("res://Scenes/UI/Screens/TitleScreen.tscn");
 			return;
 		}
 
