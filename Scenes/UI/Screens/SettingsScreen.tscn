@@ -76,6 +76,7 @@ vertical_alignment = 1
 [node name="Master Volume Slider2" parent="GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn" instance=ExtResource("2_7ouuk")]
 layout_mode = 2
 busName = "Master"
+metadata/_edit_group_ = true
 
 [node name="Music Volume" type="Label" parent="GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn"]
 layout_mode = 2

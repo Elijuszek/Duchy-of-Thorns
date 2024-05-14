@@ -5,7 +5,17 @@ namespace DuchyOfThorns;
 /// </summary>
 public partial class PauseScreen : CanvasLayer
 {
-    public override void _Ready() => GetTree().Paused = true;
+    [Export] private PackedScene settingsScene;
+    private SettingsScreen settingsScreen;
+
+    public override void _Ready()
+    {
+        GetTree().Paused = true;
+
+        settingsScreen = settingsScene.Instantiate<SettingsScreen>();
+        settingsScreen.Visible = false;
+        AddChild(settingsScreen);
+    }
     private void ResumeButtonPressed()
     {
         GetTree().Paused = false;
@@ -21,7 +31,7 @@ public partial class PauseScreen : CanvasLayer
     }
     private void SettingsButtonPressed()
     {
-        return;
+        settingsScreen.Visible = true;
     }
     private void ExitToMainMenuButtonPressed()
     {

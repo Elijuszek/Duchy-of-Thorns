@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ivn6mc7scy1"]
+[gd_scene load_steps=5 format=3 uid="uid://ivn6mc7scy1"]
 
 [ext_resource type="Script" path="res://Scenes/UI/GUI/PauseScreen.cs" id="1_0j2yg"]
 [ext_resource type="FontFile" uid="uid://bpwasuqy7suyk" path="res://Assets/Fonts/MedievalSharp-Regular.ttf" id="1_58reg"]
+[ext_resource type="PackedScene" uid="uid://bnm2ajepflhro" path="res://Scenes/UI/Screens/SettingsScreen.tscn" id="2_yklxw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_samfc"]
 bg_color = Color(0, 0, 0, 0.627451)
@@ -9,6 +10,7 @@ bg_color = Color(0, 0, 0, 0.627451)
 [node name="PauseScreen" type="CanvasLayer"]
 process_mode = 2
 script = ExtResource("1_0j2yg")
+settingsScene = ExtResource("2_yklxw")
 
 [node name="Overlay" type="PanelContainer" parent="."]
 anchors_preset = 15

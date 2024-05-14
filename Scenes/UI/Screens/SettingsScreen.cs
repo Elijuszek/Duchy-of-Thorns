@@ -4,7 +4,7 @@ public partial class SettingsScreen : Control
 	[Export] private VolumeSlider music;
 	[Export] private VolumeSlider effects;
 
-	private string _settingsPath = "user://TESTHELLOTEST.cfg";
+	private string _settingsPath = "user://settings.cfg";
 
 	public override void _Ready()
 	{
