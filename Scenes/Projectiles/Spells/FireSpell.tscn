@@ -44,6 +44,7 @@ texture_scale = 0.75
 [node name="FlyingSound" parent="." index="3"]
 stream = ExtResource("3_iypeu")
 autoplay = true
+bus = &"Effects"
 
 [node name="CollisionShape2D" parent="." index="4"]
 shape = SubResource("CircleShape2D_rn2yv")

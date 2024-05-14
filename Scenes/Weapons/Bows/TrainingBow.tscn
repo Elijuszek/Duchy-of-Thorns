@@ -75,12 +75,14 @@ damage = 25.0
 
 [node name="DeliverSound" parent="." index="1"]
 stream = ExtResource("2_qbbj4")
+bus = &"Effects"
 
 [node name="AttackSound" parent="." index="2"]
 stream = ExtResource("3_rrwdu")
+bus = &"Effects"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
-autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_1qy3m")
 }
+autoplay = "Idle"

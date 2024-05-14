@@ -189,9 +189,11 @@ process_callback = 0
 
 [node name="DeliverSound" parent="." index="2"]
 stream = ExtResource("2_uagt1")
+bus = &"Effects"
 
 [node name="AttackSound" parent="." index="3"]
 stream = ExtResource("3_1kvpr")
+bus = &"Effects"
 
 [node name="Sprite2D" parent="." index="4"]
 position = Vector2(0.538, -9.183)

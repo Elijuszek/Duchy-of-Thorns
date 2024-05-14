@@ -15,3 +15,4 @@ hornSounds = Array[AudioStreamOggVorbis]([ExtResource("3_fvcef"), ExtResource("4
 
 [node name="WarHorn" type="AudioStreamPlayer" parent="."]
 volume_db = 5.0
+bus = &"Effects"

@@ -95,10 +95,12 @@ shape = SubResource("3")
 [node name="DeliverSound" parent="." index="2"]
 stream = ExtResource("4")
 pitch_scale = 1.1
+bus = &"Effects"
 
 [node name="AttackSound" parent="." index="3"]
 stream = ExtResource("5")
 volume_db = 10.0
+bus = &"Effects"
 
 [node name="Sprite2D" parent="." index="4"]
 visible = false

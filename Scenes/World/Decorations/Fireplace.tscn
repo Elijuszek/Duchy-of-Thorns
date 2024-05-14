@@ -81,12 +81,14 @@ volume_db = 15.0
 autoplay = true
 max_distance = 1000.0
 attenuation = 5.0
+bus = &"Effects"
 
 [node name="SetOnFirePlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_ievuv")
 volume_db = 5.0
 max_distance = 1000.0
 attenuation = 8.0
+bus = &"Effects"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("CanvasTexture_s4l4k")
