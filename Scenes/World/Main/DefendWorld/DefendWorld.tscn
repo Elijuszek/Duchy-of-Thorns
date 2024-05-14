@@ -88,6 +88,9 @@ coinsCount = 1000
 [node name="TroopsManager" parent="." index="5" instance=ExtResource("3_im7qm")]
 startingCount = 5
 
+[node name="BackgroundMusic" parent="." index="6"]
+bus = &"Music"
+
 [node name="CanvasModulate" parent="." index="7" node_paths=PackedStringArray("nightSounds")]
 Time = 360.0
 nightSounds = NodePath("../BackgroundNight")

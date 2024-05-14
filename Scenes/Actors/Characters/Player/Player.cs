@@ -35,6 +35,11 @@ public partial class Player : Actor
 
         // Movement calculation
         Direction = movementJoystick.GetValue();
+        if (Direction == Vector2.Zero)
+        {
+            Direction = Input.GetVector("LEFT", "RIGHT", "UP", "DOWN");
+        }
+
         Velocity = Direction * Stats.Speed;
         MoveAndSlide();
 

@@ -177,9 +177,11 @@ shape = SubResource("4")
 
 [node name="DeliverSound" parent="." index="2"]
 stream = ExtResource("5")
+bus = &"Effects"
 
 [node name="AttackSound" parent="." index="3"]
 stream = ExtResource("4")
+bus = &"Effects"
 
 [node name="Sprite2D" parent="." index="4"]
 position = Vector2(7.53892, -5.35891)

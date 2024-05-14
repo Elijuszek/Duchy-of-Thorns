@@ -22,6 +22,6 @@ public partial class DeathScreen : CanvasLayer
     private void ExitToMainMenuButtonPressed()
     {
         GetTree().Paused = false;
-        GetTree().ChangeSceneToFile("res://Scenes/UI/TitleScreen.tscn");
+        GetTree().ChangeSceneToFile("res://Scenes/UI/Screens/TitleScreen.tscn");
     }
 }
