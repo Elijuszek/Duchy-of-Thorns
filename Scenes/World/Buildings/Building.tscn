@@ -1,4 +1,4 @@
-[gd_scene format=2]
+[gd_scene format=3 uid="uid://b2eer1yujo217"]
 
 [node name="StaticBody2D" type="StaticBody2D"]
 collision_layer = 8

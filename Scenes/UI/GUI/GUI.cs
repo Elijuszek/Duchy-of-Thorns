@@ -1,3 +1,5 @@
+using static Godot.TextServer;
+
 namespace DuchyOfThorns;
 
 /// <summary>
@@ -151,4 +153,7 @@ public partial class GUI : CanvasLayer
             newWaveButton.Hide();
         }
     }
+
+
+  
 }
