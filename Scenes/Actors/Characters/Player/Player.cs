@@ -121,6 +121,13 @@ public partial class Player : Actor
         EmitSignal(nameof(PLayerGoldChanged), gold, gold);
     }
 
+    public void Heal(float hp)
+    {
+        Stats.Health = Math.Clamp(Stats.Health + hp, 0, Stats.MaxHealth);
+        EmitSignal(nameof(PlayerHealthChanged), Stats.Health);
+    }
+
+
     public void CancelAttack() => WeaponsManager.CancelAttack();
     public void ChangeWeapon() => WeaponsManager.ChangeWeapon();
     public void PlayIdle() => animationPlayer.Play("Idle");
@@ -150,6 +157,8 @@ public partial class Player : Actor
     }
 
     public void SetCameraTransform(NodePath cameraPath) => cameraTransform.RemotePath = cameraPath;
+
+
 
     public Godot.Collections.Dictionary<string, Variant> Save()
     {
@@ -181,4 +190,5 @@ public partial class Player : Actor
         EmitSignal(nameof(PLayerGoldChanged), Stats.Gold, Stats.Gold);
         EmitSignal(nameof(PlayerHealthChanged), Stats.Health);
     }
+    
 }

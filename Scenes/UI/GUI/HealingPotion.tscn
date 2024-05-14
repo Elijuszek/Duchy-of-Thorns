@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0u7ioeiabwpt"]
+
+[ext_resource type="Script" path="res://Scenes/UI/GUI/HealingPotion.cs" id="1_pkwrt"]
+
+[node name="Button" type="TextureButton" node_paths=PackedStringArray("sprites")]
+offset_right = 14.0
+offset_bottom = 13.0
+script = ExtResource("1_pkwrt")
+sprites = [null, null, null]
+
+[connection signal="pressed" from="." to="." method="OnPressed"]
