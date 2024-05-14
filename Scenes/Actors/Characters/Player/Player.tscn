@@ -287,7 +287,7 @@ damage = 105.0
 knockBack = 130.0
 
 [node name="Sprite2D" parent="." index="1"]
-texture = ExtResource("9")
+texture = ExtResource("28")
 
 [node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource("CapsuleShape2D_7lx2k")

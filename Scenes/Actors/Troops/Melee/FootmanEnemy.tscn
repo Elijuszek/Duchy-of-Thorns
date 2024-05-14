@@ -122,9 +122,6 @@ texture = ExtResource("10")
 [node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource("1")
 
-[node name="NavigationAgent2D" parent="." index="4"]
-debug_enabled = false
-
 [node name="DetectionZone" parent="." index="5"]
 collision_mask = 3
 

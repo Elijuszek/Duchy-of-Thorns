@@ -56,6 +56,7 @@ public partial class World : Node2D
         AddChild(player);
         player.SetCameraTransform(camera.GetPath());
         player.Connect("Died", new Callable(this, "ShowDeathScreen"));
+        globals.Connect("HealingPotion", new Callable(player, "Heal"));
         gui.SetPlayer(player);
         globals.Player = player.Save();
     }
