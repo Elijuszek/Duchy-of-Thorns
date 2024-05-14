@@ -1,0 +1,113 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnm2ajepflhro"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Screens/SettingsScreen.cs" id="1_fs416"]
+[ext_resource type="FontFile" path="res://Scenes/UI/Fonts/Medieval36.tres" id="2_5njc5"]
+[ext_resource type="PackedScene" uid="uid://cycraawofjbvm" path="res://Scenes/UI/Screens/Components/VolumeSlider.tscn" id="2_7ouuk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_whqbu"]
+font = ExtResource("2_5njc5")
+font_size = 60
+
+[node name="SettingsScreen" type="Control" node_paths=PackedStringArray("master", "music", "effects")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_fs416")
+master = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/Master Volume Slider2")
+music = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/Music Volume Slider")
+effects = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/Effects Slider")
+
+[node name="GreyBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 290.0
+offset_top = 160.0
+offset_right = -290.0
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="ScreenColumn" type="VBoxContainer" parent="GreyBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SettingsContainer" type="MarginContainer" parent="GreyBackground/ScreenColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 0
+
+[node name="SettingsColumn" type="VBoxContainer" parent="GreyBackground/ScreenColumn/SettingsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Audio" type="Label" parent="GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn"]
+layout_mode = 2
+text = "Audio
+"
+label_settings = SubResource("LabelSettings_whqbu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Master Volume" type="Label" parent="GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn"]
+layout_mode = 2
+text = "Master Volume
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Master Volume Slider2" parent="GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn" instance=ExtResource("2_7ouuk")]
+layout_mode = 2
+busName = "Master"
+
+[node name="Music Volume" type="Label" parent="GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn"]
+layout_mode = 2
+text = "Music Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music Volume Slider" parent="GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn" instance=ExtResource("2_7ouuk")]
+layout_mode = 2
+busName = "Music"
+
+[node name="Effects Volume" type="Label" parent="GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn"]
+layout_mode = 2
+text = "Effects Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Effects Slider" parent="GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn" instance=ExtResource("2_7ouuk")]
+layout_mode = 2
+busName = "Effects"
+
+[node name="CloseButtonContainer" type="MarginContainer" parent="GreyBackground/ScreenColumn"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 10
+
+[node name="CloseButton" type="Button" parent="GreyBackground/ScreenColumn/CloseButtonContainer"]
+layout_mode = 2
+text = "Close"
+
+[connection signal="pressed" from="GreyBackground/ScreenColumn/CloseButtonContainer/CloseButton" to="." method="CloseButtonPressed"]

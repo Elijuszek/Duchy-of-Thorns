@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://d00f7s8w5in73"]
+[gd_scene load_steps=22 format=3 uid="uid://d00f7s8w5in73"]
 
 [ext_resource type="Script" path="res://Scenes/UI/Screens/TitleScreen.cs" id="1_4fv84"]
+[ext_resource type="PackedScene" uid="uid://bnm2ajepflhro" path="res://Scenes/UI/Screens/SettingsScreen.tscn" id="2_ff5ki"]
 [ext_resource type="Texture2D" uid="uid://cnp2cfviqj2vp" path="res://Sprites/MainMenu/Background/3Archers.png" id="2_tv3or"]
 [ext_resource type="Texture2D" uid="uid://ci3qf08ufoyob" path="res://Sprites/UI/Frames/TitleScreen.png" id="3_awvti"]
 [ext_resource type="Texture2D" uid="uid://dtmti1hkssmha" path="res://Sprites/MainMenu/Background/1024px-Edward_III_Crossing_the_Somme.png" id="3_rixxs"]
@@ -74,6 +75,7 @@ grow_vertical = 2
 script = ExtResource("1_4fv84")
 animationPlayer = NodePath("AnimationPlayer")
 click = NodePath("Click")
+settingsScene = ExtResource("2_ff5ki")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -145,9 +147,11 @@ text = "QUIT GAME"
 stream = ExtResource("14_cuf74")
 volume_db = 10.0
 autoplay = true
+bus = &"Music"
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_v7nrf")
+bus = &"Effects"
 
 [connection signal="pressed" from="Menu/CenterRow/Buttons/NewGameButton" to="." method="NewGameButtonPressed"]
 [connection signal="pressed" from="Menu/CenterRow/Buttons/SavedGamesButton" to="." method="SavedGamesButtonPressed"]

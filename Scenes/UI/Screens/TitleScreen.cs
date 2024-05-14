@@ -7,26 +7,27 @@ public partial class TitleScreen : Control
 {
     [Export] private AnimationPlayer animationPlayer;
     [Export] private AudioStreamPlayer click;
+    [Export] private PackedScene settingsScene;
+    private SettingsScreen settingsScreen;
 
     private Globals globals;
+    private readonly Random randomizer = new();
 
     public override void _Ready()
     {
-        base._Ready();
         globals = GetNode<Globals>("/root/Globals");
-        animationPlayer.Play("Background", customSpeed: 0.0f);
-        animationPlayer.Seek(GetRandomTime(), false);
+
+        settingsScreen = settingsScene.Instantiate<SettingsScreen>();
+        settingsScreen.Visible = false;
+        AddChild(settingsScreen);
+
+        RandomizeBackground();
     }
-    // For getting random background
-    private double GetRandomTime()
+
+    private void RandomizeBackground()
     {
-        Random rand = new Random();
-        double min = 0;
-        double max = animationPlayer.CurrentAnimationLength;
-        double range = max - min;
-        double sample = rand.NextDouble();
-        double scaled = (sample * range) + min;
-        return scaled;
+        animationPlayer.Play("Background", customSpeed: 0.0f);
+        animationPlayer.Seek(randomizer.NextDouble() * animationPlayer.CurrentAnimationLength, false);
     }
     public void NewGameButtonPressed()
     {
@@ -49,7 +50,8 @@ public partial class TitleScreen : Control
     public void SettingsButtonPressed()
     {
         click.Play();
-        return;
+
+        settingsScreen.Visible = true;
     }
     public void QuitGameButtonPressed()
     {
