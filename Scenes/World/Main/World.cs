@@ -52,6 +52,7 @@ public partial class World : Node2D
     protected void SpawnPlayer()
     {
         player = playerScene.Instantiate<Player>();
+        player.Stats.Health = 100;
         player.Position = playerSpawn.Position;
         AddChild(player);
         player.SetCameraTransform(camera.GetPath());
