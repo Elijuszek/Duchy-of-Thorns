@@ -48,7 +48,8 @@ public partial class AssaultWorldAI : Node2D
 	private void SpawnUnit()
 	{
 		TroopType type = currentWave.DequeuUnit();
-		if (type == TroopType.NONE)
+		/*
+        if (type == TroopType.NONE)
 		{
 			if (troopsInScene == 0)
 			{
@@ -56,7 +57,7 @@ public partial class AssaultWorldAI : Node2D
             }
             return;
         }
-
+		*/
 		// TODO: select spawn points
 		Troop spawnedTroop = troopsManager.HandleTroopSpawned(type, currentWave.UnitQueue[0].Stats, 
 			new Vector2(Utilities.GetRandomFloat(200f, 400f), Utilities.GetRandomFloat(200f, 400f)),
@@ -69,8 +70,12 @@ public partial class AssaultWorldAI : Node2D
 	private void HandleTroopRemoved(IPoolable source)
 	{
 		troopsInScene--;
+        if (troopsInScene == 0)
+        {
+            HandleVicotry();
+        }
         SpawnUnit();
-	}
+    }
 
 	private void HandleVicotry()
 	{
