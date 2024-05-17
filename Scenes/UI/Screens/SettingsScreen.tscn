@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnm2ajepflhro"]
+[gd_scene load_steps=6 format=3 uid="uid://bnm2ajepflhro"]
 
 [ext_resource type="Script" path="res://Scenes/UI/Screens/SettingsScreen.cs" id="1_fs416"]
 [ext_resource type="FontFile" path="res://Scenes/UI/Fonts/Medieval36.tres" id="2_5njc5"]
 [ext_resource type="PackedScene" uid="uid://cycraawofjbvm" path="res://Scenes/UI/Screens/Components/VolumeSlider.tscn" id="2_7ouuk"]
+[ext_resource type="Texture2D" uid="uid://ci3qf08ufoyob" path="res://Sprites/UI/Frames/TitleScreen.png" id="4_knyii"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_whqbu"]
 font = ExtResource("2_5njc5")
 font_size = 60
 
-[node name="SettingsScreen" type="Control" node_paths=PackedStringArray("master", "music", "effects", "resolutionPicker", "fullscreen", "vsync")]
+[node name="SettingsScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,12 +19,18 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_fs416")
-master = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/Master Volume Slider2")
-music = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/Music Volume Slider")
-effects = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/Effects Slider")
-resolutionPicker = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/ResolutionPicker/OptionButton")
-fullscreen = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/FullscreenCheck/FullscreenCheckBox")
-vsync = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/VsyncCheck/VsyncCheckBox")
+master = Object(HSlider,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":0,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":2,"mouse_filter":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","min_value":0.0,"max_value":1.0,"step":0.001,"page":0.0,"value":0.0,"exp_edit":false,"rounded":false,"allow_greater":false,"allow_lesser":false,"editable":true,"scrollable":true,"tick_count":0,"ticks_on_borders":false,"script":Resource("res://Scenes/UI/Screens/Components/VolumeSlider.cs"),"busName":"Master","metadata/_edit_group_":true)
+
+music = Object(HSlider,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":0,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":2,"mouse_filter":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","min_value":0.0,"max_value":1.0,"step":0.001,"page":0.0,"value":0.0,"exp_edit":false,"rounded":false,"allow_greater":false,"allow_lesser":false,"editable":true,"scrollable":true,"tick_count":0,"ticks_on_borders":false,"script":Resource("res://Scenes/UI/Screens/Components/VolumeSlider.cs"),"busName":"Music")
+
+effects = Object(HSlider,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":0,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":2,"mouse_filter":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","min_value":0.0,"max_value":1.0,"step":0.001,"page":0.0,"value":0.0,"exp_edit":false,"rounded":false,"allow_greater":false,"allow_lesser":false,"editable":true,"scrollable":true,"tick_count":0,"ticks_on_borders":false,"script":Resource("res://Scenes/UI/Screens/Components/VolumeSlider.cs"),"busName":"Effects")
+
+resolutionPicker = Object(OptionButton,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":3,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":2,"mouse_filter":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","disabled":false,"toggle_mode":true,"button_pressed":false,"action_mode":0,"button_mask":1,"keep_pressed_outside":false,"button_group":null,"shortcut":null,"shortcut_feedback":true,"shortcut_in_tooltip":true,"flat":false,"alignment":0,"text_overrun_behavior":0,"clip_text":false,"icon_alignment":0,"vertical_icon_alignment":1,"expand_icon":false,"text_direction":0,"language":"","item_count":0,"selected":-1,"fit_to_longest_item":true,"allow_reselect":false,"script":null)
+
+fullscreen = Object(CheckBox,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":2,"mouse_filter":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","disabled":false,"toggle_mode":true,"button_pressed":false,"action_mode":1,"button_mask":1,"keep_pressed_outside":false,"button_group":null,"shortcut":null,"shortcut_feedback":true,"shortcut_in_tooltip":true,"text":"","icon":null,"flat":false,"alignment":0,"text_overrun_behavior":0,"clip_text":false,"icon_alignment":0,"vertical_icon_alignment":1,"expand_icon":false,"text_direction":0,"language":"","script":null)
+
+vsync = Object(CheckBox,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":2,"mouse_filter":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","disabled":false,"toggle_mode":true,"button_pressed":false,"action_mode":1,"button_mask":1,"keep_pressed_outside":false,"button_group":null,"shortcut":null,"shortcut_feedback":true,"shortcut_in_tooltip":true,"text":"","icon":null,"flat":false,"alignment":0,"text_overrun_behavior":0,"clip_text":false,"icon_alignment":0,"vertical_icon_alignment":1,"expand_icon":false,"text_direction":0,"language":"","script":null)
+
 
 [node name="GreyBackground" type="ColorRect" parent="."]
 layout_mode = 1
@@ -36,7 +43,7 @@ offset_right = -290.0
 offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.2, 0.2, 0.2, 1)
+color = Color(0.168627, 0.172549, 0.172549, 1)
 
 [node name="ScreenColumn" type="VBoxContainer" parent="GreyBackground"]
 layout_mode = 1
@@ -49,7 +56,6 @@ alignment = 1
 
 [node name="SettingsContainer" type="MarginContainer" parent="GreyBackground/ScreenColumn"]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_constants/margin_left = 200
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 200
@@ -163,5 +169,21 @@ theme_override_constants/margin_bottom = 10
 [node name="CloseButton" type="Button" parent="GreyBackground/ScreenColumn/CloseButtonContainer"]
 layout_mode = 2
 text = "Close"
+
+[node name="Frame" type="TextureRect" parent="GreyBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_knyii")
+expand_mode = 1
 
 [connection signal="pressed" from="GreyBackground/ScreenColumn/CloseButtonContainer/CloseButton" to="." method="CloseButtonPressed"]
