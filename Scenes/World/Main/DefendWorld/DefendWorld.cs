@@ -88,6 +88,7 @@ public partial class DefendWorld : World
 
         // TODO: New wave should load after the last wave is finished
         assaultWorldAI.SpawnNextWave();
+        allyWorldAI.SpawnUnit();
     }
     public override Dictionary<string, Variant> Save()
     {

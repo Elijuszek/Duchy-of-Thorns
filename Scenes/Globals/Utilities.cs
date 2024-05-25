@@ -16,7 +16,7 @@ public static partial class Utilities
 
     public static Vector2 GetRandomPositionInArea(CollisionShape2D collisionShape)
     {
-        Vector2 extents = (collisionShape.Shape as RectangleShape2D).Size;
+        Vector2 extents = collisionShape.Shape.GetRect().Size;
         Vector2 topLeft = collisionShape.GlobalPosition - (extents / 2);
         float x = GetRandomFloat(topLeft.X, topLeft.X + extents.X);
         float y = GetRandomFloat(topLeft.Y, topLeft.Y + extents.Y);
@@ -28,5 +28,10 @@ public static partial class Utilities
         float x = GetRandomFloat(topLeft.X, topLeft.X + extents.X);
         float y = GetRandomFloat(topLeft.Y, topLeft.Y + extents.Y);
         return new Vector2(x, y);
+    }
+
+    public static bool Chance(int chance = 50)
+    {
+        return new Random().Next(0, 100) <= chance;
     }
 }

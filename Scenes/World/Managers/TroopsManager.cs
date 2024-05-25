@@ -31,9 +31,7 @@ public partial class TroopsManager : Node2D
         troop.Stats = stats.Duplicate();
         troop.GlobalPosition = spawnPosition;
         troop.Origin = origin;
-        float randomX = Utilities.GetRandomFloat(-10f, 10f);
-        float randomY = Utilities.GetRandomFloat(-10f, 10f);
-        troop.Destination = new Vector2(randomX, randomY) + origin;
+        troop.Destination = origin;
         troop.SetState(TroopState.ADVANCE);
 
         return troop;

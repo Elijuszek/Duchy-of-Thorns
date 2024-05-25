@@ -58,10 +58,11 @@ public partial class AssaultWorldAI : Node2D
 			return;
 		}
 
+		CapturableBase cbase = capturableBaseManager.GetNextCapturableBase(Team.ENEMY, BaseCaptureOrder.FIRST);
 		// TODO: select spawn points
-		Troop spawnedTroop = troopsManager.HandleTroopSpawned(type, currentWave.UnitQueue[0].Stats, 
+		Troop spawnedTroop = troopsManager.HandleTroopSpawned(type, currentWave.UnitQueue[0].Stats,
 			new Vector2(Utilities.GetRandomFloat(200f, 400f), Utilities.GetRandomFloat(200f, 400f)),
-            TargetBase.GlobalPosition);
+			cbase.GetDestination());
 
         spawnedTroop.RemovedFromScene += HandleTroopRemoved;
 		troopsInScene++;
@@ -82,7 +83,11 @@ public partial class AssaultWorldAI : Node2D
 
 	public void ClearWorld()
 	{
-		waveTimer.Stop();
+        foreach (Troop troop in troopsManager.GetChildren().OfType<Troop>())
+        {
+			troop.RemoveFromScene();
+        }
+        waveTimer.Stop();
 	}
 
 	private void ElapsedWaveTimeTimeout()

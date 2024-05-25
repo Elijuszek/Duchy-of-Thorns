@@ -1,3 +1,5 @@
+using Godot.NativeInterop;
+
 namespace DuchyOfThorns;
 
 /// <summary>
@@ -11,125 +13,125 @@ public partial class CapturableBase : Area2D
 {
     [Signal] public delegate void BaseCapturedEventHandler(Team newTeam);
 
-    [Export] public Timer captureTimer { get; set; }
     [Export] Color neutralColor =  new Color(1, 1, 1);
     [Export] Color playerColor = new Color(0.431373f, 0.043137f, 0.043137f);
     [Export] Color enemyColor = new Color (0.133333f, 0.345098f, 0.796078f);
     [Export] public Team Team { get; set; } = Team.NEUTRAL;
-    [Export] private Sprite2D sprite;
     [Export] private ProgressBar captureProgressBar;
-    [Export] private ProgressBar progressNumbers;
-    [Export] private CollisionShape2D collisionShape;
-
+    [Export] private CollisionShape2D captureArea;
+    [Export] private double captureTime = 60d;
+    [Export] private NavigationObstacle2D navigationObstacle;
+    private StyleBoxFlat barStyle;
     private Vector2 extents;
     private Tween progressTween;
     private int playerCount = 0;
     private int enemyCount = 0;
-    private Team teamToCapture = Team.NEUTRAL;
+    private Team capturingTeam = Team.NEUTRAL;
     public override void _Ready()
     {
-        extents = (collisionShape.Shape as RectangleShape2D).Size;
+        extents = captureArea.Shape.GetRect().Size;
+        barStyle = (StyleBoxFlat)captureProgressBar.Get("theme_override_styles/fill");
+        capturingTeam = Team;
+        switch(Team)
+        {
+            case Team.PLAYER:
+                barStyle.BgColor = playerColor;
+                captureProgressBar.Value = 100;
+                break;
+            case Team.ENEMY:
+                barStyle.BgColor = enemyColor;
+                captureProgressBar.Value = 100;
+                break;
+            case Team.NEUTRAL:
+                barStyle.BgColor = neutralColor;
+                captureProgressBar.Value = 0;
+                break;
+        }
     }
-    public void CanBeCaptured()
+    public void SetTeam()
     {
-        Team majorityTeam = GetMajority();
-        if (majorityTeam == Team.NEUTRAL)
-        {
-            teamToCapture = majorityTeam;
-            captureTimer.Stop();
-            StopCaptureBar();
-        }
-        else if (majorityTeam == Team)
-        {
-            teamToCapture = Team.NEUTRAL;
-            captureTimer.Stop();
-            StopCaptureBar();
-        }
-        else if (captureTimer.IsStopped())
-        {
-            teamToCapture = majorityTeam;
-            captureTimer.Start();
-            StartCaptureBar();
-        }
-
-    }
-    private Team GetMajority()
-    {
-        if (enemyCount == playerCount)
-        {
-            return Team.NEUTRAL;
-        }
-        else if (enemyCount > playerCount)
-        {
-            return Team.ENEMY;
-        }
-        else
-        {
-            return Team.PLAYER;
-        }
+        Team = capturingTeam;
+        EmitSignal(nameof(BaseCaptured), (int)capturingTeam);
     }
     public void SetTeam(Team newTeam)
     {
         Team = newTeam;
         EmitSignal(nameof(BaseCaptured), (int)newTeam);
-        progressNumbers.Visible = false;
-        captureProgressBar.Visible = false;
-        switch (newTeam)
+    }
+    public Vector2 GetDestination()
+    {
+
+        Vector2 pos = Utilities.GetRandomPositionInArea(captureArea);
+        if (pos.DistanceTo(GlobalPosition) < navigationObstacle.Radius)
         {
-            case Team.NEUTRAL:
-                sprite.Modulate = neutralColor;
-                return;
-            case Team.PLAYER:
-                sprite.Modulate = playerColor;
-                return;
-            case Team.ENEMY:
-                sprite.Modulate = enemyColor;
-                return;
+            if (Utilities.Chance())
+            {
+                return pos += new Vector2(navigationObstacle.Radius, navigationObstacle.Radius);
+            }
+                return pos -= new Vector2(navigationObstacle.Radius, navigationObstacle.Radius);
         }
+        Random rand = new Random();
+        return pos;
+    }
+    public void Capture()
+    {
+        Team majority = GetMajority();
+        if (capturingTeam == majority) return;
+        capturingTeam = majority;
+        StopCaptureBar();
+    }
+    private Team GetMajority()
+    {
+        return (enemyCount == playerCount) ? Team.NEUTRAL :
+               (enemyCount > playerCount) ? Team.ENEMY : Team.PLAYER;
     }
     private void StartCaptureBar()
     {
-        captureProgressBar.Value = 0;
-        StyleBoxFlat barStyle = (StyleBoxFlat)captureProgressBar.Get("custom_styles/fg");
-        if (teamToCapture == Team.PLAYER)
+        switch (capturingTeam)
         {
-            captureProgressBar.Modulate = playerColor;
-        }
-        else if (teamToCapture == Team.ENEMY)
-        {
-            captureProgressBar.Modulate = enemyColor;
+            case Team.NEUTRAL:
+                barStyle.BgColor = neutralColor;
+                return;
+            case Team.PLAYER:
+                barStyle.BgColor = playerColor;
+                break;
+            case Team.ENEMY:
+                barStyle.BgColor = enemyColor;
+                break;
         }
         progressTween = CreateTween();
-        progressTween.TweenProperty(captureProgressBar, "value", 100, captureTimer.WaitTime);
-        progressTween.TweenProperty(progressNumbers, "value", 100, captureTimer.WaitTime);
+        progressTween.TweenProperty(captureProgressBar, "value", 100, captureTime);
         progressTween.SetTrans(Tween.TransitionType.Linear);
         progressTween.SetEase(Tween.EaseType.In);
-        progressNumbers.Visible = true;
-        captureProgressBar.Visible = true;
+        progressTween.Connect("finished", new Callable(this, "SetTeam"));
     }
     private void StopCaptureBar()
     {
-        StyleBoxFlat barStyle = (StyleBoxFlat)captureProgressBar.Get("custom_styles/fg");
+        if (captureProgressBar.Value == 100 && capturingTeam == Team.NEUTRAL) return;
         progressTween = CreateTween();
-        progressTween.TweenProperty(captureProgressBar, "value", 0, captureTimer.WaitTime);
-        progressTween.TweenProperty(progressNumbers, "value", 0, captureTimer.WaitTime);
+        progressTween.TweenProperty(captureProgressBar, "value", 0, captureTime * (captureProgressBar.Value / 100));
         progressTween.SetTrans(Tween.TransitionType.Linear);
         progressTween.SetEase(Tween.EaseType.In);
+        progressTween.Connect("finished", new Callable(this, "StartCaptureBar"));
     }
     private void CapturableBaseBodyEntered(Node body)
     {
         if (body is Actor actor)
         {
             Team bodyTeam = actor.GetTeam();
-            if (bodyTeam == Team.ENEMY)
+            switch (bodyTeam)
             {
-                enemyCount++;
+                case Team.ENEMY:
+                    enemyCount++;
+                    Capture();
+                    break;
+                case Team.PLAYER:
+                    playerCount++;
+                    Capture();
+                    break;
+                default:
+                    return;
             }
-            else if (bodyTeam == Team.PLAYER)
-            {
-                playerCount++;
-            }
-            CanBeCaptured();
         }
     }
     private void CapturableBaseBodyExited(Node body)
@@ -137,16 +139,19 @@ public partial class CapturableBase : Area2D
         if (body is Actor actor)
         {
             Team bodyTeam = actor.GetTeam();
-            if (bodyTeam == Team.ENEMY)
+            switch (bodyTeam)
             {
-                enemyCount--;
+                case Team.ENEMY:
+                    enemyCount--;
+                    Capture();
+                    break;
+                case Team.PLAYER:
+                    playerCount--;
+                    Capture();
+                    break;
+                default:
+                    return;
             }
-            else if (bodyTeam == Team.PLAYER)
-            {
-                playerCount--;
-            }
-            CanBeCaptured();
         }
     }
-    private void CaptureTimerTimeout() => SetTeam(teamToCapture);
 }
