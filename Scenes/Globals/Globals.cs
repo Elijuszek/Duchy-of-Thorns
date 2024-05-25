@@ -73,7 +73,7 @@ public partial class Globals : Node
 			GetNode(data["Parent"].ToString()).AddChild(newObject);
 			newObject.Call("Load", data);
 		}
-		GetTree().CurrentScene.Call("LoadSavedPlayer"); // HOTFIX
+		//GetTree().CurrentScene.Call("LoadSavedPlayer"); // HOTFIX
 	}
 	public void ChangeScenes(Player player, string scene, float speed)
 	{

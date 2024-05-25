@@ -67,7 +67,7 @@ public partial class Troop : Actor, IPoolable
 
     public virtual void AddToScene()
     {
-        collisionShape.Disabled = false;
+        collisionShape.SetDeferred("disabled", false);
         SetPhysicsProcess(true);
 		Show();
     }

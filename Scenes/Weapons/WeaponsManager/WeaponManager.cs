@@ -143,12 +143,12 @@ public partial class WeaponManager : Node2D
             if (weapons[1] is Melee)
             {
                 data.Add("PrimaryType", "Melee");
-                data.Add("PrimaryFilename", weapons[1].Name);
+                data.Add("PrimaryFilename", weapons[1].SceneFilePath);
             }
             else if (weapons[1] is Projective projective)
             {
                 data.Add("PrimaryType", "Bow");
-                data.Add("PrimaryFilename", weapons[1].Name);
+                data.Add("PrimaryFilename", weapons[1].SceneFilePath);
                 data.Add("PrimaryAmmo", projective.CurrentAmmo);
                 data.Add("PrimaryMaxAmmo", projective.MaxAmmo);
             }
@@ -162,12 +162,12 @@ public partial class WeaponManager : Node2D
             if (weapons[2] is Melee)
             {
                 data.Add("SecondaryType", "Melee");
-                data.Add("SecondaryFilename", weapons[2].Name);
+                data.Add("SecondaryFilename", weapons[2].SceneFilePath);
             }
             else if (weapons[2] is Projective projective)
             {
                 data.Add("SecondaryType", "Bow");
-                data.Add("SecondaryFilename", weapons[2].Name);
+                data.Add("SecondaryFilename", weapons[2].SceneFilePath);
                 data.Add("SecondaryAmmo", projective.CurrentAmmo);
                 data.Add("SecondaryMaxAmmo", projective.MaxAmmo);
             }
@@ -183,27 +183,27 @@ public partial class WeaponManager : Node2D
         if ((string)data["PrimaryType"] == "Melee")
         {
             var newObjectScene = ResourceLoader.Load<PackedScene>(data["PrimaryFilename"].ToString());
-            AddWeapon(newObjectScene.Instantiate() as Weapon, 1);
+            AddWeapon(newObjectScene.Instantiate<Weapon>(), 1);
         }
         else if ((string)data["PrimaryType"] == "Bow")
         {
-            var newObjectScene = (PackedScene)ResourceLoader.Load(data["PrimaryFilename"].ToString());
-            Projective projective = newObjectScene.Instantiate() as Projective;
-            projective.CurrentAmmo = Convert.ToInt32(data["PrimaryAmmo"]);
-            projective.MaxAmmo = Convert.ToInt32(data["PrimaryMaxAmmo"]);
+            var newObjectScene = ResourceLoader.Load<PackedScene>(data["PrimaryFilename"].ToString());
+            Projective projective = newObjectScene.Instantiate<Projective>();
+            projective.CurrentAmmo = (int)(data["PrimaryAmmo"]);
+            projective.MaxAmmo = (int)data["PrimaryMaxAmmo"];
             AddWeapon(projective, 1);
         }
         if ((string)data["SecondaryType"] == "Melee")
         {
-            var newObjectScene = (PackedScene)ResourceLoader.Load(data["SecondaryFilename"].ToString());
+            var newObjectScene = ResourceLoader.Load<PackedScene>(data["SecondaryFilename"].ToString());
             AddWeapon(newObjectScene.Instantiate() as Weapon, 2);
         }
         else if ((string)data["SecondaryType"] == "Bow")
         {
-            var newObjectScene = (PackedScene)ResourceLoader.Load(data["SecondaryFilename"].ToString());
-            Projective projective = newObjectScene.Instantiate() as Projective;
-            projective.CurrentAmmo = Convert.ToInt32(data["SecondaryAmmo"]);
-            projective.MaxAmmo = Convert.ToInt32(data["SecondaryMaxAmmo"]);
+            var newObjectScene = ResourceLoader.Load<PackedScene>(data["SecondaryFilename"].ToString());
+            Projective projective = newObjectScene.Instantiate<Projective>();
+            projective.CurrentAmmo = (int)(data["SecondaryAmmo"]);
+            projective.MaxAmmo = (int)(data["SecondaryMaxAmmo"]);
             AddWeapon(projective, 2);
         }
     }

@@ -28,7 +28,7 @@ public partial class TroopsManager : Node2D
     public Troop HandleTroopSpawned(TroopType type, Stats stats, Vector2 spawnPosition, Vector2 origin)
     {
         Troop troop = troopPool[type].Take();
-        troop.Stats = stats;
+        troop.Stats = stats.Duplicate();
         troop.GlobalPosition = spawnPosition;
         troop.Origin = origin;
         float randomX = Utilities.GetRandomFloat(-10f, 10f);

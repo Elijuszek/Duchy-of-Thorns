@@ -14,4 +14,17 @@ public partial class Stats : Resource
     [Export] public int Gold { get; set; } = 0;
     public void SetHealth(float newHealth) => Health = Mathf.Clamp(newHealth, 0, MaxHealth);
     public void SetMaxHealth(float newMaxHealth) => MaxHealth = Mathf.Clamp(newMaxHealth, 1, float.MaxValue);
+
+    public Stats Duplicate()
+    {
+        return new Stats
+        {
+            Health = Health,
+            MaxHealth = MaxHealth,
+            DamageMultiplier = DamageMultiplier,
+            Armour = Armour,
+            Speed = Speed,
+            Gold = Gold
+        };
+    }
 }

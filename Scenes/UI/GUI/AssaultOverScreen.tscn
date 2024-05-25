@@ -86,6 +86,7 @@ layout_mode = 2
 text = "Total: 6532"
 
 [node name="ContinueButton" type="Button" parent="PanelContainer/MarginContainer/Rows/HBoxContainer/Right"]
+process_mode = 3
 layout_mode = 2
 text = "Continue"
 

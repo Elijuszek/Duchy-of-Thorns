@@ -281,7 +281,7 @@ damage = 105.0
 
 [node name="TrainingBow" parent="WeaponsManager" index="2" instance=ExtResource("5_u3sho")]
 CanAim = true
-damage = 105.0
+damage = 55.0
 
 [node name="LevySpear" parent="WeaponsManager" index="3" instance=ExtResource("7_pxttq")]
 knockBack = 130.0

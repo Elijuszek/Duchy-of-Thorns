@@ -48,16 +48,16 @@ public partial class AssaultWorldAI : Node2D
 	private void SpawnUnit()
 	{
 		TroopType type = currentWave.DequeuUnit();
-		/*
-        if (type == TroopType.NONE)
+
+		if (type == TroopType.NONE)
 		{
 			if (troopsInScene == 0)
 			{
-                HandleVicotry();
-            }
-            return;
-        }
-		*/
+				HandleVicotry();
+			}
+			return;
+		}
+
 		// TODO: select spawn points
 		Troop spawnedTroop = troopsManager.HandleTroopSpawned(type, currentWave.UnitQueue[0].Stats, 
 			new Vector2(Utilities.GetRandomFloat(200f, 400f), Utilities.GetRandomFloat(200f, 400f)),
@@ -70,10 +70,6 @@ public partial class AssaultWorldAI : Node2D
 	private void HandleTroopRemoved(IPoolable source)
 	{
 		troopsInScene--;
-        if (troopsInScene == 0)
-        {
-            HandleVicotry();
-        }
         SpawnUnit();
     }
 
@@ -92,18 +88,6 @@ public partial class AssaultWorldAI : Node2D
 	private void ElapsedWaveTimeTimeout()
 	{
 		ClearWorld();
-	}
-
-	public Dictionary<string, Variant> Save()
-	{
-		return new Dictionary<string, Variant>()
-		{
-			{ "Filename", SceneFilePath },
-			{ "Parent", GetParent().GetPath() },
-			{ "PosX", Position.X }, // Vector2 is not supported by JSON
-			{ "PosY", Position.Y },
-			{ "CurrentWave", CurrentWaveIndex },
-		};
 	}
 
     protected void HandleBaseCaptured(int newTeam) => CheckForNextCapturableBases();
@@ -125,5 +109,18 @@ public partial class AssaultWorldAI : Node2D
         //    troop.Destination = cBase.GetRandomPositionWithinRadius();
         //}
     }
+
+    public Dictionary<string, Variant> Save()
+    {
+        return new Dictionary<string, Variant>()
+        {
+            { "Filename", SceneFilePath },
+            { "Parent", GetParent().GetPath() },
+            { "PosX", Position.X }, // Vector2 is not supported by JSON
+			{ "PosY", Position.Y },
+            { "CurrentWave", CurrentWaveIndex },
+        };
+    }
+
     public void Load(Dictionary<string, Variant> data) => CurrentWaveIndex = (int)data["CurrentWave"];
 }

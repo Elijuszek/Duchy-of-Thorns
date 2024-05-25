@@ -186,9 +186,8 @@ public partial class Player : Actor
         Stats.Armour = (float)data["Stats.Armour"];
         Stats.Speed = (float)data["Stats.Speed"];
         Stats.Gold = (int)data["Stats.Gold"];
-        WeaponsManager.Load(new Godot.Collections.Dictionary<string, Variant>((Godot.Collections.Dictionary)data["WeaponsManager"]));
+        WeaponsManager.Load((Godot.Collections.Dictionary<string, Variant>)data["WeaponsManager"]);
         EmitSignal(nameof(PLayerGoldChanged), Stats.Gold, Stats.Gold);
         EmitSignal(nameof(PlayerHealthChanged), Stats.Health);
     }
-    
 }
