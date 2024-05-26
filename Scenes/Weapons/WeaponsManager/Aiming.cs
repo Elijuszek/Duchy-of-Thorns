@@ -7,10 +7,10 @@ public partial class Aiming : Sprite2D
 {
     private Tween tween;
     public override void _Ready() => Visible = false;
-    public void StartAiming(float startScale, float endScale, float duration, float delay)
+    public void StartAiming(bool canAim, float startScale, float endScale, float duration, float delay)
     {
         Scale = new Vector2(Scale.X, startScale);
-        Visible = true;
+        Visible = canAim;
         tween = CreateTween();
         tween.TweenInterval(delay);
         tween.SetTrans(Tween.TransitionType.Linear);

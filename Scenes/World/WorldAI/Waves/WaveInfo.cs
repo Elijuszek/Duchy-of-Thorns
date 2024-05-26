@@ -1,17 +1,19 @@
 ﻿using Godot.Collections;
-using System.Data;
+
 
 namespace DuchyOfThorns;
 
 [GlobalClass]
 public partial class WaveInfo : Resource
 {
-    [Export] public int MaxUnits { get; set; }
+    [Export] public int MaxUnits { get; set; } = 1;
     [Export] public Array<UnitInfo> UnitQueue { get; private set; }
-    [Export] public double MaxDuration { get; set; }
-    [Export] public float Reward { get; set; }
+    [Export] public double MaxDuration { get; set; } = 5000;
+    [Export] public float Reward { get; set; } = 100;
 
     [Export] public int AttackDirections { get; set; } // Min 1, Max 4
+
+    [Export] public float DayTime { get; set; } = 360;
 
     public WaveInfo()
     {
@@ -23,12 +25,13 @@ public partial class WaveInfo : Resource
     }
     public WaveInfo Duplicate()
     {
-        return new WaveInfo()
+        return new WaveInfo
         {
             MaxUnits = MaxUnits,
-            UnitQueue = UnitQueue.Duplicate(),
+            UnitQueue = new Array<UnitInfo>(UnitQueue.Select(unit => unit.Duplicate())),
             MaxDuration = MaxDuration,
-            Reward = Reward
+            Reward = Reward,
+            DayTime = DayTime
         };
     }
 

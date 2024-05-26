@@ -9,8 +9,9 @@ public partial class Coin : CharacterBody2D, IPoolable
     public event RemovedFromSceneEventHandler RemovedFromScene;
     [Export] public int Gold { get; set; } = 0;
     [Export] private Timer timer;
-    [Export] private Area2D takeArea;
-    [Export] private Area2D slideArea;
+    [Export] private CollisionShape2D takeArea;
+    [Export] private CollisionShape2D slideArea;
+    [Export] private CollisionShape2D collisionShape;
 
     private Vector2 movementDirection = Vector2.Zero;
     private Tween tween;
@@ -49,24 +50,23 @@ public partial class Coin : CharacterBody2D, IPoolable
     public void AddToScene()
     {
         timer.Start();
+        collisionShape.SetDeferred("disabled", false);
+        slideArea.SetDeferred("disabled", false);
+        takeArea.SetDeferred("disabled", false);
         Show();
     }
     public void RemoveFromScene()
     {
         Hide();
-        if (tween != null) // TODO
-        {
-            tween.Stop();
-        }
         timer.Stop();
         GlobalPosition = Vector2.Zero;
         movementDirection = GlobalPosition;
+        collisionShape.SetDeferred("disabled", true);
+        slideArea.SetDeferred("disabled", true);
+        takeArea.SetDeferred("disabled", true);
         if (RemovedFromScene != null)
         {
             RemovedFromScene(this);
         }
-
-        //EmitSignal("RemovedFromScene", this);
-
     }
 }

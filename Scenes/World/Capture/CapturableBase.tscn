@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ies6baf7cj1l"]
+[gd_scene load_steps=7 format=3 uid="uid://ies6baf7cj1l"]
 
-[ext_resource type="PackedScene" uid="uid://p8xy3aht6qsi" path="res://Scenes/World/Buildings/Cir_Tent.tscn" id="2_yrogh"]
+[ext_resource type="Texture2D" uid="uid://bhmlug8npw1l8" path="res://Sprites/Buildings/Tents/CirTent/PerfectCircTent2.png" id="2_0fv84"]
 [ext_resource type="Script" path="res://Scenes/World/Capture/CapturableBase.cs" id="3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wnaj3"]
@@ -30,21 +30,25 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="CapturableBase" type="Area2D" node_paths=PackedStringArray("captureProgressBar", "captureArea", "navigationObstacle")]
-collision_layer = 0
-collision_mask = 7
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_e7hwh"]
+polygon = PackedVector2Array(-29, -57, -20, -57, 0, -55, 20, -57, 27, -57, 30, -55, 40, -40, 56, -28, 56, -23, 52, 0, 57, 22, 57, 25, 55, 28, 42, 35, 40, 37, 34, 52, 27, 52, 0, 48, -28, 53, -34, 53, -39, 43, -40, 41, -55, 32, -56, 29, -56, 24, -53, 0, -57, -24, -57, -28, -56, -31, -37, -43)
+
+[node name="CapturableBase" type="StaticBody2D" node_paths=PackedStringArray("captureProgressBar", "captureArea") groups=["Obstacles"]]
 script = ExtResource("3")
 neutralColor = Color(1, 1, 1, 0.752941)
 playerColor = Color(0.431373, 0.0431373, 0.0431373, 0.752941)
 enemyColor = Color(0.133333, 0.345098, 0.796078, 0.752941)
 captureProgressBar = NodePath("ProgressBar")
-captureArea = NodePath("captureArea")
-captureTime = 5.0
-navigationObstacle = NodePath("NavigationObstacle2D")
+captureArea = NodePath("Area2D/captureArea")
 
-[node name="Cir_Tent" parent="." instance=ExtResource("2_yrogh")]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0fv84")
 
-[node name="captureArea" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 7
+
+[node name="captureArea" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_wnaj3")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
@@ -65,8 +69,13 @@ theme_override_styles/background = SubResource("StyleBoxFlat_q1hqv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_enn2a")
 metadata/_edit_use_anchors_ = true
 
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
-radius = 65.0
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+occluder = SubResource("OccluderPolygon2D_e7hwh")
 
-[connection signal="body_entered" from="." to="." method="CapturableBaseBodyEntered"]
-[connection signal="body_exited" from="." to="." method="CapturableBaseBodyExited"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-29, -57, 0, -57, 27, -57, 43, -42, 56, -28, 56, 0, 57, 25, 44, 39, 34, 52, 0, 51, -34, 53, -43, 43, -55, 32, -57, 0, -55, -32, -43, -43)
+
+[connection signal="body_entered" from="Area2D" to="." method="CapturableBaseBodyEntered"]
+[connection signal="body_exited" from="Area2D" to="." method="CapturableBaseBodyExited"]

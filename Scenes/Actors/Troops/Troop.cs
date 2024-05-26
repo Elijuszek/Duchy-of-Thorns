@@ -52,8 +52,7 @@ public partial class Troop : Actor, IPoolable
 	{
 		if (Stats.Gold > 0)
 		{
-			Random rand = new Random();
-			globals.EmitSignal("CoinsDroped", rand.Next(1, Stats.Gold), GlobalPosition, true);
+			globals.EmitSignal("CoinsDroped", Stats.Gold, GlobalPosition, true);
 		}
         RemoveFromScene();
 	}
@@ -75,6 +74,8 @@ public partial class Troop : Actor, IPoolable
     public virtual void RemoveFromScene()
     {
 		// TODO: navigation2D is still active (Debug from FootmanEnemy)
+		GlobalPosition = Vector2.Zero;
+		CurrentState = TroopState.NONE;
         collisionShape.SetDeferred("disabled", true);
 		SetPhysicsProcess(false);
 		Hide();

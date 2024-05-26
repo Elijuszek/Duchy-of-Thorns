@@ -8,10 +8,12 @@ public enum Team
 
 public enum TroopState
 {
+    NONE,
+
     PATROL,
     ENGAGE,
     ADVANCE,
-    ATTACK,
+    ATTACK
 }
 
 public enum BaseCaptureOrder

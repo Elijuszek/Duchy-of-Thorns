@@ -18,6 +18,7 @@ public partial class AssaultWorldAI : Node2D
     [Export] private AudioStreamPlayer warHorn;
 	[Export] private TroopsManager troopsManager;
     [Export] private AudioStreamOggVorbis[] hornSounds;
+    [Export] private DayNightCycle dayNightCycle;
     public CapturableBase TargetBase { get; set; }
 
 	private WaveInfo currentWave;
@@ -34,12 +35,14 @@ public partial class AssaultWorldAI : Node2D
 	public void SpawnNextWave()
 	{
         // TODO: currently fixed waves count
+
         currentWave = waves[CurrentWaveIndex].Duplicate();
-		waveTimer.Start();
+        dayNightCycle.Time = currentWave.DayTime;
+        waveTimer.Start();
 		warHorn.Stream = hornSounds[random.Next(0, 1)];
 		warHorn.Play();
 
-		for(int i = 0; i < currentWave.MaxUnits; i++)
+        for (int i = 0; i < currentWave.MaxUnits; i++)
 		{
 			SpawnUnit();
 		}
@@ -48,10 +51,9 @@ public partial class AssaultWorldAI : Node2D
 	private void SpawnUnit()
 	{
 		TroopType type = currentWave.DequeuUnit();
-
 		if (type == TroopType.NONE)
 		{
-			if (troopsInScene == 0)
+            if (troopsInScene == 0)
 			{
 				HandleVicotry();
 			}
@@ -70,22 +72,29 @@ public partial class AssaultWorldAI : Node2D
 
 	private void HandleTroopRemoved(IPoolable source)
 	{
+        source.RemovedFromScene -= HandleTroopRemoved;
 		troopsInScene--;
         SpawnUnit();
     }
 
 	private void HandleVicotry()
 	{
-		ClearWorld();
-		EmitSignal(nameof(PlayerVictory), currentWave.Reward);
-		CurrentWaveIndex++;
-	}
+		if (CurrentWaveIndex < waves.Count-1)
+		{
+            CurrentWaveIndex++;
+        }
+        EmitSignal(nameof(PlayerVictory), currentWave.Reward);
+        ClearWorld();
+    }
 
 	public void ClearWorld()
 	{
         foreach (Troop troop in troopsManager.GetChildren().OfType<Troop>())
         {
-			troop.RemoveFromScene();
+            if (troop.CurrentState != TroopState.NONE)
+            {
+                troop.RemoveFromScene();
+            }
         }
         waveTimer.Stop();
 	}

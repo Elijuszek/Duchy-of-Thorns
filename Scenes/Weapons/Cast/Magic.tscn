@@ -6,3 +6,6 @@
 MaxAmmo = 1000
 CurrentAmmo = 1000
 projectileType = 2
+
+[node name="AttackCooldown" parent="." index="0"]
+wait_time = 0.5

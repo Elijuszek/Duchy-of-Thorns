@@ -24,9 +24,6 @@ public partial class LootManager : Node2D
             { LootType.BRONZE,  new ObjectPool<Coin>(this,
                 ResourceLoader.Load<PackedScene>("res://Scenes/Actors/Coins/BronzeCoin.tscn"), coinsCount)}
         };
-
-        // For debugging purposes
-        HandleCoinsSpawned(9999, new Vector2(400, 400), true);
     }
     public void HandleCoinsSpawned(int coins, Vector2 position, bool explosive)
     {

@@ -17,16 +17,21 @@ public partial class Ranged : Troop
 
 
     private Actor enemy = null;
+    private Rid navigationMap;
 
     public override void _Ready()
     {
         base._Ready();
-        weapon.Initialize(Team);
-        navAgent.MaxSpeed = Stats.Speed;
-        navAgent.SetNavigationMap(GetNode<TileMap>("/root/World/TileMap").GetLayerNavigationMap(0));
-        navAgent.TargetPosition = GlobalPosition;
-        navAgent.Connect("velocity_computed", new Callable(this, "Walking"));
 
+        // Navigation
+        navigationMap = GetNode<NavigationRegion2D>("/root/World/NavigationRegion2D").GetNavigationMap();
+        navAgent.SetNavigationMap(navigationMap);
+        navAgent.Connect("velocity_computed", new Callable(this, "Walking"));
+        navAgent.MaxSpeed = Stats.Speed;
+        navAgent.TargetPosition = GlobalPosition;
+
+        // Other
+        weapon.Initialize(Team);
     }
     public override void _PhysicsProcess(double delta)
     {
@@ -35,6 +40,7 @@ public partial class Ranged : Troop
         {
             case TroopState.PATROL:
                 Idle();
+                Velocity = knockback;
                 return;
 
             case TroopState.ADVANCE:
@@ -44,13 +50,14 @@ public partial class Ranged : Troop
                     return;
                 }
                 Direction = GlobalPosition.DirectionTo(navAgent.GetNextPathPosition());
-                navAgent.Velocity = Velocity + Direction * Stats.Speed; // Emmits signal velocity_computed
+                navAgent.Velocity = Velocity + Direction * Stats.Speed + knockback; // Emmits signal velocity_computed
                 RotateToward(Velocity.Angle());
                 break;
 
             case TroopState.ATTACK:
                 RotateToward(enemy.GlobalPosition);
                 Attack();
+                Velocity = knockback;
                 break;
 
             case TroopState.ENGAGE:
@@ -73,12 +80,13 @@ public partial class Ranged : Troop
                 patrolTimer.Stop();
                 navAgent.TargetPosition = Destination;
                 navAgent.AvoidanceEnabled = true;
+                RefreshDetectionZone();
                 break;
 
             case TroopState.PATROL:
                 patrolTimer.Start();
                 navAgent.AvoidanceEnabled = false;
-                Velocity = Vector2.Zero + knockback;
+                Velocity = Vector2.Zero;
                 break;
 
             case TroopState.ENGAGE:
@@ -88,7 +96,7 @@ public partial class Ranged : Troop
             case TroopState.ATTACK:
                 patrolTimer.Stop();
                 navAgent.AvoidanceEnabled = false;
-                Velocity = Vector2.Zero + knockback;
+                Velocity = Vector2.Zero;
                 break;
         }
         CurrentState = newState;
@@ -118,6 +126,12 @@ public partial class Ranged : Troop
         weapon.Deliver();
         animationPlayer.Play("Idle");
     }
+    private void RefreshDetectionZone()
+    {
+        detectionZone.SetDeferred("monitoring", false);
+        detectionZone.SetDeferred("monitoring", true);
+    }
+
     private void DetectionZoneBodyEntered(PhysicsBody2D body)
     {
         if (body is Actor actorBody && actorBody.GetTeam() != Team &&
@@ -134,6 +148,7 @@ public partial class Ranged : Troop
         {
             SetState(TroopState.ADVANCE);
             enemy = null;
+            RefreshDetectionZone();
         }
     }
 
@@ -142,7 +157,7 @@ public partial class Ranged : Troop
         float patrolRange = 50f;
         float randomX = Utilities.GetRandomFloat(-patrolRange, patrolRange);
         float randomY = Utilities.GetRandomFloat(-patrolRange, patrolRange);
-        Destination = new Vector2(randomX, randomY) + Origin;
+        Destination = NavigationServer2D.MapGetClosestPoint(navigationMap, new Vector2(randomX, randomY) + Origin);
         SetState(TroopState.ADVANCE);
     }
 }

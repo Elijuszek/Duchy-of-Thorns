@@ -31,9 +31,9 @@ public partial class ProjectileManager : Node2D
     public void HandleProjectileFired(ProjectileType type, float damage, Team team, Vector2 position, Vector2 direction)
     {
         Projectile projectile = projectilePool[type].Take();
+        projectile.GlobalPosition = position;
         projectile.Damage = damage;
         projectile.team = team;
-        projectile.GlobalPosition = position;
         projectile.SetDirection(direction);
     }
 }

@@ -139,6 +139,9 @@ texture = ExtResource("2_m5t0c")
 shape = SubResource("CapsuleShape2D_ryaoo")
 
 [node name="NavigationAgent2D" parent="." index="4"]
+path_desired_distance = 8.0
+target_desired_distance = 8.0
+path_max_distance = 200.0
 debug_enabled = true
 
 [node name="DetectionZone" parent="." index="5"]

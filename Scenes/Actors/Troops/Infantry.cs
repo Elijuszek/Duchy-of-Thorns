@@ -14,14 +14,21 @@ public partial class Infantry : Troop
 
     [Export] private NavigationAgent2D navAgent;
     private Actor enemy = null;
+    private Rid navigationMap;
 
     public override void _Ready()
     {
         base._Ready();
-        navAgent.MaxSpeed = Stats.Speed;
-        navAgent.SetNavigationMap(GetNode<TileMap>("/root/World/TileMap").GetLayerNavigationMap(0));
-        navAgent.TargetPosition = GlobalPosition;
+
+
+        // Navigation
+        navigationMap = GetNode<NavigationRegion2D>("/root/World/NavigationRegion2D").GetNavigationMap();
+        navAgent.SetNavigationMap(navigationMap);
         navAgent.Connect("velocity_computed", new Callable(this, "Walking"));
+        navAgent.MaxSpeed = Stats.Speed;
+        navAgent.TargetPosition = GlobalPosition;
+
+        // Other
         weapon.Initialize(Team);
     }
     public override void _PhysicsProcess(double delta)
@@ -31,6 +38,7 @@ public partial class Infantry : Troop
         {
             case TroopState.PATROL:
                 Idle();
+                Velocity = knockback;
                 break;
 
             case TroopState.ADVANCE:
@@ -39,15 +47,17 @@ public partial class Infantry : Troop
                     SetState(TroopState.PATROL);
                     return;
                 }
+                navAgent.MaxSpeed = Stats.Speed;
                 Direction = GlobalPosition.DirectionTo(navAgent.GetNextPathPosition());
-                navAgent.Velocity = Velocity + Direction * Stats.Speed;
+                navAgent.Velocity = Velocity + Direction * Stats.Speed + knockback;
                 RotateToward(navAgent.GetNextPathPosition());
                 break;
 
             case TroopState.ENGAGE:
+                navAgent.MaxSpeed = Stats.Speed;
                 navAgent.TargetPosition = enemy.GlobalPosition; // Enemy position is dynamic
                 Direction = GlobalPosition.DirectionTo(navAgent.GetNextPathPosition());
-                navAgent.Velocity = Velocity + Direction * Stats.Speed;
+                navAgent.Velocity = Velocity + Direction * Stats.Speed + knockback;
                 RotateToward(navAgent.GetNextPathPosition());
                 break;
 
@@ -72,11 +82,12 @@ public partial class Infantry : Troop
                 patrolTimer.Stop();
                 navAgent.TargetPosition = Destination; // Advance position is static
                 navAgent.AvoidanceEnabled = true;
+                RefreshDetectionZone();
                 break;
 
             case TroopState.PATROL:
                 patrolTimer.Start();
-                Velocity = Vector2.Zero + knockback;
+                Velocity = Vector2.Zero;
                 navAgent.AvoidanceEnabled = false;
                 break;
 
@@ -88,7 +99,7 @@ public partial class Infantry : Troop
             case TroopState.ATTACK:
                 patrolTimer.Stop();
                 navAgent.AvoidanceEnabled = false;
-                Velocity = Vector2.Zero + knockback;
+                Velocity = Vector2.Zero;
                 break;
         }
         CurrentState = newState;
@@ -136,7 +147,6 @@ public partial class Infantry : Troop
             SetState(TroopState.ADVANCE);
             enemy = null;
             RefreshDetectionZone();
-            return;
         }
     }
 
@@ -160,10 +170,11 @@ public partial class Infantry : Troop
 
     private void PatrolTimerTimeout()
     {
+        
         float patrolRange = 50f;
         float randomX = Utilities.GetRandomFloat(-patrolRange, patrolRange);
         float randomY = Utilities.GetRandomFloat(-patrolRange, patrolRange);
-        Destination = new Vector2(randomX, randomY) + Origin;
+        Destination = NavigationServer2D.MapGetClosestPoint(navigationMap, new Vector2(randomX, randomY) + Origin);
         SetState(TroopState.ADVANCE);
     }
 }

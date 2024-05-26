@@ -21,7 +21,7 @@ public partial class GarrisonInfo : Resource
         {
             Manpower = Manpower,
             MaxUnits = MaxUnits,
-            UnitQueue = UnitQueue.Duplicate(),
+            UnitQueue = new Array<UnitInfo>(UnitQueue.Select(unit => unit.Duplicate())),
             UnitOrigins = UnitOrigins
         };
     }

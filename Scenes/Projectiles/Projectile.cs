@@ -11,9 +11,9 @@ public partial class Projectile : Area2D, IPoolable
     [Export] public float Damage { get; set; } = 35;
     [Export] public float Range { get; set; } = 10;
     [Export] protected AudioStreamPlayer2D flyingSound;
-
-    private float traveledDistance = 0;
-    private float moveAmount = 0;
+    [Export] protected CollisionShape2D collisionShape;
+    protected float traveledDistance = 0;
+    protected float moveAmount = 0;
     protected Vector2 direction = Vector2.Zero;
     
     public Team team { get; set; }
@@ -37,21 +37,23 @@ public partial class Projectile : Area2D, IPoolable
         this.direction = direction;
         Rotation = direction.Angle();
     }
-    public void AddToScene()
+    public virtual void AddToScene()
     {
-        SetPhysicsProcess(true);
+        collisionShape.SetDeferred("disabled", false);
         flyingSound.Play();
         Show();
+        SetPhysicsProcess(true);
     }
-    public void RemoveFromScene()
+    public virtual void RemoveFromScene()
     {
-        SetPhysicsProcess(false);
+        Hide();
         flyingSound.Stop();
         direction = Vector2.Zero;
-        Position = Vector2.Zero;
+        GlobalPosition = Vector2.Zero;
         traveledDistance = 0;
         Rotation = 0;
-        Hide();
+        collisionShape.SetDeferred("disabled", true);
+        SetPhysicsProcess(false);
         if (RemovedFromScene != null)
         {
             RemovedFromScene(this);

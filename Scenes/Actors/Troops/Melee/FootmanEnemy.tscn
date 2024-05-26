@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://d1icwp77t3ic"]
+[gd_scene load_steps=34 format=3 uid="uid://d1icwp77t3ic"]
 
 [ext_resource type="PackedScene" uid="uid://b6uovxtqgv7wt" path="res://Scenes/Actors/Troops/Infantry.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://dgtvfgifyyroe" path="res://Scenes/Weapons/Swords/GoldenSword.tscn" id="2"]
@@ -106,6 +106,9 @@ _data = {
 "Walk": SubResource("3")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ke15"]
+radius = 24.0
+
 [node name="FootmanEnemy" node_paths=PackedStringArray("weapon", "animationPlayer") instance=ExtResource("1")]
 collision_layer = 4
 weapon = NodePath("GoldenSword")
@@ -114,7 +117,7 @@ Team = 1
 
 [node name="GoldenSword" parent="." index="0" instance=ExtResource("2")]
 position = Vector2(3, 14)
-damage = 50.0
+damage = 30.0
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("10")
@@ -122,7 +125,13 @@ texture = ExtResource("10")
 [node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource("1")
 
+[node name="NavigationAgent2D" parent="." index="4"]
+path_desired_distance = 8.0
+target_desired_distance = 8.0
+path_max_distance = 200.0
+
 [node name="DetectionZone" parent="." index="5"]
+visible = false
 collision_mask = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
@@ -133,3 +142,6 @@ autoplay = "Idle"
 
 [node name="AttackZone" parent="." index="7"]
 collision_mask = 3
+
+[node name="CollisionShape2D" parent="AttackZone" index="0"]
+shape = SubResource("CircleShape2D_5ke15")

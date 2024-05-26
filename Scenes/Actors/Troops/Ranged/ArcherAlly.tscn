@@ -134,6 +134,11 @@ texture = ExtResource("9_kf5yi")
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CapsuleShape2D_qkjbe")
 
+[node name="NavigationAgent2D" parent="." index="3"]
+path_desired_distance = 8.0
+target_desired_distance = 8.0
+path_max_distance = 200.0
+
 [node name="DetectionZone" parent="." index="4"]
 collision_mask = 4
 

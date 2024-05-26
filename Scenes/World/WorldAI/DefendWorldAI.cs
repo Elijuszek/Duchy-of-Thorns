@@ -16,15 +16,15 @@ public partial class DefendWorldAI : Node2D
 
 	public void SpawnUnit()
 	{
-		for (int i = 0; i < unitsToSpawn.Count; i++)
+		GarrisonInfo garrison = unitsToSpawn[0].Duplicate();
+		TroopType type = garrison.DequeuUnit();
+		for (int i = 0; i < garrison.MaxUnits; i++)
 		{
-			GarrisonInfo garrison = unitsToSpawn[i].Duplicate();
-			TroopType type = garrison.DequeuUnit();
-            troopsManager.HandleTroopSpawned(type, garrison.UnitQueue[0].Stats,
-				new Vector2(Utilities.GetRandomFloat(800f, 1200f), Utilities.GetRandomFloat(800f, 1200f)),
-				new Vector2(Utilities.GetRandomFloat(400f, 800f), Utilities.GetRandomFloat(400f, 800f)));
-        }
-    }
+			troopsManager.HandleTroopSpawned(type, garrison.UnitQueue[0].Stats,
+				new Vector2(Utilities.GetRandomFloat(800f, 1200f), Utilities.GetRandomFloat(500f, 800f)),
+				new Vector2(Utilities.GetRandomFloat(400f, 800f), Utilities.GetRandomFloat(400f, 600f)));
+		}
+	}
 	
 	public void Clear()
 	{

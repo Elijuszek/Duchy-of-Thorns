@@ -9,7 +9,7 @@ namespace DuchyOfThorns;
 /// 
 /// Class for the base which can be captured by the player, ally or enemy
 /// </summary>
-public partial class CapturableBase : Area2D
+public partial class CapturableBase : StaticBody2D
 {
     [Signal] public delegate void BaseCapturedEventHandler(Team newTeam);
 
@@ -20,7 +20,6 @@ public partial class CapturableBase : Area2D
     [Export] private ProgressBar captureProgressBar;
     [Export] private CollisionShape2D captureArea;
     [Export] private double captureTime = 60d;
-    [Export] private NavigationObstacle2D navigationObstacle;
     private StyleBoxFlat barStyle;
     private Vector2 extents;
     private Tween progressTween;
@@ -50,6 +49,21 @@ public partial class CapturableBase : Area2D
     }
     public void SetTeam()
     {
+        switch (Team)
+        {
+            case Team.PLAYER:
+                barStyle.BgColor = playerColor;
+                captureProgressBar.Value = 100;
+                break;
+            case Team.ENEMY:
+                barStyle.BgColor = enemyColor;
+                captureProgressBar.Value = 100;
+                break;
+            case Team.NEUTRAL:
+                barStyle.BgColor = neutralColor;
+                captureProgressBar.Value = 0;
+                break;
+        }
         Team = capturingTeam;
         EmitSignal(nameof(BaseCaptured), (int)capturingTeam);
     }
@@ -60,18 +74,7 @@ public partial class CapturableBase : Area2D
     }
     public Vector2 GetDestination()
     {
-
-        Vector2 pos = Utilities.GetRandomPositionInArea(captureArea);
-        if (pos.DistanceTo(GlobalPosition) < navigationObstacle.Radius)
-        {
-            if (Utilities.Chance())
-            {
-                return pos += new Vector2(navigationObstacle.Radius, navigationObstacle.Radius);
-            }
-                return pos -= new Vector2(navigationObstacle.Radius, navigationObstacle.Radius);
-        }
-        Random rand = new Random();
-        return pos;
+        return Utilities.GetRandomPositionInArea(captureArea);
     }
     public void Capture()
     {
@@ -116,12 +119,14 @@ public partial class CapturableBase : Area2D
     }
     private void CapturableBaseBodyEntered(Node body)
     {
+        GD.Print("Enemy entered");
         if (body is Actor actor)
         {
             Team bodyTeam = actor.GetTeam();
             switch (bodyTeam)
             {
                 case Team.ENEMY:
+
                     enemyCount++;
                     Capture();
                     break;

@@ -10,7 +10,7 @@ public partial class DefendWorld : World
     [Export] private AssaultWorldAI assaultWorldAI;
     [Export] private DefendWorldAI allyWorldAI;
     [Export] private CapturableBaseManager capturableBaseManager;
-
+    [Export] public NavigationRegion2D NavigationRegion { get; set; }
     private PackedScene assaultOverScreen;
     private int safeGold = 0;
     public override void _Ready()
@@ -31,6 +31,7 @@ public partial class DefendWorld : World
         gui.Connect("NewWaveStarted", new Callable(this, "NewWave"));
         gui.ToggleNewWaveButton(true);
 
+        //NavigationLayer = RebakeNavigationLayer();
     }
     private void HandlePlayerVictory(int reward)
     {
@@ -89,6 +90,11 @@ public partial class DefendWorld : World
         // TODO: New wave should load after the last wave is finished
         assaultWorldAI.SpawnNextWave();
         allyWorldAI.SpawnUnit();
+    }
+
+    private void RebakeNavigationLayer()
+    {
+        return;
     }
     public override Dictionary<string, Variant> Save()
     {

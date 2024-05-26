@@ -12,7 +12,7 @@ public partial class Projective : Weapon
     [Export] public int MaxAmmo { get; set; }
     [Export] public int CurrentAmmo { get; set; }
     [Export] public Marker2D WeaponDirection { get; set; }
-    [Export] protected Marker2D EndOfWeapon;
+    [Export] public Marker2D EndOfWeapon;
     [Export] protected ProjectileType projectileType;
 
     protected Globals globals;

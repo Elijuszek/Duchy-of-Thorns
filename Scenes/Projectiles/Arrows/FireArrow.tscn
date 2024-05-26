@@ -57,3 +57,4 @@ texture = SubResource("AnimatedTexture_jf67r")
 texture_scale = 0.75
 
 [node name="Embers" parent="." index="5" instance=ExtResource("6_1thnp")]
+local_coords = true

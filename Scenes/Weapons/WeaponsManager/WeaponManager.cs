@@ -90,10 +90,7 @@ public partial class WeaponManager : Node2D
                 break;
 
             case Projective projective:
-                if (projective.CanAim)
-                {
-                    aiming.StartAiming(2f, 0.1f, 2f, projective.AttackDuartion); // start, end, duration, delay
-                }
+                aiming.StartAiming(projective.CanAim, 2f, 0.1f, 2f, projective.AttackDuartion); // start, end, duration, delay
                 projective.Attack();
                 break;
             default:
