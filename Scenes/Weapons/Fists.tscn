@@ -86,7 +86,7 @@ _data = {
 script = ExtResource("2")
 animationPlayer = NodePath("AnimationPlayer")
 AttackDuartion = 0.96
-damage = 1.0
+Damage = 10.0
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(11.1513, 0)

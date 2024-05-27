@@ -6,7 +6,7 @@ namespace DuchyOfThorns;
 public partial class Weapon : Node2D
 {
     [Export] public float AttackDuartion { get; set; } = 0.7f;
-    [Export] protected float damage;
+    [Export] public float Damage { get; set; }
     [Export] protected Timer attackCooldown;
     [Export] protected AudioStreamPlayer2D deliverSound;
     [Export] protected AudioStreamPlayer2D attackSound;

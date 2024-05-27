@@ -25,7 +25,7 @@ public partial class Melee : Weapon
 	{
 		if (body is Actor actor && actor.GetTeam() != team)
 		{
-			actor.HandleHit(damage, GlobalPosition);
+			actor.HandleHit(Damage, GlobalPosition);
 			deliverSound.Play();
 		}
 	}

@@ -32,7 +32,7 @@ public partial class Spear : Melee
 	{
 		if (body is Actor actor && actor.GetTeam() != team)
 		{
-			actor.HandleHit(damage, GlobalPosition);
+			actor.HandleHit(Damage, GlobalPosition);
 			deliverSound.Play();
 			actor.HandleKnockback(knockBack, GlobalPosition);
 		}

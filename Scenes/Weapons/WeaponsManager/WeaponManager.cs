@@ -25,6 +25,22 @@ public partial class WeaponManager : Node2D
         CurrentWeapon.Show();
     }
 
+    public void AdjustMultiplier(float meleeMultiplier, float rangedMultiplier)
+    {
+        foreach (Weapon weapon in GetChildren().OfType<Weapon>())
+        {
+            if (weapon is Melee)
+            {
+                weapon.Damage += meleeMultiplier;
+            }
+            else if (weapon is Projective)
+            {
+                weapon.Damage += rangedMultiplier;
+            }
+        }
+
+    }
+
     public void AddWeapon(Weapon weapon, int index)
     {
         if (weapons[index] != null)

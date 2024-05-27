@@ -34,7 +34,7 @@ public partial class Projective : Weapon
         attackSound.Stop();
         deliverSound.Play();
         Vector2 direction = (WeaponDirection.GlobalPosition - EndOfWeapon.GlobalPosition).Normalized();
-        globals.EmitSignal("ProjectileFired", (int)projectileType, damage, (int)team, EndOfWeapon.GlobalPosition, direction);
+        globals.EmitSignal("ProjectileFired", (int)projectileType, Damage, (int)team, EndOfWeapon.GlobalPosition, direction);
         SetCurrentAmmo(CurrentAmmo - 1);
         attackCooldown.Start();
         Idle();

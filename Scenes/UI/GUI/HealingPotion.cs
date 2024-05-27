@@ -5,7 +5,8 @@ public partial class HealingPotion : TextureButton
 {
 	[Export] public Array<AnimatedSprite2D> sprites;
     protected Globals globals;
-    private int pressCount = 0;
+    public int pressCount { get; set; } = 0;
+
 
     public override void _Ready()
     {
@@ -20,11 +21,21 @@ public partial class HealingPotion : TextureButton
         sprites[0].Visible = true;
     }
 
+    public void UpdatePotion()
+    {
+        foreach (AnimatedSprite2D sprite in sprites)
+        {
+            sprite.Visible = false;
+        }
+
+        sprites[0].Visible = true;
+    }
     private void OnPressed()
     {
         if (pressCount < 3)
         {
-            sprites[pressCount].Visible = false;
+            foreach (AnimatedSprite2D sprite in sprites)
+                sprite.Visible = false;
             pressCount++;
             sprites[pressCount].Visible = true;
 

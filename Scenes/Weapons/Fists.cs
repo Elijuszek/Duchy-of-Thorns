@@ -45,7 +45,7 @@ public partial class Fists : Melee
     {
         if (body is Actor actor && actor.GetTeam() != team)
         {
-            actor.HandleHit(damage, GlobalPosition);
+            actor.HandleHit(Damage, GlobalPosition);
             deliverSound.Stream = punshSounds[rand.Next(0, 4)];
             deliverSound.Play();
         }

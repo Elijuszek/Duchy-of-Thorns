@@ -71,7 +71,7 @@ script = ExtResource("2_rxvdi")
 animationPlayer = NodePath("AnimationPlayer")
 MaxAmmo = 100
 CurrentAmmo = 50
-damage = 25.0
+Damage = 55.0
 
 [node name="DeliverSound" parent="." index="1"]
 stream = ExtResource("2_qbbj4")

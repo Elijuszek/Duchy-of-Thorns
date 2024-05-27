@@ -160,9 +160,9 @@ public partial class GUI : CanvasLayer
     }
     private void UpgradeOpenButton()
     {
-
-       upgradeScreen.Visible = true;
-        GD.Print("UPGRADE");
+        upgradeScreen.Player = player;
+        upgradeScreen.UpdateButtons();
+        upgradeScreen.Visible = true;
     }
 
 

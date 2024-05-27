@@ -277,11 +277,9 @@ Stats = SubResource("Resource_a4ile")
 CurrentWeapon = NodePath("Fists")
 
 [node name="Fists" parent="WeaponsManager" index="0" instance=ExtResource("69")]
-damage = 105.0
 
 [node name="TrainingBow" parent="WeaponsManager" index="2" instance=ExtResource("5_u3sho")]
 CanAim = true
-damage = 55.0
 
 [node name="LevySpear" parent="WeaponsManager" index="3" instance=ExtResource("7_pxttq")]
 knockBack = 130.0

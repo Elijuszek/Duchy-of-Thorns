@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://Scenes/UI/Screens/UpgradeScreen.cs" id="1_u3xbq"]
 [ext_resource type="Texture2D" uid="uid://pfqdjxw0ehuh" path="res://Sprites/Weapons/Bows/SimpleBow/BowReload-4-cropped.png" id="2_d57fb"]
 [ext_resource type="Texture2D" uid="uid://c0f430b5ft86o" path="res://Sprites/Shields/shield.png" id="3_05cr5"]
-[ext_resource type="Texture2D" uid="uid://cdpdyhnrqdqo7" path="res://Sprites/UI/TakingArrow/Default/ArrowsPouch-1-cropped.png" id="4_eu8x7"]
 [ext_resource type="Texture2D" uid="uid://dfl8dgvt3kt4x" path="res://Sprites/Potions/empty.png" id="5_in68y"]
+[ext_resource type="Texture2D" uid="uid://ci3qf08ufoyob" path="res://Sprites/UI/Frames/TitleScreen.png" id="7_68dou"]
 
-[node name="UpgradeScreen" type="Control"]
+[node name="UpgradeScreen" type="Control" node_paths=PackedStringArray("MeleeDamageButton", "RangedDamageButton", "ArmorButton", "ArrowButton", "PotionButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +15,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u3xbq")
+MeleeDamageButton = NodePath("ColorRect/VBoxContainer/HBoxContainer2/MarginContainer/UpgradeMeleeDamage")
+RangedDamageButton = NodePath("ColorRect/VBoxContainer/HBoxContainer2/MarginContainer2/UpgradeBowDamageButton")
+ArmorButton = NodePath("ColorRect/VBoxContainer/HBoxContainer2/MarginContainer3/UpgradeArmorButton")
+ArrowButton = NodePath("")
+PotionButton = NodePath("ColorRect/VBoxContainer/HBoxContainer2/MarginContainer5/RefillPotionButton")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -24,10 +29,26 @@ anchor_bottom = 1.0
 offset_left = 290.0
 offset_top = 120.0
 offset_right = -290.0
-offset_bottom = -100.0
+offset_bottom = -120.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.168627, 0.172549, 0.172549, 1)
+
+[node name="Frame" type="TextureRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -365.0
+offset_top = -261.0
+offset_right = 365.0
+offset_bottom = 264.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_68dou")
+expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 1
@@ -81,18 +102,6 @@ layout_mode = 2
 texture = ExtResource("3_05cr5")
 stretch_mode = 5
 
-[node name="MarginContainer4" type="MarginContainer" parent="ColorRect/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="TextureRect4" type="TextureRect" parent="ColorRect/VBoxContainer/HBoxContainer/MarginContainer4"]
-custom_minimum_size = Vector2(135, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("4_eu8x7")
-stretch_mode = 6
-
 [node name="MarginContainer5" type="MarginContainer" parent="ColorRect/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
@@ -136,13 +145,6 @@ text = "Increases armor by 10%"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Label4" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "10 arrows"
-horizontal_alignment = 1
-autowrap_mode = 2
-
 [node name="Label5" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -167,19 +169,13 @@ horizontal_alignment = 1
 [node name="Label2" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "50 🪙"
+text = "70 🪙"
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "50 🪙"
-horizontal_alignment = 1
-
-[node name="Label4" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "20 🪙"
+text = "35 🪙"
 horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
@@ -197,7 +193,7 @@ clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer2/MarginContainer"]
+[node name="UpgradeMeleeDamage" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer2/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -208,7 +204,7 @@ text = "UPGRADE
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button2" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer2/MarginContainer2"]
+[node name="UpgradeBowDamageButton" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer2/MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -218,27 +214,17 @@ text = "UPGRADE"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button3" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer2/MarginContainer3"]
+[node name="UpgradeArmorButton" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer2/MarginContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "UPGRADE"
 
-[node name="MarginContainer4" type="MarginContainer" parent="ColorRect/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Button4" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer2/MarginContainer4"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-text = "BUY"
-
 [node name="MarginContainer5" type="MarginContainer" parent="ColorRect/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button5" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer2/MarginContainer5"]
+[node name="RefillPotionButton" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer2/MarginContainer5"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -256,4 +242,8 @@ size_flags_vertical = 0
 text = "Close
 "
 
+[connection signal="pressed" from="ColorRect/VBoxContainer/HBoxContainer2/MarginContainer/UpgradeMeleeDamage" to="." method="UpgradeMeleeDamageButton"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/HBoxContainer2/MarginContainer2/UpgradeBowDamageButton" to="." method="UpgradeBowDamageButton"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/HBoxContainer2/MarginContainer3/UpgradeArmorButton" to="." method="UpgradeArmorButton"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/HBoxContainer2/MarginContainer5/RefillPotionButton" to="." method="RefillPotionButton"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/HBoxContainer4/Button" to="." method="CloseButtonPressed"]

@@ -731,7 +731,7 @@ size_flags_vertical = 0
 
 [node name="ArrowPouch" type="Sprite2D" parent="MarginContainer/Rows/TopRow/AmmoSection/MarginContainer/MarginContainer"]
 position = Vector2(40, 11)
-texture = ExtResource("51_f3p4b")
+texture = ExtResource("4_01mqu")
 
 [node name="CancelAttackButton" parent="MarginContainer/Rows/TopRow/AmmoSection/MarginContainer" instance=ExtResource("5_5ygom")]
 position = Vector2(67, 15)
