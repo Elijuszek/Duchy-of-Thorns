@@ -105,8 +105,3 @@ public partial class SettingsScreen : Control
 		vsync.ButtonPressed = (bool)config.GetValue("Video", "VSync");
 	}
 }
-
-public class SettingsData
-{
-
-}
