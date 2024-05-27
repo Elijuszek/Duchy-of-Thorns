@@ -17,6 +17,8 @@ public partial class GUI : CanvasLayer
     [Export] private Label maxHealth;
     [Export] private Button newWaveButton;
     [Export] private Label currentGold;
+    [Export] private PackedScene upgradeScene;
+    private UpgradeScreen upgradeScreen;
 
     private Tween healthTween;
     private Tween goldTween;
@@ -27,6 +29,9 @@ public partial class GUI : CanvasLayer
     public override void _Ready()
     {
         barStyle = (StyleBoxFlat)healthBar.Get("theme_override_styles/fill");
+        upgradeScreen = upgradeScene.Instantiate<UpgradeScreen>();
+        upgradeScreen.Visible = false;
+        AddChild(upgradeScreen);
     }
     public void SetPlayer(Player player)
     {
@@ -152,6 +157,11 @@ public partial class GUI : CanvasLayer
         {
             newWaveButton.Hide();
         }
+    }
+    private void UpgradeScreeenOpen()
+    {
+
+       upgradeScreen.Visible = true;
     }
 
 

@@ -1,0 +1,244 @@
+[gd_scene load_steps=6 format=3 uid="uid://koom4w2fkujv"]
+
+[ext_resource type="Texture2D" uid="uid://b5freeaek0wgq" path="res://Sprites/Weapons/Swords/sword2.png" id="1_qisa4"]
+[ext_resource type="Texture2D" uid="uid://pfqdjxw0ehuh" path="res://Sprites/Weapons/Bows/SimpleBow/BowReload-4-cropped.png" id="2_d57fb"]
+[ext_resource type="Texture2D" uid="uid://c0f430b5ft86o" path="res://Sprites/Shields/shield.png" id="3_05cr5"]
+[ext_resource type="Texture2D" uid="uid://cdpdyhnrqdqo7" path="res://Sprites/UI/TakingArrow/Default/ArrowsPouch-1-cropped.png" id="4_eu8x7"]
+[ext_resource type="Texture2D" uid="uid://dfl8dgvt3kt4x" path="res://Sprites/Potions/empty.png" id="5_in68y"]
+
+[node name="UpgradeScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 290.0
+offset_top = 120.0
+offset_right = -290.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.168627, 0.172549, 0.172549, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(50, 130)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.21
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/VBoxContainer/HBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 4.03
+texture = ExtResource("1_qisa4")
+
+[node name="MarginContainer2" type="MarginContainer" parent="ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect2" type="TextureRect" parent="ColorRect/VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+texture = ExtResource("2_d57fb")
+
+[node name="MarginContainer3" type="MarginContainer" parent="ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect3" type="TextureRect" parent="ColorRect/VBoxContainer/HBoxContainer/MarginContainer3"]
+layout_mode = 2
+texture = ExtResource("3_05cr5")
+stretch_mode = 5
+
+[node name="MarginContainer4" type="MarginContainer" parent="ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="TextureRect4" type="TextureRect" parent="ColorRect/VBoxContainer/HBoxContainer/MarginContainer4"]
+custom_minimum_size = Vector2(135, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_eu8x7")
+stretch_mode = 6
+
+[node name="MarginContainer5" type="MarginContainer" parent="ColorRect/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="TextureRect5" type="TextureRect" parent="ColorRect/VBoxContainer/HBoxContainer/MarginContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_in68y")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer/HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Increases damage output by 10% for melee weapons
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Increases damage ouput by 10% for ranged weapons"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Increases armor by 10%"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label4" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "10 arrows"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label5" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Refills healing potion to max"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer/HBoxContainer3/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/VBoxContainer/HBoxContainer3/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "50 🪙"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "50 🪙"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "50 🪙"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "20 🪙"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "30 🪙"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer/HBoxContainer2"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer2/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "UPGRADE
+"
+
+[node name="MarginContainer2" type="MarginContainer" parent="ColorRect/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button2" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer2/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "UPGRADE"
+
+[node name="MarginContainer3" type="MarginContainer" parent="ColorRect/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button3" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer2/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "UPGRADE"
+
+[node name="MarginContainer4" type="MarginContainer" parent="ColorRect/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button4" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer2/MarginContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "BUY"
+
+[node name="MarginContainer5" type="MarginContainer" parent="ColorRect/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button5" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer2/MarginContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "REFILL"
