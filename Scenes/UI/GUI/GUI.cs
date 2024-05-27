@@ -158,10 +158,11 @@ public partial class GUI : CanvasLayer
             newWaveButton.Hide();
         }
     }
-    private void UpgradeScreeenOpen()
+    private void UpgradeOpenButton()
     {
 
        upgradeScreen.Visible = true;
+        GD.Print("UPGRADE");
     }
 
 

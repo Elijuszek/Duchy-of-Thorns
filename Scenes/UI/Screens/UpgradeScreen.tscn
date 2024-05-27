@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://koom4w2fkujv"]
+[gd_scene load_steps=7 format=3 uid="uid://koom4w2fkujv"]
 
 [ext_resource type="Texture2D" uid="uid://b5freeaek0wgq" path="res://Sprites/Weapons/Swords/sword2.png" id="1_qisa4"]
+[ext_resource type="Script" path="res://Scenes/UI/Screens/UpgradeScreen.cs" id="1_u3xbq"]
 [ext_resource type="Texture2D" uid="uid://pfqdjxw0ehuh" path="res://Sprites/Weapons/Bows/SimpleBow/BowReload-4-cropped.png" id="2_d57fb"]
 [ext_resource type="Texture2D" uid="uid://c0f430b5ft86o" path="res://Sprites/Shields/shield.png" id="3_05cr5"]
 [ext_resource type="Texture2D" uid="uid://cdpdyhnrqdqo7" path="res://Sprites/UI/TakingArrow/Default/ArrowsPouch-1-cropped.png" id="4_eu8x7"]
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_u3xbq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -187,7 +189,6 @@ text = "30 🪙"
 horizontal_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
-custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 alignment = 1
 
@@ -242,3 +243,17 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "REFILL"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Close
+"
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/HBoxContainer4/Button" to="." method="CloseButtonPressed"]

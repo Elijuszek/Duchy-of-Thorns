@@ -804,15 +804,6 @@ position = Vector2(960, 39)
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Rows/BottomRow"]
 layout_mode = 2
 
-[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/Rows/BottomRow/VBoxContainer"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="MarginContainer/Rows/BottomRow/VBoxContainer/MarginContainer3"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
-text = "Upgrade"
-
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/Rows/BottomRow/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
@@ -821,6 +812,15 @@ theme_override_constants/margin_bottom = 10
 [node name="StartNewWaveButton" type="Button" parent="MarginContainer/Rows/BottomRow/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 text = "Start new wave"
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/Rows/BottomRow/VBoxContainer"]
+layout_mode = 2
+
+[node name="UpgradeOpenButton" type="Button" parent="MarginContainer/Rows/BottomRow/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+text = "Upgrade"
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Rows/BottomRow/VBoxContainer"]
 layout_mode = 2
@@ -838,6 +838,6 @@ scale = Vector2(0.2, 0.2)
 
 [connection signal="pressed" from="MarginContainer/Rows/TopRow/AmmoSection/MarginContainer/CancelAttackButton" to="." method="CancelAttackButtonPressed"]
 [connection signal="pressed" from="MarginContainer/Rows/BottomRow/SwitchWeapon" to="." method="SwitchWeaponPressed"]
-[connection signal="pressed" from="MarginContainer/Rows/BottomRow/VBoxContainer/MarginContainer3/Button" to="." method="UpgradeScreenOpen"]
 [connection signal="pressed" from="MarginContainer/Rows/BottomRow/VBoxContainer/MarginContainer2/StartNewWaveButton" to="." method="StartNewWaveButton"]
+[connection signal="pressed" from="MarginContainer/Rows/BottomRow/VBoxContainer/MarginContainer3/UpgradeOpenButton" to="." method="UpgradeOpenButton"]
 [connection signal="pressed" from="MarginContainer/Rows/BottomRow/VBoxContainer/MarginContainer/PauseButton" to="." method="PauseButtonPressed"]
