@@ -9,7 +9,7 @@
 font = ExtResource("2_5njc5")
 font_size = 60
 
-[node name="SettingsScreen" type="Control"]
+[node name="SettingsScreen" type="Control" node_paths=PackedStringArray("master", "music", "effects", "resolutionPicker", "fullscreen", "vsync")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +19,12 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_fs416")
+master = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/Master Volume Slider2")
+music = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/Music Volume Slider")
+effects = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/Effects Slider")
+resolutionPicker = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/ResolutionPicker/OptionButton")
+fullscreen = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/FullscreenCheck/FullscreenCheckBox")
+vsync = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/VsyncCheck/VsyncCheckBox")
 
 [node name="GreyBackground" type="ColorRect" parent="."]
 layout_mode = 1
@@ -32,6 +38,22 @@ offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.168627, 0.172549, 0.172549, 1)
+
+[node name="Frame" type="TextureRect" parent="GreyBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_knyii")
+expand_mode = 1
 
 [node name="ScreenColumn" type="VBoxContainer" parent="GreyBackground"]
 layout_mode = 1
@@ -157,21 +179,5 @@ theme_override_constants/margin_bottom = 10
 [node name="CloseButton" type="Button" parent="GreyBackground/ScreenColumn/CloseButtonContainer"]
 layout_mode = 2
 text = "Close"
-
-[node name="Frame" type="TextureRect" parent="GreyBackground"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -350.0
-offset_top = -250.0
-offset_right = 350.0
-offset_bottom = 250.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_knyii")
-expand_mode = 1
 
 [connection signal="pressed" from="GreyBackground/ScreenColumn/CloseButtonContainer/CloseButton" to="." method="CloseButtonPressed"]
