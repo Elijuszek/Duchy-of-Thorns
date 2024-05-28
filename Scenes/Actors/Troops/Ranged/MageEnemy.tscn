@@ -130,7 +130,7 @@ Stats = SubResource("Resource_ynwnr")
 
 [node name="Magic" parent="." index="0" instance=ExtResource("3_j6esa")]
 AttackDuartion = 0.8
-damage = 25.0
+Damage = 25.0
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_m5t0c")
@@ -142,7 +142,6 @@ shape = SubResource("CapsuleShape2D_ryaoo")
 path_desired_distance = 8.0
 target_desired_distance = 8.0
 path_max_distance = 200.0
-debug_enabled = true
 
 [node name="DetectionZone" parent="." index="5"]
 collision_mask = 3

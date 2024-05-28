@@ -48,7 +48,7 @@ Gold = 5
 [sub_resource type="Resource" id="Resource_lqj5u"]
 script = ExtResource("7_4pelb")
 Type = 4
-TroopsLeft = 10
+TroopsLeft = 6
 Stats = SubResource("Resource_5nrat")
 
 [sub_resource type="Resource" id="Resource_ka05s"]
@@ -68,7 +68,7 @@ Stats = SubResource("Resource_ka05s")
 
 [sub_resource type="Resource" id="Resource_gyyvw"]
 script = ExtResource("7_dkmdf")
-MaxUnits = 10
+MaxUnits = 8
 UnitQueue = Array[Object]([SubResource("Resource_lqj5u"), SubResource("Resource_f1eol")])
 MaxDuration = 5000.0
 Reward = 100.0
@@ -141,6 +141,9 @@ nightSounds = NodePath("../BackgroundNight")
 
 [node name="AnimationPlayer" parent="CanvasModulate" index="0"]
 autoplay = "DayNightCycle"
+
+[node name="GUI" parent="." index="8"]
+upgradeScene = null
 
 [node name="AllyWorldAI" parent="." index="9" node_paths=PackedStringArray("troopsManager") instance=ExtResource("4_7e281")]
 position = Vector2(315, -54)
