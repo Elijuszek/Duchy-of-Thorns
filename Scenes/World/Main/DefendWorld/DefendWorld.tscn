@@ -142,9 +142,6 @@ nightSounds = NodePath("../BackgroundNight")
 [node name="AnimationPlayer" parent="CanvasModulate" index="0"]
 autoplay = "DayNightCycle"
 
-[node name="GUI" parent="." index="8"]
-upgradeScene = null
-
 [node name="AllyWorldAI" parent="." index="9" node_paths=PackedStringArray("troopsManager") instance=ExtResource("4_7e281")]
 position = Vector2(315, -54)
 unitsToSpawn = Array[Object]([SubResource("Resource_coprr")])
