@@ -9,7 +9,7 @@
 font = ExtResource("2_5njc5")
 font_size = 60
 
-[node name="SettingsScreen" type="Control" node_paths=PackedStringArray("master", "music", "effects", "resolutionPicker", "fullscreen", "vsync")]
+[node name="SettingsScreen" type="Control" node_paths=PackedStringArray("master", "music", "effects")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,9 +22,6 @@ script = ExtResource("1_fs416")
 master = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/Master Volume Slider2")
 music = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/Music Volume Slider")
 effects = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/Effects Slider")
-resolutionPicker = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/ResolutionPicker/OptionButton")
-fullscreen = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/FullscreenCheck/FullscreenCheckBox")
-vsync = NodePath("GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/VsyncCheck/VsyncCheckBox")
 
 [node name="GreyBackground" type="ColorRect" parent="."]
 layout_mode = 1
@@ -74,58 +71,6 @@ theme_override_constants/margin_bottom = 0
 [node name="SettingsColumn" type="VBoxContainer" parent="GreyBackground/ScreenColumn/SettingsContainer"]
 layout_mode = 2
 alignment = 1
-
-[node name="Video" type="Label" parent="GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn"]
-layout_mode = 2
-text = "Video
-"
-label_settings = SubResource("LabelSettings_whqbu")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ResolutionPicker" type="HBoxContainer" parent="GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn"]
-layout_mode = 2
-theme_override_constants/separation = 10
-alignment = 1
-
-[node name="Resolution" type="Label" parent="GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/ResolutionPicker"]
-layout_mode = 2
-text = "Resolution:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="OptionButton" type="OptionButton" parent="GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/ResolutionPicker"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="FullscreenCheck" type="HBoxContainer" parent="GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn"]
-layout_mode = 2
-theme_override_constants/separation = 10
-alignment = 1
-
-[node name="Fullscreen" type="Label" parent="GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/FullscreenCheck"]
-layout_mode = 2
-text = "Fullscreen:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="FullscreenCheckBox" type="CheckBox" parent="GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/FullscreenCheck"]
-layout_mode = 2
-
-[node name="VsyncCheck" type="HBoxContainer" parent="GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn"]
-layout_mode = 2
-theme_override_constants/separation = 45
-alignment = 1
-
-[node name="Vsync" type="Label" parent="GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/VsyncCheck"]
-layout_mode = 2
-text = "Vsync:
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VsyncCheckBox" type="CheckBox" parent="GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn/VsyncCheck"]
-layout_mode = 2
 
 [node name="Audio" type="Label" parent="GreyBackground/ScreenColumn/SettingsContainer/SettingsColumn"]
 layout_mode = 2

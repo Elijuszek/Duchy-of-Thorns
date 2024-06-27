@@ -1,5 +1,6 @@
-using DuchyOfThorns;
 using Godot.Collections;
+
+namespace DuchyOfThorns;
 
 public partial class HealingPotion : TextureButton
 {

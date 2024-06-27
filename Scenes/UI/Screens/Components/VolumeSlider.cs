@@ -1,3 +1,5 @@
+namespace DuchyOfThorns;
+
 public partial class VolumeSlider : HSlider
 {
 	[Export] private string busName;

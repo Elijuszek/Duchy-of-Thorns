@@ -1,5 +1,3 @@
-using Godot.NativeInterop;
-
 namespace DuchyOfThorns;
 
 /// <summary>
@@ -119,7 +117,6 @@ public partial class CapturableBase : StaticBody2D
     }
     private void CapturableBaseBodyEntered(Node body)
     {
-        GD.Print("Enemy entered");
         if (body is Actor actor)
         {
             Team bodyTeam = actor.GetTeam();

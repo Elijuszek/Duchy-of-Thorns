@@ -1,5 +1,3 @@
-using static Godot.TextServer;
-
 namespace DuchyOfThorns;
 
 /// <summary>
