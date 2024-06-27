@@ -27,7 +27,9 @@ public partial class TitleScreen : Control
     private void RandomizeBackground()
     {
         animationPlayer.Play("Background", customSpeed: 0.0f);
-        animationPlayer.Seek(randomizer.NextDouble() * animationPlayer.CurrentAnimationLength, false);
+
+        //animationPlayer.Seek(randomizer.NextDouble() * animationPlayer.CurrentAnimationLength, false);
+        animationPlayer.Seek(0d * animationPlayer.CurrentAnimationLength, false);
     }
     public void NewGameButtonPressed()
     {

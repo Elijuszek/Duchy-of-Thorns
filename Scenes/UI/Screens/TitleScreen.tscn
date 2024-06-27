@@ -127,25 +127,31 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 5
+theme_override_constants/separation = 25
 
 [node name="NewGameButton" type="Button" parent="Menu/CenterRow/Buttons"]
 layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
 text = "NEW GAME"
 
 [node name="SavedGamesButton" type="Button" parent="Menu/CenterRow/Buttons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "SAVED GAMES"
 
 [node name="SettingsButton" type="Button" parent="Menu/CenterRow/Buttons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "SETTINGS"
 
 [node name="QuitGameButton" type="Button" parent="Menu/CenterRow/Buttons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "QUIT GAME"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
