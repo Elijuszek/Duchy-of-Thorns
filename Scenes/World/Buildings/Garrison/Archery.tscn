@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dlo0c0rutvx31"]
+
+[ext_resource type="PackedScene" uid="uid://c5swu8qt0poc7" path="res://Scenes/World/Buildings/EnterableBuilding.tscn" id="1_kpmnf"]
+[ext_resource type="Script" path="res://Scenes/World/Buildings/Garrison/Archery.cs" id="2_rgtyk"]
+[ext_resource type="Script" path="res://Scenes/World/WorldAI/Garrison/GarrisonInfo.cs" id="3_66m0q"]
+
+[sub_resource type="Resource" id="Resource_rc68e"]
+script = ExtResource("3_66m0q")
+Manpower = 0
+MaxUnits = 0
+UnitQueue = null
+UnitOrigins = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykhgb"]
+size = Vector2(184, 275)
+
+[node name="Archery" instance=ExtResource("1_kpmnf")]
+script = ExtResource("2_rgtyk")
+GarrisonInfo = SubResource("Resource_rc68e")
+
+[node name="BuildingTilemap" parent="." index="0"]
+layer_0/tile_data = PackedInt32Array(-131074, 524313, 0, -65538, 524313, 1, -2, 524313, 1, 65534, 524313, 1, 131070, 524313, 1, 196606, 524313, 2, -131073, 589849, 0, -65537, 589849, 1, -1, 589849, 1, 65535, 589849, 1, 131071, 589849, 1, 196607, 589849, 2, -196608, 589849, 0, -131072, 589849, 1, -65536, 589849, 1, 0, 589849, 1, 65536, 589849, 1, 131072, 589849, 2, -196607, 655385, 0, -131071, 655385, 1, -65535, 655385, 1, 1, 655385, 1, 65537, 655385, 1, 131073, 655385, 2, -131070, 524289, 11, -65534, 524289, 11, 2, 524289, 11, 65538, 524289, 11, 131074, 524289, 14, 131075, 524289, 15, 131076, 524289, 15, 131077, 524289, 15, -196606, 524289, 13, -196605, 524289, 15, -196604, 524289, 15, -196603, 524289, 15)
+layer_1/tile_data = PackedInt32Array(65534, 786457, 20, 131070, 786457, 21, 196606, 786457, 22, 65535, 851993, 20, 131071, 851993, 21, 196607, 327696, 14, 0, 851993, 20, 65536, 851993, 21, 131072, 851993, 22, 1, 917529, 20, 65537, 917529, 21, 131073, 917529, 22)
+layer_2/tile_data = PackedInt32Array(65533, 524311, 4, -131074, 262169, 12, -65538, 262169, 13, -2, 262169, 14, -131073, 327705, 12, -65537, 327705, 13, -1, 327705, 14, -196608, 327705, 12, -131072, 22, 0, -65536, 327705, 14, 65536, 131073, 0, -196607, 393241, 12, -131071, 393241, 13, -65535, 393241, 14)
+layer_3/tile_data = PackedInt32Array(-131074, 458753, 10, -131072, 458753, 1)
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+visible = false
+polygon = PackedVector2Array(288, -138, 105, -138, 96, -144, -96, -144, -96, 144, -41, 144, -41, 135, -91, 135, -91, -140, 93, -140, 93, 135, 0, 135, 0, 144, 93, 144, 288, 144, 288, 102, 105, 102, 105, -96, 288, -96)
+
+[node name="CollisionShape2D" parent="InsideArea" index="0"]
+visible = false
+position = Vector2(1, -2.5)
+shape = SubResource("RectangleShape2D_ykhgb")
