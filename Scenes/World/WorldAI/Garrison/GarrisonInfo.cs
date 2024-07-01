@@ -5,11 +5,10 @@ namespace DuchyOfThorns;
 [GlobalClass]
 public partial class GarrisonInfo : Resource
 {
-    [Export] public int Manpower { get; set; }
-    [Export] public int MaxUnits { get; set; }
     [Export] public Array<UnitInfo> UnitQueue { get; private set; }
     [Export] public Array<Vector2> UnitOrigins { get; private set; }
 
+    
     public GarrisonInfo()
     {
         UnitQueue = new Array<UnitInfo>();
@@ -19,8 +18,6 @@ public partial class GarrisonInfo : Resource
     {
         return new GarrisonInfo()
         {
-            Manpower = Manpower,
-            MaxUnits = MaxUnits,
             UnitQueue = new Array<UnitInfo>(UnitQueue.Select(unit => unit.Duplicate())),
             UnitOrigins = UnitOrigins
         };
@@ -28,7 +25,7 @@ public partial class GarrisonInfo : Resource
 
     public TroopType DequeuUnit()
     {
-        if ((UnitQueue.Count <= 0) || (UnitQueue.Count == 1 && UnitQueue[0].TroopsLeft <= 0) || Manpower == 0)
+        if ((UnitQueue.Count <= 0) || (UnitQueue.Count == 1 && UnitQueue[0].TroopsLeft <= 0))
         {
             return TroopType.NONE;
         }

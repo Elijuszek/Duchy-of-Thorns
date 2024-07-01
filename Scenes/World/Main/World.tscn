@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://db02x404q41e0"]
+[gd_scene load_steps=9 format=3 uid="uid://db02x404q41e0"]
 
 [ext_resource type="Script" path="res://Scenes/World/Main/World.cs" id="1_avmp6"]
+[ext_resource type="PackedScene" uid="uid://dysptl212olxu" path="res://Scenes/World/Main/WorldTilemap.tscn" id="2_kpk2s"]
 [ext_resource type="PackedScene" uid="uid://o0j65prh02n1" path="res://Scenes/World/Managers/LootManager.tscn" id="2_xngab"]
 [ext_resource type="Script" path="res://Scenes/World/Main/DayNightCycle.cs" id="6_eq7jb"]
 [ext_resource type="PackedScene" uid="uid://dirql8l87esjw" path="res://Scenes/UI/GUI/GUI.tscn" id="8_k7brn"]
@@ -27,15 +28,16 @@ _data = {
 "DayNightCycle": SubResource("Animation_q3uva")
 }
 
-[node name="Map" type="Node2D" node_paths=PackedStringArray("tileMap", "playerSpawn", "camera", "projectileManager", "lootManager", "backgroundMusic", "gui")]
+[node name="Map" type="Node2D" node_paths=PackedStringArray("playerSpawn", "camera", "projectileManager", "lootManager", "backgroundMusic", "gui")]
 script = ExtResource("1_avmp6")
-tileMap = NodePath("")
 playerSpawn = NodePath("PlayerSpawn")
 camera = NodePath("Camera2D")
 projectileManager = NodePath("ProjectileManager")
 lootManager = NodePath("LootManager")
 backgroundMusic = NodePath("BackgroundMusic")
 gui = NodePath("GUI")
+
+[node name="WorldTilemap" parent="." instance=ExtResource("2_kpk2s")]
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(276, 250)
