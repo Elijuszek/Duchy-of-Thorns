@@ -71,7 +71,7 @@ public partial class Troop : Actor, IPoolable
 
     public virtual void RemoveFromScene()
     {
-		// TODO: navigation2D is still active (Debug from FootmanEnemy)
+		GetChildren().OfType<DamagePopup>().ToList().ForEach(popup => popup.Hide());
 		GlobalPosition = Vector2.Zero;
 		CurrentState = TroopState.NONE;
         collisionShape.SetDeferred("disabled", true);

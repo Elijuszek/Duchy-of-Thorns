@@ -10,24 +10,20 @@ namespace DuchyOfThorns;
 public partial class DefendWorldAI : Node2D
 {
 	[Export] protected BaseCaptureOrder baseCaptureOrder = BaseCaptureOrder.FIRST;
-	[Export] protected Team team = Team.PLAYER;
-	[Export] protected Array<GarrisonInfo> unitsToSpawn;
-	[Export] protected TroopsManager troopsManager;
-
-	public void SpawnUnit()
+	[Export] protected Array<GarrisonBuilding> garrisons;
+	public void SpawnAllGarrison()
 	{
-		GarrisonInfo garrison = unitsToSpawn[0].Duplicate();
-		TroopType type = garrison.DequeuUnit();
-		for (int i = 0; i < garrison.MaxUnits; i++)
+		foreach(GarrisonBuilding garrison in garrisons)
 		{
-			troopsManager.HandleTroopSpawned(type, garrison.UnitQueue[0].Stats,
-				new Vector2(Utilities.GetRandomFloat(800f, 1200f), Utilities.GetRandomFloat(500f, 800f)),
-				new Vector2(Utilities.GetRandomFloat(400f, 800f), Utilities.GetRandomFloat(400f, 600f)));
-		}
+            garrison.SpawnGarrison();
+        }
 	}
-	
-	public void Clear()
-	{
 
-	}
+	public void ClearWorld()
+	{
+        foreach (GarrisonBuilding garrison in garrisons)
+        {
+            garrison.Clear();
+        }
+    }
 }

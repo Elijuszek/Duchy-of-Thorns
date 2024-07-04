@@ -8,7 +8,7 @@ namespace DuchyOfThorns;
 public partial class DefendWorld : World
 {
     [Export] private AssaultWorldAI assaultWorldAI;
-    [Export] private DefendWorldAI allyWorldAI;
+    [Export] private DefendWorldAI defendWorldAI;
     [Export] private CapturableBaseManager capturableBaseManager;
     [Export] public NavigationRegion2D NavigationRegion { get; set; }
     private PackedScene assaultOverScreen;
@@ -19,7 +19,6 @@ public partial class DefendWorld : World
         assaultOverScreen = ResourceLoader.Load<PackedScene>("res://Scenes/UI/GUI/AssaultOverScreen.tscn");
         //CapturableBase[] bases = capturableBaseManager.GetCapturableBases();
 
-        Respawn[] allyRespawnPoints = GetNode<Node2D>("AllyRespawnPoints").GetChildren().OfType<Respawn>().ToArray();
         Respawn[] enemyRespawnPoints = GetNode<Node2D>("EnemyRespawnPoints").GetChildren().OfType<Respawn>().ToArray();
 
         // TODO Signal is still emitted
@@ -30,11 +29,10 @@ public partial class DefendWorld : World
         capturableBaseManager.SetTeam(Team.PLAYER);
         gui.Connect("NewWaveStarted", new Callable(this, "NewWave"));
         gui.ToggleNewWaveButton(true);
-
-        //NavigationLayer = RebakeNavigationLayer();
     }
     private void HandlePlayerVictory(int reward)
     {
+        defendWorldAI.ClearWorld();
         int loot = 0;
         Player player = GetNodeOrNull<Player>("Player");
         if (player != null)
@@ -49,6 +47,7 @@ public partial class DefendWorld : World
     }
     private void HandlePlayerDefeat()
     {
+        defendWorldAI.ClearWorld();
         assaultWorldAI.ClearWorld();
         int loot = 0;
         Player player = GetNodeOrNull<Player>("Player");
@@ -86,15 +85,8 @@ public partial class DefendWorld : World
         player.SetGold(0);
 
         assaultWorldAI.TargetBase = capturableBaseManager.GetNextCapturableBase(Team.ENEMY, BaseCaptureOrder.FIRST);
-
-        // TODO: New wave should load after the last wave is finished
         assaultWorldAI.SpawnNextWave();
-        allyWorldAI.SpawnUnit();
-    }
-
-    private void RebakeNavigationLayer()
-    {
-        return;
+        defendWorldAI.SpawnAllGarrison();
     }
     public override Dictionary<string, Variant> Save()
     {

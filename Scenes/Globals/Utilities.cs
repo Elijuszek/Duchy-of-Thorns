@@ -5,6 +5,10 @@ namespace DuchyOfThorns;
 /// </summary>
 public static partial class Utilities
 {
+    public static int GetRandomInt(int min, int max)
+    {
+        return new Random().Next(min, max);
+    }
     public static float GetRandomFloat(float min, float max)
     {
         Random rand = new Random();

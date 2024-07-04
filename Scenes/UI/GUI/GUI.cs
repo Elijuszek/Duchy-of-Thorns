@@ -151,7 +151,4 @@ public partial class GUI : CanvasLayer
             newWaveButton.Hide();
         }
     }
-
-
-  
 }

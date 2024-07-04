@@ -6,17 +6,16 @@
 
 [sub_resource type="Resource" id="Resource_rc68e"]
 script = ExtResource("3_66m0q")
-Manpower = 0
-MaxUnits = 0
-UnitQueue = null
-UnitOrigins = null
+UnitQueue = Array[Object]([])
+UnitOrigins = Array[Vector2]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ykhgb"]
 size = Vector2(184, 275)
 
-[node name="Archery" instance=ExtResource("1_kpmnf")]
+[node name="Archery" node_paths=PackedStringArray("spawnPoints") instance=ExtResource("1_kpmnf")]
 script = ExtResource("2_rgtyk")
 GarrisonInfo = SubResource("Resource_rc68e")
+spawnPoints = [NodePath("SpawnPoints/Marker2D"), NodePath("SpawnPoints/Marker2D2"), NodePath("SpawnPoints/Marker2D3"), NodePath("SpawnPoints/Marker2D4"), NodePath("SpawnPoints/Marker2D5"), NodePath("SpawnPoints/Marker2D6"), NodePath("SpawnPoints/Marker2D7"), NodePath("SpawnPoints/Marker2D8"), NodePath("SpawnPoints/Marker2D9")]
 
 [node name="BuildingTilemap" parent="." index="0"]
 layer_0/tile_data = PackedInt32Array(-131074, 524313, 0, -65538, 524313, 1, -2, 524313, 1, 65534, 524313, 1, 131070, 524313, 1, 196606, 524313, 2, -131073, 589849, 0, -65537, 589849, 1, -1, 589849, 1, 65535, 589849, 1, 131071, 589849, 1, 196607, 589849, 2, -196608, 589849, 0, -131072, 589849, 1, -65536, 589849, 1, 0, 589849, 1, 65536, 589849, 1, 131072, 589849, 2, -196607, 655385, 0, -131071, 655385, 1, -65535, 655385, 1, 1, 655385, 1, 65537, 655385, 1, 131073, 655385, 2, -131070, 524289, 11, -65534, 524289, 11, 2, 524289, 11, 65538, 524289, 11, 131074, 524289, 14, 131075, 524289, 15, 131076, 524289, 15, 131077, 524289, 15, -196606, 524289, 13, -196605, 524289, 15, -196604, 524289, 15, -196603, 524289, 15)
@@ -32,3 +31,33 @@ polygon = PackedVector2Array(288, -138, 105, -138, 96, -144, -96, -144, -96, 144
 visible = false
 position = Vector2(1, -2.5)
 shape = SubResource("RectangleShape2D_ykhgb")
+
+[node name="SpawnPoints" type="Node2D" parent="." index="4"]
+position = Vector2(197, 1)
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints" index="0"]
+position = Vector2(-54, -58)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPoints" index="1"]
+position = Vector2(-6, -45)
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPoints" index="2"]
+position = Vector2(52, -67)
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPoints" index="3"]
+position = Vector2(-57, 8)
+
+[node name="Marker2D5" type="Marker2D" parent="SpawnPoints" index="4"]
+position = Vector2(-7, 8)
+
+[node name="Marker2D6" type="Marker2D" parent="SpawnPoints" index="5"]
+position = Vector2(49, 4)
+
+[node name="Marker2D7" type="Marker2D" parent="SpawnPoints" index="6"]
+position = Vector2(-52, 67)
+
+[node name="Marker2D8" type="Marker2D" parent="SpawnPoints" index="7"]
+position = Vector2(-3, 65)
+
+[node name="Marker2D9" type="Marker2D" parent="SpawnPoints" index="8"]
+position = Vector2(45, 64)

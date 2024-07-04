@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5swu8qt0poc7"]
 
 [ext_resource type="PackedScene" uid="uid://b2eer1yujo217" path="res://Scenes/World/Buildings/Building.tscn" id="1_sdxr6"]
-[ext_resource type="Script" path="res://EnterableBuilding.cs" id="2_xkiyq"]
+[ext_resource type="Script" path="res://Scenes/World/Buildings/EnterableBuilding.cs" id="2_xkiyq"]
 
 [node name="EnterableBuilding" node_paths=PackedStringArray("tilemap") groups=["Obstacles"] instance=ExtResource("1_sdxr6")]
 script = ExtResource("2_xkiyq")

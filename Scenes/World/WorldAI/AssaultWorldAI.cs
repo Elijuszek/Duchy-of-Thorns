@@ -88,7 +88,7 @@ public partial class AssaultWorldAI : Node2D
 
 	public void ClearWorld()
 	{
-        foreach (Troop troop in troopsManager.GetChildren().OfType<Troop>())
+        foreach (Troop troop in troopsManager.GetChildren().OfType<Troop>().Where(t => t.Team == Team.ENEMY))
         {
             if (troop.CurrentState != TroopState.NONE)
             {
